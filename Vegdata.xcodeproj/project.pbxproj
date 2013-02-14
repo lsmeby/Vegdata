@@ -25,6 +25,7 @@
 		9B7EB84116CD32C400484A74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83C16CD32C400484A74 /* QuartzCore.framework */; };
 		9B7EB84216CD32C400484A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83D16CD32C400484A74 /* Security.framework */; };
 		9B7EB84316CD32C400484A74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */; };
+		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 25160E78145651060060A5C5;
 			remoteInfo = RestKitFrameworkTests;
+		};
+		9BE4624316CD38E7003E1FAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -90,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */,
 				9B7EB83F16CD32C400484A74 /* libxml2.dylib in Frameworks */,
 				9B7EB84016CD32C400484A74 /* MobileCoreServices.framework in Frameworks */,
 				9B7EB84116CD32C400484A74 /* QuartzCore.framework in Frameworks */,
@@ -193,6 +202,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9BE4624416CD38E7003E1FAE /* PBXTargetDependency */,
 			);
 			name = Vegdata;
 			productName = Vegdata;
@@ -290,6 +300,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9BE4624416CD38E7003E1FAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 9BE4624316CD38E7003E1FAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9B7EB80A16CD212600484A74 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -371,10 +389,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vegdata/Vegdata-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Vegdata/Vegdata-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -384,10 +402,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vegdata/Vegdata-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Vegdata/Vegdata-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
