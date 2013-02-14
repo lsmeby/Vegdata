@@ -17,7 +17,7 @@
 		9B7EB81616CD212600484A74 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81516CD212600484A74 /* Default@2x.png */; };
 		9B7EB81816CD212600484A74 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81716CD212600484A74 /* Default-568h@2x.png */; };
 		9B7EB81B16CD212600484A74 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */; };
-		9B7EB81E16CD212600484A74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EB81D16CD212600484A74 /* ViewController.m */; };
+		9B7EB81E16CD212600484A74 /* HovedskjermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		9B7EB81516CD212600484A74 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9B7EB81716CD212600484A74 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9B7EB81A16CD212600484A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9B7EB81C16CD212600484A74 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9B7EB81D16CD212600484A74 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewController.h; sourceTree = "<group>"; };
+		9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 				9B7EB81016CD212600484A74 /* AppDelegate.h */,
 				9B7EB81116CD212600484A74 /* AppDelegate.m */,
 				9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */,
-				9B7EB81C16CD212600484A74 /* ViewController.h */,
-				9B7EB81D16CD212600484A74 /* ViewController.m */,
+				9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */,
+				9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */,
 				9B7EB80816CD212600484A74 /* Supporting Files */,
 			);
 			path = Vegdata;
@@ -175,7 +175,7 @@
 			files = (
 				9B7EB80E16CD212600484A74 /* main.m in Sources */,
 				9B7EB81216CD212600484A74 /* AppDelegate.m in Sources */,
-				9B7EB81E16CD212600484A74 /* ViewController.m in Sources */,
+				9B7EB81E16CD212600484A74 /* HovedskjermViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
