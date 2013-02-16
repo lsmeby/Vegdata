@@ -21,7 +21,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Posisjon.h"
 
-@interface HovedskjermViewController : UIViewController
+@interface HovedskjermViewController : UIViewController <PosisjonDelegate>
+
+@property (nonatomic, retain) PosisjonsKontroller * pos;
+@property (nonatomic, strong) IBOutlet UILabel * posLabel;
 
 @end

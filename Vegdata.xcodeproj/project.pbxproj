@@ -25,6 +25,8 @@
 		9B7EB84116CD32C400484A74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83C16CD32C400484A74 /* QuartzCore.framework */; };
 		9B7EB84216CD32C400484A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83D16CD32C400484A74 /* Security.framework */; };
 		9B7EB84316CD32C400484A74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */; };
+		9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */; };
+		9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B820D8416CE6E1D00AD3307 /* Posisjon.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,9 @@
 		9B7EB83C16CD32C400484A74 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9B7EB83D16CD32C400484A74 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9B820D8316CE6E1D00AD3307 /* Posisjon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Posisjon.h; sourceTree = "<group>"; };
+		9B820D8416CE6E1D00AD3307 /* Posisjon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Posisjon.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */,
 				9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */,
 				9B7EB83F16CD32C400484A74 /* libxml2.dylib in Frameworks */,
 				9B7EB84016CD32C400484A74 /* MobileCoreServices.framework in Frameworks */,
@@ -137,6 +143,7 @@
 			children = (
 				9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */,
 				9B7EB83A16CD32C400484A74 /* libxml2.dylib */,
+				9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */,
 				9B7EB83B16CD32C400484A74 /* MobileCoreServices.framework */,
 				9B7EB83C16CD32C400484A74 /* QuartzCore.framework */,
 				9B7EB83D16CD32C400484A74 /* Security.framework */,
@@ -158,6 +165,8 @@
 				9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */,
 				9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */,
 				9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */,
+				9B820D8316CE6E1D00AD3307 /* Posisjon.h */,
+				9B820D8416CE6E1D00AD3307 /* Posisjon.m */,
 				9B7EB80816CD212600484A74 /* Supporting Files */,
 			);
 			path = Vegdata;
@@ -295,6 +304,7 @@
 				9B7EB80E16CD212600484A74 /* main.m in Sources */,
 				9B7EB81216CD212600484A74 /* AppDelegate.m in Sources */,
 				9B7EB81E16CD212600484A74 /* HovedskjermViewController.m in Sources */,
+				9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

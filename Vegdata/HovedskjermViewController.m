@@ -28,16 +28,33 @@
 
 @implementation HovedskjermViewController
 
+@synthesize pos, posLabel;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    pos = [[PosisjonsKontroller alloc] init];
+    pos.delegate = self;
+    [pos.lokMan startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - PosisjonDelegate
+
+- (void) posisjonOppdatering:(Posisjon *)posisjon
+{
+    posLabel.text = [NSString stringWithFormat:@"Lengdegrad:\n%@\n\nBreddegrad:\n%@\n\nHastighet:\n%@ m/s\n%@ km/t\n\nRetning: %@ grader\n\nHøyde: %@ moh.\n\nPresisjon: %@m", posisjon.lengdegrad.description, posisjon.breddegrad.description, posisjon.hastighetIMeterISek.description, posisjon.hastighetIKmT.description, posisjon.retning.description, posisjon.meterOverHavet.description, posisjon.presisjon.description];
+}
+
+- (void) posisjonFeil:(NSError *)feil
+{
+    posLabel.text = [feil description];
 }
 
 @end
