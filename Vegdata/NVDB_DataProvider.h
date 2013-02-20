@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  NVDB_DataProvider.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 14.02.13.
+//  Created by Lars Smeby on 20.02.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,13 +20,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <UIKit/UIKit.h>
-#import "Posisjon.h"
-#import "Fartsgrense.h"
+#import <Foundation/Foundation.h>
+#import "Vegreferanse.h"
 
-@interface HovedskjermViewController : UIViewController <PosisjonDelegate>
+@interface NVDB_DataProvider : NSObject
 
-@property (nonatomic, retain) PosisjonsKontroller * pos;
-@property (nonatomic, strong) IBOutlet UILabel * posLabel;
++ (Vegreferanse *)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 
 @end

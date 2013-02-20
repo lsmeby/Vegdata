@@ -1,0 +1,66 @@
+//
+//  Fartsgrense.m
+//  Vegdata
+//
+//  Created by Lars Smeby on 20.02.13.
+//
+//  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+
+#import "Fartsgrense.h"
+#import "Vegreferanse.h"
+#import "NVDB_DataProvider.h"
+
+static NSString * const OBJEKTTYPE = @"105";
+
+// Metoder i dette interfacet kan kun aksesseres i denne klassen (aka. private)
+@interface Fartsgrense()
+
+- (Vegreferanse *)hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad;
+- (void)hentFartsgrense;
+
+@end
+
+@implementation Fartsgrense
+
+@synthesize fart, strekningsLengde;
+
+- (id)initMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+{
+    fart = @"-1";
+    strekningsLengde = [[NSNumber alloc] initWithInt: -1];
+    [self oppdaterMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+    return self;
+}
+
+- (bool) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+{
+    Vegreferanse * vegref = [NVDB_DataProvider hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+    
+    return vegref != nil;
+}
+
+- (Vegreferanse *)hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad
+{
+    return [NVDB_DataProvider hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+}
+
+- (void)hentFartsgrense
+{
+    
+}
+
+@end

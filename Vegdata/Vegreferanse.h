@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  Vegreferanse.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 14.02.13.
+//  Created by Lars Smeby on 20.02.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,13 +20,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <UIKit/UIKit.h>
-#import "Posisjon.h"
-#import "Fartsgrense.h"
+#import <Foundation/Foundation.h>
 
-@interface HovedskjermViewController : UIViewController <PosisjonDelegate>
+@interface Vegreferanse : NSObject
 
-@property (nonatomic, retain) PosisjonsKontroller * pos;
-@property (nonatomic, strong) IBOutlet UILabel * posLabel;
+@property (nonatomic, strong) NSString * punktPaVeg;
+@property (nonatomic, strong) NSNumber * meterVerdi;
+@property (nonatomic, strong) NSString * visningsNavn;
+@property (nonatomic, strong) NSNumber * veglenkeId;
+@property (nonatomic, strong) NSDecimalNumber * veglenkePosisjon;
+
++ (RKObjectMapping *)mappingForVegreferanse;
++ (NSDictionary *)parametereForVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++ (NSString *)getURI;
++ (NSString *)getKeyPath;
 
 @end

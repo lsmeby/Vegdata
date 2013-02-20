@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B232AA916D4FD75008FCC43 /* Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AA816D4FD75008FCC43 /* Fartsgrense.m */; };
+		9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */; };
+		9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB616D50A8C008FCC43 /* Vegreferanse.m */; };
+		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
 		9B7EB80216CD212600484A74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80116CD212600484A74 /* UIKit.framework */; };
 		9B7EB80416CD212600484A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80316CD212600484A74 /* Foundation.framework */; };
 		9B7EB80616CD212600484A74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80516CD212600484A74 /* CoreGraphics.framework */; };
@@ -69,6 +73,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B232AA716D4FD75008FCC43 /* Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsgrense.h; sourceTree = "<group>"; };
+		9B232AA816D4FD75008FCC43 /* Fartsgrense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsgrense.m; sourceTree = "<group>"; };
+		9B232AAD16D50935008FCC43 /* NVDB_RESTkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDB_RESTkit.h; sourceTree = "<group>"; };
+		9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_RESTkit.m; sourceTree = "<group>"; };
+		9B232AB516D50A8C008FCC43 /* Vegreferanse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vegreferanse.h; sourceTree = "<group>"; };
+		9B232AB616D50A8C008FCC43 /* Vegreferanse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vegreferanse.m; sourceTree = "<group>"; };
+		9B232AB816D51261008FCC43 /* NVDB_DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDB_DataProvider.h; sourceTree = "<group>"; };
+		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
 		9B7EB7FE16CD212600484A74 /* Vegdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vegdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EB80116CD212600484A74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9B7EB80316CD212600484A74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +133,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B232AB016D50965008FCC43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B232AB416D50A51008FCC43 /* ProgramObjekter */,
+				9B232AB316D509B3008FCC43 /* NVDBObjekter */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9B232AB116D50977008FCC43 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */,
+				9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9B232AB216D50981008FCC43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9B232AB316D509B3008FCC43 /* NVDBObjekter */ = {
+			isa = PBXGroup;
+			children = (
+				9B232AA716D4FD75008FCC43 /* Fartsgrense.h */,
+				9B232AA816D4FD75008FCC43 /* Fartsgrense.m */,
+				9B232AB516D50A8C008FCC43 /* Vegreferanse.h */,
+				9B232AB616D50A8C008FCC43 /* Vegreferanse.m */,
+			);
+			name = NVDBObjekter;
+			sourceTree = "<group>";
+		};
+		9B232AB416D50A51008FCC43 /* ProgramObjekter */ = {
+			isa = PBXGroup;
+			children = (
+				9B7EB81016CD212600484A74 /* AppDelegate.h */,
+				9B7EB81116CD212600484A74 /* AppDelegate.m */,
+				9B232AAD16D50935008FCC43 /* NVDB_RESTkit.h */,
+				9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */,
+				9B820D8316CE6E1D00AD3307 /* Posisjon.h */,
+				9B820D8416CE6E1D00AD3307 /* Posisjon.m */,
+				9B232AB816D51261008FCC43 /* NVDB_DataProvider.h */,
+				9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */,
+			);
+			name = ProgramObjekter;
+			sourceTree = "<group>";
+		};
 		9B7EB7F516CD212600484A74 = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +224,9 @@
 		9B7EB80716CD212600484A74 /* Vegdata */ = {
 			isa = PBXGroup;
 			children = (
-				9B7EB81016CD212600484A74 /* AppDelegate.h */,
-				9B7EB81116CD212600484A74 /* AppDelegate.m */,
-				9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */,
-				9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */,
-				9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */,
-				9B820D8316CE6E1D00AD3307 /* Posisjon.h */,
-				9B820D8416CE6E1D00AD3307 /* Posisjon.m */,
+				9B232AB216D50981008FCC43 /* View */,
+				9B232AB116D50977008FCC43 /* Controller */,
+				9B232AB016D50965008FCC43 /* Model */,
 				9B7EB80816CD212600484A74 /* Supporting Files */,
 			);
 			path = Vegdata;
@@ -305,6 +365,10 @@
 				9B7EB81216CD212600484A74 /* AppDelegate.m in Sources */,
 				9B7EB81E16CD212600484A74 /* HovedskjermViewController.m in Sources */,
 				9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */,
+				9B232AA916D4FD75008FCC43 /* Fartsgrense.m in Sources */,
+				9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */,
+				9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */,
+				9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
