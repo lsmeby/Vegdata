@@ -22,8 +22,15 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NVDBResponseDelegate
+@required
+- (void) svarFraNVDBMedResultat:(NSArray *)resultat;
+@end
+
 @interface NVDB_RESTkit : NSObject
 
-+ (NSArray *) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgKeyPath:(NSString *)keyPath;
+@property (nonatomic, assign) id delegate;
+
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgkeyPath:(NSString *)keyPath;
 
 @end

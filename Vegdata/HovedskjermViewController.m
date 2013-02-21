@@ -27,6 +27,9 @@
 @end
 
 @implementation HovedskjermViewController
+{
+    Fartsgrense * fart;
+}
 
 @synthesize pos, posLabel;
 
@@ -34,6 +37,8 @@
 {
     [super viewDidLoad];
 	
+    fart = [[Fartsgrense alloc] init];
+    
     pos = [[PosisjonsKontroller alloc] init];
     pos.delegate = self;
     [pos.lokMan startUpdatingLocation];
@@ -51,7 +56,7 @@
 {
     posLabel.text = [NSString stringWithFormat:@"Lengdegrad:\n%@\n\nBreddegrad:\n%@\n\nHastighet:\n%@ m/s\n%@ km/t\n\nRetning: %@ grader\n\nHøyde: %@ moh.\n\nPresisjon: %@m", posisjon.lengdegrad.description, posisjon.breddegrad.description, posisjon.hastighetIMeterISek.description, posisjon.hastighetIKmT.description, posisjon.retning.description, posisjon.meterOverHavet.description, posisjon.presisjon.description];
     
-    Fartsgrense * fart = [[Fartsgrense alloc] initMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
+    [fart oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
 }
 
 - (void) posisjonFeil:(NSError *)feil

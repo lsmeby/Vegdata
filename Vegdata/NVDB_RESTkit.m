@@ -26,7 +26,9 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
 
 @implementation NVDB_RESTkit
 
-+ (NSArray *) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgKeyPath:(NSString *)keyPath
+@synthesize delegate;
+
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgkeyPath:(NSString *)keyPath
 {
     AFHTTPClient * klient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:NVDB_GRUNN_URL]];
     [klient setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
@@ -37,22 +39,17 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
     [objectManager addResponseDescriptor:responseDescriptor];
     
     NSString * fullURI = [NVDB_GRUNN_URL stringByAppendingString:uri];
-    __block NSArray * retur = nil;
     
-    NSLog(@"\n### Før");
     [objectManager getObjectsAtPath:fullURI parameters:parametere
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
      {
-         NSLog(@"\n### Suksess");
-         retur = [mappingResult array];
+         if([self.delegate conformsToProtocol:@protocol(NVDBResponseDelegate)])
+             [self.delegate svarFraNVDBMedResultat:[mappingResult array]];
      }
                             failure:^(RKObjectRequestOperation *operation, NSError *error)
      {
          NSLog(@"\n### Feil i NVDB_RESTkit:\n### operation: %@\n### error: %@", operation, error);
      }];
-    NSLog(@"\n### Etter");
-    
-    return retur;
 }
 
 @end

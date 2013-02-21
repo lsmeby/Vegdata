@@ -29,38 +29,43 @@ static NSString * const OBJEKTTYPE = @"105";
 // Metoder i dette interfacet kan kun aksesseres i denne klassen (aka. private)
 @interface Fartsgrense()
 
-- (Vegreferanse *)hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad;
 - (void)hentFartsgrense;
 
 @end
 
 @implementation Fartsgrense
+{
+    NVDB_DataProvider * dataProv;
+}
 
 @synthesize fart, strekningsLengde;
 
-- (id)initMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+- (id)init
 {
     fart = @"-1";
     strekningsLengde = [[NSNumber alloc] initWithInt: -1];
-    [self oppdaterMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+    dataProv = [[NVDB_DataProvider alloc] init];
     return self;
 }
 
-- (bool) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+- (void) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    Vegreferanse * vegref = [NVDB_DataProvider hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
-    
-    return vegref != nil;
-}
-
-- (Vegreferanse *)hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad
-{
-    return [NVDB_DataProvider hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
 
 - (void)hentFartsgrense
 {
     
+}
+
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat
+{
+    NSLog(@"\n### MOTTAT SVAR");
+    if([resultat[0] isKindOfClass:[Vegreferanse class]])
+    {
+        Vegreferanse * vegref = (Vegreferanse *)resultat[0];
+        NSLog(@"\n### Mottat objekt er av type Vegreferanse");
+    }
 }
 
 @end

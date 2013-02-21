@@ -25,19 +25,24 @@
 #import "Vegreferanse.h"
 
 @implementation NVDB_DataProvider
-
-+ (Vegreferanse *)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    NSArray * returarray = [NVDB_RESTkit hentDataMedURI:[Vegreferanse getURI]
-                                             Parametere:[Vegreferanse parametereForVegreferanseMedBreddegrad:breddegrad
-                                                                                                OgLengdegrad:lengdegrad]
-                                                Mapping:[Vegreferanse mappingForVegreferanse]
-                                              OgKeyPath:[Vegreferanse getKeyPath]];
-    
-    if(returarray == nil || [returarray count] == 0)
-        return nil;
-    
-    return [returarray objectAtIndex:0];
+    NVDB_RESTkit * restkit;
+}
+
+- (id)init
+{
+    restkit = [NVDB_RESTkit alloc];
+    return self;
+}
+
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender
+{
+    restkit.delegate = avsender;
+    [restkit hentDataMedURI:[Vegreferanse getURI]
+                 Parametere:[Vegreferanse parametereForVegreferanseMedBreddegrad:breddegrad
+                                                                    OgLengdegrad:lengdegrad]
+                    Mapping:[Vegreferanse mappingForVegreferanse]
+                  OgkeyPath:[Vegreferanse getKeyPath]];
 }
 
 @end

@@ -21,10 +21,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Vegreferanse.h"
 
 @interface NVDB_DataProvider : NSObject
 
-+ (Vegreferanse *)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
 
 @end

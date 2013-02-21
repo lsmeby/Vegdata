@@ -21,13 +21,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NVDB_RESTkit.h"
 
-@interface Fartsgrense : NSObject
+@interface Fartsgrense : NSObject <NVDBResponseDelegate>
 
 @property (nonatomic, strong) NSString * fart;
 @property (nonatomic, strong) NSNumber * strekningsLengde;
 
-- (id)initMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
-- (bool) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
+- (void) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 
 @end
