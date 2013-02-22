@@ -22,14 +22,16 @@
 
 #import "Fartsgrense.h"
 #import "Vegreferanse.h"
+#import "Egenskap.h"
 #import "NVDB_DataProvider.h"
 
-static NSString * const OBJEKTTYPE = @"105";
+static NSString * const URI = @"/vegobjekter/105";
+static NSString * const KEYPATH = @"vegObjekter";
 
-// Metoder i dette interfacet kan kun aksesseres i denne klassen (aka. private)
+// Private metoder
 @interface Fartsgrense()
 
-- (void)hentFartsgrense;
+- (NSString *)hentFartFraEgenskaper;
 
 @end
 
@@ -38,7 +40,7 @@ static NSString * const OBJEKTTYPE = @"105";
     NVDB_DataProvider * dataProv;
 }
 
-@synthesize fart, strekningsLengde;
+@synthesize fart, strekningsLengde, egenskaper;
 
 - (id)init
 {
@@ -48,14 +50,14 @@ static NSString * const OBJEKTTYPE = @"105";
     return self;
 }
 
-- (void) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
     [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
 
-- (void)hentFartsgrense
+- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    
+    [dataProv hentFartsgrenseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
 
 - (void)svarFraNVDBMedResultat:(NSArray *)resultat
@@ -63,9 +65,58 @@ static NSString * const OBJEKTTYPE = @"105";
     NSLog(@"\n### MOTTAT SVAR");
     if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
-        Vegreferanse * vegref = (Vegreferanse *)resultat[0];
         NSLog(@"\n### Mottat objekt er av type Vegreferanse");
+        Vegreferanse * vegref = (Vegreferanse *)resultat[0];
+        NSDictionary * koord = [vegref hentKoordinater];
+        
+        [self hentFartsgrenseMedBreddegrad:[koord objectForKey:@"breddegrad"] OgLengdegrad:[koord objectForKey:@"lengdegrad"]];
     }
+    if([resultat[0] isKindOfClass:[Fartsgrense class]])
+    {
+        NSLog(@"\n### Mottat objekt er av type Fartsgrense");
+        Fartsgrense * fartsgrense = (Fartsgrense *)resultat[0];
+        self.strekningsLengde = fartsgrense.strekningsLengde;
+        self.egenskaper = fartsgrense.egenskaper;
+        self.fart = [self hentFartFraEgenskaper];
+        NSLog(@"string");
+    }
+}
+
++ (RKObjectMapping *)mapping
+{
+    RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
+    [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
+                                                           @"verdi" : @"verdi"}];
+    
+    RKObjectMapping * fartsgrenseMapping = [RKObjectMapping mappingForClass:[self class]];
+    [fartsgrenseMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
+                                                                                       toKeyPath:@"egenskaper"
+                                                                                     withMapping:egenskapsMapping]];
+    
+    return fartsgrenseMapping;
+}
+
++ (NSString *)getURI
+{
+    return URI;
+}
+
++ (NSString *)getKeyPath
+{
+    return KEYPATH;
+}
+
+- (NSString *)hentFartFraEgenskaper
+{
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:@"Fartsgrense"])
+        {
+            return e.verdi;
+        }
+    }
+    return @"-1";
 }
 
 @end

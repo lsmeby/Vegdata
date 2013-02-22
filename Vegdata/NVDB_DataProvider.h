@@ -25,5 +25,6 @@
 @interface NVDB_DataProvider : NSObject
 
 - (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
+- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
 
 @end

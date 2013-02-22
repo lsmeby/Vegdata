@@ -27,7 +27,13 @@
 
 @property (nonatomic, strong) NSString * fart;
 @property (nonatomic, strong) NSNumber * strekningsLengde;
+@property (nonatomic, strong) NSArray * egenskaper;
+
++ (RKObjectMapping *)mapping;
++ (NSString *)getURI;
++ (NSString *)getKeyPath;
 
 - (void) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
+- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 
 @end

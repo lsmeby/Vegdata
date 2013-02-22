@@ -1,8 +1,8 @@
 //
-//  Vegreferanse.h
+//  Egenskap.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 20.02.13.
+//  Created by Lars Smeby on 22.02.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,20 +20,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
+#import "Egenskap.h"
 
-@interface Vegreferanse : NSObject
+@implementation Egenskap
 
-@property (nonatomic, strong) NSString * punktPaVeg;
-@property (nonatomic, strong) NSNumber * meterVerdi;
-@property (nonatomic, strong) NSString * visningsNavn;
-@property (nonatomic, strong) NSNumber * veglenkeId;
-@property (nonatomic, strong) NSDecimalNumber * veglenkePosisjon;
-
-+ (RKObjectMapping *)mapping;
-+ (NSString *)getURI;
-+ (NSString *)getKeyPath;
-
-- (NSDictionary *)hentKoordinater;
+@synthesize navn, verdi;
 
 @end
