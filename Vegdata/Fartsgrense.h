@@ -22,18 +22,28 @@
 
 #import <Foundation/Foundation.h>
 #import "NVDB_RESTkit.h"
+#import "NVDB_DataProvider.h"
+
+@protocol FartsgrenseDelegate
+@required
+- (void)fartsgrenseErOppdatert;
+@end
 
 @interface Fartsgrense : NSObject <NVDBResponseDelegate>
+{
+    NVDB_DataProvider * dataProv;
+}
 
 @property (nonatomic, strong) NSString * fart;
 @property (nonatomic, strong) NSNumber * strekningsLengde;
 @property (nonatomic, strong) NSArray * egenskaper;
+@property (nonatomic, assign) id delegate;
 
 + (RKObjectMapping *)mapping;
 + (NSString *)getURI;
 + (NSString *)getKeyPath;
 
-- (void) oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
-- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
+- (id)initMedDelegate:(id)delegate;
+- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 
 @end

@@ -30,10 +30,8 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 
 // Private metoder
 @interface NVDB_DataProvider()
-
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
-
 @end
 
 @implementation NVDB_DataProvider
@@ -45,24 +43,6 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 {
     restkit = [NVDB_RESTkit alloc];
     return self;
-}
-
-+ (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
-{
-    return @{@"x" : breddegrad.stringValue, @"y" : lengdegrad.stringValue, @"srid" : NVDB_GEOMETRI};
-}
-
-+ (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
-{
-    NSDecimalNumber * bboxRadius = [[NSDecimalNumber alloc] initWithDouble:WGS84_BBOX_RADIUS];
-
-    NSString * bboxString = [[NSArray arrayWithObjects:[lengdegrad decimalNumberBySubtracting:bboxRadius],
-                                                       [breddegrad decimalNumberBySubtracting:bboxRadius],
-                                                       [lengdegrad decimalNumberByAdding:bboxRadius],
-                                                       [breddegrad decimalNumberByAdding:bboxRadius],
-                                                       nil] componentsJoinedByString:@","];
-    
-    return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
 }
 
 - (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender
@@ -83,6 +63,26 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                                                                         OgLengdegrad:lengdegrad]
                     Mapping:[Fartsgrense mapping]
                   OgkeyPath:[Fartsgrense getKeyPath]];
+}
+
+#pragma mark - Statiske hjelpemetoder
+
++ (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+{
+    return @{@"x" : breddegrad.stringValue, @"y" : lengdegrad.stringValue, @"srid" : NVDB_GEOMETRI};
+}
+
++ (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+{
+    NSDecimalNumber * bboxRadius = [[NSDecimalNumber alloc] initWithDouble:WGS84_BBOX_RADIUS];
+    
+    NSString * bboxString = [[NSArray arrayWithObjects:[lengdegrad decimalNumberBySubtracting:bboxRadius],
+                              [breddegrad decimalNumberBySubtracting:bboxRadius],
+                              [lengdegrad decimalNumberByAdding:bboxRadius],
+                              [breddegrad decimalNumberByAdding:bboxRadius],
+                              nil] componentsJoinedByString:@","];
+    
+    return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
 }
 
 @end

@@ -31,6 +31,10 @@
 		9B7EB84316CD32C400484A74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */; };
 		9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */; };
 		9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B820D8416CE6E1D00AD3307 /* Posisjon.m */; };
+		9B83CBA516D8EB3E0022AB3D /* fartsgrense_feil.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */; };
+		9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */; };
+		9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */; };
+		9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
@@ -108,6 +112,10 @@
 		9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9B820D8316CE6E1D00AD3307 /* Posisjon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Posisjon.h; sourceTree = "<group>"; };
 		9B820D8416CE6E1D00AD3307 /* Posisjon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Posisjon.m; sourceTree = "<group>"; };
+		9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense_feil.gif; sourceTree = "<group>"; };
+		9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense_feil@2x.gif"; sourceTree = "<group>"; };
+		9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense.gif; sourceTree = "<group>"; };
+		9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense@2x.gif"; sourceTree = "<group>"; };
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -244,6 +252,10 @@
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
 				9B7EB80F16CD212600484A74 /* Vegdata-Prefix.pch */,
+				9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */,
+				9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */,
+				9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */,
+				9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */,
 				9B7EB81316CD212600484A74 /* Default.png */,
 				9B7EB81516CD212600484A74 /* Default@2x.png */,
 				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
@@ -356,6 +368,10 @@
 				9B7EB81616CD212600484A74 /* Default@2x.png in Resources */,
 				9B7EB81816CD212600484A74 /* Default-568h@2x.png in Resources */,
 				9B7EB81B16CD212600484A74 /* MainStoryboard.storyboard in Resources */,
+				9B83CBA516D8EB3E0022AB3D /* fartsgrense_feil.gif in Resources */,
+				9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */,
+				9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */,
+				9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,17 +27,14 @@
 @end
 
 @implementation HovedskjermViewController
-{
-    Fartsgrense * fart;
-}
 
-@synthesize pos, posLabel;
+@synthesize posLabel, fartLabel, fartBilde;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    fart = [[Fartsgrense alloc] init];
+    fart = [[Fartsgrense alloc] initMedDelegate:self];
     
     pos = [[PosisjonsKontroller alloc] init];
     pos.delegate = self;
@@ -54,7 +51,13 @@
 
 - (void) posisjonOppdatering:(Posisjon *)posisjon
 {
-    posLabel.text = [NSString stringWithFormat:@"Lengdegrad:\n%@\n\nBreddegrad:\n%@\n\nHastighet:\n%@ m/s\n%@ km/t\n\nRetning: %@ grader\n\nHøyde: %@ moh.\n\nPresisjon: %@m", posisjon.lengdegrad.description, posisjon.breddegrad.description, posisjon.hastighetIMeterISek.description, posisjon.hastighetIKmT.description, posisjon.retning.description, posisjon.meterOverHavet.description, posisjon.presisjon.description];
+    posLabel.text = [NSString stringWithFormat:@"-Utviklerinfo-\nLengdegrad: %@\nBreddegrad: %@\nHastighet: %@ km/t\nRetning: %@ grader\nHøyde: %@ moh.\nPresisjon: %@m",
+                     posisjon.lengdegrad.stringValue,
+                     posisjon.breddegrad.stringValue,
+                     posisjon.hastighetIKmT.stringValue,
+                     posisjon.retning.stringValue,
+                     posisjon.meterOverHavet.stringValue,
+                     posisjon.presisjon.stringValue];
     
     [fart oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
 }
@@ -62,6 +65,22 @@
 - (void) posisjonFeil:(NSError *)feil
 {
     posLabel.text = [feil description];
+}
+
+#pragma mark - FartsgrenseDelegate
+
+- (void) fartsgrenseErOppdatert
+{
+    if([fart.fart isEqualToString:@"-1"])
+    {
+        fartLabel.text = @"?";
+        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
+    }
+    else
+    {
+        fartLabel.text = fart.fart;
+        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
+    }
 }
 
 @end

@@ -24,9 +24,15 @@
 #import "Posisjon.h"
 #import "Fartsgrense.h"
 
-@interface HovedskjermViewController : UIViewController <PosisjonDelegate>
+@interface HovedskjermViewController : UIViewController <PosisjonDelegate, FartsgrenseDelegate>
+{
+    @private
+    PosisjonsKontroller * pos;
+    Fartsgrense * fart;
+}
 
-@property (nonatomic, retain) PosisjonsKontroller * pos;
+@property (nonatomic, strong) IBOutlet UILabel * fartLabel;
 @property (nonatomic, strong) IBOutlet UILabel * posLabel;
+@property (nonatomic, strong) IBOutlet UIImageView * fartBilde;
 
 @end

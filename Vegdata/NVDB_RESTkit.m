@@ -48,7 +48,8 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
      }
                             failure:^(RKObjectRequestOperation *operation, NSError *error)
      {
-         NSLog(@"\n### Feil i NVDB_RESTkit:\n### operation: %@\n### error: %@", operation, error);
+         NSLog(@"\n### FEIL I NVDB_RESTkit:\n### Operation: %@\n### Error: %@", operation, error);
+         [self.delegate svarFraNVDBMedResultat:nil];
      }];
 }
 

@@ -29,6 +29,25 @@ static NSString * const KEYPATH = nil;
 
 @synthesize punktPaVeg, meterVerdi, visningsNavn, veglenkeId, veglenkePosisjon;
 
+- (NSDictionary *)hentKoordinater
+{
+    if(punktPaVeg == nil)
+        return nil;
+    
+    NSRange start = [punktPaVeg rangeOfString:@"("];
+    NSRange end = [punktPaVeg rangeOfString:@")"];
+    NSRange range = NSMakeRange(start.location+1, end.location-start.location-1);
+    
+    NSString * hele = [punktPaVeg substringWithRange:range];
+    
+    NSDecimalNumber * breddegrad = [[NSDecimalNumber alloc] initWithString:[hele substringFromIndex:[hele rangeOfString:@" "].location+1]];
+    NSDecimalNumber * lengdegrad = [[NSDecimalNumber alloc] initWithString:[hele substringToIndex:[hele rangeOfString:@" "].location]];
+    
+    return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
+}
+
+#pragma mark - Statiske hjelpemetoder
+
 + (RKObjectMapping *)mapping
 {
     RKObjectMapping * vegreferanseMapping = [RKObjectMapping mappingForClass:[self class]];
@@ -50,23 +69,6 @@ static NSString * const KEYPATH = nil;
 + (NSString *)getKeyPath
 {
     return KEYPATH;
-}
-
-- (NSDictionary *)hentKoordinater
-{
-    if(punktPaVeg == nil)
-        return nil;
-    
-    NSRange start = [punktPaVeg rangeOfString:@"("];
-    NSRange end = [punktPaVeg rangeOfString:@")"];
-    NSRange range = NSMakeRange(start.location+1, end.location-start.location-1);
-    
-    NSString * hele = [punktPaVeg substringWithRange:range];
-    
-    NSDecimalNumber * breddegrad = [[NSDecimalNumber alloc] initWithString:[hele substringFromIndex:[hele rangeOfString:@" "].location+1]];
-    NSDecimalNumber * lengdegrad = [[NSDecimalNumber alloc] initWithString:[hele substringToIndex:[hele rangeOfString:@" "].location]];
-    
-    return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
 }
 
 @end
