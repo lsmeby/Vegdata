@@ -44,6 +44,7 @@ static NSString * const KEYPATH = @"vegObjekter";
     fart = @"-1";
     strekningsLengde = [[NSNumber alloc] initWithInt: -1];
     dataProv = [[NVDB_DataProvider alloc] init];
+    
     return self;
 }
 
