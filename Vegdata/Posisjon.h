@@ -35,7 +35,6 @@
 @interface PosisjonsKontroller : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager * lokMan;
-@property (nonatomic, strong) NSDate * forrigeOppdatering;
 @property (nonatomic, assign) id delegate;
 
 @end

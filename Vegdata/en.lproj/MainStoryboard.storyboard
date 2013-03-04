@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" constant="212" id="zgx-zY-Fx1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="163"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -60,19 +60,6 @@
     <resources>
         <image name="fartsgrense_feil.gif" width="320" height="320"/>
     </resources>
-    <classes>
-        <class className="HovedskjermViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HovedskjermViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fartBilde" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="fartLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="posLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

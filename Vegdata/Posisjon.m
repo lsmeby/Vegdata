@@ -22,13 +22,16 @@
 
 #import "Posisjon.h"
 
-static int const MIN_ANTALL_METER = 50;
-static int const MIN_ANTALL_SEK = 10;
+static int const OPPDATERING_SEK = 2;
 static double const MSEK_TIL_KMT = 3.6;
+
+@interface PosisjonsKontroller()
+- (void) oppdaterPresisjonMedFart:(NSDecimalNumber *)meterISekundet;
+@end
 
 @implementation PosisjonsKontroller
 
-@synthesize lokMan, forrigeOppdatering, delegate;
+@synthesize lokMan, delegate;
 
 - (id) init
 {
@@ -38,8 +41,8 @@ static double const MSEK_TIL_KMT = 3.6;
     {
         self.lokMan = [[CLLocationManager alloc] init];
         self.lokMan.delegate = self;
-        self.lokMan.desiredAccuracy = kCLLocationAccuracyBestForNavigation; // Bruker mye batteri, må testes
-        self.lokMan.distanceFilter = MIN_ANTALL_METER; // Antall meter enheten må flytte seg før delegaten kalles
+        self.lokMan.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        self.lokMan.distanceFilter = kCLDistanceFilterNone;
     }
     
     return self;
@@ -50,11 +53,6 @@ static double const MSEK_TIL_KMT = 3.6;
     if([self.delegate conformsToProtocol:@protocol(PosisjonDelegate)])
     {
         CLLocation * CLpos = [locations lastObject];
-        
-        if(forrigeOppdatering != nil && [CLpos.timestamp timeIntervalSinceDate:forrigeOppdatering] < MIN_ANTALL_SEK)
-            return;
-        
-        forrigeOppdatering = CLpos.timestamp;
 
         Posisjon * posisjon = [Posisjon alloc];
         posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:CLpos.coordinate.latitude];
@@ -72,6 +70,14 @@ static double const MSEK_TIL_KMT = 3.6;
 {
     if([self.delegate conformsToProtocol:@protocol(PosisjonDelegate)])
         [self.delegate posisjonFeil:error];
+}
+
+- (void) oppdaterPresisjonMedFart:(NSDecimalNumber *)meterISekundet
+{
+    if(meterISekundet == nil || meterISekundet.doubleValue < 0)
+        self.lokMan.distanceFilter = kCLDistanceFilterNone;
+    else
+        self.lokMan.distanceFilter = meterISekundet.doubleValue * OPPDATERING_SEK;
 }
 
 @end
