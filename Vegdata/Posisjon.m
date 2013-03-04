@@ -61,7 +61,9 @@ static double const MSEK_TIL_KMT = 3.6;
         posisjon.retning = [[NSDecimalNumber alloc] initWithDouble:CLpos.course];
         posisjon.meterOverHavet = [[NSDecimalNumber alloc] initWithDouble:CLpos.altitude];
         posisjon.presisjon = [[NSDecimalNumber alloc] initWithDouble:CLpos.horizontalAccuracy];
-           
+        
+        [self oppdaterPresisjonMedFart:posisjon.hastighetIMeterISek];
+        
         [self.delegate posisjonOppdatering:posisjon];
     }
 }
@@ -77,7 +79,13 @@ static double const MSEK_TIL_KMT = 3.6;
     if(meterISekundet == nil || meterISekundet.doubleValue < 0)
         self.lokMan.distanceFilter = kCLDistanceFilterNone;
     else
-        self.lokMan.distanceFilter = meterISekundet.doubleValue * OPPDATERING_SEK;
+    {
+        double nyttFilter = meterISekundet.doubleValue * OPPDATERING_SEK;
+        
+        // Oppdater kun hvis det er minst 10 km/t forskjell på forrige registrerte filter
+        if(self.lokMan.distanceFilter - nyttFilter > (10 / MSEK_TIL_KMT * OPPDATERING_SEK) || self.lokMan.distanceFilter - nyttFilter < -(10 / MSEK_TIL_KMT * OPPDATERING_SEK))
+            [self.lokMan setDistanceFilter:nyttFilter];
+    }
 }
 
 @end
