@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1B8E0C16E60D0600014A91 /* Sok.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B8E0B16E60D0600014A91 /* Sok.m */; };
 		9B232AA916D4FD75008FCC43 /* Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AA816D4FD75008FCC43 /* Fartsgrense.m */; };
 		9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */; };
 		9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB616D50A8C008FCC43 /* Vegreferanse.m */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B1B8E0A16E60D0600014A91 /* Sok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sok.h; sourceTree = "<group>"; };
+		9B1B8E0B16E60D0600014A91 /* Sok.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sok.m; sourceTree = "<group>"; };
 		9B232AA716D4FD75008FCC43 /* Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsgrense.h; sourceTree = "<group>"; };
 		9B232AA816D4FD75008FCC43 /* Fartsgrense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsgrense.m; sourceTree = "<group>"; };
 		9B232AAD16D50935008FCC43 /* NVDB_RESTkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDB_RESTkit.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				9B232AB616D50A8C008FCC43 /* Vegreferanse.m */,
 				9BDAC38816D7A10500CF1ACD /* Egenskap.h */,
 				9BDAC38916D7A10500CF1ACD /* Egenskap.m */,
+				9B1B8E0A16E60D0600014A91 /* Sok.h */,
+				9B1B8E0B16E60D0600014A91 /* Sok.m */,
 			);
 			name = NVDBObjekter;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */,
 				9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */,
 				9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */,
+				9B1B8E0C16E60D0600014A91 /* Sok.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
