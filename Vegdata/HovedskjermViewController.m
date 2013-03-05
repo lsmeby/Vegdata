@@ -22,10 +22,6 @@
 
 #import "HovedskjermViewController.h"
 
-@interface HovedskjermViewController ()
-
-@end
-
 @implementation HovedskjermViewController
 
 @synthesize posLabel, fartLabel, fartBilde;
@@ -36,17 +32,11 @@
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	
-    fart = [[Fartsgrense alloc] initMedDelegate:self];
+    vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self];
     
     pos = [[PosisjonsKontroller alloc] init];
     pos.delegate = self;
     [pos.lokMan startUpdatingLocation];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - PosisjonDelegate
@@ -61,7 +51,7 @@
                      posisjon.meterOverHavet.stringValue,
                      posisjon.presisjon.stringValue];
     
-    [fart oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
+    [vegObjKont oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
 }
 
 - (void) posisjonFeil:(NSError *)feil
@@ -69,26 +59,26 @@
     posLabel.text = [feil description];
 }
 
-#pragma mark - FartsgrenseDelegate
+#pragma mark - VegObjektDelegate
 
-- (void) fartsgrenseErOppdatert
+- (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
-    if([fart.fart isEqualToString:@"-1"])
-    {
-        [fartLabel setTextColor:[UIColor grayColor]];
-        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
-    }
-    else
-    {
-        if([fart.fart length] == 3)
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
-        else
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
-        
-        fartLabel.text = fart.fart;
-        [fartLabel setTextColor:[UIColor blackColor]];
-        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
-    }
+//    if([fart.fart isEqualToString:@"-1"])
+//    {
+//        [fartLabel setTextColor:[UIColor grayColor]];
+//        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
+//    }
+//    else
+//    {
+//        if([fart.fart length] == 3)
+//            [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
+//        else
+//            [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
+//        
+//        fartLabel.text = fart.fart;
+//        [fartLabel setTextColor:[UIColor blackColor]];
+//        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
+//    }
 }
 
 @end
