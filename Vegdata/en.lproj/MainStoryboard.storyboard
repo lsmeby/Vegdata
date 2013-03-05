@@ -60,6 +60,19 @@
     <resources>
         <image name="fartsgrense_feil.gif" width="320" height="320"/>
     </resources>
+    <classes>
+        <class className="HovedskjermViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HovedskjermViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fartBilde" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="posLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

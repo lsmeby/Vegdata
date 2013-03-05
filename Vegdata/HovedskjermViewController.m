@@ -80,7 +80,7 @@
     }
     else
     {
-        if([fart.fart isEqualToString:@"100"])
+        if([fart.fart length] == 3)
             [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
         else
             [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
