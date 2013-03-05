@@ -23,12 +23,10 @@
 #import "NVDB_DataProvider.h"
 #import "NVDB_RESTkit.h"
 #import "Vegreferanse.h"
-#import "Fartsgrense.h"
 
 static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
 
-// Private metoder
 @interface NVDB_DataProvider()
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
@@ -55,14 +53,9 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                   OgkeyPath:[Vegreferanse getKeyPath]];
 }
 
-- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender
+- (void)hentVegObjekterMedSokeObjekt:(NSObject *)sok
 {
-    restkit.delegate = avsender;
-    [restkit hentDataMedURI:[Fartsgrense getURI]
-                 Parametere:[NVDB_DataProvider parametereForBoundingBoxMedBreddegrad:breddegrad
-                                                                        OgLengdegrad:lengdegrad]
-                    Mapping:[Fartsgrense mapping]
-                  OgkeyPath:[Fartsgrense getKeyPath]];
+    
 }
 
 #pragma mark - Statiske hjelpemetoder

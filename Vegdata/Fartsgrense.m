@@ -28,35 +28,13 @@
 static NSString * const URI = @"/vegobjekter/105";
 static NSString * const KEYPATH = @"vegObjekter";
 
-// Private metoder
 @interface Fartsgrense()
-- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 - (NSString *)hentFartFraEgenskaper;
 @end
 
 @implementation Fartsgrense
 
-@synthesize fart, strekningsLengde, egenskaper, delegate;
-
-- (id)initMedDelegate:(id)aDelegate
-{
-    self.delegate = aDelegate;
-    fart = @"-1";
-    strekningsLengde = [[NSNumber alloc] initWithInt: -1];
-    dataProv = [[NVDB_DataProvider alloc] init];
-    
-    return self;
-}
-
-- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
-{
-    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
-}
-
-- (void)hentFartsgrenseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
-{
-    [dataProv hentFartsgrenseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
-}
+@synthesize fart, strekningsLengde, egenskaper;
 
 - (NSString *)hentFartFraEgenskaper
 {
@@ -95,36 +73,6 @@ static NSString * const KEYPATH = @"vegObjekter";
 + (NSString *)getKeyPath
 {
     return KEYPATH;
-}
-
-#pragma mark - NVDBResponseDelegate
-
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat
-{
-    NSLog(@"\n### MOTTAT SVAR FRA NVDB");
-    if(resultat == nil)
-    {
-        NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
-        self.fart = @"-1";
-        [self.delegate fartsgrenseErOppdatert];
-    }
-    if([resultat[0] isKindOfClass:[Vegreferanse class]])
-    {
-        NSLog(@"\n### Mottat objekt er av type Vegreferanse");
-        Vegreferanse * vegref = (Vegreferanse *)resultat[0];
-        NSDictionary * koord = [vegref hentKoordinater];
-        
-        [self hentFartsgrenseMedBreddegrad:[koord objectForKey:@"breddegrad"] OgLengdegrad:[koord objectForKey:@"lengdegrad"]];
-    }
-    if([resultat[0] isKindOfClass:[Fartsgrense class]])
-    {
-        NSLog(@"\n### Mottat objekt er av type Fartsgrense");
-        Fartsgrense * fartsgrense = (Fartsgrense *)resultat[0];
-        self.strekningsLengde = fartsgrense.strekningsLengde;
-        self.egenskaper = fartsgrense.egenskaper;
-        self.fart = [self hentFartFraEgenskaper];
-        [self.delegate fartsgrenseErOppdatert];
-    }
 }
 
 @end
