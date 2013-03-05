@@ -22,7 +22,8 @@
 
 #import <Foundation/Foundation.h>
 #import "NVDB_RESTkit.h"
-#import "NVDB_DataProvider.h"
+
+@class NVDB_DataProvider;
 
 @protocol VegObjektDelegate
 @required

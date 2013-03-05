@@ -1,5 +1,5 @@
 //
-//  Sok.m
+//  Veglenke.h
 //  Vegdata
 //
 //  Created by Henrik Hermansen on 05.03.13.
@@ -20,31 +20,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Sok.h"
+#import <Foundation/Foundation.h>
 
-@implementation Sok
+@interface Veglenke : NSObject
 
-@synthesize lokasjon, objektTyper;
-
-@end
-
-
-/*@implementation Lokasjon
-
-@synthesize veglenker;
-
-@end*/
-
-
-@implementation Objekttype
-
-@synthesize typeId, antall, filtere;
-
-@end
-
-
-@implementation Filter
-
-@synthesize type, filterOperator, verdier;
+@property (nonatomic, strong) NSNumber * lenkeId;
+@property (nonatomic, strong) NSDecimalNumber * fra;
+@property (nonatomic, strong) NSDecimalNumber * til;
+@property (nonatomic, strong) NSString * direction;
 
 @end

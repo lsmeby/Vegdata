@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+#import "NVDB_DataProvider.h"
 #import "VegObjektKontroller.h"
 #import "Vegreferanse.h"
 

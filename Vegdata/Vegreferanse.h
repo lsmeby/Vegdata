@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString * visningsNavn;
 @property (nonatomic, strong) NSNumber * veglenkeId;
 @property (nonatomic, strong) NSDecimalNumber * veglenkePosisjon;
+@property (nonatomic, strong) NSString * geometriWgs84;
+@property (nonatomic, strong) NSArray * veglenker;
 
 + (RKObjectMapping *)mapping;
 + (NSString *)getURI;

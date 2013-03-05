@@ -1,5 +1,5 @@
 //
-//  Sok.m
+//  Veglenke.m
 //  Vegdata
 //
 //  Created by Henrik Hermansen on 05.03.13.
@@ -20,31 +20,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Sok.h"
+#import "Veglenke.h"
 
-@implementation Sok
+@implementation Veglenke
 
-@synthesize lokasjon, objektTyper;
-
-@end
-
-
-/*@implementation Lokasjon
-
-@synthesize veglenker;
-
-@end*/
-
-
-@implementation Objekttype
-
-@synthesize typeId, antall, filtere;
-
-@end
-
-
-@implementation Filter
-
-@synthesize type, filterOperator, verdier;
+@synthesize lenkeId, fra, til, direction;
 
 @end

@@ -31,17 +31,9 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 @property (nonatomic, strong) NSArray * objektTyper;
 @end
 
-@interface Lokasjon : NSObject
-@property (nonatomic, strong) NSDecimalNumber * lengdegrad;
-@property (nonatomic, strong) NSDecimalNumber * breddegrad;
+/*@interface Lokasjon : NSObject
 @property (nonatomic, strong) NSArray * veglenker;
-@end
-
-@interface Veglenke : NSObject
-@property (nonatomic, strong) NSNumber * lenkeId;
-@property (nonatomic, strong) NSDecimalNumber * fra;
-@property (nonatomic, strong) NSDecimalNumber * til;
-@end
+@end*/
 
 @interface Objekttype : NSObject
 @property (nonatomic, strong) NSNumber * typeId;

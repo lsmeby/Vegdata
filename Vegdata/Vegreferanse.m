@@ -21,13 +21,14 @@
 //
 
 #import "Vegreferanse.h"
+#import "Veglenke.h"
 
 static NSString * const URI = @"/vegreferanse";
 static NSString * const KEYPATH = nil;
 
 @implementation Vegreferanse
 
-@synthesize punktPaVeg, meterVerdi, visningsNavn, veglenkeId, veglenkePosisjon;
+@synthesize punktPaVeg, meterVerdi, visningsNavn, veglenkeId, veglenkePosisjon, geometriWgs84, veglenker;
 
 - (NSDictionary *)hentKoordinater
 {
@@ -50,13 +51,23 @@ static NSString * const KEYPATH = nil;
 
 + (RKObjectMapping *)mapping
 {
+    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
+    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
+                                                          @"fra" : @"fra",
+                                                          @"til" : @"til",
+                                                          @"direction" : @"direction"}];
+   
     RKObjectMapping * vegreferanseMapping = [RKObjectMapping mappingForClass:[self class]];
-    
-    [vegreferanseMapping addAttributeMappingsFromDictionary:@{@"punktPaVegReferanseLinjeWGS84": @"punktPaVeg",
+    [vegreferanseMapping addAttributeMappingsFromDictionary:@{@"punktPaVegReferanseLinjeWGS84" : @"punktPaVeg",
                                                               @"meterVerdi" : @"meterVerdi",
                                                               @"visningsNavn" : @"visningsNavn",
                                                               @"veglenkeId" : @"veglenkeId",
-                                                              @"veglenkePosisjon" : @"veglenkePosisjon"}];
+                                                              @"veglenkePosisjon" : @"veglenkePosisjon",
+                                                              @"vegReferanse.lokasjon.geometriWgs84" : @"geometriWgs84"}];
+    [vegreferanseMapping addPropertyMapping:[RKRelationshipMapping
+                                             relationshipMappingFromKeyPath:@"vegReferanse.lokasjon.veglenker"
+                                                                  toKeyPath:@"veglenker"
+                                                                withMapping:veglenkeMapping]];
     
     return vegreferanseMapping;
 }
