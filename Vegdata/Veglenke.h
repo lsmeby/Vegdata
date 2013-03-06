@@ -24,9 +24,11 @@
 
 @interface Veglenke : NSObject
 
+- (id) initMedId:(NSNumber *)aId Fra:(NSDecimalNumber *)aFra Til:(NSDecimalNumber *)aTil OgRetning:(NSString *)aRetning;
+
 @property (nonatomic, strong) NSNumber * lenkeId;
 @property (nonatomic, strong) NSDecimalNumber * fra;
 @property (nonatomic, strong) NSDecimalNumber * til;
-@property (nonatomic, strong) NSString * direction;
+@property (nonatomic, strong) NSString * retning;
 
 @end

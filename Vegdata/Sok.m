@@ -22,23 +22,45 @@
 
 #import "Sok.h"
 
+static NSString * const URI = @"/sok";
+static NSString * const KEYPATH = @"resultater";
+
 @implementation Sok
 
 @synthesize lokasjon, objektTyper;
 
++ (NSString *)getURI
+{
+    return URI;
+}
+
++ (NSString *)getKeyPath
+{
+    return KEYPATH;
+}
+
 @end
 
 
-/*@implementation Lokasjon
+@implementation Lokasjon
 
 @synthesize veglenker;
 
-@end*/
+@end
 
 
 @implementation Objekttype
 
 @synthesize typeId, antall, filtere;
+
+- (id) initMedTypeId:(NSNumber *)aTypeId Antall:(NSNumber *)aAntall OgFiltere:(NSArray *)aFiltere
+{
+    self.typeId = aTypeId;
+    self.antall = aAntall;
+    self.filtere = aFiltere;
+    
+    return self;
+}
 
 @end
 

@@ -21,12 +21,9 @@
 //
 
 #import "Fartsgrense.h"
-#import "Vegreferanse.h"
 #import "Egenskap.h"
-#import "NVDB_DataProvider.h"
-
-static NSString * const URI = @"/vegobjekter/105";
-static NSString * const KEYPATH = @"vegObjekter";
+#import "Veglenke.h"
+#import "SokResultater.h"
 
 @interface Fartsgrense()
 - (NSString *)hentFartFraEgenskaper;
@@ -34,7 +31,7 @@ static NSString * const KEYPATH = @"vegObjekter";
 
 @implementation Fartsgrense
 
-@synthesize fart, strekningsLengde, egenskaper;
+@synthesize fart, strekningsLengde, egenskaper, veglenker;
 
 - (NSString *)hentFartFraEgenskaper
 {
@@ -52,27 +49,32 @@ static NSString * const KEYPATH = @"vegObjekter";
 
 + (RKObjectMapping *)mapping
 {
+    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
+    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
+                                                         @"fra" : @"fra",
+                                                         @"til" : @"til",
+                                                         @"direction" : @"direction"}];
+    
     RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
     [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
                                                            @"verdi" : @"verdi"}];
     
     RKObjectMapping * fartsgrenseMapping = [RKObjectMapping mappingForClass:[self class]];
     [fartsgrenseMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping
+                                             relationshipMappingFromKeyPath:@"lokasjon.veglenker"
+                                             toKeyPath:@"veglenker"
+                                             withMapping:veglenkeMapping]];
     [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
                                                                                        toKeyPath:@"egenskaper"
                                                                                      withMapping:egenskapsMapping]];
     
-    return fartsgrenseMapping;
+    RKObjectMapping * fartsgrenseArrayMapping = [RKObjectMapping mappingForClass:[Fartsgrenser class]];
+    [fartsgrenseArrayMapping addPropertyMapping:[RKRelationshipMapping
+                                                 relationshipMappingFromKeyPath:@"vegObjekter"
+                                                                      toKeyPath:@"fartsgrenser"
+                                                                    withMapping:fartsgrenseMapping]];
+    
+    return fartsgrenseArrayMapping;
 }
-
-+ (NSString *)getURI
-{
-    return URI;
-}
-
-+ (NSString *)getKeyPath
-{
-    return KEYPATH;
-}
-
 @end

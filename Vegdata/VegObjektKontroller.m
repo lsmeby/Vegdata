@@ -23,6 +23,17 @@
 #import "NVDB_DataProvider.h"
 #import "VegObjektKontroller.h"
 #import "Vegreferanse.h"
+#import "Sok.h"
+#import "Veglenke.h"
+#import "Fartsgrense.h"
+
+@interface VegObjektKontroller()
+
+- (void)sokMedVegreferanse:(Vegreferanse *)vegreferanse;
+- (NSArray *)hentObjekttyper;
+- (RKDynamicMapping *) hentObjektMapping;
+
+@end
 
 @implementation VegObjektKontroller
 
@@ -40,12 +51,42 @@
     [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
 
+- (void)sokMedVegreferanse:(Vegreferanse *)vegreferanse
+{
+    Sok * sokObjekt = [[Sok alloc] init];
+    sokObjekt.lokasjon = [[Lokasjon alloc] init];
+    sokObjekt.lokasjon.veglenker = vegreferanse.veglenker;
+    sokObjekt.objektTyper = [self hentObjekttyper];
+    
+    RKDynamicMapping * mapping = [self hentObjektMapping];
+    
+    [dataProv hentVegObjekterMedSokeObjekt:sokObjekt Mapping:mapping OgAvsender:self];
+}
+
+- (NSArray *)hentObjekttyper
+{
+    NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:105]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
+    return objekttyper;
+}
+
+- (RKDynamicMapping *) hentObjektMapping
+{
+    RKDynamicMapping * mapping = [[RKDynamicMapping alloc] init];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"objektTypeNavn"
+                                                     expectedValue:@"Fartsgrense"
+                                                     objectMapping:[Fartsgrense mapping]]];
+    return mapping;
+}
+
 #pragma mark - NVDBResponseDelegate
 
 - (void)svarFraNVDBMedResultat:(NSArray *)resultat
 {
     NSLog(@"\n### MOTTAT SVAR FRA NVDB");
-    if(resultat == nil)
+    if(resultat == nil || resultat.count == 0)
     {
         NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
         [self.delegate vegObjekterErOppdatert:nil];
@@ -54,7 +95,11 @@
     {
         NSLog(@"\n### Mottatt objekt er av type Vegreferanse");
         Vegreferanse * vegref = (Vegreferanse *)resultat[0];
-        [dataProv hentVegObjekterMedSokeObjekt:nil];
+        [self sokMedVegreferanse:vegref];
+    }
+    else
+    {
+        NSLog(@"HEI");
     }
 }
 

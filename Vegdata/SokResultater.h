@@ -1,8 +1,8 @@
 //
-//  Veglenke.m
+//  SokResultater.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 05.03.13.
+//  Created by Henrik Hermansen on 06.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -19,21 +19,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
+#import <Foundation/Foundation.h>
 
-#import "Veglenke.h"
+@interface Fartsgrenser : NSObject
 
-@implementation Veglenke
-
-@synthesize lenkeId, fra, til, retning;
-
-- (id) initMedId:(NSNumber *)aId Fra:(NSDecimalNumber *)aFra Til:(NSDecimalNumber *)aTil OgRetning:(NSString *)aRetning
-{
-    self.lenkeId = aId;
-    self.fra = aFra;
-    self.til = aTil;
-    self.retning = aRetning;
-    
-    return self;
-}
+@property (nonatomic, strong) NSArray * fartsgrenser;
 
 @end

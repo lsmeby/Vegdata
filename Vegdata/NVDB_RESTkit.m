@@ -28,7 +28,7 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
 
 @synthesize delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgkeyPath:(NSString *)keyPath
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgkeyPath:(NSString *)keyPath
 {
     AFHTTPClient * klient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:NVDB_GRUNN_URL]];
     [klient setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
@@ -36,6 +36,7 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:keyPath statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     RKObjectManager * objectManager = [[RKObjectManager alloc] initWithHTTPClient:klient];
+//    objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
     [objectManager addResponseDescriptor:responseDescriptor];
     
     NSString * fullURI = [NVDB_GRUNN_URL stringByAppendingString:uri];

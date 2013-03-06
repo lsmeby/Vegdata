@@ -23,22 +23,24 @@
 #import <Foundation/Foundation.h>
 
 @class Lokasjon;
-static NSString * const NVDB_GEOMETRI = @"WGS84";
-static double const WGS84_BBOX_RADIUS = 0.0001;
 
 @interface Sok : NSObject
 @property (nonatomic, strong) Lokasjon * lokasjon;
 @property (nonatomic, strong) NSArray * objektTyper;
+
++ (NSString *)getURI;
++ (NSString *)getKeyPath;
 @end
 
-/*@interface Lokasjon : NSObject
+@interface Lokasjon : NSObject
 @property (nonatomic, strong) NSArray * veglenker;
-@end*/
+@end
 
 @interface Objekttype : NSObject
 @property (nonatomic, strong) NSNumber * typeId;
 @property (nonatomic, strong) NSNumber * antall;
 @property (nonatomic, strong) NSArray * filtere;
+- (id) initMedTypeId:(NSNumber *)aTypeId Antall:(NSNumber *)aAntall OgFiltere:(NSArray *)aFiltere;
 @end
 
 @interface Filter : NSObject

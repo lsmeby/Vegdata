@@ -31,6 +31,6 @@
 
 @property (nonatomic, assign) id delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKObjectMapping *)mapping OgkeyPath:(NSString *)keyPath;
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgkeyPath:(NSString *)keyPath;
 
 @end

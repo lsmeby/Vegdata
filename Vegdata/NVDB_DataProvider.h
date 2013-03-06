@@ -22,9 +22,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class Sok;
+
 @interface NVDB_DataProvider : NSObject
 
 - (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
-- (void)hentVegObjekterMedSokeObjekt:(NSObject *)sok;
+- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok Mapping:(RKMapping *)mapping OgAvsender:(NSObject *)avsender;
 
 @end

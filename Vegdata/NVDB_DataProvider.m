@@ -23,6 +23,7 @@
 #import "NVDB_DataProvider.h"
 #import "NVDB_RESTkit.h"
 #import "Vegreferanse.h"
+#import "Sok.h"
 
 static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
@@ -30,6 +31,7 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 @interface NVDB_DataProvider()
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++ (NSDictionary *)parametereForSok:(Sok *)sok;
 @end
 
 @implementation NVDB_DataProvider
@@ -53,9 +55,13 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                   OgkeyPath:[Vegreferanse getKeyPath]];
 }
 
-- (void)hentVegObjekterMedSokeObjekt:(NSObject *)sok
+- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok Mapping:(RKMapping *)mapping OgAvsender:(NSObject *)avsender
 {
-    
+    restkit.delegate = avsender;
+    [restkit hentDataMedURI:[Sok getURI]
+                 Parametere:[NVDB_DataProvider parametereForSok:sok]
+                    Mapping:mapping
+                  OgkeyPath:[Sok getKeyPath]];
 }
 
 #pragma mark - Statiske hjelpemetoder
@@ -76,6 +82,16 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                               nil] componentsJoinedByString:@","];
     
     return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
+}
+
++ (NSDictionary *)parametereForSok:(Sok *)sok
+{
+//    NSDictionary * sokDic = @{@"objektTyper" : @"[{id:105, antall:2}]"};
+//    NSArray * sokArray = [[NSArray alloc] initWithObjects:sok, nil];
+//    NSData * test = [NSJSONSerialization dataWithJSONObject:sokDic options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString * test2 = [[NSString alloc] initWithData:test encoding:NSUTF8StringEncoding];
+//    NSLog(@"\n test: %@ \n test2: %@", test, test2);
+    return @{@"kriterie" : @"{objektTyper:[{id:105, antall:2}]}"};
 }
 
 @end
