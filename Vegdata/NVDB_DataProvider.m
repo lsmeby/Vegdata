@@ -92,7 +92,7 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 //    NSData * test = [NSJSONSerialization dataWithJSONObject:sokDic options:NSJSONWritingPrettyPrinted error:nil];
 //    NSString * test2 = [[NSString alloc] initWithData:test encoding:NSUTF8StringEncoding];
 //    NSLog(@"\n test: %@ \n test2: %@", test, test2);
-    return @{@"kriterie" : @"{objektTyper:[{id:105, antall:2}]}"};
+    return @{@"kriterie" : @"{lokasjon: {veglenker: [{id:443636, fra:0, til:1}]}, objektTyper:[{id:105, antall:0}]}"};
 }
 
 @end

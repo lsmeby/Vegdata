@@ -63,22 +63,24 @@
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
-//    if([fart.fart isEqualToString:@"-1"])
-//    {
-//        [fartLabel setTextColor:[UIColor grayColor]];
-//        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
-//    }
-//    else
-//    {
-//        if([fart.fart length] == 3)
-//            [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
-//        else
-//            [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
-//        
-//        fartLabel.text = fart.fart;
-//        [fartLabel setTextColor:[UIColor blackColor]];
-//        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
-//    }
+    NSString * fart = [data objectForKey:@"fart"];
+    
+    if(fart == nil)
+    {
+        [fartLabel setTextColor:[UIColor grayColor]];
+        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
+    }
+    else
+    {
+        if([fart length] == 3)
+            [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
+        else
+            [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
+        
+        fartLabel.text = fart;
+        [fartLabel setTextColor:[UIColor blackColor]];
+        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
+    }
 }
 
 @end

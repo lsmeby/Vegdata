@@ -31,7 +31,7 @@
 
 @implementation Fartsgrense
 
-@synthesize fart, strekningsLengde, egenskaper, veglenker;
+@synthesize strekningsLengde, egenskaper, veglenker;
 
 - (NSString *)hentFartFraEgenskaper
 {
@@ -53,7 +53,7 @@
     [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
                                                          @"fra" : @"fra",
                                                          @"til" : @"til",
-                                                         @"direction" : @"direction"}];
+                                                         @"direction" : @"retning"}];
     
     RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
     [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
