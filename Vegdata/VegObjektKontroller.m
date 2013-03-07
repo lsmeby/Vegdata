@@ -61,7 +61,7 @@
         return;
     
     Sok * sokObjekt = [[Sok alloc] init];
-    sokObjekt.veglenker = vegreferanse.veglenker;
+    sokObjekt.veglenker = self.vegRef.veglenker;
     sokObjekt.objektTyper = [self hentObjekttyper];
     
     RKDynamicMapping * mapping = [self hentObjektMapping];
