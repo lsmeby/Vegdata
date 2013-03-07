@@ -86,6 +86,7 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 
 + (NSDictionary *)parametereForSok:(Sok *)sok
 {
+    
 //    NSDictionary * sokDic = @{@"objektTyper" : @"[{id:105, antall:2}]"};
 //    NSArray * sokArray = [[NSArray alloc] initWithObjects:sok, nil];
 //    NSData * test = [NSJSONSerialization dataWithJSONObject:sokDic options:NSJSONWritingPrettyPrinted error:nil];

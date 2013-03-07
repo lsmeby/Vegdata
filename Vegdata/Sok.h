@@ -22,10 +22,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class Lokasjon;
+//@class Lokasjon;
 
 @interface Sok : NSObject
-@property (nonatomic, strong) Lokasjon * lokasjon;
+//@property (nonatomic, strong) Lokasjon * lokasjon;
+@property (nonatomic, strong) NSArray * veglenker;
 @property (nonatomic, strong) NSArray * objektTyper;
 
 + (NSString *)getURI;

@@ -54,8 +54,7 @@
 - (void)sokMedVegreferanse:(Vegreferanse *)vegreferanse
 {
     Sok * sokObjekt = [[Sok alloc] init];
-    sokObjekt.lokasjon = [[Lokasjon alloc] init];
-    sokObjekt.lokasjon.veglenker = vegreferanse.veglenker;
+    sokObjekt.veglenker = vegreferanse.veglenker;
     sokObjekt.objektTyper = [self hentObjekttyper];
     
     RKDynamicMapping * mapping = [self hentObjektMapping];

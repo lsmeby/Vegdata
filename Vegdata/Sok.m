@@ -27,7 +27,7 @@ static NSString * const KEYPATH = @"resultater";
 
 @implementation Sok
 
-@synthesize lokasjon, objektTyper;
+@synthesize veglenker, objektTyper;
 
 + (NSString *)getURI
 {
