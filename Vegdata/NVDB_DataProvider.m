@@ -24,6 +24,7 @@
 #import "NVDB_RESTkit.h"
 #import "Vegreferanse.h"
 #import "Sok.h"
+#import "Veglenke.h"
 
 static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
@@ -92,7 +93,34 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 //    NSData * test = [NSJSONSerialization dataWithJSONObject:sokDic options:NSJSONWritingPrettyPrinted error:nil];
 //    NSString * test2 = [[NSString alloc] initWithData:test encoding:NSUTF8StringEncoding];
 //    NSLog(@"\n test: %@ \n test2: %@", test, test2);
-    return @{@"kriterie" : @"{lokasjon: {veglenker: [{id:443636, fra:0, til:1}]}, objektTyper:[{id:105, antall:0}]}"};
+    NSMutableArray * veglenker = [[NSMutableArray alloc] init];
+    for(Veglenke * v in sok.veglenker)
+    {
+        NSString * veglenke = [NSString stringWithFormat:@"{id:%@, fra:%@, til:%@}",
+                               v.lenkeId.stringValue,
+                               v.fra.stringValue,
+                               v.til.stringValue];
+        [veglenker addObject:veglenke];
+    }
+    NSString * veglenkestring = [veglenker componentsJoinedByString:@","];
+    
+    NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
+    for(Objekttype * o in sok.objektTyper)
+    {
+        NSString * objekttype = [NSString stringWithFormat:@"{id:%@, antall:%@}",
+                                 o.typeId.stringValue,
+                                 o.antall.stringValue];
+        [objekttyper addObject:objekttype];
+    }
+    NSString * objekttypestring = [objekttyper componentsJoinedByString:@","];
+    
+    NSString * kriterie = [NSString stringWithFormat:@"{lokasjon: {veglenker: [%@]}, objektTyper:[%@]}",
+                           veglenkestring,
+                           objekttypestring];
+    
+    return @{@"kriterie" : kriterie};
+    
+    //return @{@"kriterie" : @"{lokasjon: {veglenker: [{id:443636, fra:0, til:1}]}, objektTyper:[{id:105, antall:0}]}"};
 }
 
 @end
