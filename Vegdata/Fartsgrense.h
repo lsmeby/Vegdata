@@ -24,7 +24,6 @@
 
 @interface Fartsgrense : NSObject
 
-@property (nonatomic, strong) NSString * fart;
 @property (nonatomic, strong) NSNumber * strekningsLengde;
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;

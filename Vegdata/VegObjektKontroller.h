@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "NVDB_RESTkit.h"
 
-@class NVDB_DataProvider;
+@class NVDB_DataProvider, Vegreferanse;
 
 @protocol VegObjektDelegate
 @required
@@ -36,6 +36,7 @@
 }
 
 @property (nonatomic, assign) id delegate;
+@property (nonatomic, strong) Vegreferanse * vegRef;
 
 - (id)initMedDelegate:(id)delegate;
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;

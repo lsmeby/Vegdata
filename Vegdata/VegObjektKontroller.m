@@ -24,14 +24,18 @@
 #import "VegObjektKontroller.h"
 #import "Vegreferanse.h"
 #import "Sok.h"
+#import "SokResultater.h"
 #import "Veglenke.h"
 #import "Fartsgrense.h"
+#import "Egenskap.h"
 
 @interface VegObjektKontroller()
 
-- (void)sokMedVegreferanse:(Vegreferanse *)vegreferanse;
+- (void)sokMedVegreferanse;
 - (NSArray *)hentObjekttyper;
-- (RKDynamicMapping *) hentObjektMapping;
+- (RKDynamicMapping *)hentObjektMapping;
+- (NSDecimalNumber *)kalkulerVeglenkePosisjon;
+- (void)leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser;
 
 @end
 
@@ -51,11 +55,14 @@
     [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
 
-- (void)sokMedVegreferanse:(Vegreferanse *)vegreferanse
+- (void)sokMedVegreferanse
 {
+    if(self.vegRef == nil)
+        return;
+    
     Sok * sokObjekt = [[Sok alloc] init];
     sokObjekt.lokasjon = [[Lokasjon alloc] init];
-    sokObjekt.lokasjon.veglenker = vegreferanse.veglenker;
+    sokObjekt.lokasjon.veglenker = self.vegRef.veglenker;
     sokObjekt.objektTyper = [self hentObjekttyper];
     
     RKDynamicMapping * mapping = [self hentObjektMapping];
@@ -75,10 +82,53 @@
 - (RKDynamicMapping *) hentObjektMapping
 {
     RKDynamicMapping * mapping = [[RKDynamicMapping alloc] init];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"objektTypeNavn"
-                                                     expectedValue:@"Fartsgrense"
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:105]
                                                      objectMapping:[Fartsgrense mapping]]];
     return mapping;
+}
+
+- (NSDecimalNumber *)kalkulerVeglenkePosisjon
+{
+    if(self.vegRef.veglenker == nil || self.vegRef.veglenker.count == 0)
+        return nil;
+    
+    double intervall = ((Veglenke *)self.vegRef.veglenker[0]).til.doubleValue - ((Veglenke *)self.vegRef.veglenker[0]).fra.doubleValue;
+    double returPos = ((Veglenke *)self.vegRef.veglenker[0]).fra.doubleValue + (intervall * self.vegRef.veglenkePosisjon.doubleValue);
+    
+    return [[NSDecimalNumber alloc] initWithDouble:returPos];
+}
+
+- (void) leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser
+{
+    if(self.vegRef == nil || returDictionary == nil || fartsgrenser == nil || fartsgrenser.fartsgrenser == nil || fartsgrenser.fartsgrenser.count == 0)
+        return;
+
+    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
+    if(posisjon == nil)
+        return;
+    
+    for (Fartsgrense * fGr in fartsgrenser.fartsgrenser)
+    {
+        if(fGr.veglenker == nil || fGr.veglenker.count == 0)
+            continue;
+        
+        for (Veglenke * vLenke in fGr.veglenker)
+        {
+            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue && posisjon.doubleValue < vLenke.til.doubleValue)
+            {
+                if(fGr.egenskaper == nil || fGr.egenskaper.count == 0)
+                    return;
+                    
+                for (Egenskap * eg in fGr.egenskaper)
+                {
+                    if([eg.navn isEqualToString:@"Fartsgrense"])
+                        [returDictionary setObject:eg.verdi forKey:@"fart"];
+                }
+                return;
+            }
+        }
+    }
 }
 
 #pragma mark - NVDBResponseDelegate
@@ -94,12 +144,24 @@
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
         NSLog(@"\n### Mottatt objekt er av type Vegreferanse");
-        Vegreferanse * vegref = (Vegreferanse *)resultat[0];
-        [self sokMedVegreferanse:vegref];
+        self.vegRef = (Vegreferanse *)resultat[0];
+        [self sokMedVegreferanse];
     }
     else
     {
-        NSLog(@"HEI");
+        NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
+        NSMutableDictionary * returDictionary = [[NSMutableDictionary alloc] init];
+        
+        for (NSObject * obj in resultat)
+        {
+            if ([obj isKindOfClass:[Fartsgrenser class]])
+            {
+                NSLog(@"\n### Mottatt objekt er av type Fartsgrenser");
+                [self leggTilKorrektFart:returDictionary FraFartsgrenser:(Fartsgrenser *)obj];
+            }
+        }
+        
+        [self.delegate vegObjekterErOppdatert:returDictionary];
     }
 }
 
