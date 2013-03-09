@@ -96,10 +96,8 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     NSMutableArray * veglenker = [[NSMutableArray alloc] init];
     for(Veglenke * v in sok.veglenker)
     {
-        NSString * veglenke = [NSString stringWithFormat:@"{id:%@, fra:%@, til:%@}",
-                               v.lenkeId.stringValue,
-                               v.fra.stringValue,
-                               v.til.stringValue];
+        NSString * veglenke = [NSString stringWithFormat:@"{id:%@, fra:0, til:0}",
+                               v.lenkeId.stringValue];
         [veglenker addObject:veglenke];
     }
     NSString * veglenkestring = [veglenker componentsJoinedByString:@","];

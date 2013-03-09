@@ -27,6 +27,7 @@
 #import "SokResultater.h"
 #import "Veglenke.h"
 #import "Fartsgrense.h"
+#import "Forkjorsveg.h"
 #import "Egenskap.h"
 
 @interface VegObjektKontroller()
@@ -36,6 +37,7 @@
 - (RKDynamicMapping *)hentObjektMapping;
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
 - (void)leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser;
+- (void)settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger;
 
 @end
 
@@ -84,6 +86,9 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
                                                      expectedValue:[[NSNumber alloc] initWithInt:105]
                                                      objectMapping:[Fartsgrense mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:596]
+                                                     objectMapping:[Forkjorsveg mapping]]];
     return mapping;
 }
 
@@ -130,6 +135,32 @@
     }
 }
 
+- (void) settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger
+{
+    if(self.vegRef == nil || returDictionary == nil || forkjorsveger == nil || forkjorsveger.forkjorsveger == nil ||
+       forkjorsveger.forkjorsveger.count == 0)
+        return;
+    
+    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
+    if(posisjon == nil)
+        return;
+    
+    for (Forkjorsveg * f in forkjorsveger.forkjorsveger)
+    {
+        if(f.veglenker == nil || f.veglenker.count == 0)
+            continue;
+        
+        for (Veglenke * vLenke in f.veglenker)
+        {
+            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue &&
+               posisjon.doubleValue < vLenke.til.doubleValue)
+            {
+                [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+            }
+        }
+    }
+}
+
 #pragma mark - NVDBResponseDelegate
 
 - (void)svarFraNVDBMedResultat:(NSArray *)resultat
@@ -157,6 +188,11 @@
             {
                 NSLog(@"\n### Mottatt objekt er av type Fartsgrenser");
                 [self leggTilKorrektFart:returDictionary FraFartsgrenser:(Fartsgrenser *)obj];
+            }
+            if([obj isKindOfClass:[Forkjorsveger class]])
+            {
+                NSLog(@"\n### Mottatt objekt er av type Forkjørsveger");
+                [self settForkjorsvegStatus:returDictionary FraForkjorsveger:(Forkjorsveger *)obj];
             }
         }
         

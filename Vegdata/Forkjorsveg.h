@@ -1,8 +1,8 @@
 //
-//  SokResultater.m
+//  Forkjorsveg.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 06.03.13.
+//  Created by Henrik Hermansen on 08.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,12 +20,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "SokResultater.h"
+#import <Foundation/Foundation.h>
 
-@implementation Fartsgrenser
-@synthesize fartsgrenser;
-@end
+@interface Forkjorsveg : NSObject
 
-@implementation Forkjorsveger
-@synthesize forkjorsveger;
+@property (nonatomic, strong) NSNumber * strekningsLengde;
+@property (nonatomic, strong) NSArray * veglenker;
+
++ (RKObjectMapping *)mapping;
+
 @end

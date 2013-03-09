@@ -81,6 +81,21 @@
         [fartLabel setTextColor:[UIColor blackColor]];
         fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
     }
+    
+    NSString * forkjorsveg = [data objectForKey:@"forkjorsveg"];
+    
+    if(forkjorsveg == nil)
+    {
+        // gjør noe
+    }
+    else if ([forkjorsveg isEqual: @"yes"])
+    {
+        // bruk forkjørsskiltet
+    }
+    else
+    {
+        // bruk ikke-forkjørsskiltet
+    }
 }
 
 @end

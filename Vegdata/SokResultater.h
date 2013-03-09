@@ -22,7 +22,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Fartsgrenser : NSObject
-
 @property (nonatomic, strong) NSArray * fartsgrenser;
+@end
 
+@interface Forkjorsveger : NSObject
+@property (nonatomic, strong) NSArray * forkjorsveger;
 @end

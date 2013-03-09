@@ -12,6 +12,11 @@
 		9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */; };
 		9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB616D50A8C008FCC43 /* Vegreferanse.m */; };
 		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
+		9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */; };
+		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
+		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
+		9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */; };
+		9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
@@ -92,6 +97,12 @@
 		9B232AB616D50A8C008FCC43 /* Vegreferanse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vegreferanse.m; sourceTree = "<group>"; };
 		9B232AB816D51261008FCC43 /* NVDB_DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDB_DataProvider.h; sourceTree = "<group>"; };
 		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
+		9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forkjorsveg.h; sourceTree = "<group>"; };
+		9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forkjorsveg.m; sourceTree = "<group>"; };
+		9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forkjorsvei.gif; sourceTree = "<group>"; };
+		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
+		9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opphevet_forkjorsvei.gif; sourceTree = "<group>"; };
+		9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opphevet_forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
 		9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegObjektKontroller.m; sourceTree = "<group>"; };
 		9B5B6B9216E628EB00BF1C7C /* Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Veglenke.h; sourceTree = "<group>"; };
@@ -187,6 +198,8 @@
 			children = (
 				9B232AA716D4FD75008FCC43 /* Fartsgrense.h */,
 				9B232AA816D4FD75008FCC43 /* Fartsgrense.m */,
+				9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */,
+				9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */,
 				9B232AB516D50A8C008FCC43 /* Vegreferanse.h */,
 				9B232AB616D50A8C008FCC43 /* Vegreferanse.m */,
 				9BDAC38816D7A10500CF1ACD /* Egenskap.h */,
@@ -268,6 +281,10 @@
 		9B7EB80816CD212600484A74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */,
+				9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */,
+				9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */,
+				9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */,
 				9B7EB80916CD212600484A74 /* Vegdata-Info.plist */,
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
@@ -392,6 +409,10 @@
 				9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */,
 				9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */,
 				9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */,
+				9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */,
+				9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */,
+				9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */,
+				9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +436,7 @@
 				9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */,
 				9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */,
 				9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */,
+				9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
