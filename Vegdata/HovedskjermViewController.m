@@ -24,7 +24,7 @@
 
 @implementation HovedskjermViewController
 
-@synthesize posLabel, fartLabel, fartBilde;
+@synthesize posLabel, fartLabel, fartBilde, forkjorBilde;
 
 - (void)viewDidLoad
 {
@@ -39,17 +39,35 @@
     [pos.lokMan startUpdatingLocation];
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+//        fartBilde.translatesAutoresizingMaskIntoConstraints = NO;
+//        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.fartBilde attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+        
+//        CGRect frame = fartBilde.frame;
+//        frame.origin.x = 0;
+//        frame.origin.y = 0;
+//        fartBilde.frame = frame;
+    }
+    else
+    {
+        
+    }
+}
+
 #pragma mark - PosisjonDelegate
 
 - (void) posisjonOppdatering:(Posisjon *)posisjon
 {
-    posLabel.text = [NSString stringWithFormat:@"-Utviklerinfo-\nLengdegrad: %@\nBreddegrad: %@\nHastighet: %@ km/t\nRetning: %@ grader\nHøyde: %@ moh.\nPresisjon: %@m",
-                     posisjon.lengdegrad.stringValue,
-                     posisjon.breddegrad.stringValue,
-                     posisjon.hastighetIKmT.stringValue,
-                     posisjon.retning.stringValue,
-                     posisjon.meterOverHavet.stringValue,
-                     posisjon.presisjon.stringValue];
+//    posLabel.text = [NSString stringWithFormat:@"-Utviklerinfo-\nLengdegrad: %@\nBreddegrad: %@\nHastighet: %@ km/t\nRetning: %@ grader\nHøyde: %@ moh.\nPresisjon: %@m",
+//                     posisjon.lengdegrad.stringValue,
+//                     posisjon.breddegrad.stringValue,
+//                     posisjon.hastighetIKmT.stringValue,
+//                     posisjon.retning.stringValue,
+//                     posisjon.meterOverHavet.stringValue,
+//                     posisjon.presisjon.stringValue];
     
     [vegObjKont oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
 }
@@ -67,15 +85,19 @@
     
     if(fart == nil)
     {
+        // Fartsgrense skal ikke vises på skjermen
+    }
+    else if([fart isEqualToString:@"-1"])
+    {
         [fartLabel setTextColor:[UIColor grayColor]];
         fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
     }
     else
     {
         if([fart length] == 3)
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:110]];
+            [fartLabel setFont:[UIFont boldSystemFontOfSize:80]];
         else
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:163]];
+            [fartLabel setFont:[UIFont boldSystemFontOfSize:115]];
         
         fartLabel.text = fart;
         [fartLabel setTextColor:[UIColor blackColor]];
@@ -86,7 +108,7 @@
     
     if(forkjorsveg == nil)
     {
-        // gjør noe
+        // Forkjørsvei skal ikke vises på skjermen
     }
     else if ([forkjorsveg isEqual: @"yes"])
     {

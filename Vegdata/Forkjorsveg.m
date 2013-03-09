@@ -24,25 +24,9 @@
 #import "Veglenke.h"
 #import "SokResultater.h"
 
-@interface Forkjorsveg()
-//- (BOOL *)hentForkjorsStatusFraEgenskaper;
-@end
-
 @implementation Forkjorsveg
 
 @synthesize strekningsLengde, veglenker;
-
-//- (BOOL *)hentForkjorsStatusFraEgenskaper
-//{
-//    for (Egenskap * e in egenskaper)
-//    {
-//        if([e.navn isEqualToString:@"Fartsgrense"])
-//        {
-//            return e.verdi;
-//        }
-//    }
-//    return @"-1";
-//}
 
 #pragma mark - Statiske hjelpemetoder
 

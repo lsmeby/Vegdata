@@ -14,42 +14,48 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="LnI-UA-A36">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="117" id="6IB-sv-vVq"/>
+                                    <constraint firstAttribute="height" constant="117" id="D8e-wN-rBd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fartsgrense_feil.gif" translatesAutoresizingMaskIntoConstraints="NO" id="zMJ-VY-T6O">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="Ol1-OU-r6q"/>
-                                </constraints>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fartsgrense_feil.gif" translatesAutoresizingMaskIntoConstraints="NO" id="zMJ-VY-T6O"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfk-5C-eOc">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="229" id="6QI-bZ-g0y"/>
-                                    <constraint firstAttribute="width" constant="212" id="zgx-zY-Fx1"/>
+                                    <constraint firstAttribute="width" constant="200" id="FFV-12-hTG"/>
+                                    <constraint firstAttribute="height" constant="200" id="fA3-KY-988"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="163"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="115"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="opphevet_forkjorsvei.gif" translatesAutoresizingMaskIntoConstraints="NO" id="4k5-ic-Hfp">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bM5-eQ-Qu8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="CwX-WM-FOH"/>
-                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="HpU-yY-foz"/>
-                            <constraint firstAttribute="trailing" secondItem="LnI-UA-A36" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LU6-Ey-Zia"/>
-                            <constraint firstItem="nfk-5C-eOc" firstAttribute="top" secondItem="3" secondAttribute="top" constant="45" id="MN8-i0-gEK"/>
-                            <constraint firstItem="LnI-UA-A36" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lKQ-pc-1Om"/>
-                            <constraint firstAttribute="bottom" secondItem="LnI-UA-A36" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="oXT-1U-6aA"/>
-                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="centerX" secondItem="nfk-5C-eOc" secondAttribute="centerX" type="default" id="s3U-PX-ypm"/>
-                            <constraint firstAttribute="trailing" secondItem="zMJ-VY-T6O" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vcn-Lm-FDI"/>
+                            <constraint firstItem="4k5-ic-Hfp" firstAttribute="trailing" secondItem="nfk-5C-eOc" secondAttribute="trailing" type="default" id="1gG-qB-kOg"/>
+                            <constraint firstItem="nfk-5C-eOc" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="5xP-6V-CBq"/>
+                            <constraint firstAttribute="trailing" secondItem="LnI-UA-A36" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="6hI-xk-Sxd"/>
+                            <constraint firstItem="4k5-ic-Hfp" firstAttribute="centerX" secondItem="LnI-UA-A36" secondAttribute="centerX" type="default" id="9PL-hN-TOC"/>
+                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="leading" secondItem="4k5-ic-Hfp" secondAttribute="leading" type="default" id="BIa-yK-8U1"/>
+                            <constraint firstItem="LnI-UA-A36" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FoT-Zs-Sg9"/>
+                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GS8-LB-vXe"/>
+                            <constraint firstItem="zMJ-VY-T6O" firstAttribute="trailing" secondItem="nfk-5C-eOc" secondAttribute="trailing" type="default" id="LSR-z7-h9e"/>
+                            <constraint firstAttribute="bottom" secondItem="LnI-UA-A36" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LhI-cL-hX1"/>
+                            <constraint firstItem="nfk-5C-eOc" firstAttribute="leading" secondItem="zMJ-VY-T6O" secondAttribute="leading" type="default" id="Z0e-eL-3sm"/>
+                            <constraint firstItem="nfk-5C-eOc" firstAttribute="bottom" secondItem="zMJ-VY-T6O" secondAttribute="bottom" type="default" id="cIT-NY-fOr"/>
+                            <constraint firstAttribute="bottom" secondItem="4k5-ic-Hfp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cbl-4W-hEI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fartBilde" destination="zMJ-VY-T6O" id="cy0-KP-sXQ"/>
                         <outlet property="fartLabel" destination="nfk-5C-eOc" id="E2J-4N-2AN"/>
+                        <outlet property="forkjorBilde" destination="4k5-ic-Hfp" id="AVp-XJ-DH9"/>
                         <outlet property="posLabel" destination="LnI-UA-A36" id="ays-CI-JwP"/>
                     </connections>
                 </viewController>
@@ -59,6 +65,7 @@
     </scenes>
     <resources>
         <image name="fartsgrense_feil.gif" width="320" height="320"/>
+        <image name="opphevet_forkjorsvei.gif" width="320" height="320"/>
     </resources>
     <classes>
         <class className="HovedskjermViewController" superclassName="UIViewController">
@@ -66,6 +73,7 @@
             <relationships>
                 <relationship kind="outlet" name="fartBilde" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="fartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="forkjorBilde" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="posLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

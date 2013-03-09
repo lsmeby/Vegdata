@@ -25,10 +25,6 @@
 #import "Veglenke.h"
 #import "SokResultater.h"
 
-@interface Fartsgrense()
-- (NSString *)hentFartFraEgenskaper;
-@end
-
 @implementation Fartsgrense
 
 @synthesize strekningsLengde, egenskaper, veglenker;

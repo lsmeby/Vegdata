@@ -38,6 +38,7 @@
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
 - (void)leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser;
 - (void)settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger;
+- (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
 
 @end
 
@@ -121,14 +122,11 @@
         {
             if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue && posisjon.doubleValue < vLenke.til.doubleValue)
             {
-                if(fGr.egenskaper == nil || fGr.egenskaper.count == 0)
-                    return;
-                    
-                for (Egenskap * eg in fGr.egenskaper)
-                {
-                    if([eg.navn isEqualToString:@"Fartsgrense"])
-                        [returDictionary setObject:eg.verdi forKey:@"fart"];
-                }
+                NSString * fart = [fGr hentFartFraEgenskaper];
+                
+                if(![fart isEqualToString:@"-1"])
+                    [returDictionary setObject:fart forKey:@"fart"];
+                
                 return;
             }
         }
@@ -156,9 +154,21 @@
                posisjon.doubleValue < vLenke.til.doubleValue)
             {
                 [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+                return;
             }
         }
     }
+}
+
+- (NSMutableDictionary *) opprettReturDictionaryMedDefaultVerdier
+{
+    NSMutableDictionary * returDictionary = [[NSMutableDictionary alloc] init];
+    
+    // Legger  til default-verdier så viewet vet at det ble søkt etter men ikke funnet objekter
+    [returDictionary setObject:@"-1" forKey:@"fart"];
+    [returDictionary setObject:@"no" forKey:@"forkjorsveg"];
+    
+    return returDictionary;
 }
 
 #pragma mark - NVDBResponseDelegate
@@ -169,7 +179,8 @@
     if(resultat == nil || resultat.count == 0)
     {
         NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
-        [self.delegate vegObjekterErOppdatert:nil];
+        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
+        [self.delegate vegObjekterErOppdatert:returDictionary];
     }
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
@@ -180,7 +191,7 @@
     else
     {
         NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
-        NSMutableDictionary * returDictionary = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
         
         for (NSObject * obj in resultat)
         {

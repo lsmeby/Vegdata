@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;
 
+- (NSString *)hentFartFraEgenskaper;
 + (RKObjectMapping *)mapping;
 
 @end

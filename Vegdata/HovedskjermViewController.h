@@ -34,5 +34,6 @@
 @property (nonatomic, strong) IBOutlet UILabel * fartLabel;
 @property (nonatomic, strong) IBOutlet UILabel * posLabel;
 @property (nonatomic, strong) IBOutlet UIImageView * fartBilde;
+@property (nonatomic, strong) IBOutlet UIImageView * forkjorBilde;
 
 @end
