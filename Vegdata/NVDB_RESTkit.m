@@ -24,6 +24,8 @@
 
 static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/api";
 
+//static NSString * const NVDB_GRUNN_URL = @"https://www.vegvesen.no/nvdb/api";
+
 @implementation NVDB_RESTkit
 
 @synthesize delegate;

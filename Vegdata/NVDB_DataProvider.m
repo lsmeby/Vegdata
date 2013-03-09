@@ -96,7 +96,7 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     NSMutableArray * veglenker = [[NSMutableArray alloc] init];
     for(Veglenke * v in sok.veglenker)
     {
-        NSString * veglenke = [NSString stringWithFormat:@"{id:%@, fra:0, til:0}",
+        NSString * veglenke = [NSString stringWithFormat:@"{id:%@, fra:0, til:1}",
                                v.lenkeId.stringValue];
         [veglenker addObject:veglenke];
     }
@@ -115,6 +115,9 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     NSString * kriterie = [NSString stringWithFormat:@"{lokasjon: {veglenker: [%@]}, objektTyper:[%@]}",
                            veglenkestring,
                            objekttypestring];
+
+//    NSString * kriterie = [NSString stringWithFormat:@"{lokasjon: {bbox: \"59.880965,10.824816,59.880966,10.824817\", srid: \"WGS84\"}, objektTyper:[%@]}",
+//                           objekttypestring];
     
     return @{@"kriterie" : kriterie};
     

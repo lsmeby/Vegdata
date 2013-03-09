@@ -77,6 +77,8 @@
     NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:105]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:596]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere: nil]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }

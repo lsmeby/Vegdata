@@ -112,11 +112,11 @@
     }
     else if ([forkjorsveg isEqual: @"yes"])
     {
-        // bruk forkjørsskiltet
+        forkjorBilde.image = [UIImage imageNamed:@"forkjorsvei.gif"];
     }
     else
     {
-        // bruk ikke-forkjørsskiltet
+        forkjorBilde.image = [UIImage imageNamed:@"opphevet_forkjorsvei.gif"];
     }
 }
 
