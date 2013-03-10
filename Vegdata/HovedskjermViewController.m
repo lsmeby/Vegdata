@@ -22,9 +22,13 @@
 
 #import "HovedskjermViewController.h"
 
+@interface HovedskjermViewController()
+- (IBAction)hudKnappTrykket:(UISwitch *)knapp;
+@end
+
 @implementation HovedskjermViewController
 
-@synthesize posLabel, fartLabel, fartBilde, forkjorBilde;
+@synthesize posLabel, fartLabel, fartBilde, forkjorBilde, hudSwitch;
 
 - (void)viewDidLoad
 {
@@ -43,17 +47,47 @@
 {
     if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
     {
-//        fartBilde.translatesAutoresizingMaskIntoConstraints = NO;
-//        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.fartBilde attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+        CGRect frame = fartBilde.frame;
+        frame.origin.x = 30;
+        frame.origin.y = 40;
+        fartBilde.frame = frame;
+        fartLabel.frame = frame;
         
-//        CGRect frame = fartBilde.frame;
-//        frame.origin.x = 0;
-//        frame.origin.y = 0;
-//        fartBilde.frame = frame;
+        frame.origin.x = 260;
+        forkjorBilde.frame = frame;
+    }
+}
+
+//-(BOOL)shouldAutorotate
+//{
+//    if(hudSwitch.isOn)
+//        return NO;
+//    return YES;
+//}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    if(hudSwitch.isOn)
+        return UIInterfaceOrientationMaskLandscapeRight;
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (IBAction)hudKnappTrykket:(UISwitch *)knapp
+{
+    if(knapp.isOn)
+    {
+        fartLabel.transform = CGAffineTransformScale(fartLabel.transform, 1.0, -1.0);
+        forkjorBilde.transform = CGAffineTransformScale(forkjorBilde.transform, 1.0, -1.0);
     }
     else
     {
-        
+        fartLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        forkjorBilde.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }
+    
+    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+    {
+        // ...
     }
 }
 

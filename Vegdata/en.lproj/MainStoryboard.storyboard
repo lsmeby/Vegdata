@@ -35,6 +35,11 @@
                                     <constraint firstAttribute="height" constant="200" id="bM5-eQ-Qu8"/>
                                 </constraints>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zcc-c7-k6o">
+                                <connections>
+                                    <action selector="hudKnappTrykket:" destination="2" eventType="valueChanged" id="aWn-YX-iJe"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -50,12 +55,15 @@
                             <constraint firstItem="nfk-5C-eOc" firstAttribute="leading" secondItem="zMJ-VY-T6O" secondAttribute="leading" type="default" id="Z0e-eL-3sm"/>
                             <constraint firstItem="nfk-5C-eOc" firstAttribute="bottom" secondItem="zMJ-VY-T6O" secondAttribute="bottom" type="default" id="cIT-NY-fOr"/>
                             <constraint firstAttribute="bottom" secondItem="4k5-ic-Hfp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cbl-4W-hEI"/>
+                            <constraint firstAttribute="bottom" secondItem="Zcc-c7-k6o" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="oAU-fB-Qgc"/>
+                            <constraint firstAttribute="trailing" secondItem="Zcc-c7-k6o" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vRc-s2-f8a"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fartBilde" destination="zMJ-VY-T6O" id="cy0-KP-sXQ"/>
                         <outlet property="fartLabel" destination="nfk-5C-eOc" id="E2J-4N-2AN"/>
                         <outlet property="forkjorBilde" destination="4k5-ic-Hfp" id="AVp-XJ-DH9"/>
+                        <outlet property="hudSwitch" destination="Zcc-c7-k6o" id="HOr-e0-U5w"/>
                         <outlet property="posLabel" destination="LnI-UA-A36" id="ays-CI-JwP"/>
                     </connections>
                 </viewController>
@@ -71,9 +79,11 @@
         <class className="HovedskjermViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HovedskjermViewController.h"/>
             <relationships>
+                <relationship kind="action" name="hudKnappTrykket:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="fartBilde" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="fartLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="forkjorBilde" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hudSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="posLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
