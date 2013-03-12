@@ -24,6 +24,8 @@
 
 static int const OPPDATERING_SEK = 2;
 static double const MSEK_TIL_KMT = 3.6;
+static int const OPPDATERING_METER = 5;
+static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
 
 @interface PosisjonsKontroller()
 - (void) oppdaterPresisjonMedFart:(NSDecimalNumber *)meterISekundet;
@@ -31,7 +33,7 @@ static double const MSEK_TIL_KMT = 3.6;
 
 @implementation PosisjonsKontroller
 
-@synthesize lokMan, delegate;
+@synthesize lokMan, delegate, sisteOppdatering;
 
 - (id) init
 {
@@ -43,6 +45,7 @@ static double const MSEK_TIL_KMT = 3.6;
         self.lokMan.delegate = self;
         self.lokMan.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
         self.lokMan.distanceFilter = kCLDistanceFilterNone;
+        self.sisteOppdatering = [[CLLocation alloc] init];
     }
     
     return self;
@@ -53,7 +56,17 @@ static double const MSEK_TIL_KMT = 3.6;
     if([self.delegate conformsToProtocol:@protocol(PosisjonDelegate)])
     {
         CLLocation * CLpos = [locations lastObject];
-
+        
+        if(self.sisteOppdatering != nil &&
+           [CLpos.timestamp timeIntervalSinceDate:self.sisteOppdatering.timestamp] < (OPPDATERING_SEK_VED_BEVEGELSE_STOPP) &&
+           [CLpos distanceFromLocation:self.sisteOppdatering] < OPPDATERING_METER)
+        {
+            NSLog(@"\n### For kort siden forrige oppdatering");
+            return;
+        }
+        
+        self.sisteOppdatering = CLpos;
+        
         Posisjon * posisjon = [Posisjon alloc];
         posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:CLpos.coordinate.latitude];
         posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:CLpos.coordinate.longitude];

@@ -24,6 +24,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 @class Posisjon;
+@class SisteOppdatering;
 
 @protocol PosisjonDelegate
 @required
@@ -36,6 +37,7 @@
 
 @property (nonatomic, strong) CLLocationManager * lokMan;
 @property (nonatomic, assign) id delegate;
+@property (nonatomic, strong) CLLocation * sisteOppdatering;
 
 @end
 
