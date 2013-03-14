@@ -28,66 +28,41 @@
 
 @implementation HovedskjermViewController
 
-@synthesize posLabel, fartLabel, fartBilde, forkjorBilde, hudSwitch;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	
-    vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self];
+    self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self];
     
-    pos = [[PosisjonsKontroller alloc] init];
-    pos.delegate = self;
-    [pos.lokMan startUpdatingLocation];
+    self.pos = [[PosisjonsKontroller alloc] init];
+    self.pos.delegate = self;
+    [self.pos.lokMan startUpdatingLocation];
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+-(BOOL)shouldAutorotate
 {
-    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        CGRect frame = fartBilde.frame;
-        frame.origin.x = 30;
-        frame.origin.y = 40;
-        fartBilde.frame = frame;
-        fartLabel.frame = frame;
-        
-        frame.origin.x = 260;
-        forkjorBilde.frame = frame;
-    }
-}
-
-//-(BOOL)shouldAutorotate
-//{
-//    if(hudSwitch.isOn)
-//        return NO;
-//    return YES;
-//}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    if(hudSwitch.isOn)
-        return UIInterfaceOrientationMaskLandscapeRight;
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    if(self.hudSwitch.isOn)
+        return NO;
+    return YES;
 }
 
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp
 {
     if(knapp.isOn)
     {
-        fartLabel.transform = CGAffineTransformScale(fartLabel.transform, 1.0, -1.0);
-        forkjorBilde.transform = CGAffineTransformScale(forkjorBilde.transform, 1.0, -1.0);
+        self.fartLabel.transform = CGAffineTransformScale(self.fartLabel.transform, 1.0, -1.0);
+        self.forkjorBilde.transform = CGAffineTransformScale(self.forkjorBilde.transform, 1.0, -1.0);
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
     else
     {
-        fartLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        forkjorBilde.transform = CGAffineTransformMakeScale(1.0, 1.0);
-    }
-    
-    if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-    {
-        // ...
+        self.fartLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.forkjorBilde.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
 }
 
@@ -95,26 +70,20 @@
 
 - (void) posisjonOppdatering:(Posisjon *)posisjon
 {
-//    posLabel.text = [NSString stringWithFormat:@"-Utviklerinfo-\nLengdegrad: %@\nBreddegrad: %@\nHastighet: %@ km/t\nRetning: %@ grader\nHøyde: %@ moh.\nPresisjon: %@m",
-//                     posisjon.lengdegrad.stringValue,
-//                     posisjon.breddegrad.stringValue,
-//                     posisjon.hastighetIKmT.stringValue,
-//                     posisjon.retning.stringValue,
-//                     posisjon.meterOverHavet.stringValue,
-//                     posisjon.presisjon.stringValue];
-    
-    [vegObjKont oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
+    [self.vegObjKont oppdaterMedBreddegrad:posisjon.breddegrad OgLengdegrad:posisjon.lengdegrad];
 }
 
 - (void) posisjonFeil:(NSError *)feil
 {
-    posLabel.text = [feil description];
+    NSLog(@"\n### Feil: %@", [feil description]);
 }
 
 #pragma mark - VegObjektDelegate
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
+    self.nyesteData = data;
+    
     NSString * fart = [data objectForKey:@"fart"];
     
     if(fart == nil)
@@ -123,19 +92,19 @@
     }
     else if([fart isEqualToString:@"-1"])
     {
-        [fartLabel setTextColor:[UIColor grayColor]];
-        fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
+        [self.fartLabel setTextColor:[UIColor grayColor]];
+        self.fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
     }
     else
     {
         if([fart length] == 3)
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:80]];
+            [self.fartLabel setFont:[UIFont boldSystemFontOfSize:80]];
         else
-            [fartLabel setFont:[UIFont boldSystemFontOfSize:115]];
+            [self.fartLabel setFont:[UIFont boldSystemFontOfSize:115]];
         
-        fartLabel.text = fart;
-        [fartLabel setTextColor:[UIColor blackColor]];
-        fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
+        self.fartLabel.text = fart;
+        [self.fartLabel setTextColor:[UIColor blackColor]];
+        self.fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
     }
     
     NSString * forkjorsveg = [data objectForKey:@"forkjorsveg"];
@@ -146,11 +115,11 @@
     }
     else if ([forkjorsveg isEqual: @"yes"])
     {
-        forkjorBilde.image = [UIImage imageNamed:@"forkjorsvei.gif"];
+        self.forkjorBilde.image = [UIImage imageNamed:@"forkjorsvei.gif"];
     }
     else
     {
-        forkjorBilde.image = [UIImage imageNamed:@"opphevet_forkjorsvei.gif"];
+        self.forkjorBilde.image = [UIImage imageNamed:@"opphevet_forkjorsvei.gif"];
     }
 }
 

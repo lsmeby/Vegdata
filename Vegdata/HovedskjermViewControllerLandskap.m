@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  HovedskjermViewControllerLandskap.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 14.02.13.
+//  Created by Lars Smeby on 14.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,19 +20,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <UIKit/UIKit.h>
-#import "Posisjon.h"
-#import "VegObjektKontroller.h"
+#import "HovedskjermViewControllerLandskap.h"
 
-@interface HovedskjermViewController : UIViewController <PosisjonDelegate, VegObjektDelegate>
+@implementation HovedskjermViewControllerLandskap
 
-@property (nonatomic, strong) PosisjonsKontroller * pos;
-@property (nonatomic, strong) VegObjektKontroller * vegObjKont;
-@property (nonatomic, strong) NSDictionary * nyesteData;
+- (void)viewDidLoad
+{
+    // Må overrides for å hindre at klassen kaller [super viewDidLoad]
+}
 
-@property (nonatomic, strong) IBOutlet UILabel * fartLabel;
-@property (nonatomic, strong) IBOutlet UIImageView * fartBilde;
-@property (nonatomic, strong) IBOutlet UIImageView * forkjorBilde;
-@property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
 
 @end

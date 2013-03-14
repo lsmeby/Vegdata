@@ -44,6 +44,8 @@
 		9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */; };
 		9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */; };
 		9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */; };
+		9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */; };
+		9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,10 @@
 		9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense_feil@2x.gif"; sourceTree = "<group>"; };
 		9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense.gif; sourceTree = "<group>"; };
 		9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense@2x.gif"; sourceTree = "<group>"; };
+		9B9C938816F1F619007EEFBF /* HovedskjermViewControllerPortrett.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewControllerPortrett.h; sourceTree = "<group>"; };
+		9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerPortrett.m; sourceTree = "<group>"; };
+		9B9C938E16F1F630007EEFBF /* HovedskjermViewControllerLandskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewControllerLandskap.h; sourceTree = "<group>"; };
+		9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerLandskap.m; sourceTree = "<group>"; };
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -181,6 +187,10 @@
 			children = (
 				9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */,
 				9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */,
+				9B9C938816F1F619007EEFBF /* HovedskjermViewControllerPortrett.h */,
+				9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */,
+				9B9C938E16F1F630007EEFBF /* HovedskjermViewControllerLandskap.h */,
+				9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -437,6 +447,8 @@
 				9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */,
 				9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */,
 				9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */,
+				9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */,
+				9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
