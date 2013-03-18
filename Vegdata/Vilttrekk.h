@@ -1,8 +1,8 @@
 //
-//  Forkjorsveg.h
+//  Vilttrekk.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 08.03.13.
+//  Created by Lars Smeby on 18.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -22,6 +22,6 @@
 
 #import "Vegobjekt.h"
 
-@interface Forkjorsveg : Vegobjekt <VegobjektProtokoll>
-
+@interface Vilttrekk : Vegobjekt <VegobjektProtokoll>
+- (NSString *)hentDyreartFraEgenskaper;
 @end

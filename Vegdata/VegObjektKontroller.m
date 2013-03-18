@@ -29,6 +29,7 @@
 #import "Fartsgrense.h"
 #import "Forkjorsveg.h"
 #import "Egenskap.h"
+#import "Vilttrekk.h"
 
 @interface VegObjektKontroller()
 
@@ -36,8 +37,7 @@
 - (NSArray *)hentObjekttyper;
 - (RKDynamicMapping *)hentObjektMapping;
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
-- (void)leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser;
-- (void)settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger;
+- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater;
 - (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
 
 @end
@@ -79,6 +79,8 @@
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:596]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere: nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:291]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }
@@ -92,6 +94,9 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
                                                      expectedValue:[[NSNumber alloc] initWithInt:596]
                                                      objectMapping:[Forkjorsveg mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:291]
+                                                     objectMapping:[Vilttrekk mapping]]];
     return mapping;
 }
 
@@ -106,56 +111,45 @@
     return [[NSDecimalNumber alloc] initWithDouble:returPos];
 }
 
-- (void) leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser
-{
-    if(self.vegRef == nil || returDictionary == nil || fartsgrenser == nil || fartsgrenser.fartsgrenser == nil || fartsgrenser.fartsgrenser.count == 0)
-        return;
+#pragma mark - Metoder som tolker de returnerte objektene
 
-    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
-    if(posisjon == nil)
-        return;
-    
-    for (Fartsgrense * fGr in fartsgrenser.fartsgrenser)
-    {
-        if(fGr.veglenker == nil || fGr.veglenker.count == 0)
-            continue;
-        
-        for (Veglenke * vLenke in fGr.veglenker)
-        {
-            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue && posisjon.doubleValue < vLenke.til.doubleValue)
-            {
-                NSString * fart = [fGr hentFartFraEgenskaper];
-                
-                if(![fart isEqualToString:@"-1"])
-                    [returDictionary setObject:fart forKey:@"fart"];
-                
-                return;
-            }
-        }
-    }
-}
-
-- (void) settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger
+- (void) leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater
 {
-    if(self.vegRef == nil || returDictionary == nil || forkjorsveger == nil || forkjorsveger.forkjorsveger == nil ||
-       forkjorsveger.forkjorsveger.count == 0)
+    if(self.vegRef == nil || returDictionary == nil || resultater == nil || resultater.objekter == nil || resultater.objekter.count == 0)
         return;
     
     NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
     if(posisjon == nil)
         return;
     
-    for (Forkjorsveg * f in forkjorsveger.forkjorsveger)
+    for (Vegobjekt * obj in resultater.objekter)
     {
-        if(f.veglenker == nil || f.veglenker.count == 0)
+        if(obj.veglenker == nil || obj.veglenker.count == 0)
             continue;
         
-        for (Veglenke * vLenke in f.veglenker)
+        for(Veglenke * vLenke in obj.veglenker)
         {
-            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue &&
-               posisjon.doubleValue < vLenke.til.doubleValue)
+            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue >= vLenke.fra.doubleValue && posisjon.doubleValue <= vLenke.til.doubleValue)
             {
-                [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+                if ([obj isKindOfClass:[Fartsgrense class]])
+                {
+                    NSString * fart = [(Fartsgrense *)obj hentFartFraEgenskaper];
+                    
+                    if(![fart isEqualToString:@"-1"])
+                        [returDictionary setObject:fart forKey:@"fart"];
+                }
+                else if ([obj isKindOfClass:[Forkjorsveg class]])
+                {
+                    [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+                }
+                else if ([obj isKindOfClass:[Vilttrekk class]])
+                {
+                    NSString * vilttrekk = [(Vilttrekk *)obj hentDyreartFraEgenskaper];
+                    
+                    if(![vilttrekk isEqualToString:@"-1"])
+                        [returDictionary setObject:vilttrekk forKey:@"vilttrekk"];
+                }
+                
                 return;
             }
         }
@@ -169,6 +163,7 @@
     // Legger  til default-verdier så viewet vet at det ble søkt etter men ikke funnet objekter
     [returDictionary setObject:@"-1" forKey:@"fart"];
     [returDictionary setObject:@"no" forKey:@"forkjorsveg"];
+    [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
     
     return returDictionary;
 }
@@ -196,18 +191,8 @@
         NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
         
         for (NSObject * obj in resultat)
-        {
-            if ([obj isKindOfClass:[Fartsgrenser class]])
-            {
-                NSLog(@"\n### Mottatt objekt er av type Fartsgrenser");
-                [self leggTilKorrektFart:returDictionary FraFartsgrenser:(Fartsgrenser *)obj];
-            }
-            if([obj isKindOfClass:[Forkjorsveger class]])
-            {
-                NSLog(@"\n### Mottatt objekt er av type Forkjørsveger");
-                [self settForkjorsvegStatus:returDictionary FraForkjorsveger:(Forkjorsveger *)obj];
-            }
-        }
+            if ([obj isKindOfClass:[SokResultater class]])
+                [self leggTilLinjeDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj];
         
         [self.delegate vegObjekterErOppdatert:returDictionary];
     }

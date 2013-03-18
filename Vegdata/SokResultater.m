@@ -22,10 +22,15 @@
 
 #import "SokResultater.h"
 
+@implementation SokResultater
+@synthesize objekter;
+@end
+
 @implementation Fartsgrenser
-@synthesize fartsgrenser;
 @end
 
 @implementation Forkjorsveger
-@synthesize forkjorsveger;
+@end
+
+@implementation Vilttrekks
 @end

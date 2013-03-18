@@ -36,4 +36,17 @@
     return self;
 }
 
+#pragma mark - Statiske hjelpemetoder
+
++(RKObjectMapping *)mapping
+{
+    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
+    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
+                                                          @"fra" : @"fra",
+                                                          @"til" : @"til",
+                                                          @"direction" : @"retning"}];
+    
+    return veglenkeMapping;
+}
+
 @end

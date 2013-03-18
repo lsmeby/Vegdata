@@ -1,8 +1,8 @@
 //
-//  Forkjorsveg.h
+//  Vegobjekt.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 08.03.13.
+//  Created by Lars Smeby on 18.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,8 +20,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Vegobjekt.h"
+#import <Foundation/Foundation.h>
 
-@interface Forkjorsveg : Vegobjekt <VegobjektProtokoll>
+@protocol VegobjektProtokoll <NSObject>
+@required
++ (RKObjectMapping *)mapping;
+@end
+
+@interface Vegobjekt : NSObject
+
+@property (nonatomic, strong) NSArray * egenskaper;
+@property (nonatomic, strong) NSArray * veglenker;
+@property (nonatomic, strong) NSNumber * strekningsLengde;
 
 @end

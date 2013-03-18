@@ -45,30 +45,20 @@
 
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
-    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
-                                                         @"fra" : @"fra",
-                                                         @"til" : @"til",
-                                                         @"direction" : @"retning"}];
-    
-    RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
-    [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
-                                                           @"verdi" : @"verdi"}];
-    
     RKObjectMapping * fartsgrenseMapping = [RKObjectMapping mappingForClass:[self class]];
     [fartsgrenseMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
     [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping
                                              relationshipMappingFromKeyPath:@"lokasjon.veglenker"
                                              toKeyPath:@"veglenker"
-                                             withMapping:veglenkeMapping]];
+                                             withMapping:[Veglenke mapping]]];
     [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
                                                                                        toKeyPath:@"egenskaper"
-                                                                                     withMapping:egenskapsMapping]];
+                                                                                     withMapping:[Egenskap mapping]]];
     
     RKObjectMapping * fartsgrenseArrayMapping = [RKObjectMapping mappingForClass:[Fartsgrenser class]];
     [fartsgrenseArrayMapping addPropertyMapping:[RKRelationshipMapping
                                                  relationshipMappingFromKeyPath:@"vegObjekter"
-                                                                      toKeyPath:@"fartsgrenser"
+                                                                      toKeyPath:@"objekter"
                                                                     withMapping:fartsgrenseMapping]];
     
     return fartsgrenseArrayMapping;

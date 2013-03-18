@@ -51,12 +51,6 @@ static NSString * const KEYPATH = nil;
 
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
-    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
-                                                          @"fra" : @"fra",
-                                                          @"til" : @"til",
-                                                          @"direction" : @"retning"}];
-   
     RKObjectMapping * vegreferanseMapping = [RKObjectMapping mappingForClass:[self class]];
     [vegreferanseMapping addAttributeMappingsFromDictionary:@{@"punktPaVegReferanseLinjeWGS84" : @"punktPaVeg",
                                                               @"meterVerdi" : @"meterVerdi",
@@ -67,7 +61,7 @@ static NSString * const KEYPATH = nil;
     [vegreferanseMapping addPropertyMapping:[RKRelationshipMapping
                                              relationshipMappingFromKeyPath:@"vegReferanse.lokasjon.veglenker"
                                                                   toKeyPath:@"veglenker"
-                                                                withMapping:veglenkeMapping]];
+                                                                withMapping:[Veglenke mapping]]];
     
     return vegreferanseMapping;
 }

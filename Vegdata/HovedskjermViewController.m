@@ -113,13 +113,24 @@
     {
         // Forkjørsvei skal ikke vises på skjermen
     }
-    else if ([forkjorsveg isEqual: @"yes"])
+    else if ([forkjorsveg isEqualToString: @"yes"])
     {
         self.forkjorBilde.image = [UIImage imageNamed:@"forkjorsvei.gif"];
     }
     else
     {
         self.forkjorBilde.image = [UIImage imageNamed:@"opphevet_forkjorsvei.gif"];
+    }
+    
+    NSString * vilttrekk = [data objectForKey:@"vilttrekk"];
+    
+    if(vilttrekk == nil || [vilttrekk isEqualToString:@"-1"])
+    {
+        // Vilttrekk skal ikke vises på skjermen
+    }
+    else
+    {
+        NSLog(@"\n### Viser vilttrekkskilt med: %@", vilttrekk);
     }
 }
 

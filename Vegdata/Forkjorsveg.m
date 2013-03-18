@@ -32,23 +32,17 @@
 
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
-    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
-     @"fra" : @"fra",
-     @"til" : @"til",
-     @"direction" : @"retning"}];
-    
     RKObjectMapping * forkjorsvegMapping = [RKObjectMapping mappingForClass:[self class]];
     [forkjorsvegMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
     [forkjorsvegMapping addPropertyMapping:[RKRelationshipMapping
                                             relationshipMappingFromKeyPath:@"lokasjon.veglenker"
                                             toKeyPath:@"veglenker"
-                                            withMapping:veglenkeMapping]];
+                                            withMapping:[Veglenke mapping]]];
     
     RKObjectMapping * forkjorsvegArrayMapping = [RKObjectMapping mappingForClass:[Forkjorsveger class]];
     [forkjorsvegArrayMapping addPropertyMapping:[RKRelationshipMapping
                                                  relationshipMappingFromKeyPath:@"vegObjekter"
-                                                 toKeyPath:@"forkjorsveger"
+                                                 toKeyPath:@"objekter"
                                                  withMapping:forkjorsvegMapping]];
     
     return forkjorsvegArrayMapping;

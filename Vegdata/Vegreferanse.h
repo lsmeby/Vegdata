@@ -20,9 +20,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
+#import "Vegobjekt.h"
 
-@interface Vegreferanse : NSObject
+@interface Vegreferanse : Vegobjekt <VegobjektProtokoll>
 
 @property (nonatomic, strong) NSString * punktPaVeg;
 @property (nonatomic, strong) NSNumber * meterVerdi;
@@ -30,9 +30,7 @@
 @property (nonatomic, strong) NSNumber * veglenkeId;
 @property (nonatomic, strong) NSDecimalNumber * veglenkePosisjon;
 @property (nonatomic, strong) NSString * geometriWgs84;
-@property (nonatomic, strong) NSArray * veglenker;
 
-+ (RKObjectMapping *)mapping;
 + (NSString *)getURI;
 + (NSString *)getKeyPath;
 

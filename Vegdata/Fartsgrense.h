@@ -20,15 +20,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
+#import "Vegobjekt.h"
 
-@interface Fartsgrense : NSObject
-
-@property (nonatomic, strong) NSNumber * strekningsLengde;
-@property (nonatomic, strong) NSArray * egenskaper;
-@property (nonatomic, strong) NSArray * veglenker;
+@interface Fartsgrense : Vegobjekt <VegobjektProtokoll>
 
 - (NSString *)hentFartFraEgenskaper;
-+ (RKObjectMapping *)mapping;
 
 @end
