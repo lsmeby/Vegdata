@@ -22,6 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SokResultater;
+
 @protocol VegobjektProtokoll <NSObject>
 @required
 + (RKObjectMapping *)mapping;
@@ -32,5 +34,7 @@
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;
 @property (nonatomic, strong) NSNumber * strekningsLengde;
+
++ (RKObjectMapping *)standardMappingMedKontainerKlasse:(Class)kontainerklasse;
 
 @end

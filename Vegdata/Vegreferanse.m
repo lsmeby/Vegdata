@@ -47,8 +47,6 @@ static NSString * const KEYPATH = nil;
     return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
 }
 
-#pragma mark - Statiske hjelpemetoder
-
 + (RKObjectMapping *)mapping
 {
     RKObjectMapping * vegreferanseMapping = [RKObjectMapping mappingForClass:[self class]];

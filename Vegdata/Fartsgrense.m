@@ -22,7 +22,6 @@
 
 #import "Fartsgrense.h"
 #import "Egenskap.h"
-#import "Veglenke.h"
 #import "SokResultater.h"
 
 @implementation Fartsgrense
@@ -41,26 +40,8 @@
     return @"-1";
 }
 
-#pragma mark - Statiske hjelpemetoder
-
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * fartsgrenseMapping = [RKObjectMapping mappingForClass:[self class]];
-    [fartsgrenseMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
-    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping
-                                             relationshipMappingFromKeyPath:@"lokasjon.veglenker"
-                                             toKeyPath:@"veglenker"
-                                             withMapping:[Veglenke mapping]]];
-    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
-                                                                                       toKeyPath:@"egenskaper"
-                                                                                     withMapping:[Egenskap mapping]]];
-    
-    RKObjectMapping * fartsgrenseArrayMapping = [RKObjectMapping mappingForClass:[Fartsgrenser class]];
-    [fartsgrenseArrayMapping addPropertyMapping:[RKRelationshipMapping
-                                                 relationshipMappingFromKeyPath:@"vegObjekter"
-                                                                      toKeyPath:@"objekter"
-                                                                    withMapping:fartsgrenseMapping]];
-    
-    return fartsgrenseArrayMapping;
+    return [self standardMappingMedKontainerKlasse:[Fartsgrenser class]];
 }
 @end

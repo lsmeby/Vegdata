@@ -23,7 +23,12 @@
 #import "SokResultater.h"
 
 @implementation SokResultater
-@synthesize objekter;
+@end
+
+@implementation LinjeObjekter
+@end
+
+@implementation PunktObjekter
 @end
 
 @implementation Fartsgrenser
@@ -33,4 +38,7 @@
 @end
 
 @implementation Vilttrekks
+@end
+
+@implementation Hoydebegrensninger
 @end

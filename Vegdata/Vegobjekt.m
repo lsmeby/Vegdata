@@ -21,7 +21,33 @@
 //
 
 #import "Vegobjekt.h"
+#import "Veglenke.h"
+#import "Egenskap.h"
+#import "SokResultater.h"
 
 @implementation Vegobjekt
+
++ (RKObjectMapping *) standardMappingMedKontainerKlasse:(Class)kontainerklasse
+{
+    if(![kontainerklasse isSubclassOfClass:[SokResultater class]])
+        return nil;
+    
+    RKObjectMapping * hoydebegrensningMapping = [RKObjectMapping mappingForClass:[self class]];
+    [hoydebegrensningMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+    [hoydebegrensningMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
+                                                                                            toKeyPath:@"veglenker"
+                                                                                          withMapping:[Veglenke mapping]]];
+    [hoydebegrensningMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
+                                                                                            toKeyPath:@"egenskaper"
+                                                                                          withMapping:[Egenskap mapping]]];
+    
+    RKObjectMapping * hoydebegrensningArrayMapping = [RKObjectMapping mappingForClass:kontainerklasse];
+    [hoydebegrensningArrayMapping addPropertyMapping:[RKRelationshipMapping
+                                                      relationshipMappingFromKeyPath:@"vegObjekter"
+                                                      toKeyPath:@"objekter"
+                                                      withMapping:hoydebegrensningMapping]];
+    
+    return hoydebegrensningArrayMapping;
+}
 
 @end

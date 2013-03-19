@@ -132,6 +132,17 @@
     {
         NSLog(@"\n### Viser vilttrekkskilt med: %@", vilttrekk);
     }
+    
+    NSString * hoydebegrensning = [data objectForKey:@"hoydebegrensning"];
+    
+    if(hoydebegrensning == nil || [hoydebegrensning isEqualToString:@"-1"])
+    {
+        // Høydebegrensning skal ikke vises på skjermen
+    }
+    else
+    {
+        NSLog(@"\n### Viser høydebegrensning på %@ meter", hoydebegrensning);
+    }
 }
 
 @end

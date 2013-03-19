@@ -21,30 +21,14 @@
 //
 
 #import "Forkjorsveg.h"
-#import "Veglenke.h"
 #import "SokResultater.h"
 
 @implementation Forkjorsveg
 
 @synthesize strekningsLengde, veglenker;
 
-#pragma mark - Statiske hjelpemetoder
-
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * forkjorsvegMapping = [RKObjectMapping mappingForClass:[self class]];
-    [forkjorsvegMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
-    [forkjorsvegMapping addPropertyMapping:[RKRelationshipMapping
-                                            relationshipMappingFromKeyPath:@"lokasjon.veglenker"
-                                            toKeyPath:@"veglenker"
-                                            withMapping:[Veglenke mapping]]];
-    
-    RKObjectMapping * forkjorsvegArrayMapping = [RKObjectMapping mappingForClass:[Forkjorsveger class]];
-    [forkjorsvegArrayMapping addPropertyMapping:[RKRelationshipMapping
-                                                 relationshipMappingFromKeyPath:@"vegObjekter"
-                                                 toKeyPath:@"objekter"
-                                                 withMapping:forkjorsvegMapping]];
-    
-    return forkjorsvegArrayMapping;
+    return [self standardMappingMedKontainerKlasse:[Forkjorsveger class]];
 }
 @end

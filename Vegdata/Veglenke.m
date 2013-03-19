@@ -36,8 +36,6 @@
     return self;
 }
 
-#pragma mark - Statiske hjelpemetoder
-
 +(RKObjectMapping *)mapping
 {
     RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];

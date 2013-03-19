@@ -60,10 +60,7 @@ static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
         if(self.sisteOppdatering != nil &&
            [CLpos.timestamp timeIntervalSinceDate:self.sisteOppdatering.timestamp] < (OPPDATERING_SEK_VED_BEVEGELSE_STOPP) &&
            [CLpos distanceFromLocation:self.sisteOppdatering] < OPPDATERING_METER)
-        {
-            NSLog(@"\n### For kort siden forrige oppdatering");
             return;
-        }
         
         self.sisteOppdatering = CLpos;
         

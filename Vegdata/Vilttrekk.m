@@ -21,7 +21,6 @@
 //
 
 #import "Vilttrekk.h"
-#import "Veglenke.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
 
@@ -41,26 +40,9 @@
     return @"-1";
 }
 
-#pragma mark - Statiske hjelpemetoder
-
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * vilttrekkMapping = [RKObjectMapping mappingForClass:[self class]];
-    [vilttrekkMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
-    [vilttrekkMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
-                                                                                     toKeyPath:@"veglenker"
-                                                                                   withMapping:[Veglenke mapping]]];
-    [vilttrekkMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
-                                                                                     toKeyPath:@"egenskaper"
-                                                                                   withMapping:[Egenskap mapping]]];
-    
-    RKObjectMapping * vilttrekkArrayMapping = [RKObjectMapping mappingForClass:[Vilttrekks class]];
-    [vilttrekkArrayMapping addPropertyMapping:[RKRelationshipMapping
-                                                 relationshipMappingFromKeyPath:@"vegObjekter"
-                                                 toKeyPath:@"objekter"
-                                                 withMapping:vilttrekkMapping]];
-    
-    return vilttrekkArrayMapping;
+    return [self standardMappingMedKontainerKlasse:[Vilttrekks class]];
 }
 
 @end

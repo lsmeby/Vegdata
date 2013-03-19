@@ -26,8 +26,6 @@
 
 @synthesize navn, verdi;
 
-#pragma mark - Statiske hjelpemetoder
-
 +(RKObjectMapping *)mapping
 {
     RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
