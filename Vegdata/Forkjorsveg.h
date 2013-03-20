@@ -22,6 +22,6 @@
 
 #import "Vegobjekt.h"
 
-@interface Forkjorsveg : Vegobjekt <VegobjektProtokoll>
+@interface Forkjorsveg : LinjeObjekt <VegobjektProtokoll>
 
 @end

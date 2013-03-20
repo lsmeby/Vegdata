@@ -33,8 +33,14 @@
 
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;
-@property (nonatomic, strong) NSNumber * strekningsLengde;
 
 + (RKObjectMapping *)standardMappingMedKontainerKlasse:(Class)kontainerklasse;
 
+@end
+
+@interface LinjeObjekt : Vegobjekt
+@property (nonatomic, strong) NSNumber * strekningsLengde;
+@end
+
+@interface PunktObjekt : Vegobjekt
 @end

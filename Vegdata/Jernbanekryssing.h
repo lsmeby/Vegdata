@@ -1,8 +1,8 @@
 //
-//  Hoydebegrensning.h
+//  Jernbanekryssing.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 19.03.13.
+//  Created by Lars Smeby on 20.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -22,6 +22,6 @@
 
 #import "Vegobjekt.h"
 
-@interface Hoydebegrensning : PunktObjekt <VegobjektProtokoll>
-- (NSString *)hentHoydebegrensningFraEgenskaper;
+@interface Jernbanekryssing : PunktObjekt <VegobjektProtokoll>
+- (NSString *)hentTypeFraEgenskaper;
 @end

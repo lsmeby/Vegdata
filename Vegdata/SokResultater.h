@@ -25,20 +25,17 @@
 @property (nonatomic, strong) NSArray * objekter;
 @end
 
-@interface LinjeObjekter : SokResultater
+@interface Fartsgrenser : SokResultater
 @end
 
-@interface PunktObjekter : SokResultater
+@interface Forkjorsveger : SokResultater
 @end
 
-@interface Fartsgrenser : LinjeObjekter
+@interface Vilttrekks : SokResultater
 @end
 
-@interface Forkjorsveger : LinjeObjekter
+@interface Hoydebegrensninger : SokResultater
 @end
 
-@interface Vilttrekks : LinjeObjekter
-@end
-
-@interface Hoydebegrensninger : PunktObjekter
+@interface Jernbanekryssinger : SokResultater
 @end

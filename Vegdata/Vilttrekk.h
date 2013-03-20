@@ -22,6 +22,6 @@
 
 #import "Vegobjekt.h"
 
-@interface Vilttrekk : Vegobjekt <VegobjektProtokoll>
+@interface Vilttrekk : LinjeObjekt <VegobjektProtokoll>
 - (NSString *)hentDyreartFraEgenskaper;
 @end

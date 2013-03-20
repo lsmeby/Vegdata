@@ -22,7 +22,7 @@
 
 #import "Vegobjekt.h"
 
-@interface Vegreferanse : Vegobjekt <VegobjektProtokoll>
+@interface Vegreferanse : LinjeObjekt <VegobjektProtokoll>
 
 @property (nonatomic, strong) NSString * punktPaVeg;
 @property (nonatomic, strong) NSNumber * meterVerdi;

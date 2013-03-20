@@ -22,7 +22,7 @@
 
 #import "Vegobjekt.h"
 
-@interface Fartsgrense : Vegobjekt <VegobjektProtokoll>
+@interface Fartsgrense : LinjeObjekt <VegobjektProtokoll>
 
 - (NSString *)hentFartFraEgenskaper;
 

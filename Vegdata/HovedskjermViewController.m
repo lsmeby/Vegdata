@@ -143,6 +143,17 @@
     {
         NSLog(@"\n### Viser høydebegrensning på %@ meter", hoydebegrensning);
     }
+    
+    NSString * jernbanekryssing = [data objectForKey:@"jernbanekryssing"];
+    
+    if(jernbanekryssing == nil || [jernbanekryssing isEqualToString:@"-1"])
+    {
+        // Jernbanekryssing skal ikke vises på skjermen
+    }
+    else
+    {
+        NSLog(@"\n### Viser jernbanekryssing");
+    }
 }
 
 @end

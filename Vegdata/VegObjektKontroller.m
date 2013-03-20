@@ -31,6 +31,7 @@
 #import "Egenskap.h"
 #import "Vilttrekk.h"
 #import "Hoydebegrensning.h"
+#import "Jernbanekryssing.h"
 
 @interface VegObjektKontroller()
 
@@ -89,6 +90,8 @@
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:591]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:100]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }
@@ -108,6 +111,9 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
                                                      expectedValue:[[NSNumber alloc] initWithInt:591]
                                                      objectMapping:[Hoydebegrensning mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:100]
+                                                     objectMapping:[Jernbanekryssing mapping]]];
     return mapping;
 }
 
@@ -133,13 +139,13 @@
         {
             if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue)
             {
-                if([resultater isKindOfClass:[LinjeObjekter class]] && posisjon.doubleValue >= vLenke.fra.doubleValue && posisjon.doubleValue <= vLenke.til.doubleValue)
+                if([obj isKindOfClass:[LinjeObjekt class]] && posisjon.doubleValue >= vLenke.fra.doubleValue && posisjon.doubleValue <= vLenke.til.doubleValue)
                 // Hvis mottatte objekter er LinjeObjekter og enhetens posisjon er på objektets linje
                 {
                     [self leggTilLinjeDataIDictionary:returDictionary MedVegObjekt:obj];
                     return;
                 }
-                else if([resultater isKindOfClass:[PunktObjekter class]])
+                else if([obj isKindOfClass:[PunktObjekt class]])
                 // Hvis mottatte objekter er PunktObjekter
                 {
                     if(!naermestePosisjon)
@@ -220,6 +226,13 @@
 {
     if([objekt isKindOfClass:[Hoydebegrensning class]])
         [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
+    
+    else if([objekt isKindOfClass:[Jernbanekryssing class]])
+    {
+        NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
+        if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"])
+            [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+    }
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon
@@ -283,6 +296,7 @@
     [returDictionary setObject:@"no" forKey:@"forkjorsveg"];
     [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
     [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
+    [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
     
     return returDictionary;
 }

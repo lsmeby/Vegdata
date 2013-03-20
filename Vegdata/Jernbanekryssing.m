@@ -1,8 +1,8 @@
 //
-//  Hoydebegrensning.h
+//  Jernbanekryssing.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 19.03.13.
+//  Created by Lars Smeby on 20.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,8 +20,29 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Vegobjekt.h"
+#import "Jernbanekryssing.h"
+#import "SokResultater.h"
+#import "Egenskap.h"
 
-@interface Hoydebegrensning : PunktObjekt <VegobjektProtokoll>
-- (NSString *)hentHoydebegrensningFraEgenskaper;
+@implementation Jernbanekryssing
+
+@synthesize egenskaper, veglenker;
+
+- (NSString *)hentTypeFraEgenskaper
+{
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:@"Type"])
+        {
+            return e.verdi;
+        }
+    }
+    return @"-1";
+}
+
++(RKObjectMapping *)mapping
+{
+    return [self standardMappingMedKontainerKlasse:[Jernbanekryssinger class]];
+}
+
 @end

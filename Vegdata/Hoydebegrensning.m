@@ -26,7 +26,7 @@
 
 @implementation Hoydebegrensning
 
-@synthesize egenskaper, veglenker, strekningsLengde;
+@synthesize egenskaper, veglenker;
 
 -(NSString *)hentHoydebegrensningFraEgenskaper
 {

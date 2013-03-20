@@ -33,7 +33,10 @@
         return nil;
     
     RKObjectMapping * hoydebegrensningMapping = [RKObjectMapping mappingForClass:[self class]];
-    [hoydebegrensningMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+    
+    if([[self class] isSubclassOfClass:[LinjeObjekt class]])
+        [hoydebegrensningMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+    
     [hoydebegrensningMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
                                                                                             toKeyPath:@"veglenker"
                                                                                           withMapping:[Veglenke mapping]]];
@@ -50,4 +53,10 @@
     return hoydebegrensningArrayMapping;
 }
 
+@end
+
+@implementation LinjeObjekt
+@end
+
+@implementation PunktObjekt
 @end

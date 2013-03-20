@@ -25,12 +25,6 @@
 @implementation SokResultater
 @end
 
-@implementation LinjeObjekter
-@end
-
-@implementation PunktObjekter
-@end
-
 @implementation Fartsgrenser
 @end
 
@@ -41,4 +35,7 @@
 @end
 
 @implementation Hoydebegrensninger
+@end
+
+@implementation Jernbanekryssinger
 @end
