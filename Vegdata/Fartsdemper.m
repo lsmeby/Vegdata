@@ -1,8 +1,8 @@
 //
-//  SokResultater.h
+//  Fartsdemper.m
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 06.03.13.
+//  Created by Lars Smeby on 21.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -19,26 +19,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-#import <Foundation/Foundation.h>
 
-@interface SokResultater : NSObject
-@property (nonatomic, strong) NSArray * objekter;
-@end
+#import "Fartsdemper.h"
+#import "Egenskap.h"
+#import "SokResultater.h"
 
-@interface Fartsgrenser : SokResultater
-@end
+@implementation Fartsdemper
 
-@interface Forkjorsveger : SokResultater
-@end
+@synthesize egenskaper, veglenker;
 
-@interface Vilttrekks : SokResultater
-@end
+-(NSString *)hentTypeFraEgenskaper
+{
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:@"Type"])
+        {
+            return e.verdi;
+        }
+    }
+    return @"Ingen type";
+}
 
-@interface Hoydebegrensninger : SokResultater
-@end
++(RKObjectMapping *)mapping
+{
+    return [self standardMappingMedKontainerKlasse:[Fartsdempere class]];
+}
 
-@interface Jernbanekryssinger : SokResultater
-@end
-
-@interface Fartsdempere : SokResultater
 @end

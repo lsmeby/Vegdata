@@ -32,6 +32,7 @@
 #import "Vilttrekk.h"
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
+#import "Fartsdemper.h"
 
 @interface VegObjektKontroller()
 
@@ -92,6 +93,8 @@
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:100]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:103]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }
@@ -114,6 +117,9 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
                                                      expectedValue:[[NSNumber alloc] initWithInt:100]
                                                      objectMapping:[Jernbanekryssing mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:103]
+                                                     objectMapping:[Fartsdemper mapping]]];
     return mapping;
 }
 
@@ -233,6 +239,13 @@
         if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"])
             [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
     }
+    
+    else if([objekt isKindOfClass:[Fartsdemper class]])
+    {
+        NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
+        if(![demper isEqualToString:@"Rumlefelt"])
+            [returDictionary setObject:demper forKey:@"fartsdemper"];
+    }
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon
@@ -297,6 +310,7 @@
     [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
     [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
     [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
+    [returDictionary setObject:@"-1" forKey:@"fartsdemper"];
     
     return returDictionary;
 }

@@ -39,3 +39,6 @@
 
 @implementation Jernbanekryssinger
 @end
+
+@implementation Fartsdempere
+@end

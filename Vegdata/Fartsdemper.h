@@ -1,8 +1,8 @@
 //
-//  SokResultater.h
+//  Fartsdemper.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 06.03.13.
+//  Created by Lars Smeby on 21.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -19,26 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-#import <Foundation/Foundation.h>
 
-@interface SokResultater : NSObject
-@property (nonatomic, strong) NSArray * objekter;
-@end
+#import "Vegobjekt.h"
 
-@interface Fartsgrenser : SokResultater
-@end
-
-@interface Forkjorsveger : SokResultater
-@end
-
-@interface Vilttrekks : SokResultater
-@end
-
-@interface Hoydebegrensninger : SokResultater
-@end
-
-@interface Jernbanekryssinger : SokResultater
-@end
-
-@interface Fartsdempere : SokResultater
+@interface Fartsdemper : PunktObjekt <VegobjektProtokoll>
+- (NSString *)hentTypeFraEgenskaper;
 @end

@@ -17,6 +17,7 @@
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
 		9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */; };
 		9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */; };
+		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
@@ -109,6 +110,8 @@
 		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opphevet_forkjorsvei.gif; sourceTree = "<group>"; };
 		9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opphevet_forkjorsvei@2x.gif"; sourceTree = "<group>"; };
+		9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsdemper.h; sourceTree = "<group>"; };
+		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
 		9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegObjektKontroller.m; sourceTree = "<group>"; };
 		9B5B6B9216E628EB00BF1C7C /* Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Veglenke.h; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */,
 				9B80F2DC16FA04C5008861BA /* Jernbanekryssing.h */,
 				9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */,
+				9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */,
+				9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */,
 			);
 			name = NVDBObjekter;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				9B90E70016F7615C0067850E /* Vilttrekk.m in Sources */,
 				9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */,
 				9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */,
+				9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
