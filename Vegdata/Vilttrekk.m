@@ -1,8 +1,8 @@
 //
-//  VegObjektController.h
+//  Vilttrekk.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 05.03.13.
+//  Created by Lars Smeby on 18.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,26 +20,29 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
-#import "NVDB_RESTkit.h"
+#import "Vilttrekk.h"
+#import "Egenskap.h"
+#import "SokResultater.h"
 
-@class NVDB_DataProvider, Vegreferanse;
+@implementation Vilttrekk
 
-@protocol VegObjektDelegate
-@required
-- (void)vegObjekterErOppdatert:(NSDictionary *)data;
-@end
+@synthesize egenskaper, veglenker, strekningsLengde;
 
-@interface VegObjektKontroller : NSObject <NVDBResponseDelegate>
+- (NSString *)hentDyreartFraEgenskaper
 {
-    NVDB_DataProvider * dataProv;
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:@"Dyreart"])
+        {
+            return e.verdi;
+        }
+    }
+    return @"-1";
 }
 
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, strong) Vegreferanse * vegRef;
-@property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
-
-- (id)initMedDelegate:(id)delegate;
-- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++ (RKObjectMapping *)mapping
+{
+    return [self standardMappingMedKontainerKlasse:[Vilttrekks class]];
+}
 
 @end

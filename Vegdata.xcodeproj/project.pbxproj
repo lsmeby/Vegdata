@@ -17,6 +17,7 @@
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
 		9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */; };
 		9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */; };
+		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
@@ -39,14 +40,18 @@
 		9B7EB84116CD32C400484A74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83C16CD32C400484A74 /* QuartzCore.framework */; };
 		9B7EB84216CD32C400484A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83D16CD32C400484A74 /* Security.framework */; };
 		9B7EB84316CD32C400484A74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */; };
+		9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */; };
 		9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */; };
 		9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B820D8416CE6E1D00AD3307 /* Posisjon.m */; };
 		9B83CBA516D8EB3E0022AB3D /* fartsgrense_feil.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */; };
 		9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */; };
 		9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */; };
 		9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */; };
+		9B90E6FA16F75E5C0067850E /* Vegobjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B90E6F916F75E5B0067850E /* Vegobjekt.m */; };
+		9B90E70016F7615C0067850E /* Vilttrekk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B90E6FF16F7615C0067850E /* Vilttrekk.m */; };
 		9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */; };
 		9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */; };
+		9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
@@ -106,6 +111,8 @@
 		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opphevet_forkjorsvei.gif; sourceTree = "<group>"; };
 		9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opphevet_forkjorsvei@2x.gif"; sourceTree = "<group>"; };
+		9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsdemper.h; sourceTree = "<group>"; };
+		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
 		9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegObjektKontroller.m; sourceTree = "<group>"; };
 		9B5B6B9216E628EB00BF1C7C /* Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Veglenke.h; sourceTree = "<group>"; };
@@ -136,6 +143,8 @@
 		9B7EB83C16CD32C400484A74 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9B7EB83D16CD32C400484A74 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9B7EB83E16CD32C400484A74 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9B80F2DC16FA04C5008861BA /* Jernbanekryssing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jernbanekryssing.h; sourceTree = "<group>"; };
+		9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jernbanekryssing.m; sourceTree = "<group>"; };
 		9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9B820D8316CE6E1D00AD3307 /* Posisjon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Posisjon.h; sourceTree = "<group>"; };
 		9B820D8416CE6E1D00AD3307 /* Posisjon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Posisjon.m; sourceTree = "<group>"; };
@@ -143,10 +152,16 @@
 		9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense_feil@2x.gif"; sourceTree = "<group>"; };
 		9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense.gif; sourceTree = "<group>"; };
 		9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense@2x.gif"; sourceTree = "<group>"; };
+		9B90E6F816F75E5B0067850E /* Vegobjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vegobjekt.h; sourceTree = "<group>"; };
+		9B90E6F916F75E5B0067850E /* Vegobjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vegobjekt.m; sourceTree = "<group>"; };
+		9B90E6FE16F7615C0067850E /* Vilttrekk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vilttrekk.h; sourceTree = "<group>"; };
+		9B90E6FF16F7615C0067850E /* Vilttrekk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vilttrekk.m; sourceTree = "<group>"; };
 		9B9C938816F1F619007EEFBF /* HovedskjermViewControllerPortrett.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewControllerPortrett.h; sourceTree = "<group>"; };
 		9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerPortrett.m; sourceTree = "<group>"; };
 		9B9C938E16F1F630007EEFBF /* HovedskjermViewControllerLandskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewControllerLandskap.h; sourceTree = "<group>"; };
 		9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerLandskap.m; sourceTree = "<group>"; };
+		9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hoydebegrensning.h; sourceTree = "<group>"; };
+		9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hoydebegrensning.m; sourceTree = "<group>"; };
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -222,6 +237,16 @@
 				9B5B6B9316E628EC00BF1C7C /* Veglenke.m */,
 				9B60EAAB16E76EAA00B7E815 /* SokResultater.h */,
 				9B60EAAC16E76EAA00B7E815 /* SokResultater.m */,
+				9B90E6F816F75E5B0067850E /* Vegobjekt.h */,
+				9B90E6F916F75E5B0067850E /* Vegobjekt.m */,
+				9B90E6FE16F7615C0067850E /* Vilttrekk.h */,
+				9B90E6FF16F7615C0067850E /* Vilttrekk.m */,
+				9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */,
+				9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */,
+				9B80F2DC16FA04C5008861BA /* Jernbanekryssing.h */,
+				9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */,
+				9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */,
+				9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */,
 			);
 			name = NVDBObjekter;
 			sourceTree = "<group>";
@@ -453,6 +478,11 @@
 				9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */,
 				9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */,
 				9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */,
+				9B90E6FA16F75E5C0067850E /* Vegobjekt.m in Sources */,
+				9B90E70016F7615C0067850E /* Vilttrekk.m in Sources */,
+				9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */,
+				9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */,
+				9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

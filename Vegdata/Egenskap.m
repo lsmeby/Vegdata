@@ -26,4 +26,13 @@
 
 @synthesize navn, verdi;
 
++(RKObjectMapping *)mapping
+{
+    RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
+    [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
+                                                           @"verdi" : @"verdi"}];
+    
+    return egenskapsMapping;
+}
+
 @end

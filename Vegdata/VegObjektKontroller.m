@@ -29,6 +29,10 @@
 #import "Fartsgrense.h"
 #import "Forkjorsveg.h"
 #import "Egenskap.h"
+#import "Vilttrekk.h"
+#import "Hoydebegrensning.h"
+#import "Jernbanekryssing.h"
+#import "Fartsdemper.h"
 
 @interface VegObjektKontroller()
 
@@ -36,9 +40,11 @@
 - (NSArray *)hentObjekttyper;
 - (RKDynamicMapping *)hentObjektMapping;
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
-- (void)leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser;
-- (void)settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger;
+- (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater;
+- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
 - (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
++ (NSDecimalNumber *)diffMellomA:(NSDecimalNumber *)desimalA OgB:(NSDecimalNumber *)desimalB;
 
 @end
 
@@ -57,6 +63,8 @@
 {
     [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
 }
+
+#pragma mark - Metoder som forbereder og utfører søk mot dataprovideren
 
 - (void)sokMedVegreferanse
 {
@@ -78,7 +86,15 @@
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:105]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:596]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere: nil]];
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:291]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:591]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:100]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:103]
+                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }
@@ -92,12 +108,149 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
                                                      expectedValue:[[NSNumber alloc] initWithInt:596]
                                                      objectMapping:[Forkjorsveg mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:291]
+                                                     objectMapping:[Vilttrekk mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:591]
+                                                     objectMapping:[Hoydebegrensning mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:100]
+                                                     objectMapping:[Jernbanekryssing mapping]]];
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
+                                                     expectedValue:[[NSNumber alloc] initWithInt:103]
+                                                     objectMapping:[Fartsdemper mapping]]];
     return mapping;
+}
+
+#pragma mark - Metoder som tolker de returnerte objektene
+
+- (void) leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater
+{
+    if(returDictionary == nil || resultater == nil || resultater.objekter == nil || resultater.objekter.count == 0)
+        return;
+    
+    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
+    if(posisjon == nil)
+        return;
+    
+    NSDecimalNumber * naermestePosisjon;
+    
+    for (Vegobjekt * obj in resultater.objekter)
+    {
+        if(obj.veglenker == nil || obj.veglenker.count == 0)
+            continue;
+        
+        for(Veglenke * vLenke in obj.veglenker)
+        {
+            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue)
+            {
+                if([obj isKindOfClass:[LinjeObjekt class]] && posisjon.doubleValue >= vLenke.fra.doubleValue && posisjon.doubleValue <= vLenke.til.doubleValue)
+                // Hvis mottatte objekter er LinjeObjekter og enhetens posisjon er på objektets linje
+                {
+                    [self leggTilLinjeDataIDictionary:returDictionary MedVegObjekt:obj];
+                    return;
+                }
+                else if([obj isKindOfClass:[PunktObjekt class]])
+                // Hvis mottatte objekter er PunktObjekter
+                {
+                    if(!naermestePosisjon)
+                        naermestePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
+                
+                    // A - self.forrigePosisjon == nil
+                    // B - self.forrigePosisjon.doubleValue < 0
+                    // C - naermestePosisjon.doubleValue < 0
+                    // D - [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue
+                    //     <= [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue
+                    // E - posisjon.doubleValue >= self.forrigePosisjon.doubleValue
+                    // F - vLenke.fra.doubleValue > posisjon.doubleValue
+                    // G - vLenke.fra.doubleValue < posisjon.doubleValue
+                    //
+                    // Hvis vi ikke vet hvilken vei vi kjører på en veglenke, og objektet enten
+                    // er det første eller det nærmeste objektet til enhetens posisjon:
+                    //
+                    // (A || B) && (C || D)
+                    //
+                    // Hvis vi kjører i stigende retning på en veglenke, og objektet enten er
+                    // det første eller det nærmeste objektet til enhetens posisjon, samtidig
+                    // som det har en høyere posisjon enn enheten (altså ligger foran enheten):
+                    //
+                    // E && F && (C || D)
+                    //
+                    // Hvis vi kjører i synkende retning på en veglenke, og objektet enten er
+                    // det første eller det nærmeste objektet til enhetens posisjon, samtidig
+                    // som det har en lavere posisjon enn enheten (altså ligger foran enheten):
+                    //
+                    // G && (C && D)
+                    //
+                    // Setter vi sammen disse får vi:
+                    //
+                    // ((A || B) && (C || D)) || (E && F && (C || D)) || (G && (C || D))
+                    //
+                    // Med boolsk algebra finner vi at dette er ekvivalent med:
+                    //
+                    // (A || B || E || G) && (A || B || F || G) && (C || D)
+                    //
+                    // Dette gir if-testen under:
+                    
+                    if((self.forrigePosisjon == nil ||
+                        self.forrigePosisjon.doubleValue < 0 ||
+                        posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
+                        vLenke.fra.doubleValue < posisjon.doubleValue)
+                        &&
+                       (self.forrigePosisjon == nil ||
+                        self.forrigePosisjon.doubleValue < 0 ||
+                        vLenke.fra.doubleValue > posisjon.doubleValue ||
+                        vLenke.fra.doubleValue < posisjon.doubleValue)
+                        &&
+                       (naermestePosisjon.doubleValue < 0 ||
+                        [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
+                        [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
+                    {
+                        naermestePosisjon = posisjon;
+                        [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:obj];
+                    }
+                }
+            }
+        }
+    }
+}
+
+- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
+{
+    if ([objekt isKindOfClass:[Fartsgrense class]])
+        [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:@"fart"];
+    
+    else if ([objekt isKindOfClass:[Forkjorsveg class]])
+        [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+    
+    else if ([objekt isKindOfClass:[Vilttrekk class]])
+        [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"];
+}
+
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
+{
+    if([objekt isKindOfClass:[Hoydebegrensning class]])
+        [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
+    
+    else if([objekt isKindOfClass:[Jernbanekryssing class]])
+    {
+        NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
+        if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"])
+            [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+    }
+    
+    else if([objekt isKindOfClass:[Fartsdemper class]])
+    {
+        NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
+        if(![demper isEqualToString:@"Rumlefelt"])
+            [returDictionary setObject:demper forKey:@"fartsdemper"];
+    }
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon
 {
-    if(self.vegRef.veglenker == nil || self.vegRef.veglenker.count == 0)
+    if(self.vegRef == nil || self.vegRef.veglenker == nil || self.vegRef.veglenker.count == 0)
         return nil;
     
     double intervall = ((Veglenke *)self.vegRef.veglenker[0]).til.doubleValue - ((Veglenke *)self.vegRef.veglenker[0]).fra.doubleValue;
@@ -106,59 +259,44 @@
     return [[NSDecimalNumber alloc] initWithDouble:returPos];
 }
 
-- (void) leggTilKorrektFart:(NSMutableDictionary *)returDictionary FraFartsgrenser:(Fartsgrenser *)fartsgrenser
++ (NSDecimalNumber *)diffMellomA:(NSDecimalNumber *)desimalA OgB:(NSDecimalNumber *)desimalB
 {
-    if(self.vegRef == nil || returDictionary == nil || fartsgrenser == nil || fartsgrenser.fartsgrenser == nil || fartsgrenser.fartsgrenser.count == 0)
-        return;
-
-    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
-    if(posisjon == nil)
-        return;
-    
-    for (Fartsgrense * fGr in fartsgrenser.fartsgrenser)
-    {
-        if(fGr.veglenker == nil || fGr.veglenker.count == 0)
-            continue;
-        
-        for (Veglenke * vLenke in fGr.veglenker)
-        {
-            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue && posisjon.doubleValue < vLenke.til.doubleValue)
-            {
-                NSString * fart = [fGr hentFartFraEgenskaper];
-                
-                if(![fart isEqualToString:@"-1"])
-                    [returDictionary setObject:fart forKey:@"fart"];
-                
-                return;
-            }
-        }
-    }
+    if(desimalA.doubleValue < desimalB.doubleValue)
+        return [desimalB decimalNumberBySubtracting:desimalA];
+    else
+        return [desimalA decimalNumberBySubtracting:desimalB];
 }
 
-- (void) settForkjorsvegStatus:(NSMutableDictionary *)returDictionary FraForkjorsveger:(Forkjorsveger *)forkjorsveger
+#pragma mark - NVDBResponseDelegate
+
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat
 {
-    if(self.vegRef == nil || returDictionary == nil || forkjorsveger == nil || forkjorsveger.forkjorsveger == nil ||
-       forkjorsveger.forkjorsveger.count == 0)
-        return;
-    
-    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
-    if(posisjon == nil)
-        return;
-    
-    for (Forkjorsveg * f in forkjorsveger.forkjorsveger)
+    if(resultat == nil || resultat.count == 0)
     {
-        if(f.veglenker == nil || f.veglenker.count == 0)
-            continue;
+        NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
+        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
+        [self.delegate vegObjekterErOppdatert:returDictionary];
+    }
+    else if([resultat[0] isKindOfClass:[Vegreferanse class]])
+    {
+        if(self.vegRef != nil && self.vegRef.veglenkeId.intValue == ((Vegreferanse *)resultat[0]).veglenkeId.intValue)
+            self.forrigePosisjon = [self kalkulerVeglenkePosisjon];
+        else
+            self.forrigePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
         
-        for (Veglenke * vLenke in f.veglenker)
-        {
-            if(vLenke.lenkeId.intValue == self.vegRef.veglenkeId.intValue && posisjon.doubleValue > vLenke.fra.doubleValue &&
-               posisjon.doubleValue < vLenke.til.doubleValue)
-            {
-                [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
-                return;
-            }
-        }
+        self.vegRef = (Vegreferanse *)resultat[0];
+        [self sokMedVegreferanse];
+    }
+    else
+    {
+        NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
+        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
+        
+        for (NSObject * obj in resultat)
+            if ([obj isKindOfClass:[SokResultater class]])
+                [self leggTilDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj];
+        
+        [self.delegate vegObjekterErOppdatert:returDictionary];
     }
 }
 
@@ -169,48 +307,12 @@
     // Legger  til default-verdier så viewet vet at det ble søkt etter men ikke funnet objekter
     [returDictionary setObject:@"-1" forKey:@"fart"];
     [returDictionary setObject:@"no" forKey:@"forkjorsveg"];
+    [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
+    [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
+    [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
+    [returDictionary setObject:@"-1" forKey:@"fartsdemper"];
     
     return returDictionary;
-}
-
-#pragma mark - NVDBResponseDelegate
-
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat
-{
-    NSLog(@"\n### MOTTAT SVAR FRA NVDB");
-    if(resultat == nil || resultat.count == 0)
-    {
-        NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
-        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
-        [self.delegate vegObjekterErOppdatert:returDictionary];
-    }
-    else if([resultat[0] isKindOfClass:[Vegreferanse class]])
-    {
-        NSLog(@"\n### Mottatt objekt er av type Vegreferanse");
-        self.vegRef = (Vegreferanse *)resultat[0];
-        [self sokMedVegreferanse];
-    }
-    else
-    {
-        NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
-        NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
-        
-        for (NSObject * obj in resultat)
-        {
-            if ([obj isKindOfClass:[Fartsgrenser class]])
-            {
-                NSLog(@"\n### Mottatt objekt er av type Fartsgrenser");
-                [self leggTilKorrektFart:returDictionary FraFartsgrenser:(Fartsgrenser *)obj];
-            }
-            if([obj isKindOfClass:[Forkjorsveger class]])
-            {
-                NSLog(@"\n### Mottatt objekt er av type Forkjørsveger");
-                [self settForkjorsvegStatus:returDictionary FraForkjorsveger:(Forkjorsveger *)obj];
-            }
-        }
-        
-        [self.delegate vegObjekterErOppdatert:returDictionary];
-    }
 }
 
 @end

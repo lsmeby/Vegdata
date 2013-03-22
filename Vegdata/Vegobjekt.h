@@ -1,8 +1,8 @@
 //
-//  VegObjektController.h
+//  Vegobjekt.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 05.03.13.
+//  Created by Lars Smeby on 18.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -21,25 +21,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NVDB_RESTkit.h"
 
-@class NVDB_DataProvider, Vegreferanse;
+@class SokResultater;
 
-@protocol VegObjektDelegate
+@protocol VegobjektProtokoll <NSObject>
 @required
-- (void)vegObjekterErOppdatert:(NSDictionary *)data;
++ (RKObjectMapping *)mapping;
 @end
 
-@interface VegObjektKontroller : NSObject <NVDBResponseDelegate>
-{
-    NVDB_DataProvider * dataProv;
-}
+@interface Vegobjekt : NSObject
 
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, strong) Vegreferanse * vegRef;
-@property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
+@property (nonatomic, strong) NSArray * egenskaper;
+@property (nonatomic, strong) NSArray * veglenker;
 
-- (id)initMedDelegate:(id)delegate;
-- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++ (RKObjectMapping *)standardMappingMedKontainerKlasse:(Class)kontainerklasse;
 
+@end
+
+@interface LinjeObjekt : Vegobjekt
+@property (nonatomic, strong) NSNumber * strekningsLengde;
+@end
+
+@interface PunktObjekt : Vegobjekt
 @end

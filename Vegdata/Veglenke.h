@@ -21,8 +21,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Vegobjekt.h"
 
-@interface Veglenke : NSObject
+@interface Veglenke : NSObject <VegobjektProtokoll>
 
 - (id) initMedId:(NSNumber *)aId Fra:(NSDecimalNumber *)aFra Til:(NSDecimalNumber *)aTil OgRetning:(NSString *)aRetning;
 

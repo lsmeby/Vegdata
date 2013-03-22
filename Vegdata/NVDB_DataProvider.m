@@ -69,7 +69,7 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    return @{@"x" : breddegrad.stringValue, @"y" : lengdegrad.stringValue, @"srid" : NVDB_GEOMETRI};
+    return @{@"y" : breddegrad.stringValue, @"x" : lengdegrad.stringValue, @"srid" : NVDB_GEOMETRI};
 }
 
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad

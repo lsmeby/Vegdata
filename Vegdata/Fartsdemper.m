@@ -1,8 +1,8 @@
 //
-//  VegObjektController.h
+//  Fartsdemper.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 05.03.13.
+//  Created by Lars Smeby on 21.03.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,26 +20,29 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
-#import "NVDB_RESTkit.h"
+#import "Fartsdemper.h"
+#import "Egenskap.h"
+#import "SokResultater.h"
 
-@class NVDB_DataProvider, Vegreferanse;
+@implementation Fartsdemper
 
-@protocol VegObjektDelegate
-@required
-- (void)vegObjekterErOppdatert:(NSDictionary *)data;
-@end
+@synthesize egenskaper, veglenker;
 
-@interface VegObjektKontroller : NSObject <NVDBResponseDelegate>
+-(NSString *)hentTypeFraEgenskaper
 {
-    NVDB_DataProvider * dataProv;
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:@"Type"])
+        {
+            return e.verdi;
+        }
+    }
+    return @"Ingen type";
 }
 
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, strong) Vegreferanse * vegRef;
-@property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
-
-- (id)initMedDelegate:(id)delegate;
-- (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++(RKObjectMapping *)mapping
+{
+    return [self standardMappingMedKontainerKlasse:[Fartsdempere class]];
+}
 
 @end

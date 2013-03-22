@@ -21,10 +21,24 @@
 //
 #import <Foundation/Foundation.h>
 
-@interface Fartsgrenser : NSObject
-@property (nonatomic, strong) NSArray * fartsgrenser;
+@interface SokResultater : NSObject
+@property (nonatomic, strong) NSArray * objekter;
 @end
 
-@interface Forkjorsveger : NSObject
-@property (nonatomic, strong) NSArray * forkjorsveger;
+@interface Fartsgrenser : SokResultater
+@end
+
+@interface Forkjorsveger : SokResultater
+@end
+
+@interface Vilttrekks : SokResultater
+@end
+
+@interface Hoydebegrensninger : SokResultater
+@end
+
+@interface Jernbanekryssinger : SokResultater
+@end
+
+@interface Fartsdempere : SokResultater
 @end

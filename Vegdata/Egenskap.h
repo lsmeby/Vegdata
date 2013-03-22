@@ -21,8 +21,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Vegobjekt.h"
 
-@interface Egenskap : NSObject
+@interface Egenskap : NSObject <VegobjektProtokoll>
 
 @property (nonatomic, strong) NSString * navn;
 @property (nonatomic, strong) NSString * verdi;

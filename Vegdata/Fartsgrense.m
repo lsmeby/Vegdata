@@ -22,7 +22,6 @@
 
 #import "Fartsgrense.h"
 #import "Egenskap.h"
-#import "Veglenke.h"
 #import "SokResultater.h"
 
 @implementation Fartsgrense
@@ -41,36 +40,8 @@
     return @"-1";
 }
 
-#pragma mark - Statiske hjelpemetoder
-
 + (RKObjectMapping *)mapping
 {
-    RKObjectMapping * veglenkeMapping = [RKObjectMapping mappingForClass:[Veglenke class]];
-    [veglenkeMapping addAttributeMappingsFromDictionary:@{@"id" : @"lenkeId",
-                                                         @"fra" : @"fra",
-                                                         @"til" : @"til",
-                                                         @"direction" : @"retning"}];
-    
-    RKObjectMapping * egenskapsMapping = [RKObjectMapping mappingForClass:[Egenskap class]];
-    [egenskapsMapping addAttributeMappingsFromDictionary:@{@"navn" : @"navn",
-                                                           @"verdi" : @"verdi"}];
-    
-    RKObjectMapping * fartsgrenseMapping = [RKObjectMapping mappingForClass:[self class]];
-    [fartsgrenseMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
-    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping
-                                             relationshipMappingFromKeyPath:@"lokasjon.veglenker"
-                                             toKeyPath:@"veglenker"
-                                             withMapping:veglenkeMapping]];
-    [fartsgrenseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
-                                                                                       toKeyPath:@"egenskaper"
-                                                                                     withMapping:egenskapsMapping]];
-    
-    RKObjectMapping * fartsgrenseArrayMapping = [RKObjectMapping mappingForClass:[Fartsgrenser class]];
-    [fartsgrenseArrayMapping addPropertyMapping:[RKRelationshipMapping
-                                                 relationshipMappingFromKeyPath:@"vegObjekter"
-                                                                      toKeyPath:@"fartsgrenser"
-                                                                    withMapping:fartsgrenseMapping]];
-    
-    return fartsgrenseArrayMapping;
+    return [self standardMappingMedKontainerKlasse:[Fartsgrenser class]];
 }
 @end
