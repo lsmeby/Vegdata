@@ -20,6 +20,7 @@
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
+		9B79037116F37E4C00F36B82 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B79037016F37E4C00F36B82 /* Settings.bundle */; };
 		9B7EB80216CD212600484A74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80116CD212600484A74 /* UIKit.framework */; };
 		9B7EB80416CD212600484A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80316CD212600484A74 /* Foundation.framework */; };
 		9B7EB80616CD212600484A74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80516CD212600484A74 /* CoreGraphics.framework */; };
@@ -111,6 +112,7 @@
 		9B5B6B9316E628EC00BF1C7C /* Veglenke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Veglenke.m; sourceTree = "<group>"; };
 		9B60EAAB16E76EAA00B7E815 /* SokResultater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SokResultater.h; sourceTree = "<group>"; };
 		9B60EAAC16E76EAA00B7E815 /* SokResultater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SokResultater.m; sourceTree = "<group>"; };
+		9B79037016F37E4C00F36B82 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9B7EB7FE16CD212600484A74 /* Vegdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vegdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EB80116CD212600484A74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9B7EB80316CD212600484A74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -244,6 +246,7 @@
 		9B7EB7F516CD212600484A74 = {
 			isa = PBXGroup;
 			children = (
+				9B79037016F37E4C00F36B82 /* Settings.bundle */,
 				9B7EB80716CD212600484A74 /* Vegdata */,
 				9B7EB80016CD212600484A74 /* Frameworks */,
 				9B7EB7FF16CD212600484A74 /* Products */,
@@ -423,6 +426,7 @@
 				9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */,
 				9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */,
 				9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */,
+				9B79037116F37E4C00F36B82 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
