@@ -27,6 +27,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSLog(@"didfinishLOADing");
+    NSString * textValue1 = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
+    NSLog(@"textValue1: %@", textValue1);
     return YES;
 }
 							

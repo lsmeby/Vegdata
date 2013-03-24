@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Title</key>
+	<string>RootPList</string>
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
@@ -68,25 +70,15 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
+			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
 			<string>Varslingsavstand i meter</string>
 			<key>Key</key>
-			<string>title_varslingsavstand</string>
+			<string>varslingsavstand</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
 			<key>DefaultValue</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSSliderSpecifier</string>
-			<key>Key</key>
-			<string>fare_varslingsavstand</string>
-			<key>DefaultValue</key>
-			<integer>200</integer>
-			<key>MinimumValue</key>
-			<integer>0</integer>
-			<key>MaximumValue</key>
-			<integer>1000</integer>
+			<string>250</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>
