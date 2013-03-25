@@ -12,11 +12,11 @@
 		9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */; };
 		9B232AB716D50A8C008FCC43 /* Vegreferanse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB616D50A8C008FCC43 /* Vegreferanse.m */; };
 		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
+		9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B371700C8F400773942 /* fareskilt_jernbane.gif */; };
+		9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */; };
 		9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */; };
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
-		9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */; };
-		9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */; };
 		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
@@ -52,6 +52,16 @@
 		9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */; };
 		9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */; };
 		9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */; };
+		9BBF71DA17009E2800BEB0C8 /* fareskilt_elg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */; };
+		9BBF71DB17009E2800BEB0C8 /* fareskilt_elg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */; };
+		9BBF71DC17009E2800BEB0C8 /* fareskilt_hjort.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D617009E2800BEB0C8 /* fareskilt_hjort.gif */; };
+		9BBF71DD17009E2800BEB0C8 /* fareskilt_hjort@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D717009E2800BEB0C8 /* fareskilt_hjort@2x.gif */; };
+		9BBF71DE17009E2800BEB0C8 /* fareskilt_rein.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D817009E2800BEB0C8 /* fareskilt_rein.gif */; };
+		9BBF71DF17009E2800BEB0C8 /* fareskilt_rein@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D917009E2800BEB0C8 /* fareskilt_rein@2x.gif */; };
+		9BBF71E21700A15B00BEB0C8 /* hoydegrense.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E01700A15B00BEB0C8 /* hoydegrense.gif */; };
+		9BBF71E31700A15B00BEB0C8 /* hoydegrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */; };
+		9BBF71E61700AD4100BEB0C8 /* fareskilt_fartsdemper.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */; };
+		9BBF71E71700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
@@ -105,12 +115,12 @@
 		9B232AB616D50A8C008FCC43 /* Vegreferanse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vegreferanse.m; sourceTree = "<group>"; };
 		9B232AB816D51261008FCC43 /* NVDB_DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDB_DataProvider.h; sourceTree = "<group>"; };
 		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
+		9B252B371700C8F400773942 /* fareskilt_jernbane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_jernbane.gif; sourceTree = "<group>"; };
+		9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_jernbane@2x.gif"; sourceTree = "<group>"; };
 		9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forkjorsveg.h; sourceTree = "<group>"; };
 		9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forkjorsveg.m; sourceTree = "<group>"; };
 		9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forkjorsvei.gif; sourceTree = "<group>"; };
 		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
-		9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opphevet_forkjorsvei.gif; sourceTree = "<group>"; };
-		9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opphevet_forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsdemper.h; sourceTree = "<group>"; };
 		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
@@ -162,6 +172,16 @@
 		9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerLandskap.m; sourceTree = "<group>"; };
 		9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hoydebegrensning.h; sourceTree = "<group>"; };
 		9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hoydebegrensning.m; sourceTree = "<group>"; };
+		9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_elg.gif; sourceTree = "<group>"; };
+		9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_elg@2x.gif"; sourceTree = "<group>"; };
+		9BBF71D617009E2800BEB0C8 /* fareskilt_hjort.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_hjort.gif; sourceTree = "<group>"; };
+		9BBF71D717009E2800BEB0C8 /* fareskilt_hjort@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_hjort@2x.gif"; sourceTree = "<group>"; };
+		9BBF71D817009E2800BEB0C8 /* fareskilt_rein.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_rein.gif; sourceTree = "<group>"; };
+		9BBF71D917009E2800BEB0C8 /* fareskilt_rein@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_rein@2x.gif"; sourceTree = "<group>"; };
+		9BBF71E01700A15B00BEB0C8 /* hoydegrense.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hoydegrense.gif; sourceTree = "<group>"; };
+		9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "hoydegrense@2x.gif"; sourceTree = "<group>"; };
+		9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_fartsdemper.gif; sourceTree = "<group>"; };
+		9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_fartsdemper@2x.gif"; sourceTree = "<group>"; };
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -319,10 +339,20 @@
 		9B7EB80816CD212600484A74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B252B371700C8F400773942 /* fareskilt_jernbane.gif */,
+				9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */,
+				9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */,
+				9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */,
+				9BBF71E01700A15B00BEB0C8 /* hoydegrense.gif */,
+				9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */,
+				9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */,
+				9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */,
+				9BBF71D617009E2800BEB0C8 /* fareskilt_hjort.gif */,
+				9BBF71D717009E2800BEB0C8 /* fareskilt_hjort@2x.gif */,
+				9BBF71D817009E2800BEB0C8 /* fareskilt_rein.gif */,
+				9BBF71D917009E2800BEB0C8 /* fareskilt_rein@2x.gif */,
 				9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */,
 				9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */,
-				9B3C64DD16EAA38A009C0E69 /* opphevet_forkjorsvei.gif */,
-				9B3C64DE16EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif */,
 				9B7EB80916CD212600484A74 /* Vegdata-Info.plist */,
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
@@ -449,9 +479,19 @@
 				9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */,
 				9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */,
 				9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */,
-				9B3C64E116EAA38A009C0E69 /* opphevet_forkjorsvei.gif in Resources */,
-				9B3C64E216EAA38A009C0E69 /* opphevet_forkjorsvei@2x.gif in Resources */,
 				9B79037116F37E4C00F36B82 /* Settings.bundle in Resources */,
+				9BBF71DA17009E2800BEB0C8 /* fareskilt_elg.gif in Resources */,
+				9BBF71DB17009E2800BEB0C8 /* fareskilt_elg@2x.gif in Resources */,
+				9BBF71DC17009E2800BEB0C8 /* fareskilt_hjort.gif in Resources */,
+				9BBF71DD17009E2800BEB0C8 /* fareskilt_hjort@2x.gif in Resources */,
+				9BBF71DE17009E2800BEB0C8 /* fareskilt_rein.gif in Resources */,
+				9BBF71DF17009E2800BEB0C8 /* fareskilt_rein@2x.gif in Resources */,
+				9BBF71E21700A15B00BEB0C8 /* hoydegrense.gif in Resources */,
+				9BBF71E31700A15B00BEB0C8 /* hoydegrense@2x.gif in Resources */,
+				9BBF71E61700AD4100BEB0C8 /* fareskilt_fartsdemper.gif in Resources */,
+				9BBF71E71700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif in Resources */,
+				9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */,
+				9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

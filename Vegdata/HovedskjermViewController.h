@@ -29,10 +29,34 @@
 @property (nonatomic, strong) PosisjonsKontroller * pos;
 @property (nonatomic, strong) VegObjektKontroller * vegObjKont;
 @property (nonatomic, strong) NSDictionary * nyesteData;
+@property (nonatomic, strong) NSArray * layoutArray;
 
-@property (nonatomic, strong) IBOutlet UILabel * fartLabel;
-@property (nonatomic, strong) IBOutlet UIImageView * fartBilde;
-@property (nonatomic, strong) IBOutlet UIImageView * forkjorBilde;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde1;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde2;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde3;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde4;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde5;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde6;
+@property (nonatomic, strong) IBOutlet UIImageView * bilde7;
+
+@property (nonatomic, strong) IBOutlet UILabel * label1;
+@property (nonatomic, strong) IBOutlet UILabel * label2;
+@property (nonatomic, strong) IBOutlet UILabel * label3;
+@property (nonatomic, strong) IBOutlet UILabel * label4;
+@property (nonatomic, strong) IBOutlet UILabel * label5;
+@property (nonatomic, strong) IBOutlet UILabel * label6;
+@property (nonatomic, strong) IBOutlet UILabel * label7;
+
+@property (nonatomic, strong) IBOutlet UILabel * detalj1;
+@property (nonatomic, strong) IBOutlet UILabel * detalj2;
+@property (nonatomic, strong) IBOutlet UILabel * detalj3;
+@property (nonatomic, strong) IBOutlet UILabel * detalj4;
+@property (nonatomic, strong) IBOutlet UILabel * detalj5;
+@property (nonatomic, strong) IBOutlet UILabel * detalj6;
+@property (nonatomic, strong) IBOutlet UILabel * detalj7;
+
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
+
+- (NSArray *)settOppLayoutArray;
 
 @end

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-    // Må overrides for å hindre at klassen kaller [super viewDidLoad]
+    self.layoutArray = [self settOppLayoutArray];
 }
 
 -(NSUInteger)supportedInterfaceOrientations

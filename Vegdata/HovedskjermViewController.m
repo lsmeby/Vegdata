@@ -24,6 +24,7 @@
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
+- (BOOL)erFireTommerRetina;
 @end
 
 @implementation HovedskjermViewController
@@ -35,6 +36,8 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	
     self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self];
+    
+    self.layoutArray = [self settOppLayoutArray];
     
     self.pos = [[PosisjonsKontroller alloc] init];
     self.pos.delegate = self;
@@ -48,22 +51,93 @@
     return YES;
 }
 
+- (NSArray *)settOppLayoutArray
+{
+    NSMutableArray * retur = [[NSMutableArray alloc] init];
+    
+    [retur addObject:@[self.bilde1, self.label1, self.detalj1]];
+    [retur addObject:@[self.bilde2, self.label2, self.detalj2]];
+    [retur addObject:@[self.bilde3, self.label3, self.detalj3]];
+    
+    if(self.erFireTommerRetina)
+    {
+        [retur addObject:@[self.bilde6, self.label6, self.detalj6]];
+        [retur addObject:@[self.bilde7, self.label7, self.detalj7]];
+    }
+    
+    [retur addObject:@[self.bilde4, self.label4, self.detalj4]];
+    
+    if(false) // Hvis HUD-knappen er skjult
+        [retur addObject:@[self.bilde5, self.label5, self.detalj5]];
+    
+    return retur;
+}
+
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp
 {
     if(knapp.isOn)
     {
-        self.fartLabel.transform = CGAffineTransformScale(self.fartLabel.transform, 1.0, -1.0);
-        self.forkjorBilde.transform = CGAffineTransformScale(self.forkjorBilde.transform, 1.0, -1.0);
+        self.bilde1.transform = CGAffineTransformScale(self.bilde1.transform, 1.0, -1.0);
+        self.bilde2.transform = CGAffineTransformScale(self.bilde2.transform, 1.0, -1.0);
+        self.bilde3.transform = CGAffineTransformScale(self.bilde3.transform, 1.0, -1.0);
+        self.bilde4.transform = CGAffineTransformScale(self.bilde4.transform, 1.0, -1.0);
+        self.bilde5.transform = CGAffineTransformScale(self.bilde5.transform, 1.0, -1.0);
+        self.bilde6.transform = CGAffineTransformScale(self.bilde6.transform, 1.0, -1.0);
+        self.bilde7.transform = CGAffineTransformScale(self.bilde7.transform, 1.0, -1.0);
+        
+        self.label1.transform = CGAffineTransformScale(self.label1.transform, 1.0, -1.0);
+        self.label2.transform = CGAffineTransformScale(self.label2.transform, 1.0, -1.0);
+        self.label3.transform = CGAffineTransformScale(self.label3.transform, 1.0, -1.0);
+        self.label4.transform = CGAffineTransformScale(self.label4.transform, 1.0, -1.0);
+        self.label5.transform = CGAffineTransformScale(self.label5.transform, 1.0, -1.0);
+        self.label6.transform = CGAffineTransformScale(self.label6.transform, 1.0, -1.0);
+        self.label7.transform = CGAffineTransformScale(self.label7.transform, 1.0, -1.0);
+        
+        self.detalj1.transform = CGAffineTransformScale(self.detalj1.transform, 1.0, -1.0);
+        self.detalj2.transform = CGAffineTransformScale(self.detalj2.transform, 1.0, -1.0);
+        self.detalj3.transform = CGAffineTransformScale(self.detalj3.transform, 1.0, -1.0);
+        self.detalj4.transform = CGAffineTransformScale(self.detalj4.transform, 1.0, -1.0);
+        self.detalj5.transform = CGAffineTransformScale(self.detalj5.transform, 1.0, -1.0);
+        self.detalj6.transform = CGAffineTransformScale(self.detalj6.transform, 1.0, -1.0);
+        self.detalj7.transform = CGAffineTransformScale(self.detalj7.transform, 1.0, -1.0);
         
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
     else
     {
-        self.fartLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        self.forkjorBilde.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde1.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde2.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde3.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde4.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde5.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde6.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.bilde7.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        
+        self.label1.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label2.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label3.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label4.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label5.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label6.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.label7.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        
+        self.detalj1.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj2.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj3.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj4.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj5.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj6.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.detalj7.transform = CGAffineTransformMakeScale(1.0, 1.0);
         
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
+}
+
+- (BOOL)erFireTommerRetina
+{
+    return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
+            &&
+            [UIScreen mainScreen].bounds.size.height == 568;
 }
 
 #pragma mark - PosisjonDelegate
@@ -84,75 +158,146 @@
 {
     self.nyesteData = data;
     
-    NSString * fart = [data objectForKey:@"fart"];
+    int element = 0;
+    int antallPlasser = [self.layoutArray count];
+    NSArray * rad;
+    NSString * dataObjekt;
     
-    if(fart == nil)
+    
+    // -- FARTSGRENSE --
+    
+    dataObjekt = [data objectForKey:@"fart"];
+    if(dataObjekt != nil && element < antallPlasser)
     {
-        // Fartsgrense skal ikke vises på skjermen
-    }
-    else if([fart isEqualToString:@"-1"])
-    {
-        [self.fartLabel setTextColor:[UIColor grayColor]];
-        self.fartBilde.image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
-    }
-    else
-    {
-        if([fart length] == 3)
-            [self.fartLabel setFont:[UIFont boldSystemFontOfSize:80]];
-        else
-            [self.fartLabel setFont:[UIFont boldSystemFontOfSize:115]];
+        rad = self.layoutArray[element];
         
-        self.fartLabel.text = fart;
-        [self.fartLabel setTextColor:[UIColor blackColor]];
-        self.fartBilde.image = [UIImage imageNamed:@"fartsgrense.gif"];
+        if([dataObjekt isEqualToString:@"-1"])
+        {
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
+            [(UILabel *)rad[1] setTextColor:[UIColor grayColor]];
+        }
+        else
+        {
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense.gif"];
+            ((UILabel *)rad[1]).text = dataObjekt;
+            [(UILabel *)rad[1] setTextColor:[UIColor blackColor]];
+            
+            if(element == 0)
+            {
+                if([dataObjekt length] == 3)
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:70]];
+                else
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:100]];
+            }
+            else if(element < 3)
+            {
+                if([dataObjekt length] == 3)
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:45]];
+                else
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:65]];
+            }
+            else
+            {
+                if([dataObjekt length] == 3)
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:24]];
+                else
+                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:32]];
+            }
+        }
+        
+        ((UILabel *)rad[2]).text = nil;
+        element++;
     }
     
-    NSString * forkjorsveg = [data objectForKey:@"forkjorsveg"];
     
-    if(forkjorsveg == nil)
+    // -- FORKJØRSVEI --
+    
+    dataObjekt = [data objectForKey:@"forkjorsveg"];
+    if(dataObjekt != nil && element < antallPlasser && [dataObjekt isEqualToString:@"yes"])
     {
-        // Forkjørsvei skal ikke vises på skjermen
-    }
-    else if ([forkjorsveg isEqualToString: @"yes"])
-    {
-        self.forkjorBilde.image = [UIImage imageNamed:@"forkjorsvei.gif"];
-    }
-    else
-    {
-        self.forkjorBilde.image = [UIImage imageNamed:@"opphevet_forkjorsvei.gif"];
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"forkjorsvei.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        element++;
     }
     
-    NSString * vilttrekk = [data objectForKey:@"vilttrekk"];
     
-    if(vilttrekk == nil || [vilttrekk isEqualToString:@"-1"])
-    {
-        // Vilttrekk skal ikke vises på skjermen
-    }
-    else
-    {
-        NSLog(@"\n### Viser vilttrekkskilt med: %@", vilttrekk);
-    }
+    // -- VILTTREKK --
     
-    NSString * hoydebegrensning = [data objectForKey:@"hoydebegrensning"];
-    
-    if(hoydebegrensning == nil || [hoydebegrensning isEqualToString:@"-1"])
+    dataObjekt = [data objectForKey:@"vilttrekk"];
+    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
-        // Høydebegrensning skal ikke vises på skjermen
-    }
-    else
-    {
-        NSLog(@"\n### Viser høydebegrensning på %@ meter", hoydebegrensning);
+        rad = self.layoutArray[element];
+        
+        if([dataObjekt isEqualToString:@"Hjort"])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_hjort.gif"];
+        else if([dataObjekt isEqualToString:@"Rein"])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rein.gif"];
+        else
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_elg.gif"];
+        
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        element++;
     }
     
-    NSString * jernbanekryssing = [data objectForKey:@"jernbanekryssing"];
     
-    if(jernbanekryssing == nil || [jernbanekryssing isEqualToString:@"-1"])
+    // -- HØYDEBEGRENSNING --
+
+    dataObjekt = [data objectForKey:@"hoydebegrensning"];
+    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
-        // Jernbanekryssing skal ikke vises på skjermen
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"hoydegrense.gif"];
+        ((UILabel *)rad[1]).text = [dataObjekt stringByAppendingString:@" m"];
+        [(UILabel *)rad[1] setTextColor:[UIColor blackColor]];
+        
+        if(element == 0)
+            [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:45]];
+        else if(element < 3)
+            [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:30]];
+        else
+            [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:15]];
+        
+        ((UILabel *)rad[2]).text = nil;
+        element++;
     }
-    else
+    
+    
+    // -- JERNBANEKRYSSING --
+    
+    dataObjekt = [data objectForKey:@"jernbanekryssing"];
+    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
-        NSLog(@"\n### Viser jernbanekryssing");
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        element++;
+    }
+    
+    
+    // -- FARTSDEMPER --
+    
+    dataObjekt = [data objectForKey:@"fartsdemper"];
+    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    {
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        element++;
+    }
+    
+    
+    while(element < antallPlasser)
+    {
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = nil;
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        element++;
     }
 }
 

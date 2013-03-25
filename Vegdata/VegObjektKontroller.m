@@ -224,7 +224,7 @@
     else if ([objekt isKindOfClass:[Forkjorsveg class]])
         [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
     
-    else if ([objekt isKindOfClass:[Vilttrekk class]])
+    else if ([objekt isKindOfClass:[Vilttrekk class]]) // Må legge til filter for å unngå vilttrekk under/over veien
         [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"];
 }
 
@@ -236,14 +236,14 @@
     else if([objekt isKindOfClass:[Jernbanekryssing class]])
     {
         NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-        if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"])
+        if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"]) // Erstattes av filter
             [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
     }
     
     else if([objekt isKindOfClass:[Fartsdemper class]])
     {
         NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-        if(![demper isEqualToString:@"Rumlefelt"])
+        if(![demper isEqualToString:@"Rumlefelt"]) // Erstattes av filter
             [returDictionary setObject:demper forKey:@"fartsdemper"];
     }
 }
