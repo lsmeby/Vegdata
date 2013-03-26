@@ -224,27 +224,47 @@
     else if ([objekt isKindOfClass:[Forkjorsveg class]])
         [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
     
-    else if ([objekt isKindOfClass:[Vilttrekk class]]) // Må legge til filter for å unngå vilttrekk under/over veien
-        [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"];
+    else if ([objekt isKindOfClass:[Vilttrekk class]])
+    {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_vilttrekk"])
+            [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
+        else
+            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"]; // Trenger filter for å unngå vilttrekk over/under veg
+    }
 }
 
 - (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
 {
     if([objekt isKindOfClass:[Hoydebegrensning class]])
-        [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
+    {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_hoydebegrensning"])
+            [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
+        else
+            [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
+    }
     
     else if([objekt isKindOfClass:[Jernbanekryssing class]])
     {
-        NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-        if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"]) // Erstattes av filter
-            [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_jernbanekryssing"])
+            [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
+        else
+        {
+            NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
+            if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"]) // Erstattes av filter
+                [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+        }
     }
     
     else if([objekt isKindOfClass:[Fartsdemper class]])
     {
-        NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-        if(![demper isEqualToString:@"Rumlefelt"]) // Erstattes av filter
-            [returDictionary setObject:demper forKey:@"fartsdemper"];
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_fartsdemper"])
+            [returDictionary setObject:@"-1" forKey:@"fartsdemper"];
+        else
+        {
+            NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
+            if(![demper isEqualToString:@"Rumlefelt"]) // Erstattes av filter
+                [returDictionary setObject:demper forKey:@"fartsdemper"];
+        }
     }
 }
 

@@ -27,9 +27,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    NSLog(@"didfinishLOADing");
-    NSString * textValue1 = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
-    NSLog(@"textValue1: %@", textValue1);
+    NSString * testVerdi = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
+    if(testVerdi == nil)
+    {
+        NSLog(@"Førstegangsoppstart for appen - setter verdier i settings");
+        NSURL * settingsURL = [[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"]] URLForResource:@"Root" withExtension:@"plist"];
+        NSDictionary * settingsDictionary = [NSDictionary dictionaryWithContentsOfURL:settingsURL];
+        NSArray * settingsArray = [settingsDictionary objectForKey:@"PreferenceSpecifiers"];
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        for(NSDictionary * setting in settingsArray)
+        {
+            NSString * key = [setting objectForKey:@"Key"];
+            if(!key)
+                continue;
+            if(![defaults objectForKey:key])
+                [defaults setObject:[setting objectForKey:@"DefaultValue"] forKey:key];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     return YES;
 }
 							

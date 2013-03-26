@@ -54,7 +54,7 @@
 			<key>Title</key>
 			<string>Jernbanekrysning</string>
 			<key>Key</key>
-			<string>fare_jernbanekrysning</string>
+			<string>fare_jernbanekryssing</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
