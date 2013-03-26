@@ -105,9 +105,25 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
     for(Objekttype * o in sok.objektTyper)
     {
-        NSString * objekttype = [NSString stringWithFormat:@"{id:%@, antall:%@}",
+        NSMutableArray * filtere = [[NSMutableArray alloc] init];
+        for(Filter * f in o.filtere)
+        {
+            NSMutableArray * verdier = [[NSMutableArray alloc] init];
+            for(NSString * verdi in f.verdier)
+                [verdier addObject:[NSString stringWithFormat:@"\"%@\"",verdi]];
+            NSString * verdistring = [verdier componentsJoinedByString:@","];
+            
+            NSString * filter = [NSString stringWithFormat:@"{ type: \"%@\", operator: \"%@\", verdi: [%@]}",
+                                 f.type,
+                                 f.filterOperator,
+                                 verdistring];
+            [filtere addObject:filter];
+        }
+        NSString * filterstring = [filtere componentsJoinedByString:@","];
+        NSString * objekttype = [NSString stringWithFormat:@"{id:%@, antall:%@, filter: [%@]}",
                                  o.typeId.stringValue,
-                                 o.antall.stringValue];
+                                 o.antall.stringValue,
+                                 filterstring];
         [objekttyper addObject:objekttype];
     }
     NSString * objekttypestring = [objekttyper componentsJoinedByString:@","];
