@@ -27,6 +27,8 @@
 
 @implementation Vegobjekt
 
+@dynamic egenskaper, veglenker;
+
 + (RKObjectMapping *) standardMappingMedKontainerKlasse:(Class)kontainerklasse
 {
     if(![kontainerklasse isSubclassOfClass:[SokResultater class]])
@@ -56,6 +58,7 @@
 @end
 
 @implementation LinjeObjekt
+@dynamic strekningsLengde;
 @end
 
 @implementation PunktObjekt

@@ -24,6 +24,52 @@
 
 @implementation AppDelegate
 
+- (NSManagedObjectContext *) managedObjectContext
+{
+    if (self.managedObjectContext != nil)
+        return self.managedObjectContext;
+    
+    NSPersistentStoreCoordinator * coordinator = [self persistentStoreCoordinator];
+    
+    if(coordinator != nil)
+    {
+        self.managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [self.managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    
+    return self.managedObjectContext;
+}
+
+- (NSManagedObjectModel *) managedObjectModel
+{
+    if(self.managedObjectModel != nil)
+        return self.managedObjectModel;
+    
+    self.managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] init];
+    return self.managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *) persistentStoreCoordinator
+{
+    if(self.persistentStoreCoordinator != nil)
+        return self.persistentStoreCoordinator;
+    
+    NSURL * storeUrl = [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Vegdata.sqlite"]];
+    
+    self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSError * error = nil;
+    
+    if(![self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error])
+        NSLog(@"\n### Feil: %@", error.description);
+    
+    return self.persistentStoreCoordinator;
+}
+
+- (NSString *)applicationDocumentsDirectory
+{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) lastObject];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

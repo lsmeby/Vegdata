@@ -24,6 +24,12 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic, strong) NSManagedObjectModel * managedObjectModel;
+@property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
+@property (nonatomic, strong) NSPersistentStoreCoordinator * persistentStoreCoordinator;
+
 @property (strong, nonatomic) UIWindow *window;
+
+- (NSString *)applicationDocumentsDirectory;
 
 @end

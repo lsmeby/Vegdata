@@ -24,8 +24,12 @@
 
 @class Sok;
 
-@interface NVDB_DataProvider : NSObject
+@interface NVDB_DataProvider : NSObject <NSFetchedResultsControllerDelegate>
 
+@property (nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
+
+- (id)initMedManagedObjectContrext:(NSManagedObjectContext *)context;
 - (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok Mapping:(RKMapping *)mapping OgAvsender:(NSObject *)avsender;
 

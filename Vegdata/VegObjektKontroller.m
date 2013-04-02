@@ -52,10 +52,10 @@
 
 @synthesize delegate;
 
-- (id)initMedDelegate:(id)aDelegate
+- (id)initMedDelegate:(id)delegat OgManagedObjectContext:(NSManagedObjectContext *)context
 {
-    self.delegate = aDelegate;
-    dataProv = [[NVDB_DataProvider alloc] init];
+    self.delegate = delegate;
+    dataProv = [[NVDB_DataProvider alloc] initMedManagedObjectContrext:context];
     return self;
 }
 

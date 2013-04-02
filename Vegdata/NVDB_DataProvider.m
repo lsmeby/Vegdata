@@ -40,8 +40,12 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     NVDB_RESTkit * restkit;
 }
 
-- (id)init
+@synthesize fetchedResultsController, managedObjectContext;
+
+- (id)initMedManagedObjectContrext:(NSManagedObjectContext *)context
 {
+    fetchedResultsController = [[NSFetchedResultsController alloc] init];
+    managedObjectContext = context;
     restkit = [NVDB_RESTkit alloc];
     return self;
 }

@@ -39,7 +39,7 @@
 @property (nonatomic, strong) Vegreferanse * vegRef;
 @property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
 
-- (id)initMedDelegate:(id)delegate;
+- (id)initMedDelegate:(id)delegat OgManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 
 @end

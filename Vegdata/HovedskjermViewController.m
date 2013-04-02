@@ -21,6 +21,7 @@
 //
 
 #import "HovedskjermViewController.h"
+#import "AppDelegate.h"
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
@@ -35,7 +36,9 @@
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	
-    self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self];
+    self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self
+                                            OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate]
+                                                                    managedObjectContext]];
     
     self.layoutArray = [self settOppLayoutArray];
     
