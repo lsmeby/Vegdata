@@ -36,9 +36,11 @@
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	
+//    self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self
+//                                            OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate]
+//                                                                    managedObjectContext]];
     self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self
-                                            OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate]
-                                                                    managedObjectContext]];
+                                            OgManagedObjectContext:nil];
     
     self.layoutArray = [self settOppLayoutArray];
     
