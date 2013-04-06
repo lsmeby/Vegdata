@@ -30,6 +30,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (NSString *)applicationDocumentsDirectory;
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
 
 @end

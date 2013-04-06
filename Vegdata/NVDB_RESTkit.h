@@ -24,13 +24,13 @@
 
 @protocol NVDBResponseDelegate
 @required
-- (void) svarFraNVDBMedResultat:(NSArray *)resultat;
+- (void) svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId;
 @end
 
 @interface NVDB_RESTkit : NSObject
 
 @property (nonatomic, assign) id delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgkeyPath:(NSString *)keyPath;
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath OgVeglenkeId:(NSNumber *)lenkeId;
 
 @end

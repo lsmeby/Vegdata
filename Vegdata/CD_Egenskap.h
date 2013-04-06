@@ -1,5 +1,5 @@
 //
-//  CD_Fartsgrense.m
+//  CD_Egenskap.h
 //  Vegdata
 //
 //  Created by Lars Smeby on 06.04.13.
@@ -20,10 +20,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Fartsgrense.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
+@class CD_Vegobjekt;
 
-@implementation CD_Fartsgrense
+@interface CD_Egenskap : NSManagedObject
 
+@property (nonatomic, retain) NSString * navn;
+@property (nonatomic, retain) NSString * verdi;
+@property (nonatomic, retain) CD_Vegobjekt *vegobjekt;
 
 @end

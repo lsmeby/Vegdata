@@ -27,7 +27,7 @@
 
 @implementation Vegobjekt
 
-@dynamic egenskaper, veglenker;
+@synthesize egenskaper, veglenker;
 
 + (RKObjectMapping *) standardMappingMedKontainerKlasse:(Class)kontainerklasse
 {
@@ -58,7 +58,7 @@
 @end
 
 @implementation LinjeObjekt
-@dynamic strekningsLengde;
+@synthesize strekningsLengde;
 @end
 
 @implementation PunktObjekt

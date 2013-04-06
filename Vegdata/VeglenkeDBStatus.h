@@ -1,5 +1,5 @@
 //
-//  CD_Fartsgrense.m
+//  VeglenkeDBStatus.h
 //  Vegdata
 //
 //  Created by Lars Smeby on 06.04.13.
@@ -20,10 +20,23 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Fartsgrense.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
+@class CD_Vegobjekt;
 
-@implementation CD_Fartsgrense
+@interface VeglenkeDBStatus : NSManagedObject
 
+@property (nonatomic, retain) NSDate * sistOppdatert;
+@property (nonatomic, retain) NSNumber * veglenkeId;
+@property (nonatomic, retain) NSSet * vegobjekter;
+@end
+
+@interface VeglenkeDBStatus (CoreDataGeneratedAccessors)
+
+- (void)addVegobjekterObject:(CD_Vegobjekt *)value;
+- (void)removeVegobjekterObject:(CD_Vegobjekt *)value;
+- (void)addVegobjekter:(NSSet *)values;
+- (void)removeVegobjekter:(NSSet *)values;
 
 @end

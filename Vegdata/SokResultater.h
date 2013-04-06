@@ -23,6 +23,7 @@
 
 @interface SokResultater : NSObject
 @property (nonatomic, strong) NSArray * objekter;
+-(id)initMedObjekter:(NSArray *)aObjekter;
 @end
 
 @interface Fartsgrenser : SokResultater

@@ -14,7 +14,6 @@
 		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
 		9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B371700C8F400773942 /* fareskilt_jernbane.gif */; };
 		9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */; };
-		9B367A01170DF07E00C26025 /* CD_Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */; };
 		9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */; };
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
@@ -64,6 +63,18 @@
 		9BBF71E31700A15B00BEB0C8 /* hoydegrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */; };
 		9BBF71E61700AD4100BEB0C8 /* fareskilt_fartsdemper.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */; };
 		9BBF71E71700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */; };
+		9BD1A0801710620D0099ACAD /* CD_Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A07F1710620D0099ACAD /* CD_Fartsgrense.m */; };
+		9BD1A083171063EE0099ACAD /* CD_Vegobjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A082171063EE0099ACAD /* CD_Vegobjekt.m */; };
+		9BD1A0861710641B0099ACAD /* CD_LinjeObjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A0851710641B0099ACAD /* CD_LinjeObjekt.m */; };
+		9BD1A089171064420099ACAD /* CD_PunktObjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A088171064420099ACAD /* CD_PunktObjekt.m */; };
+		9BD1A08C171064A00099ACAD /* CD_Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A08B171064A00099ACAD /* CD_Fartsdemper.m */; };
+		9BD1A08F171064A90099ACAD /* CD_Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A08E171064A90099ACAD /* CD_Hoydebegrensning.m */; };
+		9BD1A092171064B80099ACAD /* CD_Jernbanekryssing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A091171064B70099ACAD /* CD_Jernbanekryssing.m */; };
+		9BD1A095171064C30099ACAD /* CD_Vilttrekk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */; };
+		9BD1A098171064CD0099ACAD /* CD_Forkjorsvei.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */; };
+		9BD1A09B171064DD0099ACAD /* CD_Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */; };
+		9BD1A09E171065040099ACAD /* CD_Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A09D171065030099ACAD /* CD_Veglenke.m */; };
+		9BD1A0A11710654B0099ACAD /* VeglenkeDBStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A0A01710654B0099ACAD /* VeglenkeDBStatus.m */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
 /* End PBXBuildFile section */
@@ -119,8 +130,6 @@
 		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
 		9B252B371700C8F400773942 /* fareskilt_jernbane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_jernbane.gif; sourceTree = "<group>"; };
 		9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_jernbane@2x.gif"; sourceTree = "<group>"; };
-		9B3679FF170DF07E00C26025 /* CD_Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Fartsgrense.h; sourceTree = "<group>"; };
-		9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Fartsgrense.m; sourceTree = "<group>"; };
 		9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forkjorsveg.h; sourceTree = "<group>"; };
 		9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forkjorsveg.m; sourceTree = "<group>"; };
 		9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forkjorsvei.gif; sourceTree = "<group>"; };
@@ -187,6 +196,30 @@
 		9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "hoydegrense@2x.gif"; sourceTree = "<group>"; };
 		9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_fartsdemper.gif; sourceTree = "<group>"; };
 		9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_fartsdemper@2x.gif"; sourceTree = "<group>"; };
+		9BD1A07E1710620D0099ACAD /* CD_Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Fartsgrense.h; sourceTree = "<group>"; };
+		9BD1A07F1710620D0099ACAD /* CD_Fartsgrense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Fartsgrense.m; sourceTree = "<group>"; };
+		9BD1A081171063EE0099ACAD /* CD_Vegobjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Vegobjekt.h; sourceTree = "<group>"; };
+		9BD1A082171063EE0099ACAD /* CD_Vegobjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Vegobjekt.m; sourceTree = "<group>"; };
+		9BD1A0841710641B0099ACAD /* CD_LinjeObjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_LinjeObjekt.h; sourceTree = "<group>"; };
+		9BD1A0851710641B0099ACAD /* CD_LinjeObjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_LinjeObjekt.m; sourceTree = "<group>"; };
+		9BD1A087171064420099ACAD /* CD_PunktObjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_PunktObjekt.h; sourceTree = "<group>"; };
+		9BD1A088171064420099ACAD /* CD_PunktObjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_PunktObjekt.m; sourceTree = "<group>"; };
+		9BD1A08A171064A00099ACAD /* CD_Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Fartsdemper.h; sourceTree = "<group>"; };
+		9BD1A08B171064A00099ACAD /* CD_Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Fartsdemper.m; sourceTree = "<group>"; };
+		9BD1A08D171064A90099ACAD /* CD_Hoydebegrensning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Hoydebegrensning.h; sourceTree = "<group>"; };
+		9BD1A08E171064A90099ACAD /* CD_Hoydebegrensning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Hoydebegrensning.m; sourceTree = "<group>"; };
+		9BD1A090171064B70099ACAD /* CD_Jernbanekryssing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Jernbanekryssing.h; sourceTree = "<group>"; };
+		9BD1A091171064B70099ACAD /* CD_Jernbanekryssing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Jernbanekryssing.m; sourceTree = "<group>"; };
+		9BD1A093171064C20099ACAD /* CD_Vilttrekk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Vilttrekk.h; sourceTree = "<group>"; };
+		9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Vilttrekk.m; sourceTree = "<group>"; };
+		9BD1A096171064CC0099ACAD /* CD_Forkjorsvei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Forkjorsvei.h; sourceTree = "<group>"; };
+		9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Forkjorsvei.m; sourceTree = "<group>"; };
+		9BD1A099171064DD0099ACAD /* CD_Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Egenskap.h; sourceTree = "<group>"; };
+		9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Egenskap.m; sourceTree = "<group>"; };
+		9BD1A09C171065030099ACAD /* CD_Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Veglenke.h; sourceTree = "<group>"; };
+		9BD1A09D171065030099ACAD /* CD_Veglenke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Veglenke.m; sourceTree = "<group>"; };
+		9BD1A09F1710654A0099ACAD /* VeglenkeDBStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeglenkeDBStatus.h; sourceTree = "<group>"; };
+		9BD1A0A01710654B0099ACAD /* VeglenkeDBStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeglenkeDBStatus.m; sourceTree = "<group>"; };
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -298,8 +331,30 @@
 			isa = PBXGroup;
 			children = (
 				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
-				9B3679FF170DF07E00C26025 /* CD_Fartsgrense.h */,
-				9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */,
+				9BD1A09F1710654A0099ACAD /* VeglenkeDBStatus.h */,
+				9BD1A0A01710654B0099ACAD /* VeglenkeDBStatus.m */,
+				9BD1A09C171065030099ACAD /* CD_Veglenke.h */,
+				9BD1A09D171065030099ACAD /* CD_Veglenke.m */,
+				9BD1A099171064DD0099ACAD /* CD_Egenskap.h */,
+				9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */,
+				9BD1A096171064CC0099ACAD /* CD_Forkjorsvei.h */,
+				9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */,
+				9BD1A093171064C20099ACAD /* CD_Vilttrekk.h */,
+				9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */,
+				9BD1A090171064B70099ACAD /* CD_Jernbanekryssing.h */,
+				9BD1A091171064B70099ACAD /* CD_Jernbanekryssing.m */,
+				9BD1A08D171064A90099ACAD /* CD_Hoydebegrensning.h */,
+				9BD1A08E171064A90099ACAD /* CD_Hoydebegrensning.m */,
+				9BD1A08A171064A00099ACAD /* CD_Fartsdemper.h */,
+				9BD1A08B171064A00099ACAD /* CD_Fartsdemper.m */,
+				9BD1A087171064420099ACAD /* CD_PunktObjekt.h */,
+				9BD1A088171064420099ACAD /* CD_PunktObjekt.m */,
+				9BD1A0841710641B0099ACAD /* CD_LinjeObjekt.h */,
+				9BD1A0851710641B0099ACAD /* CD_LinjeObjekt.m */,
+				9BD1A081171063EE0099ACAD /* CD_Vegobjekt.h */,
+				9BD1A082171063EE0099ACAD /* CD_Vegobjekt.m */,
+				9BD1A07E1710620D0099ACAD /* CD_Fartsgrense.h */,
+				9BD1A07F1710620D0099ACAD /* CD_Fartsgrense.m */,
 			);
 			name = "CoreData-objekter";
 			sourceTree = "<group>";
@@ -540,7 +595,18 @@
 				9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */,
 				9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */,
 				9B59948A170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld in Sources */,
-				9B367A01170DF07E00C26025 /* CD_Fartsgrense.m in Sources */,
+				9BD1A0801710620D0099ACAD /* CD_Fartsgrense.m in Sources */,
+				9BD1A083171063EE0099ACAD /* CD_Vegobjekt.m in Sources */,
+				9BD1A0861710641B0099ACAD /* CD_LinjeObjekt.m in Sources */,
+				9BD1A089171064420099ACAD /* CD_PunktObjekt.m in Sources */,
+				9BD1A08C171064A00099ACAD /* CD_Fartsdemper.m in Sources */,
+				9BD1A08F171064A90099ACAD /* CD_Hoydebegrensning.m in Sources */,
+				9BD1A092171064B80099ACAD /* CD_Jernbanekryssing.m in Sources */,
+				9BD1A095171064C30099ACAD /* CD_Vilttrekk.m in Sources */,
+				9BD1A098171064CD0099ACAD /* CD_Forkjorsvei.m in Sources */,
+				9BD1A09B171064DD0099ACAD /* CD_Egenskap.m in Sources */,
+				9BD1A09E171065040099ACAD /* CD_Veglenke.m in Sources */,
+				9BD1A0A11710654B0099ACAD /* VeglenkeDBStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

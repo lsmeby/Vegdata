@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="CD_Egenskap" syncable="YES">
+    <entity name="CD_Egenskap" representedClassName="CD_Egenskap" syncable="YES">
         <attribute name="navn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verdi" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="vegobjekt" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="egenskaper" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
-    <entity name="CD_Fartsdemper" representedClassName="" parentEntity="CD_PunktObjekt" syncable="YES"/>
+    <entity name="CD_Fartsdemper" representedClassName="CD_Fartsdemper" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Fartsgrense" representedClassName="CD_Fartsgrense" parentEntity="CD_LinjeObjekt" syncable="YES"/>
-    <entity name="CD_Forkjorsvei" representedClassName="" parentEntity="CD_LinjeObjekt" syncable="YES"/>
-    <entity name="CD_Hoydebegrensning" representedClassName="" parentEntity="CD_PunktObjekt" syncable="YES"/>
-    <entity name="CD_Jernbanekryssing" representedClassName="" parentEntity="CD_PunktObjekt" syncable="YES"/>
-    <entity name="CD_LinjeObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES">
+    <entity name="CD_Forkjorsvei" representedClassName="CD_Forkjorsvei" parentEntity="CD_LinjeObjekt" syncable="YES"/>
+    <entity name="CD_Hoydebegrensning" representedClassName="CD_Hoydebegrensning" parentEntity="CD_PunktObjekt" syncable="YES"/>
+    <entity name="CD_Jernbanekryssing" representedClassName="CD_Jernbanekryssing" parentEntity="CD_PunktObjekt" syncable="YES"/>
+    <entity name="CD_LinjeObjekt" representedClassName="CD_LinjeObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES">
         <attribute name="strekningsLengde" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="CD_PunktObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES"/>
-    <entity name="CD_Veglenke" syncable="YES">
+    <entity name="CD_PunktObjekt" representedClassName="CD_PunktObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES"/>
+    <entity name="CD_Veglenke" representedClassName="CD_Veglenke" syncable="YES">
         <attribute name="fra" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lenkeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="retning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="til" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="vegobjekt" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="veglenker" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
-    <entity name="CD_Vegobjekt" representedClassName="" isAbstract="YES" syncable="YES">
+    <entity name="CD_Vegobjekt" representedClassName="CD_Vegobjekt" isAbstract="YES" syncable="YES">
         <relationship name="egenskaper" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Egenskap" inverseName="vegobjekt" inverseEntity="CD_Egenskap" syncable="YES"/>
         <relationship name="veglenke" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VeglenkeDBStatus" inverseName="vegobjekter" inverseEntity="VeglenkeDBStatus" syncable="YES"/>
         <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
     </entity>
-    <entity name="CD_Vilttrekk" representedClassName="" parentEntity="CD_LinjeObjekt" syncable="YES"/>
-    <entity name="VeglenkeDBStatus" syncable="YES">
-        <attribute name="sistOppdatert" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="veglenkeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="CD_Vilttrekk" representedClassName="CD_Vilttrekk" parentEntity="CD_LinjeObjekt" syncable="YES"/>
+    <entity name="VeglenkeDBStatus" representedClassName="VeglenkeDBStatus" syncable="YES">
+        <attribute name="sistOppdatert" attributeType="Date" syncable="YES"/>
+        <attribute name="veglenkeId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="vegobjekter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="veglenke" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
     <elements>
         <element name="CD_Egenskap" positionX="207" positionY="-297" width="128" height="88"/>
+        <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
         <element name="CD_Fartsgrense" positionX="187" positionY="153" width="128" height="43"/>
         <element name="CD_Forkjorsvei" positionX="331" positionY="153" width="128" height="43"/>
+        <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
+        <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
         <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
         <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
         <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
-        <element name="VeglenkeDBStatus" positionX="-272" positionY="-189" width="128" height="90"/>
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="88"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
-        <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
-        <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
-        <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
+        <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
     </elements>
 </model>

@@ -20,19 +20,45 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+#import <CoreData/CoreData.h>
 #import "NVDB_DataProvider.h"
 #import "NVDB_RESTkit.h"
+
+// NVDBObjekter
+#import "Fartsgrense.h"
+#import "Forkjorsveg.h"
+#import "Vilttrekk.h"
+#import "Fartsdemper.h"
+#import "Hoydebegrensning.h"
+#import "Jernbanekryssing.h"
 #import "Vegreferanse.h"
 #import "Sok.h"
 #import "Veglenke.h"
+#import "Egenskap.h"
+#import "SokResultater.h"
+
+// Core Data
+#import "VeglenkeDBStatus.h"
+#import "CD_Vegobjekt.h"
+#import "CD_Egenskap.h"
+#import "CD_Veglenke.h"
+#import "CD_PunktObjekt.h"
+#import "CD_LinjeObjekt.h"
+#import "CD_Fartsdemper.h"
+#import "CD_Hoydebegrensning.h"
+#import "CD_Jernbanekryssing.h"
 #import "CD_Fartsgrense.h"
+#import "CD_Forkjorsvei.h"
+#import "CD_Vilttrekk.h"
 
 static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
+static double const SEKUNDER_PER_DAG = 86400;
+static int const DAGER_MELLOM_NY_OPPDATERING = 30;
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
-- (void)hentVegObjekterFraCoreDataMedVeglenkeId:(NSNumber *)id;
+- (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForSok:(Sok *)sok;
@@ -63,13 +89,40 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                  Parametere:[NVDB_DataProvider parametereForKoordinaterMedBreddegrad:breddegrad
                                                                         OgLengdegrad:lengdegrad]
                     Mapping:[Vegreferanse mapping]
-                  OgkeyPath:[Vegreferanse getKeyPath]];
+                    KeyPath:[Vegreferanse getKeyPath]
+               OgVeglenkeId:nil];
 }
 
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
 {
-    //Veglenke * lenke = (Veglenke *)sok.veglenker[0];
-    //if(lenke.lenkeId.intValue)
+    NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:@"VeglenkeDBStatus"
+                                                       inManagedObjectContext:managedObjectContext];
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:veglenkeEntity];
+    
+    NSNumber * vlenke = ((Veglenke *)sok.veglenker[0]).lenkeId;
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(veglenkeId == %@)", vlenke];
+    [request setPredicate:predicate];
+    
+    NSError * feil;
+    NSArray * resultat = [managedObjectContext executeFetchRequest:request error:&feil];
+    
+    if(feil || !resultat || [resultat count] == 0)
+    {
+        if(feil)
+            NSLog(@"\n### Feil ved spørring mot Core Data: %@", feil.description);
+        NSLog(@"\n### Fant ikke veglenken i databasen, spør mot NVDB.");
+    }
+    else
+    {
+        VeglenkeDBStatus * vlenkeDB = (VeglenkeDBStatus *)resultat[0];
+        if([vlenkeDB.sistOppdatert timeIntervalSinceNow] / SEKUNDER_PER_DAG > (- DAGER_MELLOM_NY_OPPDATERING))
+        {
+            [self hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:vlenkeDB];
+            return;
+        }
+        NSLog(@"\n### Lagrede data er eldre enn %d dager, spør mot NVDB.", DAGER_MELLOM_NY_OPPDATERING);
+    }
     
     [self hentVegObjekterFraNVDBMedSokeObjekt:sok OgMapping:mapping];
 }
@@ -79,25 +132,238 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
     [restkit hentDataMedURI:[Sok getURI]
                  Parametere:[NVDB_DataProvider parametereForSok:sok]
                     Mapping:mapping
-                  OgkeyPath:[Sok getKeyPath]];
+                    KeyPath:[Sok getKeyPath]
+               OgVeglenkeId:((Veglenke *)sok.veglenker[0]).lenkeId];
 }
 
-- (void)hentVegObjekterFraCoreDataMedVeglenkeId:(NSNumber *)id
+- (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke
 {
-    CD_Fartsgrense * test;
+    NSArray * objekter = [vlenke.vegobjekter allObjects];
     
+    if(!objekter)
+    {
+        NSLog(@"\n### Feil: Veglenkeobjektet fra Core Data inneholder ingen objekter.");
+        return;
+    }
+    
+    NSMutableArray * fartsgrenser = [[NSMutableArray alloc] init];
+    NSMutableArray * forkjorsveier = [[NSMutableArray alloc] init];
+    NSMutableArray * vilttrekk = [[NSMutableArray alloc] init];
+    NSMutableArray * fartsdempere = [[NSMutableArray alloc] init];
+    NSMutableArray * hoydebegrensninger = [[NSMutableArray alloc] init];
+    NSMutableArray * jernbanekryssinger = [[NSMutableArray alloc] init];
+    
+    for(CD_Vegobjekt * obj in objekter)
+    {
+        NSMutableArray * egenskaper = [[NSMutableArray alloc] initWithCapacity:[obj.egenskaper count]];
+        NSMutableArray * veglenker = [[NSMutableArray alloc] initWithCapacity:[obj.veglenker count]];
+        
+        for(CD_Egenskap * cdEg in obj.egenskaper)
+        {
+            Egenskap * e = [Egenskap alloc];
+            e.navn = cdEg.navn;
+            e.verdi = cdEg.verdi;
+            [egenskaper addObject:e];
+        }
+        
+        for(CD_Veglenke * cdVl in obj.veglenker)
+        {
+            Veglenke * v = [Veglenke alloc];
+            v.lenkeId = cdVl.lenkeId;
+            v.fra = cdVl.fra;
+            v.til = cdVl.til;
+            v.retning = cdVl.retning;
+            [veglenker addObject:v];
+        }
+        
+        if([obj isKindOfClass:[CD_Fartsgrense class]])
+        {
+            Fartsgrense * fartsgrense = [Fartsgrense alloc];
+            fartsgrense.egenskaper = egenskaper;
+            fartsgrense.veglenker = veglenker;
+            fartsgrense.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
+            [fartsgrenser addObject:fartsgrense];
+        }
+        else if([obj isKindOfClass:[CD_Forkjorsvei class]])
+        {
+            Forkjorsveg * forkjorsveg = [Forkjorsveg alloc];
+            forkjorsveg.egenskaper = egenskaper;
+            forkjorsveg.veglenker = veglenker;
+            forkjorsveg.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
+            [forkjorsveier addObject:forkjorsveg];
+        }
+        else if([obj isKindOfClass:[CD_Vilttrekk class]])
+        {
+            Vilttrekk * ettVilttrekk = [Vilttrekk alloc];
+            ettVilttrekk.egenskaper = egenskaper;
+            ettVilttrekk.veglenker = veglenker;
+            ettVilttrekk.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
+            [vilttrekk addObject:ettVilttrekk];
+        }
+        else if([obj isKindOfClass:[CD_Fartsdemper class]])
+        {
+            Fartsdemper * fartsdemper = [Fartsdemper alloc];
+            fartsdemper.egenskaper = egenskaper;
+            fartsdemper.veglenker = veglenker;
+            [fartsdempere addObject:fartsdemper];
+        }
+        else if([obj isKindOfClass:[CD_Hoydebegrensning class]])
+        {
+            Hoydebegrensning * hoydebegrensning = [Hoydebegrensning alloc];
+            hoydebegrensning.egenskaper = egenskaper;
+            hoydebegrensning.veglenker = veglenker;
+            [hoydebegrensninger addObject:hoydebegrensning];
+        }
+        else if([obj isKindOfClass:[CD_Jernbanekryssing class]])
+        {
+            Jernbanekryssing * jernbanekryssing = [Jernbanekryssing alloc];
+            jernbanekryssing.egenskaper = egenskaper;
+            jernbanekryssing.veglenker = veglenker;
+            [jernbanekryssinger addObject:jernbanekryssing];
+        }
+    }
+    
+    Fartsgrenser * s_fartsgrenser = [[Fartsgrenser alloc] initMedObjekter:[fartsgrenser copy]];
+    Forkjorsveger * s_forkjorsveier = [[Forkjorsveger alloc] initMedObjekter:[forkjorsveier copy]];
+    Vilttrekks * s_vilttrekk = [[Vilttrekks alloc] initMedObjekter:[vilttrekk copy]];
+    Fartsdempere * s_fartsdempere = [[Fartsdempere alloc] initMedObjekter:[fartsdempere copy]];
+    Hoydebegrensninger * s_hoydebegrensninger = [[Hoydebegrensninger alloc] initMedObjekter:[hoydebegrensninger copy]];
+    Jernbanekryssinger * s_jernbanekryssinger = [[Jernbanekryssinger alloc] initMedObjekter:[jernbanekryssinger copy]];
+    
+    NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveier, s_vilttrekk,
+                          s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, nil];
+    
+    NSLog(@"\n### Data lastet fra Core Data.");
+    [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:vlenke.veglenkeId];
 }
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId
 {
+    // Lagrer data til Core Data
     if(!(resultat == nil || resultat.count == 0 || [resultat[0] isKindOfClass:[Vegreferanse class]]))
     {
-        // Lagre til Core Data
+        NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:@"VeglenkeDBStatus"
+                                                           inManagedObjectContext:managedObjectContext];
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        [request setEntity:veglenkeEntity];
+        
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(veglenkeId == %@)", lenkeId];
+        [request setPredicate:predicate];
+        
+        NSError * feil;
+        NSArray * eksisterende = [managedObjectContext executeFetchRequest:request error:&feil];
+        
+        if(feil)
+        {
+            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Lagrer ikke data til databasen.", feil.description);
+            [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
+        }
+        
+        // Sletter eksisterende oppføring i databasen
+        if(eksisterende && [eksisterende count] > 0)
+        {
+            for(VeglenkeDBStatus * x in eksisterende)
+            {
+                [managedObjectContext deleteObject:x];
+                
+                feil = nil;
+                [managedObjectContext save:&feil];
+            
+                if(feil)
+                    NSLog(@"\n### Feil ved sletting av objekt fra databasen:%@", feil.description);
+                else
+                    NSLog(@"\n### Objekt ble slettet fra Core Data.");
+            }
+        }
+        
+        NSMutableSet * cdObjekter = [[NSMutableSet alloc] init];
+        
+        for (NSObject * r_obj in resultat)
+        {
+            if ([r_obj isKindOfClass:[SokResultater class]])
+            {
+                SokResultater * s_obj = (SokResultater *)r_obj;
+                
+                if(s_obj.objekter == nil || s_obj.objekter.count == 0)
+                    continue;
+
+                for (Vegobjekt * v_obj in s_obj.objekter)
+                {
+                    NSMutableSet * egenskaper = [[NSMutableSet alloc] init];
+                    NSMutableSet * veglenker = [[NSMutableSet alloc] init];
+                    
+                    for(Egenskap * v_eg in v_obj.egenskaper)
+                    {
+                        CD_Egenskap * e = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Egenskap"
+                                                                        inManagedObjectContext:managedObjectContext];
+                        e.navn = v_eg.navn;
+                        e.verdi = v_eg.verdi;
+                        [egenskaper addObject:e];
+                    }
+                    
+                    for(Veglenke * v_vlenke in v_obj.veglenker)
+                    {
+                        CD_Veglenke * v = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Veglenke"
+                                                                        inManagedObjectContext:managedObjectContext];
+                        v.lenkeId = v_vlenke.lenkeId;
+                        v.fra = v_vlenke.fra;
+                        v.til = v_vlenke.til;
+                        v.retning = v_vlenke.retning;
+                        [veglenker addObject:v];
+                    }
+                    
+                    CD_Vegobjekt * cdVegobj;
+                    
+                    if([v_obj isKindOfClass:[Fartsgrense class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Fartsgrense"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Forkjorsveg class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Forkjorsvei"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Vilttrekk class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Vilttrekk"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Fartsdemper class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Fartsdemper"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Hoydebegrensning class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Hoydebegrensning"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Jernbanekryssing class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Jernbanekryssing"
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else
+                        continue;
+                    
+                    [cdVegobj addEgenskaper:egenskaper];
+                    [cdVegobj addVeglenker:veglenker];
+                    
+                    if([cdVegobj isKindOfClass:[CD_LinjeObjekt class]])
+                        ((CD_LinjeObjekt *)cdVegobj).strekningsLengde = ((LinjeObjekt *)v_obj).strekningsLengde;
+                    
+                    [cdObjekter addObject:cdVegobj];
+                }
+            }
+        }
+        
+        VeglenkeDBStatus * cdStatus = [NSEntityDescription insertNewObjectForEntityForName:@"VeglenkeDBStatus"
+                                                                    inManagedObjectContext:managedObjectContext];
+        cdStatus.sistOppdatert = [[NSDate alloc] init];
+        cdStatus.veglenkeId = lenkeId;
+        [cdStatus addVegobjekter:cdObjekter];
+
+        feil = nil;
+        [managedObjectContext save:&feil];
+
+        if(feil)
+            NSLog(@"\n### Feil ved lagring til Core Data: %@", feil.description);
+        else
+            NSLog(@"\n### Data lagret i databasen.");
     }
-    
-    [delegate svarFraNVDBMedResultat:resultat];
+
+    [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
 }
 
 #pragma mark - Statiske hjelpemetoder

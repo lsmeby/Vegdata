@@ -1,5 +1,5 @@
 //
-//  CD_Fartsgrense.m
+//  CD_PunktObjekt.h
 //  Vegdata
 //
 //  Created by Lars Smeby on 06.04.13.
@@ -20,10 +20,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Fartsgrense.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "CD_Vegobjekt.h"
 
 
-@implementation CD_Fartsgrense
+@interface CD_PunktObjekt : CD_Vegobjekt
 
 
 @end

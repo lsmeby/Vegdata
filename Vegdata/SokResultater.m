@@ -23,6 +23,13 @@
 #import "SokResultater.h"
 
 @implementation SokResultater
+
+-(id)initMedObjekter:(NSArray *)aObjekter
+{
+    self.objekter = aObjekter;
+    return self;
+}
+
 @end
 
 @implementation Fartsgrenser

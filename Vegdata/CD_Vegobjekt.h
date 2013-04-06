@@ -1,5 +1,5 @@
 //
-//  CD_Fartsgrense.m
+//  CD_Vegobjekt.h
 //  Vegdata
 //
 //  Created by Lars Smeby on 06.04.13.
@@ -20,10 +20,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Fartsgrense.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 
-@implementation CD_Fartsgrense
+@interface CD_Vegobjekt : NSManagedObject
 
+@property (nonatomic, retain) NSSet *egenskaper;
+@property (nonatomic, retain) NSManagedObject *veglenke;
+@property (nonatomic, retain) NSSet *veglenker;
+@end
+
+@interface CD_Vegobjekt (CoreDataGeneratedAccessors)
+
+- (void)addEgenskaperObject:(NSManagedObject *)value;
+- (void)removeEgenskaperObject:(NSManagedObject *)value;
+- (void)addEgenskaper:(NSSet *)values;
+- (void)removeEgenskaper:(NSSet *)values;
+
+- (void)addVeglenkerObject:(NSManagedObject *)value;
+- (void)removeVeglenkerObject:(NSManagedObject *)value;
+- (void)addVeglenker:(NSSet *)values;
+- (void)removeVeglenker:(NSSet *)values;
 
 @end

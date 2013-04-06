@@ -1,5 +1,5 @@
 //
-//  CD_Fartsgrense.m
+//  CD_Egenskap.m
 //  Vegdata
 //
 //  Created by Lars Smeby on 06.04.13.
@@ -20,10 +20,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Fartsgrense.h"
+#import "CD_Egenskap.h"
+#import "CD_Vegobjekt.h"
 
 
-@implementation CD_Fartsgrense
+@implementation CD_Egenskap
 
+@dynamic navn;
+@dynamic verdi;
+@dynamic vegobjekt;
 
 @end
