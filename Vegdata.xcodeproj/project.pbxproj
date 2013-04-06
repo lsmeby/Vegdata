@@ -14,6 +14,7 @@
 		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
 		9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B371700C8F400773942 /* fareskilt_jernbane.gif */; };
 		9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */; };
+		9B367A01170DF07E00C26025 /* CD_Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */; };
 		9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */; };
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
@@ -118,6 +119,8 @@
 		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
 		9B252B371700C8F400773942 /* fareskilt_jernbane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_jernbane.gif; sourceTree = "<group>"; };
 		9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_jernbane@2x.gif"; sourceTree = "<group>"; };
+		9B3679FF170DF07E00C26025 /* CD_Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Fartsgrense.h; sourceTree = "<group>"; };
+		9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Fartsgrense.m; sourceTree = "<group>"; };
 		9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forkjorsveg.h; sourceTree = "<group>"; };
 		9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forkjorsveg.m; sourceTree = "<group>"; };
 		9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forkjorsvei.gif; sourceTree = "<group>"; };
@@ -215,6 +218,7 @@
 		9B232AB016D50965008FCC43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9B3679FB170DEF8E00C26025 /* CoreData-objekter */,
 				9B232AB416D50A51008FCC43 /* ProgramObjekter */,
 				9B232AB316D509B3008FCC43 /* NVDBObjekter */,
 			);
@@ -288,6 +292,16 @@
 				9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */,
 			);
 			name = ProgramObjekter;
+			sourceTree = "<group>";
+		};
+		9B3679FB170DEF8E00C26025 /* CoreData-objekter */ = {
+			isa = PBXGroup;
+			children = (
+				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
+				9B3679FF170DF07E00C26025 /* CD_Fartsgrense.h */,
+				9B367A00170DF07E00C26025 /* CD_Fartsgrense.m */,
+			);
+			name = "CoreData-objekter";
 			sourceTree = "<group>";
 		};
 		9B7EB7F516CD212600484A74 = {
@@ -366,7 +380,6 @@
 				9B7EB81316CD212600484A74 /* Default.png */,
 				9B7EB81516CD212600484A74 /* Default@2x.png */,
 				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
-				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -527,6 +540,7 @@
 				9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */,
 				9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */,
 				9B59948A170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld in Sources */,
+				9B367A01170DF07E00C26025 /* CD_Fartsgrense.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

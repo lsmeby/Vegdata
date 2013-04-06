@@ -21,16 +21,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NVDB_RESTkit.h"
 
 @class Sok;
 
-@interface NVDB_DataProvider : NSObject <NSFetchedResultsControllerDelegate>
+@interface NVDB_DataProvider : NSObject <NSFetchedResultsControllerDelegate, NVDBResponseDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 
-- (id)initMedManagedObjectContrext:(NSManagedObjectContext *)context;
-- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender;
-- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok Mapping:(RKMapping *)mapping OgAvsender:(NSObject *)avsender;
+- (id)initMedManagedObjectContext:(NSManagedObjectContext *)context OgAvsender:(NSObject *)aAvsender;
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
+- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
 
 @end

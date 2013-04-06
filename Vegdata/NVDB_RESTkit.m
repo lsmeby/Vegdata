@@ -38,7 +38,7 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:keyPath statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     RKObjectManager * objectManager = [[RKObjectManager alloc] initWithHTTPClient:klient];
-//    objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
+
     [objectManager addResponseDescriptor:responseDescriptor];
     
     NSString * fullURI = [NVDB_GRUNN_URL stringByAppendingString:uri];

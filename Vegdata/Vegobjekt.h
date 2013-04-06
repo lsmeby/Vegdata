@@ -29,7 +29,7 @@
 + (RKObjectMapping *)mapping;
 @end
 
-@interface Vegobjekt : NSManagedObject
+@interface Vegobjekt : NSObject
 
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;

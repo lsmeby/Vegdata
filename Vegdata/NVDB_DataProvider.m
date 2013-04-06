@@ -25,11 +25,14 @@
 #import "Vegreferanse.h"
 #import "Sok.h"
 #import "Veglenke.h"
+#import "CD_Fartsgrense.h"
 
 static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
 
 @interface NVDB_DataProvider()
+- (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
+- (void)hentVegObjekterFraCoreDataMedVeglenkeId:(NSNumber *)id;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForSok:(Sok *)sok;
@@ -38,21 +41,24 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
 @implementation NVDB_DataProvider
 {
     NVDB_RESTkit * restkit;
+    id delegate;
 }
 
 @synthesize fetchedResultsController, managedObjectContext;
 
-- (id)initMedManagedObjectContrext:(NSManagedObjectContext *)context
+- (id)initMedManagedObjectContext:(NSManagedObjectContext *)context OgAvsender:(NSObject *)aAvsender
 {
     fetchedResultsController = [[NSFetchedResultsController alloc] init];
     managedObjectContext = context;
     restkit = [NVDB_RESTkit alloc];
+    restkit.delegate = self;
+    delegate = aAvsender;
+    
     return self;
 }
 
-- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgAvsender:(NSObject *)avsender
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    restkit.delegate = avsender;
     [restkit hentDataMedURI:[Vegreferanse getURI]
                  Parametere:[NVDB_DataProvider parametereForKoordinaterMedBreddegrad:breddegrad
                                                                         OgLengdegrad:lengdegrad]
@@ -60,13 +66,38 @@ static double const WGS84_BBOX_RADIUS = 0.0001;
                   OgkeyPath:[Vegreferanse getKeyPath]];
 }
 
-- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok Mapping:(RKMapping *)mapping OgAvsender:(NSObject *)avsender
+- (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
 {
-    restkit.delegate = avsender;
+    //Veglenke * lenke = (Veglenke *)sok.veglenker[0];
+    //if(lenke.lenkeId.intValue)
+    
+    [self hentVegObjekterFraNVDBMedSokeObjekt:sok OgMapping:mapping];
+}
+
+- (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
+{
     [restkit hentDataMedURI:[Sok getURI]
                  Parametere:[NVDB_DataProvider parametereForSok:sok]
                     Mapping:mapping
                   OgkeyPath:[Sok getKeyPath]];
+}
+
+- (void)hentVegObjekterFraCoreDataMedVeglenkeId:(NSNumber *)id
+{
+    CD_Fartsgrense * test;
+    
+}
+
+#pragma mark - NVDBResponseDelegate
+
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat
+{
+    if(!(resultat == nil || resultat.count == 0 || [resultat[0] isKindOfClass:[Vegreferanse class]]))
+    {
+        // Lagre til Core Data
+    }
+    
+    [delegate svarFraNVDBMedResultat:resultat];
 }
 
 #pragma mark - Statiske hjelpemetoder

@@ -54,14 +54,14 @@
 
 - (id)initMedDelegate:(id)delegat OgManagedObjectContext:(NSManagedObjectContext *)context
 {
-    self.delegate = delegate;
-    dataProv = [[NVDB_DataProvider alloc] initMedManagedObjectContrext:context];
+    self.delegate = delegat;
+    dataProv = [[NVDB_DataProvider alloc] initMedManagedObjectContext:context OgAvsender:self];
     return self;
 }
 
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgAvsender:self];
+    [dataProv hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
 }
 
 #pragma mark - Metoder som forbereder og utfører søk mot dataprovideren
@@ -77,7 +77,7 @@
     
     RKDynamicMapping * mapping = [self hentObjektMapping];
     
-    [dataProv hentVegObjekterMedSokeObjekt:sokObjekt Mapping:mapping OgAvsender:self];
+    [dataProv hentVegObjekterMedSokeObjekt:sokObjekt OgMapping:mapping];
 }
 
 - (NSArray *)hentObjekttyper
