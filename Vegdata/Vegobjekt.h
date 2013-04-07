@@ -33,6 +33,7 @@
 
 @property (nonatomic, strong) NSArray * egenskaper;
 @property (nonatomic, strong) NSArray * veglenker;
+@property (nonatomic, strong) NSString * lokasjon;
 
 + (RKObjectMapping *)standardMappingMedKontainerKlasse:(Class)kontainerklasse;
 

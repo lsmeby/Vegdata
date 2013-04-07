@@ -22,6 +22,7 @@
         <relationship name="vegobjekt" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="veglenker" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
     <entity name="CD_Vegobjekt" representedClassName="CD_Vegobjekt" isAbstract="YES" syncable="YES">
+        <attribute name="lokasjon" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="egenskaper" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Egenskap" inverseName="vegobjekt" inverseEntity="CD_Egenskap" syncable="YES"/>
         <relationship name="veglenke" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VeglenkeDBStatus" inverseName="vegobjekter" inverseEntity="VeglenkeDBStatus" syncable="YES"/>
         <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
@@ -42,7 +43,7 @@
         <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
         <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
         <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
-        <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="88"/>
+        <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
         <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
     </elements>

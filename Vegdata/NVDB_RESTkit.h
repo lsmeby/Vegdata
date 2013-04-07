@@ -25,6 +25,7 @@
 @protocol NVDBResponseDelegate
 @required
 - (void) svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId;
+- (void) svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key;
 @end
 
 @interface NVDB_RESTkit : NSObject
@@ -32,5 +33,6 @@
 @property (nonatomic, assign) id delegate;
 
 - (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath OgVeglenkeId:(NSNumber *)lenkeId;
+- (void) hentAvstandMellomKoordinaterMedParametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgKey:(NSString *)key;
 
 @end

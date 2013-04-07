@@ -26,7 +26,7 @@
 
 @implementation Fartsgrense
 
-@synthesize strekningsLengde, egenskaper, veglenker;
+@synthesize strekningsLengde, egenskaper, veglenker, lokasjon;
 
 - (NSString *)hentFartFraEgenskaper
 {

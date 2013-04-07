@@ -33,6 +33,7 @@
 
 + (NSString *)getURI;
 + (NSString *)getKeyPath;
++ (NSDictionary *)hentKoordinaterFraNVDBString:(NSString *)koordinatStreng;
 
 - (NSDictionary *)hentKoordinater;
 

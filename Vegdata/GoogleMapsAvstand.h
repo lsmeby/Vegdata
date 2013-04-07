@@ -1,8 +1,8 @@
 //
-//  Jernbanekryssing.m
+//  GoogleMapsAvstand.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 20.03.13.
+//  Created by Lars Smeby on 07.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,29 +20,24 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Jernbanekryssing.h"
-#import "SokResultater.h"
-#import "Egenskap.h"
+#import <Foundation/Foundation.h>
 
-@implementation Jernbanekryssing
+@interface GoogleMapsAvstand : NSObject
+@property (nonatomic, strong) NSString * status;
+@property (nonatomic, strong) NSArray * rader;
++ (RKObjectMapping *)mapping;
+@end
 
-@synthesize egenskaper, veglenker, lokasjon;
+@interface Rad : NSObject
+@property (nonatomic, strong) NSArray * elementer;
+@end
 
-- (NSString *)hentTypeFraEgenskaper
-{
-    for (Egenskap * e in egenskaper)
-    {
-        if([e.navn isEqualToString:@"Type"])
-        {
-            return e.verdi;
-        }
-    }
-    return @"-1";
-}
+@class Avstand;
+@interface Element : NSObject
+@property (nonatomic, strong) Avstand * avstand;
+@end
 
-+(RKObjectMapping *)mapping
-{
-    return [self standardMappingMedKontainerKlasse:[Jernbanekryssinger class]];
-}
-
+@interface Avstand : NSObject
+@property (nonatomic, strong) NSString * tekst;
+@property (nonatomic, strong) NSNumber * verdi;
 @end

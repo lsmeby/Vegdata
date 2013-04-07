@@ -23,6 +23,7 @@
 #import "HovedskjermViewController.h"
 #import "AppDelegate.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "GoogleMapsAvstand.h"
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
@@ -59,24 +60,32 @@
     return YES;
 }
 
-- (NSArray *)settOppLayoutArray
+- (NSMutableArray *)settOppLayoutArray
 {
+    self.key1 = @"";
+    self.key2 = @"";
+    self.key3 = @"";
+    self.key4 = @"";
+    self.key5 = @"";
+    self.key6 = @"";
+    self.key7 = @"";
+    
     NSMutableArray * retur = [[NSMutableArray alloc] init];
     
-    [retur addObject:@[self.bilde1, self.label1, self.detalj1]];
-    [retur addObject:@[self.bilde2, self.label2, self.detalj2]];
-    [retur addObject:@[self.bilde3, self.label3, self.detalj3]];
+    [retur addObject:[@[self.bilde1, self.label1, self.detalj1, self.key1] mutableCopy]];
+    [retur addObject:[@[self.bilde2, self.label2, self.detalj2, self.key2] mutableCopy]];
+    [retur addObject:[@[self.bilde3, self.label3, self.detalj3, self.key3] mutableCopy]];
     
     if(self.erFireTommerRetina)
     {
-        [retur addObject:@[self.bilde6, self.label6, self.detalj6]];
-        [retur addObject:@[self.bilde7, self.label7, self.detalj7]];
+        [retur addObject:[@[self.bilde6, self.label6, self.detalj6, self.key6] mutableCopy]];
+        [retur addObject:[@[self.bilde7, self.label7, self.detalj7, self.key7] mutableCopy]];
     }
     
-    [retur addObject:@[self.bilde4, self.label4, self.detalj4]];
+    [retur addObject:[@[self.bilde4, self.label4, self.detalj4, self.key4] mutableCopy]];
     
     if(false) // Hvis HUD-knappen er skjult
-        [retur addObject:@[self.bilde5, self.label5, self.detalj5]];
+        [retur addObject:[@[self.bilde5, self.label5, self.detalj5, self.key5] mutableCopy]];
     
     return retur;
 }
@@ -166,7 +175,7 @@
 {
     int element = 0;
     int antallPlasser = [self.layoutArray count];
-    NSArray * rad;
+    NSMutableArray * rad;
     NSString * dataObjekt;
     NSString * forrigeObjekt;
     BOOL spillLyd = NO;
@@ -213,6 +222,7 @@
         }
         
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"fart";
         element++;
     }
     
@@ -226,6 +236,7 @@
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"forkjorsvei.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"forkjorsveg";
         element++;
     }
     
@@ -250,6 +261,8 @@
         
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"vilttrekk";
+        
         element++;
     }
     
@@ -276,6 +289,7 @@
             [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:15]];
         
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"hoydebegrensning";
         element++;
     }
     
@@ -293,6 +307,7 @@
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"jernbanekryssing";
         element++;
     }
     
@@ -310,6 +325,7 @@
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"fartsdemper";
         element++;
     }
     
@@ -320,6 +336,7 @@
         ((UIImageView *)rad[0]).image = nil;
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
+        rad[3] = @"";
         element++;
     }
     
@@ -328,6 +345,18 @@
         AudioServicesPlaySystemSound(self.lydID);
     
     self.nyesteData = data;
+}
+
+- (void)avstandTilPunktobjekt:(Avstand *)avstand MedKey:(NSString *)key
+{
+    for(NSMutableArray * rad in self.layoutArray)
+    {
+        if([rad[3] isEqualToString:key])
+        {
+            ((UILabel *)rad[2]).text = avstand.tekst;
+            break;
+        }
+    }
 }
 
 @end

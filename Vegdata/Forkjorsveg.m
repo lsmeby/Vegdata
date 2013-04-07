@@ -25,7 +25,7 @@
 
 @implementation Forkjorsveg
 
-@synthesize strekningsLengde, veglenker;
+@synthesize strekningsLengde, veglenker, lokasjon;
 
 + (RKObjectMapping *)mapping
 {

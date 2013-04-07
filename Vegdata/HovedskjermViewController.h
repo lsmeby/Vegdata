@@ -30,7 +30,7 @@
 @property (nonatomic, strong) PosisjonsKontroller * pos;
 @property (nonatomic, strong) VegObjektKontroller * vegObjKont;
 @property (nonatomic, strong) NSDictionary * nyesteData;
-@property (nonatomic, strong) NSArray * layoutArray;
+@property (nonatomic, strong) NSMutableArray * layoutArray;
 
 @property (nonatomic, strong) IBOutlet UIImageView * bilde1;
 @property (nonatomic, strong) IBOutlet UIImageView * bilde2;
@@ -56,10 +56,18 @@
 @property (nonatomic, strong) IBOutlet UILabel * detalj6;
 @property (nonatomic, strong) IBOutlet UILabel * detalj7;
 
+@property (nonatomic, strong) NSString * key1;
+@property (nonatomic, strong) NSString * key2;
+@property (nonatomic, strong) NSString * key3;
+@property (nonatomic, strong) NSString * key4;
+@property (nonatomic, strong) NSString * key5;
+@property (nonatomic, strong) NSString * key6;
+@property (nonatomic, strong) NSString * key7;
+
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
 
 @property (nonatomic) SystemSoundID lydID;
 
-- (NSArray *)settOppLayoutArray;
+- (NSMutableArray *)settOppLayoutArray;
 
 @end

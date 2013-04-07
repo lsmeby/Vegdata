@@ -23,11 +23,12 @@
 #import <Foundation/Foundation.h>
 #import "NVDB_RESTkit.h"
 
-@class NVDB_DataProvider, Vegreferanse;
+@class NVDB_DataProvider, Vegreferanse, Avstand;
 
 @protocol VegObjektDelegate
 @required
 - (void)vegObjekterErOppdatert:(NSDictionary *)data;
+- (void)avstandTilPunktobjekt:(Avstand *)avstand MedKey:(NSString *)key;
 @end
 
 @interface VegObjektKontroller : NSObject <NVDBResponseDelegate>

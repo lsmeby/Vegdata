@@ -26,7 +26,7 @@
 
 @implementation Vilttrekk
 
-@synthesize egenskaper, veglenker, strekningsLengde;
+@synthesize egenskaper, veglenker, strekningsLengde, lokasjon;
 
 - (NSString *)hentDyreartFraEgenskaper
 {

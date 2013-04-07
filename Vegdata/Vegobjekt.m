@@ -27,32 +27,34 @@
 
 @implementation Vegobjekt
 
-@synthesize egenskaper, veglenker;
+@synthesize egenskaper, veglenker, lokasjon;
 
 + (RKObjectMapping *) standardMappingMedKontainerKlasse:(Class)kontainerklasse
 {
     if(![kontainerklasse isSubclassOfClass:[SokResultater class]])
         return nil;
     
-    RKObjectMapping * hoydebegrensningMapping = [RKObjectMapping mappingForClass:[self class]];
+    RKObjectMapping * standardMapping = [RKObjectMapping mappingForClass:[self class]];
+    
+    [standardMapping addAttributeMappingsFromDictionary:@{@"lokasjon.geometriWgs84": @"lokasjon"}];
     
     if([[self class] isSubclassOfClass:[LinjeObjekt class]])
-        [hoydebegrensningMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
+        [standardMapping addAttributeMappingsFromDictionary:@{@"strekningslengde" : @"strekningsLengde"}];
     
-    [hoydebegrensningMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
+    [standardMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
                                                                                             toKeyPath:@"veglenker"
                                                                                           withMapping:[Veglenke mapping]]];
-    [hoydebegrensningMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
+    [standardMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"egenskaper"
                                                                                             toKeyPath:@"egenskaper"
                                                                                           withMapping:[Egenskap mapping]]];
     
-    RKObjectMapping * hoydebegrensningArrayMapping = [RKObjectMapping mappingForClass:kontainerklasse];
-    [hoydebegrensningArrayMapping addPropertyMapping:[RKRelationshipMapping
+    RKObjectMapping * standardArrayMapping = [RKObjectMapping mappingForClass:kontainerklasse];
+    [standardArrayMapping addPropertyMapping:[RKRelationshipMapping
                                                       relationshipMappingFromKeyPath:@"vegObjekter"
                                                       toKeyPath:@"objekter"
-                                                      withMapping:hoydebegrensningMapping]];
+                                                      withMapping:standardMapping]];
     
-    return hoydebegrensningArrayMapping;
+    return standardArrayMapping;
 }
 
 @end

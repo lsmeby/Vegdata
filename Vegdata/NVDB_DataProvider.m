@@ -36,6 +36,7 @@
 #import "Veglenke.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
+#import "GoogleMapsAvstand.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -61,6 +62,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
++ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
 + (NSDictionary *)parametereForSok:(Sok *)sok;
 @end
 
@@ -127,6 +129,16 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     [self hentVegObjekterFraNVDBMedSokeObjekt:sok OgMapping:mapping];
 }
 
+- (void)hentAvstandmedKoordinaterAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx BY:(NSDecimalNumber *)by ogKey:(NSString *)key
+{
+    [restkit hentAvstandMellomKoordinaterMedParametere:[NVDB_DataProvider parametereForGoogleMapsAvstandMedAX:ax
+                                                                                                           AY:ay
+                                                                                                           BX:bx
+                                                                                                         OgBY:by]
+                                               Mapping:[GoogleMapsAvstand mapping]
+                                                 OgKey:key];
+}
+
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
 {
     [restkit hentDataMedURI:[Sok getURI]
@@ -181,6 +193,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Fartsgrense * fartsgrense = [Fartsgrense alloc];
             fartsgrense.egenskaper = egenskaper;
             fartsgrense.veglenker = veglenker;
+            fartsgrense.lokasjon = obj.lokasjon;
             fartsgrense.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
             [fartsgrenser addObject:fartsgrense];
         }
@@ -189,6 +202,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Forkjorsveg * forkjorsveg = [Forkjorsveg alloc];
             forkjorsveg.egenskaper = egenskaper;
             forkjorsveg.veglenker = veglenker;
+            forkjorsveg.lokasjon = obj.lokasjon;
             forkjorsveg.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
             [forkjorsveier addObject:forkjorsveg];
         }
@@ -197,6 +211,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Vilttrekk * ettVilttrekk = [Vilttrekk alloc];
             ettVilttrekk.egenskaper = egenskaper;
             ettVilttrekk.veglenker = veglenker;
+            ettVilttrekk.lokasjon = obj.lokasjon;
             ettVilttrekk.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
             [vilttrekk addObject:ettVilttrekk];
         }
@@ -205,6 +220,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Fartsdemper * fartsdemper = [Fartsdemper alloc];
             fartsdemper.egenskaper = egenskaper;
             fartsdemper.veglenker = veglenker;
+            fartsdemper.lokasjon = obj.lokasjon;
             [fartsdempere addObject:fartsdemper];
         }
         else if([obj isKindOfClass:[CD_Hoydebegrensning class]])
@@ -212,6 +228,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Hoydebegrensning * hoydebegrensning = [Hoydebegrensning alloc];
             hoydebegrensning.egenskaper = egenskaper;
             hoydebegrensning.veglenker = veglenker;
+            hoydebegrensning.lokasjon = obj.lokasjon;
             [hoydebegrensninger addObject:hoydebegrensning];
         }
         else if([obj isKindOfClass:[CD_Jernbanekryssing class]])
@@ -219,6 +236,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             Jernbanekryssing * jernbanekryssing = [Jernbanekryssing alloc];
             jernbanekryssing.egenskaper = egenskaper;
             jernbanekryssing.veglenker = veglenker;
+            jernbanekryssing.lokasjon = obj.lokasjon;
             [jernbanekryssinger addObject:jernbanekryssing];
         }
     }
@@ -339,6 +357,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
                     
                     [cdVegobj addEgenskaper:egenskaper];
                     [cdVegobj addVeglenker:veglenker];
+                    cdVegobj.lokasjon = v_obj.lokasjon;
                     
                     if([cdVegobj isKindOfClass:[CD_LinjeObjekt class]])
                         ((CD_LinjeObjekt *)cdVegobj).strekningsLengde = ((LinjeObjekt *)v_obj).strekningsLengde;
@@ -366,6 +385,11 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
 }
 
+- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+{
+    [delegate svarFraGoogleMapsMedResultat:resultat OgKey:key];
+}
+
 #pragma mark - Statiske hjelpemetoder
 
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
@@ -384,6 +408,13 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
                               nil] componentsJoinedByString:@","];
     
     return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
+}
+
++ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by
+{
+    NSString * fra = [[NSArray arrayWithObjects:ax, ay, nil] componentsJoinedByString:@","];
+    NSString * til = [[NSArray arrayWithObjects:bx, by, nil] componentsJoinedByString:@","];
+    return @{@"origins" : fra, @"destinations" : til, @"sensor" : @"true"};
 }
 
 + (NSDictionary *)parametereForSok:(Sok *)sok

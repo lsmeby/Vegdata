@@ -26,7 +26,7 @@
 
 @implementation Fartsdemper
 
-@synthesize egenskaper, veglenker;
+@synthesize egenskaper, veglenker, lokasjon;
 
 -(NSString *)hentTypeFraEgenskaper
 {

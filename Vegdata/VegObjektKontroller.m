@@ -33,6 +33,7 @@
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
 #import "Fartsdemper.h"
+#import "GoogleMapsAvstand.h"
 
 @interface VegObjektKontroller()
 
@@ -235,12 +236,22 @@
 
 - (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
 {
+    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
+    NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
+    NSDecimalNumber * ax = [fra objectForKey:@"breddegrad"];
+    NSDecimalNumber * ay = [fra objectForKey:@"lengdegrad"];
+    NSDecimalNumber * bx = [til objectForKey:@"breddegrad"];
+    NSDecimalNumber * by = [til objectForKey:@"lengdegrad"];
+    
     if([objekt isKindOfClass:[Hoydebegrensning class]])
     {
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_hoydebegrensning"])
             [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
         else
+        {
             [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
+            [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"hoydebegrensning"];
+        }
     }
     
     else if([objekt isKindOfClass:[Jernbanekryssing class]])
@@ -251,7 +262,10 @@
         {
             NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
             if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"]) // Erstattes av filter
+            {
                 [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+                [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"jernbanekryssing"];
+            }
         }
     }
     
@@ -263,7 +277,10 @@
         {
             NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
             if(![demper isEqualToString:@"Rumlefelt"]) // Erstattes av filter
+            {
                 [returDictionary setObject:demper forKey:@"fartsdemper"];
+                [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"fartsdemper"];
+            }
         }
     }
 }
@@ -317,6 +334,21 @@
                 [self leggTilDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj];
         
         [self.delegate vegObjekterErOppdatert:returDictionary];
+    }
+}
+
+- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+{
+    if(resultat && [resultat count] > 0)
+    {
+        GoogleMapsAvstand * gmap = resultat[0];
+        if([gmap.status isEqualToString:@"OK"])
+        {
+            Rad * rad = gmap.rader[0];
+            Element * elem = rad.elementer[0];
+            Avstand * avst = elem.avstand;
+            [self.delegate avstandTilPunktobjekt:avst MedKey:key];
+        }
     }
 }
 

@@ -35,16 +35,7 @@ static NSString * const KEYPATH = nil;
     if(punktPaVeg == nil)
         return nil;
     
-    NSRange start = [punktPaVeg rangeOfString:@"("];
-    NSRange end = [punktPaVeg rangeOfString:@")"];
-    NSRange range = NSMakeRange(start.location+1, end.location-start.location-1);
-    
-    NSString * hele = [punktPaVeg substringWithRange:range];
-    
-    NSDecimalNumber * breddegrad = [[NSDecimalNumber alloc] initWithString:[hele substringFromIndex:[hele rangeOfString:@" "].location+1]];
-    NSDecimalNumber * lengdegrad = [[NSDecimalNumber alloc] initWithString:[hele substringToIndex:[hele rangeOfString:@" "].location]];
-    
-    return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
+    return [Vegreferanse hentKoordinaterFraNVDBString:punktPaVeg];
 }
 
 + (RKObjectMapping *)mapping
@@ -72,6 +63,23 @@ static NSString * const KEYPATH = nil;
 + (NSString *)getKeyPath
 {
     return KEYPATH;
+}
+
++ (NSDictionary *)hentKoordinaterFraNVDBString:(NSString *)koordinatStreng
+{
+    NSRange start = [koordinatStreng rangeOfString:@"("];
+    NSRange end = [koordinatStreng rangeOfString:@","];
+    if(end.location == NSNotFound)
+        end = [koordinatStreng rangeOfString:@")"];
+        
+    NSRange range = NSMakeRange(start.location+1, end.location-start.location-1);
+    
+    NSString * hele = [koordinatStreng substringWithRange:range];
+    
+    NSDecimalNumber * breddegrad = [[NSDecimalNumber alloc] initWithString:[hele substringFromIndex:[hele rangeOfString:@" "].location+1]];
+    NSDecimalNumber * lengdegrad = [[NSDecimalNumber alloc] initWithString:[hele substringToIndex:[hele rangeOfString:@" "].location]];
+    
+    return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
 }
 
 @end

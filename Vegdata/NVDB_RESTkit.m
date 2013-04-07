@@ -23,6 +23,8 @@
 #import "NVDB_RESTkit.h"
 
 static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/api";
+static NSString * const GOOGLE_GRUNN_URL = @"https://maps.googleapis.com/maps/api";
+static NSString * const GOOGLE_DISTANCE_URL = @"/distancematrix/json";
 
 //static NSString * const NVDB_GRUNN_URL = @"https://www.vegvesen.no/nvdb/api";
 
@@ -53,6 +55,33 @@ static NSString * const NVDB_GRUNN_URL = @"http://nvdb1.demo.bekk.no:7001/nvdb/a
      {
          NSLog(@"\n### FEIL I NVDB_RESTkit:\n### Operation: %@\n### Error: %@", operation, error);
          [self.delegate svarFraNVDBMedResultat:nil OgVeglenkeId:lenkeId];
+     }];
+}
+
+- (void)hentAvstandMellomKoordinaterMedParametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgKey:(NSString *)key
+{
+    AFHTTPClient * klient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:GOOGLE_GRUNN_URL]];
+    [klient setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
+    
+    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    RKObjectManager * objectManager = [[RKObjectManager alloc] initWithHTTPClient:klient];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    NSString * fullURI = [GOOGLE_GRUNN_URL stringByAppendingString:GOOGLE_DISTANCE_URL];
+    
+    [objectManager getObjectsAtPath:fullURI parameters:parametere
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+     {
+         if([self.delegate conformsToProtocol:@protocol(NVDBResponseDelegate)])
+             [self.delegate svarFraGoogleMapsMedResultat:[mappingResult array] OgKey:key];
+     }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"\n### FEIL I NVDB_RESTkit:\n### Operation: %@\n### Error: %@", operation, error);
+         if([self.delegate conformsToProtocol:@protocol(NVDBResponseDelegate)])
+             [self.delegate svarFraGoogleMapsMedResultat:nil OgKey:key];
      }];
 }
 
