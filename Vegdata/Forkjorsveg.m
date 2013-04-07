@@ -31,4 +31,10 @@
 {
     return [self standardMappingMedKontainerKlasse:[Forkjorsveger class]];
 }
+
++ (NSArray *)filtere
+{
+    return nil;
+}
+
 @end

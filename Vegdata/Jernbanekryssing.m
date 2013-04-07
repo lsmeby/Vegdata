@@ -23,6 +23,7 @@
 #import "Jernbanekryssing.h"
 #import "SokResultater.h"
 #import "Egenskap.h"
+#import "Sok.h"
 
 @implementation Jernbanekryssing
 
@@ -43,6 +44,16 @@
 +(RKObjectMapping *)mapping
 {
     return [self standardMappingMedKontainerKlasse:[Jernbanekryssinger class]];
+}
+
++(NSArray *)filtere
+{
+    return [[NSArray alloc]
+            initWithObjects:[[Filter alloc]
+                             initMedType:@"Type"
+                             FilterOperator:@"!="
+                             OgVerdier:[[NSArray alloc] initWithObjects:@"Veg over", @"Veg under", nil]],
+            nil];
 }
 
 @end

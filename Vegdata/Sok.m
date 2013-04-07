@@ -69,4 +69,13 @@ static NSString * const KEYPATH = @"resultater";
 
 @synthesize type, filterOperator, verdier;
 
+- (id) initMedType:(NSString *)aType FilterOperator:(NSString *)aFilterOperator OgVerdier:(NSArray *)aVerdier
+{
+    self.type = aType;
+    self.filterOperator = aFilterOperator;
+    self.verdier = aVerdier;
+    
+    return self;
+}
+
 @end

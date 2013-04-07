@@ -48,4 +48,5 @@
 @property (nonatomic, strong) NSString * type;
 @property (nonatomic, strong) NSString * filterOperator;
 @property (nonatomic, strong) NSArray * verdier;
+- (id) initMedType:(NSString *)aType FilterOperator:(NSString *)aFilterOperator OgVerdier:(NSArray *)aVerdier;
 @end

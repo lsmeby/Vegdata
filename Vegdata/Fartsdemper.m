@@ -23,6 +23,7 @@
 #import "Fartsdemper.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
+#import "Sok.h"
 
 @implementation Fartsdemper
 
@@ -43,6 +44,16 @@
 +(RKObjectMapping *)mapping
 {
     return [self standardMappingMedKontainerKlasse:[Fartsdempere class]];
+}
+
++(NSArray *)filtere
+{
+    return [[NSArray alloc]
+            initWithObjects:[[Filter alloc]
+                             initMedType:@"Type"
+                             FilterOperator:@"!="
+                             OgVerdier:[[NSArray alloc] initWithObjects:@"Rumlefelt", nil]],
+            nil];
 }
 
 @end

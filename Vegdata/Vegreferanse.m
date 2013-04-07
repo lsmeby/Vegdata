@@ -55,6 +55,12 @@ static NSString * const KEYPATH = nil;
     return vegreferanseMapping;
 }
 
++ (NSArray *)filtere
+{
+    return nil;
+}
+
+
 + (NSString *)getURI
 {
     return URI;
