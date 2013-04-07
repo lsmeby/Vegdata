@@ -47,4 +47,10 @@
     return veglenkeMapping;
 }
 
++ (NSArray *)filtere
+{
+    return nil;
+}
+
+
 @end

@@ -45,4 +45,9 @@
     return [self standardMappingMedKontainerKlasse:[Hoydebegrensninger class]];
 }
 
++ (NSArray *)filtere
+{
+    return nil;
+}
+
 @end

@@ -23,10 +23,12 @@
 #import <Foundation/Foundation.h>
 
 @class SokResultater;
+@class Filter;
 
 @protocol VegobjektProtokoll <NSObject>
 @required
 + (RKObjectMapping *)mapping;
++ (NSArray *)filtere;
 @end
 
 @interface Vegobjekt : NSObject

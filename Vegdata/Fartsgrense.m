@@ -44,4 +44,10 @@
 {
     return [self standardMappingMedKontainerKlasse:[Fartsgrenser class]];
 }
+
++ (NSArray *)filtere
+{
+    return nil;
+}
+
 @end

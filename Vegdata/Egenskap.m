@@ -35,4 +35,10 @@
     return egenskapsMapping;
 }
 
++ (NSArray *)filtere
+{
+    return nil;
+}
+
+
 @end

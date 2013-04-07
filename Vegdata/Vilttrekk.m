@@ -23,6 +23,7 @@
 #import "Vilttrekk.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
+#import "Sok.h"
 
 @implementation Vilttrekk
 
@@ -44,5 +45,16 @@
 {
     return [self standardMappingMedKontainerKlasse:[Vilttrekks class]];
 }
+
++(NSArray *)filtere
+{
+    return [[NSArray alloc]
+            initWithObjects:[[Filter alloc]
+                             initMedType:@"Type vegkryssing"
+                             FilterOperator:@"!="
+                             OgVerdier:[[NSArray alloc] initWithObjects:@"Over, ledet", @"Under, ledet", nil]],
+            nil];
+}
+
 
 @end

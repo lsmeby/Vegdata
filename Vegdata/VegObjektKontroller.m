@@ -88,13 +88,16 @@
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:596]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:291]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+                                                      Antall:[[NSNumber alloc] initWithInt:0]
+                                                   OgFiltere:[Vilttrekk filtere]]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:591]
                                                       Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:100]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+                                                      Antall:[[NSNumber alloc] initWithInt:0]
+                                                   OgFiltere:[Jernbanekryssing filtere]]];
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:103]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
+                                                      Antall:[[NSNumber alloc] initWithInt:0]
+                                                   OgFiltere:[Fartsdemper filtere]]];
     // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
     return objekttyper;
 }
@@ -229,7 +232,7 @@
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_vilttrekk"])
             [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
         else
-            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"]; // Trenger filter for å unngå vilttrekk over/under veg
+            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"];
     }
 }
 
@@ -250,8 +253,7 @@
         else
         {
             NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-            if(![kryssing isEqualToString:@"Veg over"] && ![kryssing isEqualToString:@"Veg under"]) // Erstattes av filter
-                [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
+            [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
         }
     }
     
@@ -262,8 +264,7 @@
         else
         {
             NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-            if(![demper isEqualToString:@"Rumlefelt"]) // Erstattes av filter
-                [returDictionary setObject:demper forKey:@"fartsdemper"];
+            [returDictionary setObject:demper forKey:@"fartsdemper"];
         }
     }
 }
