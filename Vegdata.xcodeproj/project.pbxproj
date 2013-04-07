@@ -52,6 +52,8 @@
 		9B90E70016F7615C0067850E /* Vilttrekk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B90E6FF16F7615C0067850E /* Vilttrekk.m */; };
 		9B9C938A16F1F619007EEFBF /* HovedskjermViewControllerPortrett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */; };
 		9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */; };
+		9BA0B6B61711A2D2008E3E5F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */; };
+		9BA0B6BB1711A67B008E3E5F /* Purr.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9BA0B6BA1711A67B008E3E5F /* Purr.aiff */; };
 		9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */; };
 		9BBF71DA17009E2800BEB0C8 /* fareskilt_elg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */; };
 		9BBF71DB17009E2800BEB0C8 /* fareskilt_elg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */; };
@@ -184,6 +186,8 @@
 		9B9C938916F1F619007EEFBF /* HovedskjermViewControllerPortrett.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerPortrett.m; sourceTree = "<group>"; };
 		9B9C938E16F1F630007EEFBF /* HovedskjermViewControllerLandskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewControllerLandskap.h; sourceTree = "<group>"; };
 		9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerLandskap.m; sourceTree = "<group>"; };
+		9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9BA0B6BA1711A67B008E3E5F /* Purr.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Purr.aiff; sourceTree = "<group>"; };
 		9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hoydebegrensning.h; sourceTree = "<group>"; };
 		9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hoydebegrensning.m; sourceTree = "<group>"; };
 		9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_elg.gif; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BA0B6B61711A2D2008E3E5F /* AudioToolbox.framework in Frameworks */,
 				9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */,
 				9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */,
 				9B7EB83F16CD32C400484A74 /* libxml2.dylib in Frameworks */,
@@ -362,6 +367,7 @@
 		9B7EB7F516CD212600484A74 = {
 			isa = PBXGroup;
 			children = (
+				9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */,
 				9B79037016F37E4C00F36B82 /* Settings.bundle */,
 				9B7EB80716CD212600484A74 /* Vegdata */,
 				9B7EB80016CD212600484A74 /* Frameworks */,
@@ -410,6 +416,7 @@
 		9B7EB80816CD212600484A74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BA0B6BA1711A67B008E3E5F /* Purr.aiff */,
 				9B252B371700C8F400773942 /* fareskilt_jernbane.gif */,
 				9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */,
 				9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */,
@@ -563,6 +570,7 @@
 				9BBF71E71700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif in Resources */,
 				9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */,
 				9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */,
+				9BA0B6BB1711A67B008E3E5F /* Purr.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "Posisjon.h"
 #import "VegObjektKontroller.h"
 
@@ -56,6 +57,8 @@
 @property (nonatomic, strong) IBOutlet UILabel * detalj7;
 
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
+
+@property (nonatomic) SystemSoundID lydID;
 
 - (NSArray *)settOppLayoutArray;
 

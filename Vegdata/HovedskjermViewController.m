@@ -22,6 +22,7 @@
 
 #import "HovedskjermViewController.h"
 #import "AppDelegate.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
@@ -40,6 +41,11 @@
                                             OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]];
     
     self.layoutArray = [self settOppLayoutArray];
+    
+    NSString * sti = [[NSBundle mainBundle] pathForResource:@"Purr" ofType:@"aiff"];
+    SystemSoundID ssid;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:sti], &ssid);
+    self.lydID = ssid;
     
     self.pos = [[PosisjonsKontroller alloc] init];
     self.pos.delegate = self;
@@ -158,18 +164,17 @@
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
-    self.nyesteData = data;
-    
     int element = 0;
     int antallPlasser = [self.layoutArray count];
     NSArray * rad;
     NSString * dataObjekt;
-    
+    NSString * forrigeObjekt;
+    BOOL spillLyd = NO;
     
     // -- FARTSGRENSE --
     
     dataObjekt = [data objectForKey:@"fart"];
-    if(dataObjekt != nil && element < antallPlasser)
+    if(dataObjekt && element < antallPlasser)
     {
         rad = self.layoutArray[element];
         
@@ -215,7 +220,7 @@
     // -- FORKJØRSVEI --
     
     dataObjekt = [data objectForKey:@"forkjorsveg"];
-    if(dataObjekt != nil && element < antallPlasser && [dataObjekt isEqualToString:@"yes"])
+    if(dataObjekt && element < antallPlasser && [dataObjekt isEqualToString:@"yes"])
     {
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"forkjorsvei.gif"];
@@ -228,8 +233,12 @@
     // -- VILTTREKK --
     
     dataObjekt = [data objectForKey:@"vilttrekk"];
-    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
+        forrigeObjekt = [self.nyesteData objectForKey:@"vilttrekk"];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+            spillLyd = YES;
+        
         rad = self.layoutArray[element];
         
         if([dataObjekt isEqualToString:@"Hjort"])
@@ -248,8 +257,12 @@
     // -- HØYDEBEGRENSNING --
 
     dataObjekt = [data objectForKey:@"hoydebegrensning"];
-    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
+        forrigeObjekt = [self.nyesteData objectForKey:@"hoydebegrensning"];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+            spillLyd = YES;
+        
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"hoydegrense.gif"];
         ((UILabel *)rad[1]).text = [dataObjekt stringByAppendingString:@" m"];
@@ -270,8 +283,12 @@
     // -- JERNBANEKRYSSING --
     
     dataObjekt = [data objectForKey:@"jernbanekryssing"];
-    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
+        forrigeObjekt = [self.nyesteData objectForKey:@"jernbanekryssing"];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+            spillLyd = YES;
+        
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
         ((UILabel *)rad[1]).text = nil;
@@ -283,8 +300,12 @@
     // -- FARTSDEMPER --
     
     dataObjekt = [data objectForKey:@"fartsdemper"];
-    if(dataObjekt != nil && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
     {
+        forrigeObjekt = [self.nyesteData objectForKey:@"fartsdemper"];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+            spillLyd = YES;
+        
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
         ((UILabel *)rad[1]).text = nil;
@@ -301,6 +322,12 @@
         ((UILabel *)rad[2]).text = nil;
         element++;
     }
+    
+    BOOL lydvarslingeraktivert = YES; // Erstattes av innstillinger
+    if(lydvarslingeraktivert && spillLyd)
+        AudioServicesPlaySystemSound(self.lydID);
+    
+    self.nyesteData = data;
 }
 
 @end
