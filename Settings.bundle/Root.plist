@@ -10,13 +10,23 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Skjermbildet</string>
+			<string>Generelt</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Vis HUD-knappen</string>
+			<string>Lydvarsling</string>
+			<key>Key</key>
+			<string>lydvarsling</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vis HUD-bryter</string>
 			<key>Key</key>
 			<string>skjerm_hudknapp</string>
 			<key>DefaultValue</key>
@@ -26,7 +36,17 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Varsler om fareskilt</string>
+			<string>Vis skilt</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Forkjørsveg</string>
+			<key>Key</key>
+			<string>skilt_forkjorsveg</string>
+			<key>DefaultValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -67,18 +87,6 @@
 			<string>fare_fartsdemper</string>
 			<key>DefaultValue</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>Varslingsavstand i meter</string>
-			<key>Key</key>
-			<string>varslingsavstand</string>
-			<key>KeyboardType</key>
-			<string>NumberPad</string>
-			<key>DefaultValue</key>
-			<string>250</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

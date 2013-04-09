@@ -28,6 +28,7 @@
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
 - (BOOL)erFireTommerRetina;
+- (BOOL)skalViseHUDKnapp;
 @end
 
 @implementation HovedskjermViewController
@@ -84,8 +85,13 @@
     
     [retur addObject:[@[self.bilde4, self.label4, self.detalj4, self.key4] mutableCopy]];
     
-    if(false) // Hvis HUD-knappen er skjult
+    if(!self.skalViseHUDKnapp) // Hvis HUD-knappen er skjult
+    {
+        self.hudSwitch.hidden = true;
         [retur addObject:[@[self.bilde5, self.label5, self.detalj5, self.key5] mutableCopy]];
+    }
+    else
+        self.hudSwitch.hidden = false;
     
     return retur;
 }
@@ -155,6 +161,11 @@
     return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
             &&
             [UIScreen mainScreen].bounds.size.height == 568;
+}
+
+- (BOOL)skalViseHUDKnapp
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"skjerm_hudknapp"];
 }
 
 #pragma mark - PosisjonDelegate
@@ -340,8 +351,8 @@
         element++;
     }
     
-    BOOL lydvarslingeraktivert = YES; // Erstattes av innstillinger
-    if(lydvarslingeraktivert && spillLyd)
+    BOOL lydvarslingErAktivert = [[NSUserDefaults standardUserDefaults] boolForKey:@"lydvarsling"];
+    if(lydvarslingErAktivert && spillLyd)
         AudioServicesPlaySystemSound(self.lydID);
     
     self.nyesteData = data;

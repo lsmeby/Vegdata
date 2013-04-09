@@ -226,7 +226,10 @@
         [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:@"fart"];
     
     else if ([objekt isKindOfClass:[Forkjorsveg class]])
-        [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+    {
+        if([[NSUserDefaults standardUserDefaults] boolForKey:@"skilt_forkjorsveg"])
+            [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+    }
     
     else if ([objekt isKindOfClass:[Vilttrekk class]])
     {
