@@ -65,6 +65,7 @@
 @property (nonatomic, strong) NSString * key7;
 
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
+@property (nonatomic, strong) IBOutlet UILabel * hudLabel;
 
 @property (nonatomic) SystemSoundID lydID;
 

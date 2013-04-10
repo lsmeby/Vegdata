@@ -242,6 +242,7 @@
                         <outlet property="detalj5" destination="cKV-iz-7kC" id="Of9-tU-zNH"/>
                         <outlet property="detalj6" destination="zOf-Kk-txE" id="Ruu-As-KcA"/>
                         <outlet property="detalj7" destination="gds-0Y-44Y" id="a3I-cJ-Bos"/>
+                        <outlet property="hudLabel" destination="sHu-Dm-LJs" id="Wtq-U4-o3l"/>
                         <outlet property="hudSwitch" destination="h3T-TK-ruH" id="znl-49-2gd"/>
                         <outlet property="label1" destination="fpv-6s-jyp" id="pB7-Mo-Bw7"/>
                         <outlet property="label2" destination="haR-ZC-QUD" id="Fuy-hQ-QuC"/>
@@ -489,6 +490,7 @@
                         <outlet property="detalj5" destination="ZdK-GO-WOs" id="rOf-JM-k9q"/>
                         <outlet property="detalj6" destination="pyH-Mk-IN3" id="4xR-aF-eU8"/>
                         <outlet property="detalj7" destination="ELq-xN-AFn" id="nsr-ll-RWn"/>
+                        <outlet property="hudLabel" destination="NxL-Bs-UBf" id="QTs-sB-3V5"/>
                         <outlet property="hudSwitch" destination="Zcc-c7-k6o" id="Bf3-Ik-bgh"/>
                         <outlet property="label1" destination="nfk-5C-eOc" id="tN4-Mo-VXH"/>
                         <outlet property="label2" destination="n9l-F1-Qvm" id="p6Y-4s-ocR"/>
@@ -525,6 +527,7 @@
                 <relationship kind="outlet" name="detalj5" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="detalj6" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="detalj7" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hudLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hudSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="label2" candidateClass="UILabel"/>

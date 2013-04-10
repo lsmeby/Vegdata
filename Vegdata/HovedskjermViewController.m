@@ -85,13 +85,17 @@
     
     [retur addObject:[@[self.bilde4, self.label4, self.detalj4, self.key4] mutableCopy]];
     
-    if(!self.skalViseHUDKnapp) // Hvis HUD-knappen er skjult
+    if(!self.skalViseHUDKnapp)
     {
         self.hudSwitch.hidden = true;
+        self.hudLabel.hidden = true;
         [retur addObject:[@[self.bilde5, self.label5, self.detalj5, self.key5] mutableCopy]];
     }
     else
+    {
         self.hudSwitch.hidden = false;
+        self.hudLabel.hidden = false;
+    }
     
     return retur;
 }
@@ -184,6 +188,7 @@
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
+    self.layoutArray = [self settOppLayoutArray];
     int element = 0;
     int antallPlasser = [self.layoutArray count];
     NSMutableArray * rad;

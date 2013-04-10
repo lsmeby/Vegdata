@@ -26,7 +26,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Vis HUD-bryter</string>
+			<string>HUD-bryter</string>
 			<key>Key</key>
 			<string>skjerm_hudknapp</string>
 			<key>DefaultValue</key>
