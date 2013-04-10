@@ -75,7 +75,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
 }
 
 #pragma mark - Core Data stack

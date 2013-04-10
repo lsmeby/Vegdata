@@ -38,11 +38,15 @@
     [super viewDidLoad];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(settOppLayoutArray)
+                                                 name:@"appDidBecomeActive" object:nil];*/
 	
     self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self
                                             OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]];
     
-    self.layoutArray = [self settOppLayoutArray];
+    [self settOppLayoutArray];
     
     NSString * sti = [[NSBundle mainBundle] pathForResource:@"Purr" ofType:@"aiff"];
     SystemSoundID ssid;
@@ -61,7 +65,7 @@
     return YES;
 }
 
-- (NSMutableArray *)settOppLayoutArray
+- (void)settOppLayoutArray
 {
     self.key1 = @"";
     self.key2 = @"";
@@ -97,7 +101,7 @@
         self.hudLabel.hidden = false;
     }
     
-    return retur;
+    self.layoutArray = retur;
 }
 
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp
@@ -188,7 +192,7 @@
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
-    self.layoutArray = [self settOppLayoutArray];
+    [self settOppLayoutArray];
     int element = 0;
     int antallPlasser = [self.layoutArray count];
     NSMutableArray * rad;

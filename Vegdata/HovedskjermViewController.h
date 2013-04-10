@@ -69,6 +69,6 @@
 
 @property (nonatomic) SystemSoundID lydID;
 
-- (NSMutableArray *)settOppLayoutArray;
+- (void)settOppLayoutArray;
 
 @end

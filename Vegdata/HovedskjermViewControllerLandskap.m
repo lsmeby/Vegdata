@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-    self.layoutArray = [self settOppLayoutArray];
+    [self settOppLayoutArray];
 }
 
 -(NSUInteger)supportedInterfaceOrientations
