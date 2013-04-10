@@ -23,7 +23,7 @@
 #import "HovedskjermViewController.h"
 #import "AppDelegate.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
@@ -363,13 +363,33 @@
     self.nyesteData = data;
 }
 
-- (void)avstandTilPunktobjekt:(Avstand *)avstand MedKey:(NSString *)key
+- (void)avstandTilPunktobjekt:(NSDecimalNumber *)avstand MedKey:(NSString *)key
 {
     for(NSMutableArray * rad in self.layoutArray)
     {
         if([rad[3] isEqualToString:key])
         {
-            ((UILabel *)rad[2]).text = avstand.tekst;
+            NSDecimalNumber * nyAvstand = [[NSDecimalNumber alloc] initWithDouble:avstand.doubleValue];
+            
+            if(nyAvstand.doubleValue < 1)
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:-1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * meter = [nyAvstand decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:1000] withBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[meter stringValue] stringByAppendingString:@" m"];
+            }
+            else if(nyAvstand.doubleValue < 10)
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * km = [nyAvstand decimalNumberByRoundingAccordingToBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[km stringValue] stringByAppendingString:@" km"];
+            }
+            else
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * km = [nyAvstand decimalNumberByRoundingAccordingToBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[km stringValue] stringByAppendingString:@" km"];
+            }
+
             break;
         }
     }

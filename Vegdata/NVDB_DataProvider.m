@@ -36,7 +36,7 @@
 #import "Veglenke.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -56,13 +56,14 @@ static NSString * const NVDB_GEOMETRI = @"WGS84";
 static double const WGS84_BBOX_RADIUS = 0.0001;
 static double const SEKUNDER_PER_DAG = 86400;
 static int const DAGER_MELLOM_NY_OPPDATERING = 30;
+static NSString * const MAPQUEST_KEY = @"Fmjtd|luub2qu72h,8l=o5-96105y";
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
-+ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
++ (NSDictionary *)parametereForMapQuestAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
 + (NSDictionary *)parametereForSok:(Sok *)sok;
 @end
 
@@ -131,11 +132,11 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
 
 - (void)hentAvstandmedKoordinaterAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx BY:(NSDecimalNumber *)by ogKey:(NSString *)key
 {
-    [restkit hentAvstandMellomKoordinaterMedParametere:[NVDB_DataProvider parametereForGoogleMapsAvstandMedAX:ax
-                                                                                                           AY:ay
-                                                                                                           BX:bx
-                                                                                                         OgBY:by]
-                                               Mapping:[GoogleMapsAvstand mapping]
+    [restkit hentAvstandMellomKoordinaterMedParametere:[NVDB_DataProvider parametereForMapQuestAvstandMedAX:ax
+                                                                                                         AY:ay
+                                                                                                         BX:bx
+                                                                                                       OgBY:by]
+                                               Mapping:[MapQuestRoute mapping]
                                                  OgKey:key];
 }
 
@@ -385,9 +386,9 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
 }
 
-- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+- (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
 {
-    [delegate svarFraGoogleMapsMedResultat:resultat OgKey:key];
+    [delegate svarFraMapQuestMedResultat:resultat OgKey:key];
 }
 
 #pragma mark - Statiske hjelpemetoder
@@ -410,11 +411,11 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
 }
 
-+ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by
++ (NSDictionary *)parametereForMapQuestAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by
 {
-    NSString * fra = [[NSArray arrayWithObjects:ax, ay, nil] componentsJoinedByString:@","];
-    NSString * til = [[NSArray arrayWithObjects:bx, by, nil] componentsJoinedByString:@","];
-    return @{@"origins" : fra, @"destinations" : til, @"sensor" : @"true"};
+    NSString * jsonstreng = [NSString stringWithFormat:@"{locations:[{latLng:{lat:%@,lng:%@}},{latLng:{lat:%@,lng:%@}}],options:{unit:k}}", ax, ay, bx, by];
+    
+    return @{@"key": MAPQUEST_KEY, @"json" : jsonstreng};
 }
 
 + (NSDictionary *)parametereForSok:(Sok *)sok

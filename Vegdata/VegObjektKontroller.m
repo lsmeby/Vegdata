@@ -33,7 +33,7 @@
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
 #import "Fartsdemper.h"
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 @interface VegObjektKontroller()
 
@@ -337,16 +337,21 @@
     }
 }
 
-- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+- (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
 {
     if(resultat && [resultat count] > 0)
     {
-        GoogleMapsAvstand * gmap = resultat[0];
-        if([gmap.status isEqualToString:@"OK"])
+        MapQuestRoute * mQMap = resultat[0];
+        if(mQMap.status.intValue == 0)
         {
-            Rad * rad = gmap.rader[0];
-            Element * elem = rad.elementer[0];
-            Avstand * avst = elem.avstand;
+            NSDecimalNumber * avst;
+            
+            for(NSDecimalNumber * km in mQMap.avstand)
+            {
+                if(!avst || km.doubleValue > avst.doubleValue)
+                    avst = km;
+            }
+            
             [self.delegate avstandTilPunktobjekt:avst MedKey:key];
         }
     }
