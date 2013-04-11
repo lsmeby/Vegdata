@@ -7,12 +7,13 @@
     </entity>
     <entity name="CD_Fartsdemper" representedClassName="CD_Fartsdemper" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Fartsgrense" representedClassName="CD_Fartsgrense" parentEntity="CD_LinjeObjekt" syncable="YES"/>
-    <entity name="CD_Forkjorsvei" representedClassName="CD_Forkjorsvei" parentEntity="CD_LinjeObjekt" syncable="YES"/>
+    <entity name="CD_Forkjorsveg" representedClassName="CD_Forkjorsveg" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="CD_Hoydebegrensning" representedClassName="CD_Hoydebegrensning" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Jernbanekryssing" representedClassName="CD_Jernbanekryssing" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_LinjeObjekt" representedClassName="CD_LinjeObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES">
         <attribute name="strekningsLengde" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="CD_Motorveg" representedClassName="CD_Motorveg" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="CD_PunktObjekt" representedClassName="CD_PunktObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES"/>
     <entity name="CD_Veglenke" representedClassName="CD_Veglenke" syncable="YES">
         <attribute name="fra" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -37,7 +38,7 @@
         <element name="CD_Egenskap" positionX="207" positionY="-297" width="128" height="88"/>
         <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
         <element name="CD_Fartsgrense" positionX="187" positionY="153" width="128" height="43"/>
-        <element name="CD_Forkjorsvei" positionX="331" positionY="153" width="128" height="43"/>
+        <element name="CD_Forkjorsveg" positionX="331" positionY="153" width="128" height="43"/>
         <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
         <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
         <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
@@ -46,5 +47,6 @@
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
         <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
+        <element name="CD_Motorveg" positionX="477" positionY="153" width="128" height="43"/>
     </elements>
 </model>

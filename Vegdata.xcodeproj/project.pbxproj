@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B06DF0B1716CC5B00512F36 /* Motorveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B06DF0A1716CC5B00512F36 /* Motorveg.m */; };
+		9B06DF131716D36200512F36 /* motortrafikkveg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */; };
+		9B06DF141716D36200512F36 /* motortrafikkveg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */; };
+		9B06DF151716D36200512F36 /* motorveg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B06DF111716D36200512F36 /* motorveg.gif */; };
+		9B06DF161716D36200512F36 /* motorveg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B06DF121716D36200512F36 /* motorveg@2x.gif */; };
+		9B06DF1C1716D4AE00512F36 /* CD_Motorveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B06DF1B1716D4AE00512F36 /* CD_Motorveg.m */; };
+		9B06DF231716E3AE00512F36 /* CD_Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B06DF221716E3AA00512F36 /* CD_Forkjorsveg.m */; };
 		9B1B8E0C16E60D0600014A91 /* Sok.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B8E0B16E60D0600014A91 /* Sok.m */; };
 		9B232AA916D4FD75008FCC43 /* Fartsgrense.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AA816D4FD75008FCC43 /* Fartsgrense.m */; };
 		9B232AAF16D50935008FCC43 /* NVDB_RESTkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AAE16D50935008FCC43 /* NVDB_RESTkit.m */; };
@@ -54,7 +61,7 @@
 		9B9C939016F1F630007EEFBF /* HovedskjermViewControllerLandskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */; };
 		9BA0B6B61711A2D2008E3E5F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */; };
 		9BA0B6BB1711A67B008E3E5F /* Purr.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9BA0B6BA1711A67B008E3E5F /* Purr.aiff */; };
-		9BA0B6BE1711C103008E3E5F /* GoogleMapsAvstand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B6BD1711C103008E3E5F /* GoogleMapsAvstand.m */; };
+		9BA0B6BE1711C103008E3E5F /* MapQuestRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B6BD1711C103008E3E5F /* MapQuestRoute.m */; };
 		9BA0B6C11711D0D3008E3E5F /* CD_Vegobjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA0B6C01711D0D3008E3E5F /* CD_Vegobjekt.m */; };
 		9BA217DE16F88C2C00996F0B /* Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA217DD16F88C2C00996F0B /* Hoydebegrensning.m */; };
 		9BBF71DA17009E2800BEB0C8 /* fareskilt_elg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */; };
@@ -74,7 +81,6 @@
 		9BD1A08F171064A90099ACAD /* CD_Hoydebegrensning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A08E171064A90099ACAD /* CD_Hoydebegrensning.m */; };
 		9BD1A092171064B80099ACAD /* CD_Jernbanekryssing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A091171064B70099ACAD /* CD_Jernbanekryssing.m */; };
 		9BD1A095171064C30099ACAD /* CD_Vilttrekk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */; };
-		9BD1A098171064CD0099ACAD /* CD_Forkjorsvei.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */; };
 		9BD1A09B171064DD0099ACAD /* CD_Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */; };
 		9BD1A09E171065040099ACAD /* CD_Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A09D171065030099ACAD /* CD_Veglenke.m */; };
 		9BD1A0A11710654B0099ACAD /* VeglenkeDBStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A0A01710654B0099ACAD /* VeglenkeDBStatus.m */; };
@@ -121,6 +127,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B06DF091716CC5B00512F36 /* Motorveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motorveg.h; sourceTree = "<group>"; };
+		9B06DF0A1716CC5B00512F36 /* Motorveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motorveg.m; sourceTree = "<group>"; };
+		9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = motortrafikkveg.gif; sourceTree = "<group>"; };
+		9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "motortrafikkveg@2x.gif"; sourceTree = "<group>"; };
+		9B06DF111716D36200512F36 /* motorveg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = motorveg.gif; sourceTree = "<group>"; };
+		9B06DF121716D36200512F36 /* motorveg@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "motorveg@2x.gif"; sourceTree = "<group>"; };
+		9B06DF1A1716D4AD00512F36 /* CD_Motorveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Motorveg.h; sourceTree = "<group>"; };
+		9B06DF1B1716D4AE00512F36 /* CD_Motorveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Motorveg.m; sourceTree = "<group>"; };
+		9B06DF1D1716DB2200512F36 /* Vegdata_konstanter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vegdata_konstanter.h; sourceTree = "<group>"; };
+		9B06DF211716E3A800512F36 /* CD_Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Forkjorsveg.h; sourceTree = "<group>"; };
+		9B06DF221716E3AA00512F36 /* CD_Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Forkjorsveg.m; sourceTree = "<group>"; };
 		9B1B8E0A16E60D0600014A91 /* Sok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sok.h; sourceTree = "<group>"; };
 		9B1B8E0B16E60D0600014A91 /* Sok.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sok.m; sourceTree = "<group>"; };
 		9B232AA716D4FD75008FCC43 /* Fartsgrense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsgrense.h; sourceTree = "<group>"; };
@@ -189,8 +206,8 @@
 		9B9C938F16F1F630007EEFBF /* HovedskjermViewControllerLandskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewControllerLandskap.m; sourceTree = "<group>"; };
 		9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9BA0B6BA1711A67B008E3E5F /* Purr.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Purr.aiff; sourceTree = "<group>"; };
-		9BA0B6BC1711C103008E3E5F /* GoogleMapsAvstand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsAvstand.h; sourceTree = "<group>"; };
-		9BA0B6BD1711C103008E3E5F /* GoogleMapsAvstand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsAvstand.m; sourceTree = "<group>"; };
+		9BA0B6BC1711C103008E3E5F /* MapQuestRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapQuestRoute.h; sourceTree = "<group>"; };
+		9BA0B6BD1711C103008E3E5F /* MapQuestRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapQuestRoute.m; sourceTree = "<group>"; };
 		9BA0B6BF1711D0D3008E3E5F /* CD_Vegobjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Vegobjekt.h; sourceTree = "<group>"; };
 		9BA0B6C01711D0D3008E3E5F /* CD_Vegobjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Vegobjekt.m; sourceTree = "<group>"; };
 		9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hoydebegrensning.h; sourceTree = "<group>"; };
@@ -219,8 +236,6 @@
 		9BD1A091171064B70099ACAD /* CD_Jernbanekryssing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Jernbanekryssing.m; sourceTree = "<group>"; };
 		9BD1A093171064C20099ACAD /* CD_Vilttrekk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Vilttrekk.h; sourceTree = "<group>"; };
 		9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Vilttrekk.m; sourceTree = "<group>"; };
-		9BD1A096171064CC0099ACAD /* CD_Forkjorsvei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Forkjorsvei.h; sourceTree = "<group>"; };
-		9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Forkjorsvei.m; sourceTree = "<group>"; };
 		9BD1A099171064DD0099ACAD /* CD_Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Egenskap.h; sourceTree = "<group>"; };
 		9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Egenskap.m; sourceTree = "<group>"; };
 		9BD1A09C171065030099ACAD /* CD_Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Veglenke.h; sourceTree = "<group>"; };
@@ -314,8 +329,10 @@
 				9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */,
 				9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */,
 				9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */,
-				9BA0B6BC1711C103008E3E5F /* GoogleMapsAvstand.h */,
-				9BA0B6BD1711C103008E3E5F /* GoogleMapsAvstand.m */,
+				9BA0B6BC1711C103008E3E5F /* MapQuestRoute.h */,
+				9BA0B6BD1711C103008E3E5F /* MapQuestRoute.m */,
+				9B06DF091716CC5B00512F36 /* Motorveg.h */,
+				9B06DF0A1716CC5B00512F36 /* Motorveg.m */,
 			);
 			name = NVDBObjekter;
 			sourceTree = "<group>";
@@ -333,6 +350,7 @@
 				9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */,
 				9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */,
 				9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */,
+				9B06DF1D1716DB2200512F36 /* Vegdata_konstanter.h */,
 			);
 			name = ProgramObjekter;
 			sourceTree = "<group>";
@@ -341,6 +359,10 @@
 			isa = PBXGroup;
 			children = (
 				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
+				9B06DF211716E3A800512F36 /* CD_Forkjorsveg.h */,
+				9B06DF221716E3AA00512F36 /* CD_Forkjorsveg.m */,
+				9B06DF1A1716D4AD00512F36 /* CD_Motorveg.h */,
+				9B06DF1B1716D4AE00512F36 /* CD_Motorveg.m */,
 				9BA0B6BF1711D0D3008E3E5F /* CD_Vegobjekt.h */,
 				9BA0B6C01711D0D3008E3E5F /* CD_Vegobjekt.m */,
 				9BD1A09F1710654A0099ACAD /* VeglenkeDBStatus.h */,
@@ -349,8 +371,6 @@
 				9BD1A09D171065030099ACAD /* CD_Veglenke.m */,
 				9BD1A099171064DD0099ACAD /* CD_Egenskap.h */,
 				9BD1A09A171064DD0099ACAD /* CD_Egenskap.m */,
-				9BD1A096171064CC0099ACAD /* CD_Forkjorsvei.h */,
-				9BD1A097171064CD0099ACAD /* CD_Forkjorsvei.m */,
 				9BD1A093171064C20099ACAD /* CD_Vilttrekk.h */,
 				9BD1A094171064C30099ACAD /* CD_Vilttrekk.m */,
 				9BD1A090171064B70099ACAD /* CD_Jernbanekryssing.h */,
@@ -372,7 +392,6 @@
 		9B7EB7F516CD212600484A74 = {
 			isa = PBXGroup;
 			children = (
-				9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */,
 				9B79037016F37E4C00F36B82 /* Settings.bundle */,
 				9B7EB80716CD212600484A74 /* Vegdata */,
 				9B7EB80016CD212600484A74 /* Frameworks */,
@@ -393,6 +412,7 @@
 			children = (
 				9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */,
 				9B7EB83A16CD32C400484A74 /* libxml2.dylib */,
+				9BA0B6B51711A2D2008E3E5F /* AudioToolbox.framework */,
 				9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */,
 				9B7EB83B16CD32C400484A74 /* MobileCoreServices.framework */,
 				9B7EB83C16CD32C400484A74 /* QuartzCore.framework */,
@@ -444,6 +464,10 @@
 				9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */,
 				9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */,
 				9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */,
+				9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */,
+				9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */,
+				9B06DF111716D36200512F36 /* motorveg.gif */,
+				9B06DF121716D36200512F36 /* motorveg@2x.gif */,
 				9B7EB81316CD212600484A74 /* Default.png */,
 				9B7EB81516CD212600484A74 /* Default@2x.png */,
 				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
@@ -576,6 +600,10 @@
 				9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */,
 				9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */,
 				9BA0B6BB1711A67B008E3E5F /* Purr.aiff in Resources */,
+				9B06DF131716D36200512F36 /* motortrafikkveg.gif in Resources */,
+				9B06DF141716D36200512F36 /* motortrafikkveg@2x.gif in Resources */,
+				9B06DF151716D36200512F36 /* motorveg.gif in Resources */,
+				9B06DF161716D36200512F36 /* motorveg@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,12 +643,14 @@
 				9BD1A08F171064A90099ACAD /* CD_Hoydebegrensning.m in Sources */,
 				9BD1A092171064B80099ACAD /* CD_Jernbanekryssing.m in Sources */,
 				9BD1A095171064C30099ACAD /* CD_Vilttrekk.m in Sources */,
-				9BD1A098171064CD0099ACAD /* CD_Forkjorsvei.m in Sources */,
 				9BD1A09B171064DD0099ACAD /* CD_Egenskap.m in Sources */,
 				9BD1A09E171065040099ACAD /* CD_Veglenke.m in Sources */,
 				9BD1A0A11710654B0099ACAD /* VeglenkeDBStatus.m in Sources */,
-				9BA0B6BE1711C103008E3E5F /* GoogleMapsAvstand.m in Sources */,
+				9BA0B6BE1711C103008E3E5F /* MapQuestRoute.m in Sources */,
 				9BA0B6C11711D0D3008E3E5F /* CD_Vegobjekt.m in Sources */,
+				9B06DF0B1716CC5B00512F36 /* Motorveg.m in Sources */,
+				9B06DF1C1716D4AE00512F36 /* CD_Motorveg.m in Sources */,
+				9B06DF231716E3AE00512F36 /* CD_Forkjorsveg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

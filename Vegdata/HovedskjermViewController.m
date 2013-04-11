@@ -23,7 +23,7 @@
 #import "HovedskjermViewController.h"
 #import "AppDelegate.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 @interface HovedskjermViewController()
 - (IBAction)hudKnappTrykket:(UISwitch *)knapp;
@@ -173,7 +173,7 @@
 
 - (BOOL)skalViseHUDKnapp
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"skjerm_hudknapp"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:HUDKNAPP_BRUKERPREF];
 }
 
 #pragma mark - PosisjonDelegate
@@ -199,15 +199,16 @@
     NSString * dataObjekt;
     NSString * forrigeObjekt;
     BOOL spillLyd = NO;
+    BOOL skalVurdereForkjorsvei = YES;
     
     // -- FARTSGRENSE --
     
-    dataObjekt = [data objectForKey:@"fart"];
+    dataObjekt = [data objectForKey:FARTSGRENSE_KEY];
     if(dataObjekt && element < antallPlasser)
     {
         rad = self.layoutArray[element];
         
-        if([dataObjekt isEqualToString:@"-1"])
+        if([dataObjekt isEqualToString:INGEN_OBJEKTER])
         {
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
             [(UILabel *)rad[1] setTextColor:[UIColor grayColor]];
@@ -242,58 +243,78 @@
         }
         
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"fart";
+        rad[3] = FARTSGRENSE_KEY;
+        element++;
+    }
+    
+    
+    // -- MOTORVEG --
+    
+    dataObjekt = [data objectForKey:MOTORVEG_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        rad = self.layoutArray[element];
+        
+        if([dataObjekt isEqualToString:MOTORVEG_TYPE_MOTORVEG])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"motorveg.gif"];
+        else
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"motortrafikkveg.gif"];
+        
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = MOTORVEG_KEY;
+        
+        skalVurdereForkjorsvei = NO; // Motorvei erstatter eventuell forkjørsvei
         element++;
     }
     
     
     // -- FORKJØRSVEI --
     
-    dataObjekt = [data objectForKey:@"forkjorsveg"];
-    if(dataObjekt && element < antallPlasser && [dataObjekt isEqualToString:@"yes"])
+    dataObjekt = [data objectForKey:FORKJORSVEG_KEY];
+    if(skalVurdereForkjorsvei && dataObjekt && element < antallPlasser && [dataObjekt isEqualToString:FORKJORSVEG_YES])
     {
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"forkjorsvei.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"forkjorsveg";
+        rad[3] = FORKJORSVEG_KEY;
         element++;
     }
     
     
     // -- VILTTREKK --
     
-    dataObjekt = [data objectForKey:@"vilttrekk"];
-    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    dataObjekt = [data objectForKey:VILTTREKK_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:@"vilttrekk"];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+        forrigeObjekt = [self.nyesteData objectForKey:VILTTREKK_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
         
-        if([dataObjekt isEqualToString:@"Hjort"])
+        if([dataObjekt isEqualToString:VILTTREKK_TYPE_HJORT])
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_hjort.gif"];
-        else if([dataObjekt isEqualToString:@"Rein"])
+        else if([dataObjekt isEqualToString:VILTTREKK_TYPE_REIN])
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rein.gif"];
         else
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_elg.gif"];
         
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"vilttrekk";
-        
+        rad[3] = VILTTREKK_KEY;
         element++;
     }
     
     
     // -- HØYDEBEGRENSNING --
 
-    dataObjekt = [data objectForKey:@"hoydebegrensning"];
-    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    dataObjekt = [data objectForKey:HOYDEBEGRENSNING_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:@"hoydebegrensning"];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+        forrigeObjekt = [self.nyesteData objectForKey:HOYDEBEGRENSNING_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
@@ -309,43 +330,43 @@
             [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:15]];
         
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"hoydebegrensning";
+        rad[3] = HOYDEBEGRENSNING_KEY;
         element++;
     }
     
     
     // -- JERNBANEKRYSSING --
     
-    dataObjekt = [data objectForKey:@"jernbanekryssing"];
-    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    dataObjekt = [data objectForKey:JERNBANEKRYSSING_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:@"jernbanekryssing"];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+        forrigeObjekt = [self.nyesteData objectForKey:JERNBANEKRYSSING_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"jernbanekryssing";
+        rad[3] = JERNBANEKRYSSING_KEY;
         element++;
     }
     
     
     // -- FARTSDEMPER --
     
-    dataObjekt = [data objectForKey:@"fartsdemper"];
-    if(dataObjekt && ![dataObjekt isEqualToString:@"-1"] && element < antallPlasser)
+    dataObjekt = [data objectForKey:FARTSDEMPER_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:@"fartsdemper"];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:@"-1"])
+        forrigeObjekt = [self.nyesteData objectForKey:FARTSDEMPER_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"fartsdemper";
+        rad[3] = FARTSDEMPER_KEY;
         element++;
     }
     
@@ -360,20 +381,40 @@
         element++;
     }
     
-    BOOL lydvarslingErAktivert = [[NSUserDefaults standardUserDefaults] boolForKey:@"lydvarsling"];
+    BOOL lydvarslingErAktivert = [[NSUserDefaults standardUserDefaults] boolForKey:LYDVARSLING_BRUKERPREF];
     if(lydvarslingErAktivert && spillLyd)
         AudioServicesPlaySystemSound(self.lydID);
     
     self.nyesteData = data;
 }
 
-- (void)avstandTilPunktobjekt:(Avstand *)avstand MedKey:(NSString *)key
+- (void)avstandTilPunktobjekt:(NSDecimalNumber *)avstand MedKey:(NSString *)key
 {
     for(NSMutableArray * rad in self.layoutArray)
     {
         if([rad[3] isEqualToString:key])
         {
-            ((UILabel *)rad[2]).text = avstand.tekst;
+            NSDecimalNumber * nyAvstand = [[NSDecimalNumber alloc] initWithDouble:avstand.doubleValue];
+            
+            if(nyAvstand.doubleValue < 1)
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:-1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * meter = [nyAvstand decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:1000] withBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[meter stringValue] stringByAppendingString:@" m"];
+            }
+            else if(nyAvstand.doubleValue < 10)
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * km = [nyAvstand decimalNumberByRoundingAccordingToBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[km stringValue] stringByAppendingString:@" km"];
+            }
+            else
+            {
+                NSDecimalNumberHandler * handler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:0 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+                NSDecimalNumber * km = [nyAvstand decimalNumberByRoundingAccordingToBehavior:handler];
+                ((UILabel *)rad[2]).text =  [[km stringValue] stringByAppendingString:@" km"];
+            }
+
             break;
         }
     }

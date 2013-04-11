@@ -28,6 +28,7 @@
 #import "Fartsgrense.h"
 #import "Forkjorsveg.h"
 #import "Vilttrekk.h"
+#import "Motorveg.h"
 #import "Fartsdemper.h"
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
@@ -36,7 +37,7 @@
 #import "Veglenke.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -49,20 +50,16 @@
 #import "CD_Hoydebegrensning.h"
 #import "CD_Jernbanekryssing.h"
 #import "CD_Fartsgrense.h"
-#import "CD_Forkjorsvei.h"
+#import "CD_Forkjorsveg.h"
 #import "CD_Vilttrekk.h"
-
-static NSString * const NVDB_GEOMETRI = @"WGS84";
-static double const WGS84_BBOX_RADIUS = 0.0001;
-static double const SEKUNDER_PER_DAG = 86400;
-static int const DAGER_MELLOM_NY_OPPDATERING = 30;
+#import "CD_Motorveg.h"
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
-+ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
++ (NSDictionary *)parametereForMapQuestAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
 + (NSDictionary *)parametereForSok:(Sok *)sok;
 @end
 
@@ -97,13 +94,14 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
 
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
 {
-    NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:@"VeglenkeDBStatus"
+    NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
                                                        inManagedObjectContext:managedObjectContext];
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:veglenkeEntity];
     
     NSNumber * vlenke = ((Veglenke *)sok.veglenker[0]).lenkeId;
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(veglenkeId == %@)", vlenke];
+    NSString * predicateStreng = [NSString stringWithFormat: @"(%@ == %@)", VEGLENKEDBSTATUS_LENKEID, vlenke];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:predicateStreng];
     [request setPredicate:predicate];
     
     NSError * feil;
@@ -131,11 +129,11 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
 
 - (void)hentAvstandmedKoordinaterAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx BY:(NSDecimalNumber *)by ogKey:(NSString *)key
 {
-    [restkit hentAvstandMellomKoordinaterMedParametere:[NVDB_DataProvider parametereForGoogleMapsAvstandMedAX:ax
-                                                                                                           AY:ay
-                                                                                                           BX:bx
-                                                                                                         OgBY:by]
-                                               Mapping:[GoogleMapsAvstand mapping]
+    [restkit hentAvstandMellomKoordinaterMedParametere:[NVDB_DataProvider parametereForMapQuestAvstandMedAX:ax
+                                                                                                         AY:ay
+                                                                                                         BX:bx
+                                                                                                       OgBY:by]
+                                               Mapping:[MapQuestRoute mapping]
                                                  OgKey:key];
 }
 
@@ -161,6 +159,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     NSMutableArray * fartsgrenser = [[NSMutableArray alloc] init];
     NSMutableArray * forkjorsveier = [[NSMutableArray alloc] init];
     NSMutableArray * vilttrekk = [[NSMutableArray alloc] init];
+    NSMutableArray * motorveger = [[NSMutableArray alloc] init];
     NSMutableArray * fartsdempere = [[NSMutableArray alloc] init];
     NSMutableArray * hoydebegrensninger = [[NSMutableArray alloc] init];
     NSMutableArray * jernbanekryssinger = [[NSMutableArray alloc] init];
@@ -197,7 +196,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             fartsgrense.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
             [fartsgrenser addObject:fartsgrense];
         }
-        else if([obj isKindOfClass:[CD_Forkjorsvei class]])
+        else if([obj isKindOfClass:[CD_Forkjorsveg class]])
         {
             Forkjorsveg * forkjorsveg = [Forkjorsveg alloc];
             forkjorsveg.egenskaper = egenskaper;
@@ -214,6 +213,15 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             ettVilttrekk.lokasjon = obj.lokasjon;
             ettVilttrekk.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
             [vilttrekk addObject:ettVilttrekk];
+        }
+        else if([obj isKindOfClass:[CD_Motorveg class]])
+        {
+            Motorveg * motorveg = [Motorveg alloc];
+            motorveg.egenskaper = egenskaper;
+            motorveg.veglenker = veglenker;
+            motorveg.lokasjon = obj.lokasjon;
+            motorveg.strekningsLengde = ((CD_LinjeObjekt *)obj).strekningsLengde;
+            [motorveger addObject:motorveg];
         }
         else if([obj isKindOfClass:[CD_Fartsdemper class]])
         {
@@ -244,11 +252,12 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     Fartsgrenser * s_fartsgrenser = [[Fartsgrenser alloc] initMedObjekter:[fartsgrenser copy]];
     Forkjorsveger * s_forkjorsveier = [[Forkjorsveger alloc] initMedObjekter:[forkjorsveier copy]];
     Vilttrekks * s_vilttrekk = [[Vilttrekks alloc] initMedObjekter:[vilttrekk copy]];
+    Motorveger * s_motorveger = [[Motorveger alloc] initMedObjekter:[motorveger copy]];
     Fartsdempere * s_fartsdempere = [[Fartsdempere alloc] initMedObjekter:[fartsdempere copy]];
     Hoydebegrensninger * s_hoydebegrensninger = [[Hoydebegrensninger alloc] initMedObjekter:[hoydebegrensninger copy]];
     Jernbanekryssinger * s_jernbanekryssinger = [[Jernbanekryssinger alloc] initMedObjekter:[jernbanekryssinger copy]];
     
-    NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveier, s_vilttrekk,
+    NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveier, s_vilttrekk, s_motorveger,
                           s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, nil];
     
     NSLog(@"\n### Data lastet fra Core Data.");
@@ -262,12 +271,13 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     // Lagrer data til Core Data
     if(!(resultat == nil || resultat.count == 0 || [resultat[0] isKindOfClass:[Vegreferanse class]]))
     {
-        NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:@"VeglenkeDBStatus"
+        NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
                                                            inManagedObjectContext:managedObjectContext];
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
         [request setEntity:veglenkeEntity];
         
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(veglenkeId == %@)", lenkeId];
+        NSString * predicateStreng = [NSString stringWithFormat: @"(%@ == %@)", VEGLENKEDBSTATUS_LENKEID, lenkeId];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:predicateStreng];
         [request setPredicate:predicate];
         
         NSError * feil;
@@ -314,7 +324,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
                     
                     for(Egenskap * v_eg in v_obj.egenskaper)
                     {
-                        CD_Egenskap * e = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Egenskap"
+                        CD_Egenskap * e = [NSEntityDescription insertNewObjectForEntityForName:EGENSKAP_CD
                                                                         inManagedObjectContext:managedObjectContext];
                         e.navn = v_eg.navn;
                         e.verdi = v_eg.verdi;
@@ -323,7 +333,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
                     
                     for(Veglenke * v_vlenke in v_obj.veglenker)
                     {
-                        CD_Veglenke * v = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Veglenke"
+                        CD_Veglenke * v = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKE_CD
                                                                         inManagedObjectContext:managedObjectContext];
                         v.lenkeId = v_vlenke.lenkeId;
                         v.fra = v_vlenke.fra;
@@ -335,22 +345,25 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
                     CD_Vegobjekt * cdVegobj;
                     
                     if([v_obj isKindOfClass:[Fartsgrense class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Fartsgrense"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSGRENSE_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Forkjorsveg class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Forkjorsvei"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FORKJORSVEG_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Vilttrekk class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Vilttrekk"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VILTTREKK_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Motorveg class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTORVEG_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Fartsdemper class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Fartsdemper"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSDEMPER_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Hoydebegrensning class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Hoydebegrensning"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:HOYDEBEGRENSNING_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Jernbanekryssing class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:@"CD_Jernbanekryssing"
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:JERNBANEKRYSSING_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else
                         continue;
@@ -367,7 +380,7 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
             }
         }
         
-        VeglenkeDBStatus * cdStatus = [NSEntityDescription insertNewObjectForEntityForName:@"VeglenkeDBStatus"
+        VeglenkeDBStatus * cdStatus = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKEDBSTATUS_CD
                                                                     inManagedObjectContext:managedObjectContext];
         cdStatus.sistOppdatert = [[NSDate alloc] init];
         cdStatus.veglenkeId = lenkeId;
@@ -385,9 +398,9 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
 }
 
-- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+- (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
 {
-    [delegate svarFraGoogleMapsMedResultat:resultat OgKey:key];
+    [delegate svarFraMapQuestMedResultat:resultat OgKey:key];
 }
 
 #pragma mark - Statiske hjelpemetoder
@@ -410,11 +423,11 @@ static int const DAGER_MELLOM_NY_OPPDATERING = 30;
     return @{@"bbox" : bboxString, @"srid" : NVDB_GEOMETRI};
 }
 
-+ (NSDictionary *)parametereForGoogleMapsAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by
++ (NSDictionary *)parametereForMapQuestAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by
 {
-    NSString * fra = [[NSArray arrayWithObjects:ax, ay, nil] componentsJoinedByString:@","];
-    NSString * til = [[NSArray arrayWithObjects:bx, by, nil] componentsJoinedByString:@","];
-    return @{@"origins" : fra, @"destinations" : til, @"sensor" : @"true"};
+    NSString * jsonstreng = [NSString stringWithFormat:@"{locations:[{latLng:{lat:%@,lng:%@}},{latLng:{lat:%@,lng:%@}}],options:{unit:k}}", ax, ay, bx, by];
+    
+    return @{@"key": MAPQUEST_KEY, @"json" : jsonstreng};
 }
 
 + (NSDictionary *)parametereForSok:(Sok *)sok

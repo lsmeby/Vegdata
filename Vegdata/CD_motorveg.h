@@ -1,8 +1,8 @@
 //
-//  CD_Forkjorsvei.m
+//  CD_Motorveg.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 06.04.13.
+//  Created by Lars Smeby on 11.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,10 +20,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Forkjorsvei.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "CD_LinjeObjekt.h"
 
 
-@implementation CD_Forkjorsvei
+@interface CD_Motorveg : CD_LinjeObjekt
 
 
 @end

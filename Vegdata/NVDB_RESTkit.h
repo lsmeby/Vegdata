@@ -25,7 +25,7 @@
 @protocol NVDBResponseDelegate
 @required
 - (void) svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId;
-- (void) svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key;
+- (void) svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key;
 @end
 
 @interface NVDB_RESTkit : NSObject

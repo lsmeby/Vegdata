@@ -33,12 +33,12 @@
 {
     for (Egenskap * e in egenskaper)
     {
-        if([e.navn isEqualToString:@"Type"])
+        if([e.navn isEqualToString:JERNBANEKRYSSING_TYPE_KEY])
         {
             return e.verdi;
         }
     }
-    return @"-1";
+    return INGEN_OBJEKTER;
 }
 
 +(RKObjectMapping *)mapping
@@ -50,9 +50,9 @@
 {
     return [[NSArray alloc]
             initWithObjects:[[Filter alloc]
-                             initMedType:@"Type"
-                             FilterOperator:@"!="
-                             OgVerdier:[[NSArray alloc] initWithObjects:@"Veg over", @"Veg under", nil]],
+                             initMedType:JERNBANEKRYSSING_TYPE_KEY
+                             FilterOperator:FILTER_ULIK
+                             OgVerdier:[[NSArray alloc] initWithObjects:JERNBANEKRYSSING_FILTER_OVER, JERNBANEKRYSSING_FILTER_UNDER, nil]],
             nil];
 }
 

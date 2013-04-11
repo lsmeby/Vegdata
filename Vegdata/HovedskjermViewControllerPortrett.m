@@ -46,7 +46,7 @@
     {
         if(!self.landskapViewController)
         {
-            self.landskapViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"HovedskjermLandskap"];
+            self.landskapViewController = [[UIStoryboard storyboardWithName:VEGDATA_STORYBOARD bundle:nil] instantiateViewControllerWithIdentifier:VEGDATA_HOVEDSKJERM_LANDSKAP];
             
             self.landskapViewController.pos = self.pos;
             self.landskapViewController.vegObjKont = self.vegObjKont;

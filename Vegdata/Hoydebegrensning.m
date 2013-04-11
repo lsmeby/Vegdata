@@ -32,12 +32,12 @@
 {
     for (Egenskap * e in egenskaper)
     {
-        if([e.navn isEqualToString:@"Skilta høyde"])
+        if([e.navn isEqualToString:HOYDEBEGRENSNING_TYPE_KEY])
         {
             return e.verdi;
         }
     }
-    return @"-1";
+    return INGEN_OBJEKTER;
 }
 
 + (RKObjectMapping *) mapping

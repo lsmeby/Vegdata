@@ -85,7 +85,7 @@ static NSString * const KEYPATH = nil;
     NSDecimalNumber * breddegrad = [[NSDecimalNumber alloc] initWithString:[hele substringFromIndex:[hele rangeOfString:@" "].location+1]];
     NSDecimalNumber * lengdegrad = [[NSDecimalNumber alloc] initWithString:[hele substringToIndex:[hele rangeOfString:@" "].location]];
     
-    return @{@"breddegrad" : breddegrad, @"lengdegrad" : lengdegrad};
+    return @{VEGREFERANSE_BREDDEGRAD : breddegrad, VEGREFERANSE_LENGDEGRAD : lengdegrad};
 }
 
 @end

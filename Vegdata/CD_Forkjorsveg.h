@@ -1,8 +1,8 @@
 //
-//  CD_Forkjorsvei.h
+//  CD_Forkjorsveg.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 06.04.13.
+//  Created by Lars Smeby on 11.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -25,7 +25,7 @@
 #import "CD_LinjeObjekt.h"
 
 
-@interface CD_Forkjorsvei : CD_LinjeObjekt
+@interface CD_Forkjorsveg : CD_LinjeObjekt
 
 
 @end

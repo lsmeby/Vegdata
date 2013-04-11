@@ -1,5 +1,5 @@
 //
-//  GoogleMapsAvstand.h
+//  GoogleMapsAvstand.m
 //  Vegdata
 //
 //  Created by Lars Smeby on 07.04.13.
@@ -20,24 +20,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <Foundation/Foundation.h>
+#import "MapQuestRoute.h"
 
-@interface GoogleMapsAvstand : NSObject
-@property (nonatomic, strong) NSString * status;
-@property (nonatomic, strong) NSArray * rader;
-+ (RKObjectMapping *)mapping;
-@end
+@implementation MapQuestRoute
 
-@interface Rad : NSObject
-@property (nonatomic, strong) NSArray * elementer;
-@end
+@synthesize status, avstand;
 
-@class Avstand;
-@interface Element : NSObject
-@property (nonatomic, strong) Avstand * avstand;
-@end
++ (RKObjectMapping *)mapping
+{
+    RKObjectMapping * mapQuestMapping = [RKObjectMapping mappingForClass:[self class]];
+    [mapQuestMapping addAttributeMappingsFromDictionary:@{@"distance" : @"avstand", @"info.statuscode" : @"status"}];
+    
+    return mapQuestMapping;
+}
 
-@interface Avstand : NSObject
-@property (nonatomic, strong) NSString * tekst;
-@property (nonatomic, strong) NSNumber * verdi;
 @end

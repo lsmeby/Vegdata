@@ -28,7 +28,7 @@
 @protocol VegObjektDelegate
 @required
 - (void)vegObjekterErOppdatert:(NSDictionary *)data;
-- (void)avstandTilPunktobjekt:(Avstand *)avstand MedKey:(NSString *)key;
+- (void)avstandTilPunktobjekt:(NSDecimalNumber *)avstand MedKey:(NSString *)key;
 @end
 
 @interface VegObjektKontroller : NSObject <NVDBResponseDelegate>

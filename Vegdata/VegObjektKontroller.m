@@ -30,10 +30,11 @@
 #import "Forkjorsveg.h"
 #import "Egenskap.h"
 #import "Vilttrekk.h"
+#import "Motorveg.h"
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
 #import "Fartsdemper.h"
-#import "GoogleMapsAvstand.h"
+#import "MapQuestRoute.h"
 
 @interface VegObjektKontroller()
 
@@ -41,9 +42,9 @@
 - (NSArray *)hentObjekttyper;
 - (RKDynamicMapping *)hentObjektMapping;
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
-- (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater;
+- (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand;
 - (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
-- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
 - (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
 + (NSDecimalNumber *)diffMellomA:(NSDecimalNumber *)desimalA OgB:(NSDecimalNumber *)desimalB;
 
@@ -84,52 +85,70 @@
 - (NSArray *)hentObjekttyper
 {
     NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:105]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:596]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:291]
-                                                      Antall:[[NSNumber alloc] initWithInt:0]
-                                                   OgFiltere:[Vilttrekk filtere]]];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:591]
-                                                      Antall:[[NSNumber alloc] initWithInt:0] OgFiltere:nil]];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:100]
-                                                      Antall:[[NSNumber alloc] initWithInt:0]
-                                                   OgFiltere:[Jernbanekryssing filtere]]];
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:103]
-                                                      Antall:[[NSNumber alloc] initWithInt:0]
-                                                   OgFiltere:[Fartsdemper filtere]]];
-    // Sjekk egenskaper og finn ut hvilke objekttyper vi skal finne
+    NSNumber * antall = [[NSNumber alloc] initWithInt:0];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FARTSGRENSE_ID]
+                                                      Antall:antall OgFiltere:[Fartsgrense filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FORKJORSVEG_ID]
+                                                      Antall:antall OgFiltere:[Forkjorsveg filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:VILTTREKK_ID]
+                                                      Antall:antall OgFiltere:[Vilttrekk filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:MOTORVEG_ID]
+                                                      Antall:antall OgFiltere:[Motorveg filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:HOYDEBEGRENSNING_ID]
+                                                      Antall:antall OgFiltere:[Hoydebegrensning filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:JERNBANEKRYSSING_ID]
+                                                      Antall:antall OgFiltere:[Jernbanekryssing filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
+                                                      Antall:antall OgFiltere:[Fartsdemper filtere]]];
+
     return objekttyper;
 }
 
 - (RKDynamicMapping *) hentObjektMapping
 {
     RKDynamicMapping * mapping = [[RKDynamicMapping alloc] init];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:105]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:FARTSGRENSE_ID]
                                                      objectMapping:[Fartsgrense mapping]]];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:596]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:FORKJORSVEG_ID]
                                                      objectMapping:[Forkjorsveg mapping]]];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:291]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:VILTTREKK_ID]
                                                      objectMapping:[Vilttrekk mapping]]];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:591]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:MOTORVEG_ID]
+                                                     objectMapping:[Motorveg mapping]]];
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:HOYDEBEGRENSNING_ID]
                                                      objectMapping:[Hoydebegrensning mapping]]];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:100]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:JERNBANEKRYSSING_ID]
                                                      objectMapping:[Jernbanekryssing mapping]]];
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"typeId"
-                                                     expectedValue:[[NSNumber alloc] initWithInt:103]
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
                                                      objectMapping:[Fartsdemper mapping]]];
+    
     return mapping;
 }
 
 #pragma mark - Metoder som tolker de returnerte objektene
 
-- (void) leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater
+- (void) leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand
 {
     if(returDictionary == nil || resultater == nil || resultater.objekter == nil || resultater.objekter.count == 0)
         return;
@@ -212,7 +231,7 @@
                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
                     {
                         naermestePosisjon = posisjon;
-                        [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:obj];
+                        [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:obj OgAvstandsArray:avstand];
                     }
                 }
             }
@@ -223,64 +242,81 @@
 - (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
 {
     if ([objekt isKindOfClass:[Fartsgrense class]])
-        [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:@"fart"];
+        [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:FARTSGRENSE_KEY];
     
     else if ([objekt isKindOfClass:[Forkjorsveg class]])
     {
-        if([[NSUserDefaults standardUserDefaults] boolForKey:@"skilt_forkjorsveg"])
-            [returDictionary setObject:@"yes" forKey:@"forkjorsveg"];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:FORKJORSVEG_BRUKERPREF])
+            [returDictionary setObject:FORKJORSVEG_YES forKey:FORKJORSVEG_KEY];
     }
     
     else if ([objekt isKindOfClass:[Vilttrekk class]])
     {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_vilttrekk"])
-            [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:VILTTREKK_BRUKERPREF])
+            [returDictionary setObject:INGEN_OBJEKTER forKey:VILTTREKK_KEY];
         else
-            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:@"vilttrekk"];
+            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:VILTTREKK_KEY];
+    }
+    
+    else if ([objekt isKindOfClass:[Motorveg class]])
+    {
+        if (NO) // Brukerpreferanser
+            [returDictionary setObject:INGEN_OBJEKTER forKey:MOTORVEG_KEY];
+        else
+            [returDictionary setObject:[(Motorveg *)objekt hentTypeFraEgenskaper] forKey:MOTORVEG_KEY];
     }
 }
 
-- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand
 {
     NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
     NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
-    NSDecimalNumber * ax = [fra objectForKey:@"breddegrad"];
-    NSDecimalNumber * ay = [fra objectForKey:@"lengdegrad"];
-    NSDecimalNumber * bx = [til objectForKey:@"breddegrad"];
-    NSDecimalNumber * by = [til objectForKey:@"lengdegrad"];
+    NSDecimalNumber * ax = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
+    NSDecimalNumber * ay = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
+    NSDecimalNumber * bx = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
+    NSDecimalNumber * by = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
+    
+    void (^leggTilAvstandsdata)(NSString *) = ^(NSString * key)
+    {
+        avstand[0] = ax;
+        avstand[1] = ay;
+        avstand[2] = bx;
+        avstand[3] = by;
+        avstand[4] = key;
+    };
     
     if([objekt isKindOfClass:[Hoydebegrensning class]])
     {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_hoydebegrensning"])
-            [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:HOYDEBEGRENSNING_BRUKERPREF])
+            [returDictionary setObject:INGEN_OBJEKTER forKey:HOYDEBEGRENSNING_KEY];
         else
         {
-            [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:@"hoydebegrensning"];
-            [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"hoydebegrensning"];
+            [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:HOYDEBEGRENSNING_KEY];
+            leggTilAvstandsdata(HOYDEBEGRENSNING_KEY);
         }
     }
     
     else if([objekt isKindOfClass:[Jernbanekryssing class]])
     {
-        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_jernbanekryssing"])
-            [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:JERNBANEKRYSSING_BRUKERPREF])
+            [returDictionary setObject:INGEN_OBJEKTER forKey:JERNBANEKRYSSING_KEY];
         else
         {
             NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:kryssing forKey:@"jernbanekryssing"];
-            [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"jernbanekryssing"];
+            [returDictionary setObject:kryssing forKey:JERNBANEKRYSSING_KEY];
+            leggTilAvstandsdata(JERNBANEKRYSSING_KEY);
         }
     }
     
     else if([objekt isKindOfClass:[Fartsdemper class]])
     {
-        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"fare_fartsdemper"])
-            [returDictionary setObject:@"-1" forKey:@"fartsdemper"];
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:FARTSDEMPER_BRUKERPREF])
+            [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSDEMPER_KEY];
         else
         {
             NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:demper forKey:@"fartsdemper"];
-            [dataProv hentAvstandmedKoordinaterAX:ax AY:ay BX:bx BY:by ogKey:@"fartsdemper"];
+            [returDictionary setObject:demper forKey:FARTSDEMPER_KEY];
+            leggTilAvstandsdata(FARTSDEMPER_KEY);
         }
     }
 }
@@ -329,24 +365,42 @@
         NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
         NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
         
+        NSMutableArray * avstandsdata = [[NSMutableArray alloc] initWithCapacity:5];
+        
         for (NSObject * obj in resultat)
             if ([obj isKindOfClass:[SokResultater class]])
-                [self leggTilDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj];
+            {
+                [avstandsdata removeAllObjects];
+                
+                [self leggTilDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj MedAvstandsArray:avstandsdata];
+                
+                if([avstandsdata count] > 0)
+                    [dataProv hentAvstandmedKoordinaterAX:avstandsdata[0]
+                                                       AY:avstandsdata[1]
+                                                       BX:avstandsdata[2]
+                                                       BY:avstandsdata[3]
+                                                    ogKey:avstandsdata[4]];
+            }
         
         [self.delegate vegObjekterErOppdatert:returDictionary];
     }
 }
 
-- (void)svarFraGoogleMapsMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+- (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
 {
     if(resultat && [resultat count] > 0)
     {
-        GoogleMapsAvstand * gmap = resultat[0];
-        if([gmap.status isEqualToString:@"OK"])
+        MapQuestRoute * mQMap = resultat[0];
+        if(mQMap.status.intValue == 0)
         {
-            Rad * rad = gmap.rader[0];
-            Element * elem = rad.elementer[0];
-            Avstand * avst = elem.avstand;
+            NSDecimalNumber * avst;
+            
+            for(NSDecimalNumber * km in mQMap.avstand)
+            {
+                if(!avst || km.doubleValue > avst.doubleValue)
+                    avst = km;
+            }
+            
             [self.delegate avstandTilPunktobjekt:avst MedKey:key];
         }
     }
@@ -355,14 +409,14 @@
 - (NSMutableDictionary *) opprettReturDictionaryMedDefaultVerdier
 {
     NSMutableDictionary * returDictionary = [[NSMutableDictionary alloc] init];
-    
-    // Legger  til default-verdier så viewet vet at det ble søkt etter men ikke funnet objekter
-    [returDictionary setObject:@"-1" forKey:@"fart"];
-    [returDictionary setObject:@"no" forKey:@"forkjorsveg"];
-    [returDictionary setObject:@"-1" forKey:@"vilttrekk"];
-    [returDictionary setObject:@"-1" forKey:@"hoydebegrensning"];
-    [returDictionary setObject:@"-1" forKey:@"jernbanekryssing"];
-    [returDictionary setObject:@"-1" forKey:@"fartsdemper"];
+
+    [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSGRENSE_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:FORKJORSVEG_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:VILTTREKK_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:MOTORVEG_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:HOYDEBEGRENSNING_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:JERNBANEKRYSSING_KEY];
+    [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSDEMPER_KEY];
     
     return returDictionary;
 }
