@@ -32,12 +32,12 @@
 {
     for (Egenskap * e in egenskaper)
     {
-        if([e.navn isEqualToString:@"Fartsgrense"])
+        if([e.navn isEqualToString:FARTSGRENSE_FART_KEY])
         {
             return e.verdi;
         }
     }
-    return @"-1";
+    return INGEN_OBJEKTER;
 }
 
 + (RKObjectMapping *)mapping

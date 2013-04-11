@@ -1,8 +1,8 @@
 //
-//  Fartsdemper.m
+//  Motorveg.m
 //  Vegdata
 //
-//  Created by Lars Smeby on 21.03.13.
+//  Created by Lars Smeby on 11.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,20 +20,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "Fartsdemper.h"
+#import "Motorveg.h"
 #import "Egenskap.h"
 #import "SokResultater.h"
-#import "Sok.h"
 
-@implementation Fartsdemper
+@implementation Motorveg
 
-@synthesize egenskaper, veglenker, lokasjon;
+@synthesize egenskaper, veglenker, strekningsLengde;
 
--(NSString *)hentTypeFraEgenskaper
+- (NSString *)hentTypeFraEgenskaper
 {
     for (Egenskap * e in egenskaper)
     {
-        if([e.navn isEqualToString:FARTSDEMPER_TYPE_KEY])
+        if([e.navn isEqualToString:MOTORVEG_TYPE_KEY])
         {
             return e.verdi;
         }
@@ -41,19 +40,14 @@
     return INGEN_OBJEKTER;
 }
 
-+(RKObjectMapping *)mapping
++ (RKObjectMapping *)mapping
 {
-    return [self standardMappingMedKontainerKlasse:[Fartsdempere class]];
+    return [self standardMappingMedKontainerKlasse:[Motorveger class]];
 }
 
 +(NSArray *)filtere
 {
-    return [[NSArray alloc]
-            initWithObjects:[[Filter alloc]
-                             initMedType:FARTSDEMPER_TYPE_KEY
-                             FilterOperator:FILTER_ULIK
-                             OgVerdier:[[NSArray alloc] initWithObjects:FARTSDEMPER_FILTER_RUMLEFELT, nil]],
-            nil];
+    return nil;
 }
 
 @end

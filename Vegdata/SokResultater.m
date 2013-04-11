@@ -41,6 +41,9 @@
 @implementation Vilttrekks
 @end
 
+@implementation Motorveger
+@end
+
 @implementation Hoydebegrensninger
 @end
 

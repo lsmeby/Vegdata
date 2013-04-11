@@ -33,12 +33,12 @@
 {
     for (Egenskap * e in egenskaper)
     {
-        if([e.navn isEqualToString:@"Dyreart"])
+        if([e.navn isEqualToString:VILTTREKK_TYPE_KEY])
         {
             return e.verdi;
         }
     }
-    return @"-1";
+    return INGEN_OBJEKTER;
 }
 
 + (RKObjectMapping *)mapping
@@ -50,9 +50,9 @@
 {
     return [[NSArray alloc]
             initWithObjects:[[Filter alloc]
-                             initMedType:@"Type vegkryssing"
-                             FilterOperator:@"!="
-                             OgVerdier:[[NSArray alloc] initWithObjects:@"Over, ledet", @"Under, ledet", nil]],
+                             initMedType:VILTTREKK_FILTER_KEY
+                             FilterOperator:FILTER_ULIK
+                             OgVerdier:[[NSArray alloc] initWithObjects:VILTTREKK_FILTER_OVER, VILTTREKK_FILTER_UNDER, nil]],
             nil];
 }
 

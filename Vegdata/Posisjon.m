@@ -22,11 +22,6 @@
 
 #import "Posisjon.h"
 
-static int const OPPDATERING_SEK = 2;
-static double const MSEK_TIL_KMT = 3.6;
-static int const OPPDATERING_METER = 5;
-static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
-
 @interface PosisjonsKontroller()
 - (void) oppdaterPresisjonMedFart:(NSDecimalNumber *)meterISekundet;
 @end
@@ -56,10 +51,10 @@ static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
     if([self.delegate conformsToProtocol:@protocol(PosisjonDelegate)])
     {
         CLLocation * CLpos = [locations lastObject];
-        
+
         if(self.sisteOppdatering != nil &&
-           [CLpos.timestamp timeIntervalSinceDate:self.sisteOppdatering.timestamp] < (OPPDATERING_SEK_VED_BEVEGELSE_STOPP) &&
-           [CLpos distanceFromLocation:self.sisteOppdatering] < OPPDATERING_METER)
+           [CLpos.timestamp timeIntervalSinceDate:self.sisteOppdatering.timestamp] < (POS_OPPDATERING_SEK_VED_BEVEGELSE_STOPP) &&
+           [CLpos distanceFromLocation:self.sisteOppdatering] < POS_OPPDATERING_METER)
             return;
         
         self.sisteOppdatering = CLpos;
@@ -90,10 +85,10 @@ static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
         self.lokMan.distanceFilter = kCLDistanceFilterNone;
     else
     {
-        double nyttFilter = meterISekundet.doubleValue * OPPDATERING_SEK;
+        double nyttFilter = meterISekundet.doubleValue * POS_OPPDATERING_SEK;
         
         // Oppdater kun hvis det er minst 10 km/t forskjell på forrige registrerte filter
-        if(self.lokMan.distanceFilter - nyttFilter > (10 / MSEK_TIL_KMT * OPPDATERING_SEK) || self.lokMan.distanceFilter - nyttFilter < -(10 / MSEK_TIL_KMT * OPPDATERING_SEK))
+        if(self.lokMan.distanceFilter - nyttFilter > (10 / POS_MSEK_TIL_KMT * POS_OPPDATERING_SEK) || self.lokMan.distanceFilter - nyttFilter < -(10 / POS_MSEK_TIL_KMT * POS_OPPDATERING_SEK))
             [self.lokMan setDistanceFilter:nyttFilter];
     }
 }
@@ -108,7 +103,7 @@ static int const OPPDATERING_SEK_VED_BEVEGELSE_STOPP = OPPDATERING_SEK * 10;
 - (NSDecimalNumber *) hastighetIKmT
 {
     if(hastighetIMeterISek != nil)
-        return [[NSDecimalNumber alloc] initWithDouble:hastighetIMeterISek.doubleValue * MSEK_TIL_KMT];
+        return [[NSDecimalNumber alloc] initWithDouble:hastighetIMeterISek.doubleValue * POS_MSEK_TIL_KMT];
     
     return [[NSDecimalNumber alloc] initWithDouble:-1];
 }
