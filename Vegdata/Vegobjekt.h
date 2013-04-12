@@ -47,8 +47,3 @@
 
 @interface PunktObjekt : Vegobjekt
 @end
-
-@interface SkiltObjekt : PunktObjekt
-@property (nonatomic, strong) NSString * ansiktsside;
-@property (nonatomic, strong) NSNumber * avstandTilObjekt;
-@end

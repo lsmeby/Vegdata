@@ -65,7 +65,3 @@
 
 @implementation PunktObjekt
 @end
-
-@implementation SkiltObjekt
-@synthesize ansiktsside, avstandTilObjekt;
-@end

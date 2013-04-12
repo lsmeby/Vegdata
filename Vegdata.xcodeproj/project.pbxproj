@@ -21,6 +21,7 @@
 		9B232ABA16D51261008FCC43 /* NVDB_DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */; };
 		9B252B391700C8F400773942 /* fareskilt_jernbane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B371700C8F400773942 /* fareskilt_jernbane.gif */; };
 		9B252B3A1700C8F400773942 /* fareskilt_jernbane@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */; };
+		9B275FA61718769600487393 /* SkiltObjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B275FA51718769600487393 /* SkiltObjekt.m */; };
 		9B3C64D716EA336C009C0E69 /* Forkjorsveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */; };
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
@@ -151,6 +152,8 @@
 		9B232AB916D51261008FCC43 /* NVDB_DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDB_DataProvider.m; sourceTree = "<group>"; };
 		9B252B371700C8F400773942 /* fareskilt_jernbane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_jernbane.gif; sourceTree = "<group>"; };
 		9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_jernbane@2x.gif"; sourceTree = "<group>"; };
+		9B275FA41718769600487393 /* SkiltObjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkiltObjekt.h; sourceTree = "<group>"; };
+		9B275FA51718769600487393 /* SkiltObjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkiltObjekt.m; sourceTree = "<group>"; };
 		9B3C64D516EA336C009C0E69 /* Forkjorsveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forkjorsveg.h; sourceTree = "<group>"; };
 		9B3C64D616EA336C009C0E69 /* Forkjorsveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forkjorsveg.m; sourceTree = "<group>"; };
 		9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forkjorsvei.gif; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				9B60EAAC16E76EAA00B7E815 /* SokResultater.m */,
 				9B90E6F816F75E5B0067850E /* Vegobjekt.h */,
 				9B90E6F916F75E5B0067850E /* Vegobjekt.m */,
+				9B275FA41718769600487393 /* SkiltObjekt.h */,
+				9B275FA51718769600487393 /* SkiltObjekt.m */,
 				9B90E6FE16F7615C0067850E /* Vilttrekk.h */,
 				9B90E6FF16F7615C0067850E /* Vilttrekk.m */,
 				9BA217DC16F88C2C00996F0B /* Hoydebegrensning.h */,
@@ -657,6 +662,7 @@
 				9B06DF1C1716D4AE00512F36 /* CD_Motorveg.m in Sources */,
 				9B06DF231716E3AE00512F36 /* CD_Forkjorsveg.m in Sources */,
 				9BCC4B8717184D870003E3F1 /* Skiltplate.m in Sources */,
+				9B275FA61718769600487393 /* SkiltObjekt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
