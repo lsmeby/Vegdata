@@ -1,8 +1,8 @@
 //
-//  SokResultater.m
+//  Skiltplate.h
 //  Vegdata
 //
-//  Created by Henrik Hermansen on 06.03.13.
+//  Created by Lars Smeby on 12.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,38 +20,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "SokResultater.h"
+#import "Vegobjekt.h"
 
-@implementation SokResultater
-
--(id)initMedObjekter:(NSArray *)aObjekter
-{
-    self.objekter = aObjekter;
-    return self;
-}
-
-@end
-
-@implementation Fartsgrenser
-@end
-
-@implementation Forkjorsveger
-@end
-
-@implementation Vilttrekks
-@end
-
-@implementation Motorveger
-@end
-
-@implementation Hoydebegrensninger
-@end
-
-@implementation Jernbanekryssinger
-@end
-
-@implementation Fartsdempere
-@end
-
-@implementation Skiltplater
+@interface Skiltplate : PunktObjekt <VegobjektProtokoll>
+- (NSString *)hentSkilttypeFraEgenskaper;
 @end

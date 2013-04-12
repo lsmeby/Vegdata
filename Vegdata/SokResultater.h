@@ -46,3 +46,6 @@
 
 @interface Fartsdempere : SokResultater
 @end
+
+@interface Skiltplater : SokResultater
+@end

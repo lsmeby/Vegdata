@@ -34,6 +34,7 @@
 #import "Hoydebegrensning.h"
 #import "Jernbanekryssing.h"
 #import "Fartsdemper.h"
+#import "Skiltplate.h"
 #import "MapQuestRoute.h"
 
 @interface VegObjektKontroller()
@@ -107,6 +108,9 @@
     
     [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
                                                       Antall:antall OgFiltere:[Fartsdemper filtere]]];
+    
+    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:SKILTPLATE_ID]
+                                                      Antall:antall OgFiltere:[Skiltplate filtere]]];
 
     return objekttyper;
 }
@@ -142,6 +146,10 @@
     [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
                                                      expectedValue:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
                                                      objectMapping:[Fartsdemper mapping]]];
+    
+    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                     expectedValue:[[NSNumber alloc] initWithInt:SKILTPLATE_ID]
+                                                     objectMapping:[Skiltplate mapping]]];
     
     return mapping;
 }
