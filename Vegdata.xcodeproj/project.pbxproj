@@ -30,6 +30,38 @@
 		9B59948A170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
+		9B76112F171975D800B6EB7C /* CD_SkiltObjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76112E171975D800B6EB7C /* CD_SkiltObjekt.m */; };
+		9B7611351719796E00B6EB7C /* CD_VariabelSkiltplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7611341719796E00B6EB7C /* CD_VariabelSkiltplate.m */; };
+		9B761138171979F300B6EB7C /* CD_Farligvegskulder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B761137171979F300B6EB7C /* CD_Farligvegskulder.m */; };
+		9B76113B17197A2D00B6EB7C /* CD_Steinsprut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76113A17197A2D00B6EB7C /* CD_Steinsprut.m */; };
+		9B76113E17197A5700B6EB7C /* CD_Vegarbeid.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76113D17197A5700B6EB7C /* CD_Vegarbeid.m */; };
+		9B76114417197AAA00B6EB7C /* CD_Brattbakke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76114317197AAA00B6EB7C /* CD_Brattbakke.m */; };
+		9B76114717197AC700B6EB7C /* CD_Farligsving.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76114617197AC600B6EB7C /* CD_Farligsving.m */; };
+		9B76114D17197AF700B6EB7C /* CD_Glattkjorebane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76114C17197AF700B6EB7C /* CD_Glattkjorebane.m */; };
+		9B76115017197B1B00B6EB7C /* CD_Bevegeligbru.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76114F17197B1A00B6EB7C /* CD_Bevegeligbru.m */; };
+		9B76115317197B3300B6EB7C /* CD_KaiStrandFerjeleie.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76115217197B3200B6EB7C /* CD_KaiStrandFerjeleie.m */; };
+		9B76115617197B5100B6EB7C /* CD_Tunnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76115517197B5000B6EB7C /* CD_Tunnel.m */; };
+		9B76115917197B6B00B6EB7C /* CD_Rasfare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76115817197B6A00B6EB7C /* CD_Rasfare.m */; };
+		9B76115C17197B8300B6EB7C /* CD_SaerligUlykkesfare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76115B17197B8200B6EB7C /* CD_SaerligUlykkesfare.m */; };
+		9B76115F17197BA200B6EB7C /* CD_Farligvegkryss.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76115E17197BA100B6EB7C /* CD_Farligvegkryss.m */; };
+		9B76116217197BBC00B6EB7C /* CD_Rundkjoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76116117197BBA00B6EB7C /* CD_Rundkjoring.m */; };
+		9B76116517197BDA00B6EB7C /* CD_Trafikklyssignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76116417197BD700B6EB7C /* CD_Trafikklyssignal.m */; };
+		9B76116817197BF300B6EB7C /* CD_Avstandtilgangfelt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76116717197BF000B6EB7C /* CD_Avstandtilgangfelt.m */; };
+		9B76116B17197C1200B6EB7C /* CD_Barn.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76116A17197C0F00B6EB7C /* CD_Barn.m */; };
+		9B76116E17197C2C00B6EB7C /* CD_Syklende.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76116D17197C2900B6EB7C /* CD_Syklende.m */; };
+		9B76117117197C4600B6EB7C /* CD_Ku.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117017197C4300B6EB7C /* CD_Ku.m */; };
+		9B76117417197C6100B6EB7C /* CD_Sau.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117317197C5E00B6EB7C /* CD_Sau.m */; };
+		9B76117717197C8600B6EB7C /* CD_Motendetrafikk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117617197C8200B6EB7C /* CD_Motendetrafikk.m */; };
+		9B76117A17197CA500B6EB7C /* CD_Ko.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117917197CA100B6EB7C /* CD_Ko.m */; };
+		9B76117D17197CC600B6EB7C /* CD_Fly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117C17197CC100B6EB7C /* CD_Fly.m */; };
+		9B76118017197CE600B6EB7C /* CD_Sidevind.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76117F17197CE100B6EB7C /* CD_Sidevind.m */; };
+		9B76118317197D0500B6EB7C /* CD_Skilopere.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118217197D0000B6EB7C /* CD_Skilopere.m */; };
+		9B76118617197D2900B6EB7C /* CD_Ridende.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118517197D2400B6EB7C /* CD_Ridende.m */; };
+		9B76118917197D4900B6EB7C /* CD_Annenfare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118817197D4300B6EB7C /* CD_Annenfare.m */; };
+		9B76118C17197D6C00B6EB7C /* CD_Videokontroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118B17197D6600B6EB7C /* CD_Videokontroll.m */; };
+		9B76118F17197D8D00B6EB7C /* CD_AutomatiskTrafikkontroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118E17197D8700B6EB7C /* CD_AutomatiskTrafikkontroll.m */; };
+		9B7611921719805F00B6EB7C /* CD_Smalereveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7611911719803000B6EB7C /* CD_Smalereveg.m */; };
+		9B7611951719817A00B6EB7C /* CD_Ugjevnveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */; };
 		9B79037116F37E4C00F36B82 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B79037016F37E4C00F36B82 /* Settings.bundle */; };
 		9B7EB80216CD212600484A74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80116CD212600484A74 /* UIKit.framework */; };
 		9B7EB80416CD212600484A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80316CD212600484A74 /* Foundation.framework */; };
@@ -167,6 +199,70 @@
 		9B5B6B9316E628EC00BF1C7C /* Veglenke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Veglenke.m; sourceTree = "<group>"; };
 		9B60EAAB16E76EAA00B7E815 /* SokResultater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SokResultater.h; sourceTree = "<group>"; };
 		9B60EAAC16E76EAA00B7E815 /* SokResultater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SokResultater.m; sourceTree = "<group>"; };
+		9B76112D171975D800B6EB7C /* CD_SkiltObjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_SkiltObjekt.h; sourceTree = "<group>"; };
+		9B76112E171975D800B6EB7C /* CD_SkiltObjekt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_SkiltObjekt.m; sourceTree = "<group>"; };
+		9B7611331719796E00B6EB7C /* CD_VariabelSkiltplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_VariabelSkiltplate.h; sourceTree = "<group>"; };
+		9B7611341719796E00B6EB7C /* CD_VariabelSkiltplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_VariabelSkiltplate.m; sourceTree = "<group>"; };
+		9B761136171979F300B6EB7C /* CD_Farligvegskulder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Farligvegskulder.h; sourceTree = "<group>"; };
+		9B761137171979F300B6EB7C /* CD_Farligvegskulder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Farligvegskulder.m; sourceTree = "<group>"; };
+		9B76113917197A2D00B6EB7C /* CD_Steinsprut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Steinsprut.h; sourceTree = "<group>"; };
+		9B76113A17197A2D00B6EB7C /* CD_Steinsprut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Steinsprut.m; sourceTree = "<group>"; };
+		9B76113C17197A5700B6EB7C /* CD_Vegarbeid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Vegarbeid.h; sourceTree = "<group>"; };
+		9B76113D17197A5700B6EB7C /* CD_Vegarbeid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Vegarbeid.m; sourceTree = "<group>"; };
+		9B76114217197AAA00B6EB7C /* CD_Brattbakke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Brattbakke.h; sourceTree = "<group>"; };
+		9B76114317197AAA00B6EB7C /* CD_Brattbakke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Brattbakke.m; sourceTree = "<group>"; };
+		9B76114517197AC600B6EB7C /* CD_Farligsving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Farligsving.h; sourceTree = "<group>"; };
+		9B76114617197AC600B6EB7C /* CD_Farligsving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Farligsving.m; sourceTree = "<group>"; };
+		9B76114B17197AF600B6EB7C /* CD_Glattkjorebane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Glattkjorebane.h; sourceTree = "<group>"; };
+		9B76114C17197AF700B6EB7C /* CD_Glattkjorebane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Glattkjorebane.m; sourceTree = "<group>"; };
+		9B76114E17197B1A00B6EB7C /* CD_Bevegeligbru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Bevegeligbru.h; sourceTree = "<group>"; };
+		9B76114F17197B1A00B6EB7C /* CD_Bevegeligbru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Bevegeligbru.m; sourceTree = "<group>"; };
+		9B76115117197B3100B6EB7C /* CD_KaiStrandFerjeleie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_KaiStrandFerjeleie.h; sourceTree = "<group>"; };
+		9B76115217197B3200B6EB7C /* CD_KaiStrandFerjeleie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_KaiStrandFerjeleie.m; sourceTree = "<group>"; };
+		9B76115417197B5000B6EB7C /* CD_Tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Tunnel.h; sourceTree = "<group>"; };
+		9B76115517197B5000B6EB7C /* CD_Tunnel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Tunnel.m; sourceTree = "<group>"; };
+		9B76115717197B6900B6EB7C /* CD_Rasfare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Rasfare.h; sourceTree = "<group>"; };
+		9B76115817197B6A00B6EB7C /* CD_Rasfare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Rasfare.m; sourceTree = "<group>"; };
+		9B76115A17197B8100B6EB7C /* CD_SaerligUlykkesfare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_SaerligUlykkesfare.h; sourceTree = "<group>"; };
+		9B76115B17197B8200B6EB7C /* CD_SaerligUlykkesfare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_SaerligUlykkesfare.m; sourceTree = "<group>"; };
+		9B76115D17197BA000B6EB7C /* CD_Farligvegkryss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Farligvegkryss.h; sourceTree = "<group>"; };
+		9B76115E17197BA100B6EB7C /* CD_Farligvegkryss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Farligvegkryss.m; sourceTree = "<group>"; };
+		9B76116017197BB900B6EB7C /* CD_Rundkjoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Rundkjoring.h; sourceTree = "<group>"; };
+		9B76116117197BBA00B6EB7C /* CD_Rundkjoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Rundkjoring.m; sourceTree = "<group>"; };
+		9B76116317197BD600B6EB7C /* CD_Trafikklyssignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Trafikklyssignal.h; sourceTree = "<group>"; };
+		9B76116417197BD700B6EB7C /* CD_Trafikklyssignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Trafikklyssignal.m; sourceTree = "<group>"; };
+		9B76116617197BEF00B6EB7C /* CD_Avstandtilgangfelt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Avstandtilgangfelt.h; sourceTree = "<group>"; };
+		9B76116717197BF000B6EB7C /* CD_Avstandtilgangfelt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Avstandtilgangfelt.m; sourceTree = "<group>"; };
+		9B76116917197C0D00B6EB7C /* CD_Barn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Barn.h; sourceTree = "<group>"; };
+		9B76116A17197C0F00B6EB7C /* CD_Barn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Barn.m; sourceTree = "<group>"; };
+		9B76116C17197C2700B6EB7C /* CD_Syklende.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Syklende.h; sourceTree = "<group>"; };
+		9B76116D17197C2900B6EB7C /* CD_Syklende.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Syklende.m; sourceTree = "<group>"; };
+		9B76116F17197C4100B6EB7C /* CD_Ku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ku.h; sourceTree = "<group>"; };
+		9B76117017197C4300B6EB7C /* CD_Ku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ku.m; sourceTree = "<group>"; };
+		9B76117217197C5B00B6EB7C /* CD_Sau.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Sau.h; sourceTree = "<group>"; };
+		9B76117317197C5E00B6EB7C /* CD_Sau.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Sau.m; sourceTree = "<group>"; };
+		9B76117517197C7F00B6EB7C /* CD_Motendetrafikk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Motendetrafikk.h; sourceTree = "<group>"; };
+		9B76117617197C8200B6EB7C /* CD_Motendetrafikk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Motendetrafikk.m; sourceTree = "<group>"; };
+		9B76117817197C9F00B6EB7C /* CD_Ko.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ko.h; sourceTree = "<group>"; };
+		9B76117917197CA100B6EB7C /* CD_Ko.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ko.m; sourceTree = "<group>"; };
+		9B76117B17197CBF00B6EB7C /* CD_Fly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Fly.h; sourceTree = "<group>"; };
+		9B76117C17197CC100B6EB7C /* CD_Fly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Fly.m; sourceTree = "<group>"; };
+		9B76117E17197CDD00B6EB7C /* CD_Sidevind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Sidevind.h; sourceTree = "<group>"; };
+		9B76117F17197CE100B6EB7C /* CD_Sidevind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Sidevind.m; sourceTree = "<group>"; };
+		9B76118117197CFD00B6EB7C /* CD_Skilopere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Skilopere.h; sourceTree = "<group>"; };
+		9B76118217197D0000B6EB7C /* CD_Skilopere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Skilopere.m; sourceTree = "<group>"; };
+		9B76118417197D2000B6EB7C /* CD_Ridende.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ridende.h; sourceTree = "<group>"; };
+		9B76118517197D2400B6EB7C /* CD_Ridende.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ridende.m; sourceTree = "<group>"; };
+		9B76118717197D3F00B6EB7C /* CD_Annenfare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Annenfare.h; sourceTree = "<group>"; };
+		9B76118817197D4300B6EB7C /* CD_Annenfare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Annenfare.m; sourceTree = "<group>"; };
+		9B76118A17197D6200B6EB7C /* CD_Videokontroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Videokontroll.h; sourceTree = "<group>"; };
+		9B76118B17197D6600B6EB7C /* CD_Videokontroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Videokontroll.m; sourceTree = "<group>"; };
+		9B76118D17197D8300B6EB7C /* CD_AutomatiskTrafikkontroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_AutomatiskTrafikkontroll.h; sourceTree = "<group>"; };
+		9B76118E17197D8700B6EB7C /* CD_AutomatiskTrafikkontroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_AutomatiskTrafikkontroll.m; sourceTree = "<group>"; };
+		9B7611901719802100B6EB7C /* CD_Smalereveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Smalereveg.h; sourceTree = "<group>"; };
+		9B7611911719803000B6EB7C /* CD_Smalereveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Smalereveg.m; sourceTree = "<group>"; };
+		9B7611931719809F00B6EB7C /* CD_Ugjevnveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ugjevnveg.h; sourceTree = "<group>"; };
+		9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ugjevnveg.m; sourceTree = "<group>"; };
 		9B79037016F37E4C00F36B82 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9B7EB7FE16CD212600484A74 /* Vegdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vegdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EB80116CD212600484A74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -369,6 +465,70 @@
 			isa = PBXGroup;
 			children = (
 				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
+				9B7611931719809F00B6EB7C /* CD_Ugjevnveg.h */,
+				9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */,
+				9B7611901719802100B6EB7C /* CD_Smalereveg.h */,
+				9B7611911719803000B6EB7C /* CD_Smalereveg.m */,
+				9B76118D17197D8300B6EB7C /* CD_AutomatiskTrafikkontroll.h */,
+				9B76118E17197D8700B6EB7C /* CD_AutomatiskTrafikkontroll.m */,
+				9B76118A17197D6200B6EB7C /* CD_Videokontroll.h */,
+				9B76118B17197D6600B6EB7C /* CD_Videokontroll.m */,
+				9B76118717197D3F00B6EB7C /* CD_Annenfare.h */,
+				9B76118817197D4300B6EB7C /* CD_Annenfare.m */,
+				9B76118417197D2000B6EB7C /* CD_Ridende.h */,
+				9B76118517197D2400B6EB7C /* CD_Ridende.m */,
+				9B76118117197CFD00B6EB7C /* CD_Skilopere.h */,
+				9B76118217197D0000B6EB7C /* CD_Skilopere.m */,
+				9B76117E17197CDD00B6EB7C /* CD_Sidevind.h */,
+				9B76117F17197CE100B6EB7C /* CD_Sidevind.m */,
+				9B76117B17197CBF00B6EB7C /* CD_Fly.h */,
+				9B76117C17197CC100B6EB7C /* CD_Fly.m */,
+				9B76117817197C9F00B6EB7C /* CD_Ko.h */,
+				9B76117917197CA100B6EB7C /* CD_Ko.m */,
+				9B76117517197C7F00B6EB7C /* CD_Motendetrafikk.h */,
+				9B76117617197C8200B6EB7C /* CD_Motendetrafikk.m */,
+				9B76117217197C5B00B6EB7C /* CD_Sau.h */,
+				9B76117317197C5E00B6EB7C /* CD_Sau.m */,
+				9B76116F17197C4100B6EB7C /* CD_Ku.h */,
+				9B76117017197C4300B6EB7C /* CD_Ku.m */,
+				9B76116C17197C2700B6EB7C /* CD_Syklende.h */,
+				9B76116D17197C2900B6EB7C /* CD_Syklende.m */,
+				9B76116917197C0D00B6EB7C /* CD_Barn.h */,
+				9B76116A17197C0F00B6EB7C /* CD_Barn.m */,
+				9B76116617197BEF00B6EB7C /* CD_Avstandtilgangfelt.h */,
+				9B76116717197BF000B6EB7C /* CD_Avstandtilgangfelt.m */,
+				9B76116317197BD600B6EB7C /* CD_Trafikklyssignal.h */,
+				9B76116417197BD700B6EB7C /* CD_Trafikklyssignal.m */,
+				9B76116017197BB900B6EB7C /* CD_Rundkjoring.h */,
+				9B76116117197BBA00B6EB7C /* CD_Rundkjoring.m */,
+				9B76115D17197BA000B6EB7C /* CD_Farligvegkryss.h */,
+				9B76115E17197BA100B6EB7C /* CD_Farligvegkryss.m */,
+				9B76115A17197B8100B6EB7C /* CD_SaerligUlykkesfare.h */,
+				9B76115B17197B8200B6EB7C /* CD_SaerligUlykkesfare.m */,
+				9B76115717197B6900B6EB7C /* CD_Rasfare.h */,
+				9B76115817197B6A00B6EB7C /* CD_Rasfare.m */,
+				9B76115417197B5000B6EB7C /* CD_Tunnel.h */,
+				9B76115517197B5000B6EB7C /* CD_Tunnel.m */,
+				9B76115117197B3100B6EB7C /* CD_KaiStrandFerjeleie.h */,
+				9B76115217197B3200B6EB7C /* CD_KaiStrandFerjeleie.m */,
+				9B76114E17197B1A00B6EB7C /* CD_Bevegeligbru.h */,
+				9B76114F17197B1A00B6EB7C /* CD_Bevegeligbru.m */,
+				9B76114B17197AF600B6EB7C /* CD_Glattkjorebane.h */,
+				9B76114C17197AF700B6EB7C /* CD_Glattkjorebane.m */,
+				9B76114517197AC600B6EB7C /* CD_Farligsving.h */,
+				9B76114617197AC600B6EB7C /* CD_Farligsving.m */,
+				9B76114217197AAA00B6EB7C /* CD_Brattbakke.h */,
+				9B76114317197AAA00B6EB7C /* CD_Brattbakke.m */,
+				9B76113C17197A5700B6EB7C /* CD_Vegarbeid.h */,
+				9B76113D17197A5700B6EB7C /* CD_Vegarbeid.m */,
+				9B76113917197A2D00B6EB7C /* CD_Steinsprut.h */,
+				9B76113A17197A2D00B6EB7C /* CD_Steinsprut.m */,
+				9B761136171979F300B6EB7C /* CD_Farligvegskulder.h */,
+				9B761137171979F300B6EB7C /* CD_Farligvegskulder.m */,
+				9B7611331719796E00B6EB7C /* CD_VariabelSkiltplate.h */,
+				9B7611341719796E00B6EB7C /* CD_VariabelSkiltplate.m */,
+				9B76112D171975D800B6EB7C /* CD_SkiltObjekt.h */,
+				9B76112E171975D800B6EB7C /* CD_SkiltObjekt.m */,
 				9B06DF211716E3A800512F36 /* CD_Forkjorsveg.h */,
 				9B06DF221716E3AA00512F36 /* CD_Forkjorsveg.m */,
 				9B06DF1A1716D4AD00512F36 /* CD_Motorveg.h */,
@@ -663,6 +823,38 @@
 				9B06DF231716E3AE00512F36 /* CD_Forkjorsveg.m in Sources */,
 				9BCC4B8717184D870003E3F1 /* Skiltplate.m in Sources */,
 				9B275FA61718769600487393 /* SkiltObjekt.m in Sources */,
+				9B76112F171975D800B6EB7C /* CD_SkiltObjekt.m in Sources */,
+				9B7611351719796E00B6EB7C /* CD_VariabelSkiltplate.m in Sources */,
+				9B761138171979F300B6EB7C /* CD_Farligvegskulder.m in Sources */,
+				9B76113B17197A2D00B6EB7C /* CD_Steinsprut.m in Sources */,
+				9B76113E17197A5700B6EB7C /* CD_Vegarbeid.m in Sources */,
+				9B76114417197AAA00B6EB7C /* CD_Brattbakke.m in Sources */,
+				9B76114717197AC700B6EB7C /* CD_Farligsving.m in Sources */,
+				9B76114D17197AF700B6EB7C /* CD_Glattkjorebane.m in Sources */,
+				9B76115017197B1B00B6EB7C /* CD_Bevegeligbru.m in Sources */,
+				9B76115317197B3300B6EB7C /* CD_KaiStrandFerjeleie.m in Sources */,
+				9B76115617197B5100B6EB7C /* CD_Tunnel.m in Sources */,
+				9B76115917197B6B00B6EB7C /* CD_Rasfare.m in Sources */,
+				9B76115C17197B8300B6EB7C /* CD_SaerligUlykkesfare.m in Sources */,
+				9B76115F17197BA200B6EB7C /* CD_Farligvegkryss.m in Sources */,
+				9B76116217197BBC00B6EB7C /* CD_Rundkjoring.m in Sources */,
+				9B76116517197BDA00B6EB7C /* CD_Trafikklyssignal.m in Sources */,
+				9B76116817197BF300B6EB7C /* CD_Avstandtilgangfelt.m in Sources */,
+				9B76116B17197C1200B6EB7C /* CD_Barn.m in Sources */,
+				9B76116E17197C2C00B6EB7C /* CD_Syklende.m in Sources */,
+				9B76117117197C4600B6EB7C /* CD_Ku.m in Sources */,
+				9B76117417197C6100B6EB7C /* CD_Sau.m in Sources */,
+				9B76117717197C8600B6EB7C /* CD_Motendetrafikk.m in Sources */,
+				9B76117A17197CA500B6EB7C /* CD_Ko.m in Sources */,
+				9B76117D17197CC600B6EB7C /* CD_Fly.m in Sources */,
+				9B76118017197CE600B6EB7C /* CD_Sidevind.m in Sources */,
+				9B76118317197D0500B6EB7C /* CD_Skilopere.m in Sources */,
+				9B76118617197D2900B6EB7C /* CD_Ridende.m in Sources */,
+				9B76118917197D4900B6EB7C /* CD_Annenfare.m in Sources */,
+				9B76118C17197D6C00B6EB7C /* CD_Videokontroll.m in Sources */,
+				9B76118F17197D8D00B6EB7C /* CD_AutomatiskTrafikkontroll.m in Sources */,
+				9B7611921719805F00B6EB7C /* CD_Smalereveg.m in Sources */,
+				9B7611951719817A00B6EB7C /* CD_Ugjevnveg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

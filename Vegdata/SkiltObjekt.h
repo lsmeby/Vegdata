@@ -37,10 +37,10 @@
 @interface Brattbakke : VariabelSkiltplate
 @end
 
-@interface Smalerevei : VariabelSkiltplate
+@interface Smalereveg : VariabelSkiltplate
 @end
 
-@interface Ugjevnvei : SkiltObjekt
+@interface Ugjevnveg : SkiltObjekt
 @end
 
 @interface Vegarbeid : SkiltObjekt

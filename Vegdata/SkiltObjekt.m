@@ -36,10 +36,10 @@
 @implementation Brattbakke
 @end
 
-@implementation Smalerevei
+@implementation Smalereveg
 @end
 
-@implementation Ugjevnvei
+@implementation Ugjevnveg
 @end
 
 @implementation Vegarbeid

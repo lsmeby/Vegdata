@@ -1,20 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CD_Annenfare" representedClassName="CD_Annenfare" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_AutomatiskTrafikkontroll" representedClassName="CD_AutomatiskTrafikkontroll" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Avstandtilgangfelt" representedClassName="CD_Avstandtilgangfelt" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Barn" representedClassName="CD_Barn" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Bevegeligbru" representedClassName="CD_Bevegeligbru" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Brattbakke" representedClassName="CD_Brattbakke" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
     <entity name="CD_Egenskap" representedClassName="CD_Egenskap" syncable="YES">
         <attribute name="navn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verdi" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="vegobjekt" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="egenskaper" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
+    <entity name="CD_Farligsving" representedClassName="CD_Farligsving" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_Farligvegkryss" representedClassName="CD_Farligvegkryss" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Farligvegskulder" representedClassName="CD_Farligvegskulder" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Fartsdemper" representedClassName="CD_Fartsdemper" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Fartsgrense" representedClassName="CD_Fartsgrense" parentEntity="CD_LinjeObjekt" syncable="YES"/>
+    <entity name="CD_Fly" representedClassName="CD_Fly" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Forkjorsveg" representedClassName="CD_Forkjorsveg" parentEntity="CD_LinjeObjekt" syncable="YES"/>
+    <entity name="CD_Glattkjorebane" representedClassName="CD_Glattkjorebane" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Hoydebegrensning" representedClassName="CD_Hoydebegrensning" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Jernbanekryssing" representedClassName="CD_Jernbanekryssing" parentEntity="CD_PunktObjekt" syncable="YES"/>
+    <entity name="CD_KaiStrandFerjeleie" representedClassName="CD_KaiStrandFerjeleie" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Ko" representedClassName="CD_Ko" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Ku" representedClassName="CD_Ku" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_LinjeObjekt" representedClassName="CD_LinjeObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES">
         <attribute name="strekningsLengde" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="CD_Motendetrafikk" representedClassName="CD_Motendetrafikk" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Motorveg" representedClassName="CD_Motorveg" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="CD_PunktObjekt" representedClassName="CD_PunktObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES"/>
+    <entity name="CD_Rasfare" representedClassName="CD_Rasfare" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_Ridende" representedClassName="CD_Ridende" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Rundkjoring" representedClassName="CD_Rundkjoring" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_SaerligUlykkesfare" representedClassName="CD_SaerligUlykkesfare" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_Sau" representedClassName="CD_Sau" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Sidevind" representedClassName="CD_Sidevind" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Skilopere" representedClassName="CD_Skilopere" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_SkiltObjekt" representedClassName="CD_SkiltObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES">
+        <attribute name="ansiktsside" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avstandEllerUtstrekning" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CD_Smalereveg" representedClassName="CD_Smalereveg" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_Steinsprut" representedClassName="CD_Steinsprut" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Syklende" representedClassName="CD_Syklende" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Trafikklyssignal" representedClassName="CD_Trafikklyssignal" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Tunnel" representedClassName="CD_Tunnel" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Ugjevnveg" representedClassName="CD_Ugjevnveg" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_VariabelSkiltplate" representedClassName="CD_VariabelSkiltplate" isAbstract="YES" parentEntity="CD_SkiltObjekt" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CD_Vegarbeid" representedClassName="CD_Vegarbeid" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Veglenke" representedClassName="CD_Veglenke" syncable="YES">
         <attribute name="fra" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lenkeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -28,6 +64,7 @@
         <relationship name="veglenke" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VeglenkeDBStatus" inverseName="vegobjekter" inverseEntity="VeglenkeDBStatus" syncable="YES"/>
         <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
     </entity>
+    <entity name="CD_Videokontroll" representedClassName="CD_Videokontroll" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Vilttrekk" representedClassName="CD_Vilttrekk" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="VeglenkeDBStatus" representedClassName="VeglenkeDBStatus" syncable="YES">
         <attribute name="sistOppdatert" attributeType="Date" syncable="YES"/>
@@ -37,16 +74,48 @@
     <elements>
         <element name="CD_Egenskap" positionX="207" positionY="-297" width="128" height="88"/>
         <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
-        <element name="CD_Fartsgrense" positionX="187" positionY="153" width="128" height="43"/>
-        <element name="CD_Forkjorsveg" positionX="331" positionY="153" width="128" height="43"/>
+        <element name="CD_Fartsgrense" positionX="180" positionY="153" width="128" height="43"/>
+        <element name="CD_Forkjorsveg" positionX="315" positionY="153" width="128" height="43"/>
         <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
         <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
         <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
+        <element name="CD_Motorveg" positionX="450" positionY="153" width="128" height="43"/>
         <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
         <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
         <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
-        <element name="CD_Motorveg" positionX="477" positionY="153" width="128" height="43"/>
+        <element name="CD_SkiltObjekt" positionX="862" positionY="8" width="128" height="73"/>
+        <element name="CD_VariabelSkiltplate" positionX="1215" positionY="9" width="128" height="58"/>
+        <element name="CD_Farligsving" positionX="1287" positionY="191" width="128" height="43"/>
+        <element name="CD_Brattbakke" positionX="1152" positionY="191" width="128" height="43"/>
+        <element name="CD_Smalereveg" positionX="1422" positionY="191" width="128" height="43"/>
+        <element name="CD_Ugjevnveg" positionX="1015" positionY="191" width="128" height="43"/>
+        <element name="CD_Vegarbeid" positionX="880" positionY="191" width="128" height="43"/>
+        <element name="CD_Steinsprut" positionX="745" positionY="191" width="128" height="43"/>
+        <element name="CD_Rasfare" positionX="1152" positionY="243" width="128" height="43"/>
+        <element name="CD_Glattkjorebane" positionX="610" positionY="243" width="128" height="43"/>
+        <element name="CD_Farligvegskulder" positionX="610" positionY="191" width="128" height="43"/>
+        <element name="CD_Bevegeligbru" positionX="745" positionY="243" width="128" height="43"/>
+        <element name="CD_KaiStrandFerjeleie" positionX="880" positionY="243" width="128" height="43"/>
+        <element name="CD_Tunnel" positionX="1017" positionY="243" width="128" height="43"/>
+        <element name="CD_Farligvegkryss" positionX="610" positionY="297" width="128" height="43"/>
+        <element name="CD_Rundkjoring" positionX="745" positionY="297" width="128" height="43"/>
+        <element name="CD_Trafikklyssignal" positionX="880" positionY="297" width="128" height="43"/>
+        <element name="CD_Avstandtilgangfelt" positionX="1017" positionY="297" width="128" height="43"/>
+        <element name="CD_Barn" positionX="610" positionY="351" width="128" height="43"/>
+        <element name="CD_Syklende" positionX="745" positionY="351" width="128" height="43"/>
+        <element name="CD_Ku" positionX="880" positionY="351" width="128" height="43"/>
+        <element name="CD_Sau" positionX="1017" positionY="351" width="128" height="43"/>
+        <element name="CD_Motendetrafikk" positionX="610" positionY="405" width="128" height="43"/>
+        <element name="CD_Ko" positionX="745" positionY="405" width="128" height="43"/>
+        <element name="CD_Fly" positionX="880" positionY="405" width="128" height="43"/>
+        <element name="CD_Sidevind" positionX="1017" positionY="405" width="128" height="43"/>
+        <element name="CD_Skilopere" positionX="610" positionY="459" width="128" height="43"/>
+        <element name="CD_Ridende" positionX="745" positionY="459" width="128" height="43"/>
+        <element name="CD_Annenfare" positionX="880" positionY="459" width="128" height="43"/>
+        <element name="CD_AutomatiskTrafikkontroll" positionX="610" positionY="513" width="173" height="43"/>
+        <element name="CD_Videokontroll" positionX="1017" positionY="459" width="128" height="43"/>
+        <element name="CD_SaerligUlykkesfare" positionX="1287" positionY="243" width="128" height="43"/>
     </elements>
 </model>
