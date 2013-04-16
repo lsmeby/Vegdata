@@ -302,8 +302,7 @@
             [returDictionary setObject:INGEN_OBJEKTER forKey:JERNBANEKRYSSING_KEY];
         else
         {
-            NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:kryssing forKey:JERNBANEKRYSSING_KEY];
+            [returDictionary setObject:JERNBANEKRYSSING_KEY forKey:JERNBANEKRYSSING_KEY];
             leggTilAvstandsdata(JERNBANEKRYSSING_KEY);
         }
     }
@@ -314,8 +313,7 @@
             [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSDEMPER_KEY];
         else
         {
-            NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:demper forKey:FARTSDEMPER_KEY];
+            [returDictionary setObject:FARTSDEMPER_KEY forKey:FARTSDEMPER_KEY];
             leggTilAvstandsdata(FARTSDEMPER_KEY);
         }
     }

@@ -52,6 +52,7 @@
 // -- VEGOBJEKTER --
 
 #define INGEN_OBJEKTER @"-1"
+#define INGEN_EGENSKAPER @"Ingen egenskaper"
 
 #define VEGREFERANSE_BREDDEGRAD @"breddegrad"
 #define VEGREFERANSE_LENGDEGRAD @"lengdegrad"
@@ -83,8 +84,8 @@
 #define MOTORVEG_KEY @"motorveg"
 #define MOTORVEG_CD @"CD_Motorveg"
 #define MOTORVEG_TYPE_KEY @"Motorvegtype"
-#define MOTORVEG_TYPE_MOTORVEG @"motorveg"
-#define MOTORVEG_TYPE_MOTORTRAFIKKVEG @"motortrafikkveg"
+#define MOTORVEG_TYPE_MOTORVEG @"Motorveg"
+#define MOTORVEG_TYPE_MOTORTRAFIKKVEG @"Motortrafikkveg"
 #define MOTORVEG_BRUKERPREF @""
 
 #define HOYDEBEGRENSNING_ID 591

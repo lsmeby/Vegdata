@@ -29,18 +29,6 @@
 
 @synthesize egenskaper, veglenker, lokasjon;
 
--(NSString *)hentTypeFraEgenskaper
-{
-    for (Egenskap * e in egenskaper)
-    {
-        if([e.navn isEqualToString:FARTSDEMPER_TYPE_KEY])
-        {
-            return e.verdi;
-        }
-    }
-    return INGEN_OBJEKTER;
-}
-
 +(RKObjectMapping *)mapping
 {
     return [self standardMappingMedKontainerKlasse:[Fartsdempere class]];

@@ -23,5 +23,4 @@
 #import "Vegobjekt.h"
 
 @interface Jernbanekryssing : PunktObjekt <VegobjektProtokoll>
-- (NSString *)hentTypeFraEgenskaper;
 @end

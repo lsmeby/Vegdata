@@ -23,5 +23,4 @@
 #import "Vegobjekt.h"
 
 @interface Fartsdemper : PunktObjekt <VegobjektProtokoll>
-- (NSString *)hentTypeFraEgenskaper;
 @end

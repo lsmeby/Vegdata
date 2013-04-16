@@ -192,7 +192,6 @@
 
 - (void) vegObjekterErOppdatert:(NSDictionary *)data
 {
-    [self settOppLayoutArray];
     int element = 0;
     int antallPlasser = [self.layoutArray count];
     NSMutableArray * rad;
@@ -242,8 +241,11 @@
             }
         }
         
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = FARTSGRENSE_KEY;
+        if(![rad[3] isEqualToString:FARTSGRENSE_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = FARTSGRENSE_KEY;
+        }
         element++;
     }
     
@@ -261,8 +263,12 @@
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"motortrafikkveg.gif"];
         
         ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = MOTORVEG_KEY;
+        
+        if(![rad[3] isEqualToString:MOTORVEG_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = MOTORVEG_KEY;
+        }
         
         skalVurdereForkjorsvei = NO; // Motorvei erstatter eventuell forkjørsvei
         element++;
@@ -277,8 +283,13 @@
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"forkjorsvei.gif"];
         ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = FORKJORSVEG_KEY;
+        
+        if(![rad[3] isEqualToString:FORKJORSVEG_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = FORKJORSVEG_KEY;
+        }
+        
         element++;
     }
     
@@ -302,8 +313,13 @@
             ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_elg.gif"];
         
         ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = VILTTREKK_KEY;
+        
+        if(![rad[3] isEqualToString:VILTTREKK_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = VILTTREKK_KEY;
+        }
+        
         element++;
     }
     
@@ -329,8 +345,12 @@
         else
             [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:15]];
         
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = HOYDEBEGRENSNING_KEY;
+        if(![rad[3] isEqualToString:HOYDEBEGRENSNING_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = HOYDEBEGRENSNING_KEY;
+        }
+            
         element++;
     }
     
@@ -347,8 +367,13 @@
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
         ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = JERNBANEKRYSSING_KEY;
+        
+        if(![rad[3] isEqualToString:JERNBANEKRYSSING_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = JERNBANEKRYSSING_KEY;
+        }
+        
         element++;
     }
     
@@ -365,8 +390,13 @@
         rad = self.layoutArray[element];
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
         ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = FARTSDEMPER_KEY;
+        
+        if(![rad[3] isEqualToString:FARTSDEMPER_KEY])
+        {
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = FARTSDEMPER_KEY;
+        }
+        
         element++;
     }
     

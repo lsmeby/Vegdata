@@ -38,7 +38,7 @@
             return e.verdi;
         }
     }
-    return INGEN_OBJEKTER;
+    return INGEN_EGENSKAPER;
 }
 
 + (RKObjectMapping *)mapping
