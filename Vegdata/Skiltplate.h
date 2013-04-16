@@ -24,4 +24,6 @@
 
 @interface Skiltplate : PunktObjekt <VegobjektProtokoll>
 - (NSString *)hentSkilttypeFraEgenskaper;
+- (NSString *)hentAnsiktssideFraEgenskaper;
+- (NSString *)hentTekstFraEgenskaper;
 @end

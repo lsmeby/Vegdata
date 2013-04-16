@@ -112,6 +112,7 @@
 #define SKILTPLATE_ANSIKTSSIDE_KEY @"Ansiktsside"
 #define SKILTPLATE_ANSIKTSSIDE_MED @"Med metreringsretning"
 #define SKILTPLATE_ANSIKTSSIDE_MOT @"Mot metreringsretning"
+#define SKILTPLATE_TEKST_KEY @"Tekst"
 #define SKILTPLATE_SKILTNUMMER_KEY @"Skiltnummer HB-050"
 #define SKILTPLATE_SKILTNUMMER_FARLIGSVING_H @"100.1 - Farlig sving, til høyre"
 #define SKILTPLATE_SKILTNUMMER_FARLIGSVING_V @"100.2 - Farlig sving, til venstre"

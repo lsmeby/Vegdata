@@ -38,6 +38,8 @@
 #import "Egenskap.h"
 #import "SokResultater.h"
 #import "MapQuestRoute.h"
+#import "Skiltplate.h"
+#import "SkiltObjekt.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -53,10 +55,44 @@
 #import "CD_Forkjorsveg.h"
 #import "CD_Vilttrekk.h"
 #import "CD_Motorveg.h"
+#import "CD_Annenfare.h"
+#import "CD_AutomatiskTrafikkontroll.h"
+#import "CD_Avstandtilgangfelt.h"
+#import "CD_Barn.h"
+#import "CD_Bevegeligbru.h"
+#import "CD_Brattbakke.h"
+#import "CD_Farligsving.h"
+#import "CD_Farligvegkryss.h"
+#import "CD_Farligvegskulder.h"
+#import "CD_Fly.h"
+#import "CD_Forkjorsveg.h"
+#import "CD_Glattkjorebane.h"
+#import "CD_KaiStrandFerjeleie.h"
+#import "CD_Ko.h"
+#import "CD_Ku.h"
+#import "CD_Motendetrafikk.h"
+#import "CD_Rasfare.h"
+#import "CD_Ridende.h"
+#import "CD_Rundkjoring.h"
+#import "CD_SaerligUlykkesfare.h"
+#import "CD_Sau.h"
+#import "CD_Sidevind.h"
+#import "CD_Skilopere.h"
+#import "CD_SkiltObjekt.h"
+#import "CD_Smalereveg.h"
+#import "CD_Steinsprut.h"
+#import "CD_Syklende.h"
+#import "CD_Trafikklyssignal.h"
+#import "CD_Tunnel.h"
+#import "CD_Ujevnveg.h"
+#import "CD_VariabelSkiltplate.h"
+#import "CD_Vegarbeid.h"
+#import "CD_Videokontroll.h"
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke;
++ (NSArray *)gjorOmTilSkiltobjekterMedResultat:(NSArray *)resultat;
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;
 + (NSDictionary *)parametereForMapQuestAvstandMedAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx OgBY:(NSDecimalNumber *)by;
@@ -306,6 +342,8 @@
             }
         }
         
+        resultat = [NVDB_DataProvider gjorOmTilSkiltobjekterMedResultat:resultat];
+        
         NSMutableSet * cdObjekter = [[NSMutableSet alloc] init];
         
         for (NSObject * r_obj in resultat)
@@ -404,6 +442,52 @@
 }
 
 #pragma mark - Statiske hjelpemetoder
+
++ (NSArray *)gjorOmTilSkiltobjekterMedResultat:(NSArray *)resultat
+{
+    if(!resultat)
+        return nil;
+    
+    NSMutableArray * nyttResultat = [[NSMutableArray alloc] initWithArray:resultat];
+    
+    NSMutableArray * farligesvinger = [[NSMutableArray alloc] init];
+    
+    for(NSObject * o in nyttResultat)
+    {
+        if([o isKindOfClass:[Skiltplater class]])
+        {
+            for(Skiltplate * skiltplate in ((Skiltplater *)o).objekter)
+            {
+                NSString * type = [skiltplate hentSkilttypeFraEgenskaper];
+                
+                if([type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGESVINGER_H] ||
+                   [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGESVINGER_V] ||
+                   [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGSVING_H] ||
+                   [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGSVING_V])
+                {
+                    Farligsving * farligsving = [Farligsving alloc];
+                    farligsving.ansiktsside = [skiltplate hentAnsiktssideFraEgenskaper];
+                    farligsving.type = type;
+                    farligsving.veglenker = skiltplate.veglenker;
+                    
+                    for(Skiltplate * tekstskilt in ((Skiltplater *)o).objekter)
+                        if(([[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_AVSTAND] ||
+                           [[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_UTSTREKNING])
+                           && [skiltplate.lokasjon isEqualToString:tekstskilt.lokasjon])
+                        {
+                            farligsving.avstandEllerUtstrekning = [tekstskilt hentTekstFraEgenskaper];
+                            break;
+                        }
+                    
+                    [farligesvinger addObject:farligsving];
+                }
+            }
+            [nyttResultat removeObject:o];
+        }
+    }
+    
+    return nil;
+}
 
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {

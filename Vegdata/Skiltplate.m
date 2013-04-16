@@ -23,12 +23,44 @@
 #import "Skiltplate.h"
 #import "SokResultater.h"
 #import "Sok.h"
+#import "Egenskap.h"
 
 @implementation Skiltplate
 
+@synthesize egenskaper;
+
 - (NSString *)hentSkilttypeFraEgenskaper
 {
-    return nil;
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:SKILTPLATE_SKILTNUMMER_KEY])
+        {
+            return e.verdi;
+        }
+    }
+    return INGEN_OBJEKTER;
+}
+
+- (NSString *)hentAnsiktssideFraEgenskaper
+{
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:SKILTPLATE_ANSIKTSSIDE_KEY])
+        {
+            return e.verdi;
+        }
+    }
+    return INGEN_OBJEKTER;
+}
+
+- (NSString *)hentTekstFraEgenskaper
+{
+    for (Egenskap * e in egenskaper)
+    {
+        if([e.navn isEqualToString:SKILTPLATE_TEKST_KEY])
+            return e.verdi;
+    }
+    return INGEN_OBJEKTER;
 }
 
 + (RKObjectMapping *)mapping
