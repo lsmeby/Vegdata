@@ -39,7 +39,7 @@
 @implementation Smalereveg
 @end
 
-@implementation Ugjevnveg
+@implementation Ujevnveg
 @end
 
 @implementation Vegarbeid

@@ -46,7 +46,7 @@
     <entity name="CD_Syklende" representedClassName="CD_Syklende" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Trafikklyssignal" representedClassName="CD_Trafikklyssignal" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Tunnel" representedClassName="CD_Tunnel" parentEntity="CD_SkiltObjekt" syncable="YES"/>
-    <entity name="CD_Ugjevnveg" representedClassName="CD_Ugjevnveg" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Ujevnveg" representedClassName="CD_Ujevnveg" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_VariabelSkiltplate" representedClassName="CD_VariabelSkiltplate" isAbstract="YES" parentEntity="CD_SkiltObjekt" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -72,50 +72,50 @@
         <relationship name="vegobjekter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="veglenke" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CD_Egenskap" positionX="207" positionY="-297" width="128" height="88"/>
-        <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
-        <element name="CD_Fartsgrense" positionX="180" positionY="153" width="128" height="43"/>
-        <element name="CD_Forkjorsveg" positionX="315" positionY="153" width="128" height="43"/>
-        <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
-        <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
-        <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
-        <element name="CD_Motorveg" positionX="450" positionY="153" width="128" height="43"/>
-        <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
-        <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
-        <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
-        <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
-        <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
-        <element name="CD_SkiltObjekt" positionX="862" positionY="8" width="128" height="73"/>
-        <element name="CD_VariabelSkiltplate" positionX="1215" positionY="9" width="128" height="58"/>
-        <element name="CD_Farligsving" positionX="1287" positionY="191" width="128" height="43"/>
-        <element name="CD_Brattbakke" positionX="1152" positionY="191" width="128" height="43"/>
-        <element name="CD_Smalereveg" positionX="1422" positionY="191" width="128" height="43"/>
-        <element name="CD_Ugjevnveg" positionX="1015" positionY="191" width="128" height="43"/>
-        <element name="CD_Vegarbeid" positionX="880" positionY="191" width="128" height="43"/>
-        <element name="CD_Steinsprut" positionX="745" positionY="191" width="128" height="43"/>
-        <element name="CD_Rasfare" positionX="1152" positionY="243" width="128" height="43"/>
-        <element name="CD_Glattkjorebane" positionX="610" positionY="243" width="128" height="43"/>
-        <element name="CD_Farligvegskulder" positionX="610" positionY="191" width="128" height="43"/>
-        <element name="CD_Bevegeligbru" positionX="745" positionY="243" width="128" height="43"/>
-        <element name="CD_KaiStrandFerjeleie" positionX="880" positionY="243" width="128" height="43"/>
-        <element name="CD_Tunnel" positionX="1017" positionY="243" width="128" height="43"/>
-        <element name="CD_Farligvegkryss" positionX="610" positionY="297" width="128" height="43"/>
-        <element name="CD_Rundkjoring" positionX="745" positionY="297" width="128" height="43"/>
-        <element name="CD_Trafikklyssignal" positionX="880" positionY="297" width="128" height="43"/>
-        <element name="CD_Avstandtilgangfelt" positionX="1017" positionY="297" width="128" height="43"/>
-        <element name="CD_Barn" positionX="610" positionY="351" width="128" height="43"/>
-        <element name="CD_Syklende" positionX="745" positionY="351" width="128" height="43"/>
-        <element name="CD_Ku" positionX="880" positionY="351" width="128" height="43"/>
-        <element name="CD_Sau" positionX="1017" positionY="351" width="128" height="43"/>
-        <element name="CD_Motendetrafikk" positionX="610" positionY="405" width="128" height="43"/>
-        <element name="CD_Ko" positionX="745" positionY="405" width="128" height="43"/>
-        <element name="CD_Fly" positionX="880" positionY="405" width="128" height="43"/>
-        <element name="CD_Sidevind" positionX="1017" positionY="405" width="128" height="43"/>
-        <element name="CD_Skilopere" positionX="610" positionY="459" width="128" height="43"/>
-        <element name="CD_Ridende" positionX="745" positionY="459" width="128" height="43"/>
         <element name="CD_Annenfare" positionX="880" positionY="459" width="128" height="43"/>
         <element name="CD_AutomatiskTrafikkontroll" positionX="610" positionY="513" width="173" height="43"/>
-        <element name="CD_Videokontroll" positionX="1017" positionY="459" width="128" height="43"/>
+        <element name="CD_Avstandtilgangfelt" positionX="1017" positionY="297" width="128" height="43"/>
+        <element name="CD_Barn" positionX="610" positionY="351" width="128" height="43"/>
+        <element name="CD_Bevegeligbru" positionX="745" positionY="243" width="128" height="43"/>
+        <element name="CD_Brattbakke" positionX="1152" positionY="191" width="128" height="43"/>
+        <element name="CD_Egenskap" positionX="207" positionY="-297" width="128" height="88"/>
+        <element name="CD_Farligsving" positionX="1287" positionY="191" width="128" height="43"/>
+        <element name="CD_Farligvegkryss" positionX="610" positionY="297" width="128" height="43"/>
+        <element name="CD_Farligvegskulder" positionX="610" positionY="191" width="128" height="43"/>
+        <element name="CD_Fartsdemper" positionX="-416" positionY="155" width="128" height="43"/>
+        <element name="CD_Fartsgrense" positionX="180" positionY="153" width="128" height="43"/>
+        <element name="CD_Fly" positionX="880" positionY="405" width="128" height="43"/>
+        <element name="CD_Forkjorsveg" positionX="315" positionY="153" width="128" height="43"/>
+        <element name="CD_Glattkjorebane" positionX="610" positionY="243" width="128" height="43"/>
+        <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
+        <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
+        <element name="CD_KaiStrandFerjeleie" positionX="880" positionY="243" width="128" height="43"/>
+        <element name="CD_Ko" positionX="745" positionY="405" width="128" height="43"/>
+        <element name="CD_Ku" positionX="880" positionY="351" width="128" height="43"/>
+        <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
+        <element name="CD_Motendetrafikk" positionX="610" positionY="405" width="128" height="43"/>
+        <element name="CD_Motorveg" positionX="450" positionY="153" width="128" height="43"/>
+        <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
+        <element name="CD_Rasfare" positionX="1152" positionY="243" width="128" height="43"/>
+        <element name="CD_Ridende" positionX="745" positionY="459" width="128" height="43"/>
+        <element name="CD_Rundkjoring" positionX="745" positionY="297" width="128" height="43"/>
         <element name="CD_SaerligUlykkesfare" positionX="1287" positionY="243" width="128" height="43"/>
+        <element name="CD_Sau" positionX="1017" positionY="351" width="128" height="43"/>
+        <element name="CD_Sidevind" positionX="1017" positionY="405" width="128" height="43"/>
+        <element name="CD_Skilopere" positionX="610" positionY="459" width="128" height="43"/>
+        <element name="CD_SkiltObjekt" positionX="862" positionY="8" width="128" height="73"/>
+        <element name="CD_Smalereveg" positionX="1422" positionY="191" width="128" height="43"/>
+        <element name="CD_Steinsprut" positionX="745" positionY="191" width="128" height="43"/>
+        <element name="CD_Syklende" positionX="745" positionY="351" width="128" height="43"/>
+        <element name="CD_Trafikklyssignal" positionX="880" positionY="297" width="128" height="43"/>
+        <element name="CD_Tunnel" positionX="1017" positionY="243" width="128" height="43"/>
+        <element name="CD_Ujevnveg" positionX="1015" positionY="191" width="128" height="43"/>
+        <element name="CD_VariabelSkiltplate" positionX="1215" positionY="9" width="128" height="58"/>
+        <element name="CD_Vegarbeid" positionX="880" positionY="191" width="128" height="43"/>
+        <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
+        <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
+        <element name="CD_Videokontroll" positionX="1017" positionY="459" width="128" height="43"/>
+        <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
+        <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
     </elements>
 </model>

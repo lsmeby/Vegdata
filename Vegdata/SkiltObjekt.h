@@ -40,7 +40,7 @@
 @interface Smalereveg : VariabelSkiltplate
 @end
 
-@interface Ugjevnveg : SkiltObjekt
+@interface Ujevnveg : SkiltObjekt
 @end
 
 @interface Vegarbeid : SkiltObjekt

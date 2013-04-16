@@ -122,7 +122,7 @@
 #define SKILTPLATE_SKILTNUMMER_SMALEREVEG_BEGGE @"106.1 - Smalere veg, Innsnevring på begge sider"
 #define SKILTPLATE_SKILTNUMMER_SMALEREVEG_H @"106.2 - Smalere veg, Innsnevring på høyre side"
 #define SKILTPLATE_SKILTNUMMER_SMALEREVEG_V @"106.3 - Smalere veg, Innsnevring på venstre side"
-#define SKILTPLATE_SKILTNUMMER_UGJEVNVEG @"108 - Ujevn veg"
+#define SKILTPLATE_SKILTNUMMER_UJEVNVEG @"108 - Ujevn veg"
 #define SKILTPLATE_SKILTNUMMER_VEGARBEID @"110 - Vegarbeid"
 #define SKILTPLATE_SKILTNUMMER_STEINSPRUT @"112 - Steinsprut"
 #define SKILTPLATE_SKILTNUMMER_RASFARE_H @"114.1 - Rasfare, høyre side"

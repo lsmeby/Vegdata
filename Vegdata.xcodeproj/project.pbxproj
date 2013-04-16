@@ -27,6 +27,7 @@
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
 		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
+		9B5423BB171D52D10072A695 /* CD_Ujevnveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5423BA171D52D10072A695 /* CD_Ujevnveg.m */; };
 		9B59948A170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */; };
 		9B5B6B9416E628EC00BF1C7C /* Veglenke.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5B6B9316E628EC00BF1C7C /* Veglenke.m */; };
 		9B60EAAD16E76EAA00B7E815 /* SokResultater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60EAAC16E76EAA00B7E815 /* SokResultater.m */; };
@@ -61,7 +62,6 @@
 		9B76118C17197D6C00B6EB7C /* CD_Videokontroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118B17197D6600B6EB7C /* CD_Videokontroll.m */; };
 		9B76118F17197D8D00B6EB7C /* CD_AutomatiskTrafikkontroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76118E17197D8700B6EB7C /* CD_AutomatiskTrafikkontroll.m */; };
 		9B7611921719805F00B6EB7C /* CD_Smalereveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7611911719803000B6EB7C /* CD_Smalereveg.m */; };
-		9B7611951719817A00B6EB7C /* CD_Ugjevnveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */; };
 		9B79037116F37E4C00F36B82 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B79037016F37E4C00F36B82 /* Settings.bundle */; };
 		9B7EB80216CD212600484A74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80116CD212600484A74 /* UIKit.framework */; };
 		9B7EB80416CD212600484A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB80316CD212600484A74 /* Foundation.framework */; };
@@ -194,6 +194,8 @@
 		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
 		9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegObjektKontroller.m; sourceTree = "<group>"; };
+		9B5423B9171D52D10072A695 /* CD_Ujevnveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ujevnveg.h; sourceTree = "<group>"; };
+		9B5423BA171D52D10072A695 /* CD_Ujevnveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ujevnveg.m; sourceTree = "<group>"; };
 		9B599489170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vegobjekter_CoreData.xcdatamodel; sourceTree = "<group>"; };
 		9B5B6B9216E628EB00BF1C7C /* Veglenke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Veglenke.h; sourceTree = "<group>"; };
 		9B5B6B9316E628EC00BF1C7C /* Veglenke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Veglenke.m; sourceTree = "<group>"; };
@@ -261,8 +263,6 @@
 		9B76118E17197D8700B6EB7C /* CD_AutomatiskTrafikkontroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_AutomatiskTrafikkontroll.m; sourceTree = "<group>"; };
 		9B7611901719802100B6EB7C /* CD_Smalereveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Smalereveg.h; sourceTree = "<group>"; };
 		9B7611911719803000B6EB7C /* CD_Smalereveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Smalereveg.m; sourceTree = "<group>"; };
-		9B7611931719809F00B6EB7C /* CD_Ugjevnveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ugjevnveg.h; sourceTree = "<group>"; };
-		9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Ugjevnveg.m; sourceTree = "<group>"; };
 		9B79037016F37E4C00F36B82 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9B7EB7FE16CD212600484A74 /* Vegdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vegdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EB80116CD212600484A74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -465,8 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
-				9B7611931719809F00B6EB7C /* CD_Ugjevnveg.h */,
-				9B7611941719810900B6EB7C /* CD_Ugjevnveg.m */,
+				9B5423B9171D52D10072A695 /* CD_Ujevnveg.h */,
+				9B5423BA171D52D10072A695 /* CD_Ujevnveg.m */,
 				9B7611901719802100B6EB7C /* CD_Smalereveg.h */,
 				9B7611911719803000B6EB7C /* CD_Smalereveg.m */,
 				9B76118D17197D8300B6EB7C /* CD_AutomatiskTrafikkontroll.h */,
@@ -854,7 +854,7 @@
 				9B76118C17197D6C00B6EB7C /* CD_Videokontroll.m in Sources */,
 				9B76118F17197D8D00B6EB7C /* CD_AutomatiskTrafikkontroll.m in Sources */,
 				9B7611921719805F00B6EB7C /* CD_Smalereveg.m in Sources */,
-				9B7611951719817A00B6EB7C /* CD_Ugjevnveg.m in Sources */,
+				9B5423BB171D52D10072A695 /* CD_Ujevnveg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

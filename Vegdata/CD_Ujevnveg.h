@@ -1,8 +1,8 @@
 //
-//  CD_Ugjevnveg.m
+//  CD_Ujevnveg.h
 //  Vegdata
 //
-//  Created by Lars Smeby on 13.04.13.
+//  Created by Lars Smeby on 16.04.13.
 //
 //  Copyright (C) 2013  Henrik Hermansen og Lars Smeby
 //
@@ -20,10 +20,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "CD_Ugjevnveg.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "CD_SkiltObjekt.h"
 
 
-@implementation CD_Ugjevnveg
+@interface CD_Ujevnveg : CD_SkiltObjekt
 
 
 @end

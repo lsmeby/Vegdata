@@ -59,7 +59,7 @@
                                         SKILTPLATE_SKILTNUMMER_SMALEREVEG_BEGGE,
                                         SKILTPLATE_SKILTNUMMER_SMALEREVEG_H,
                                         SKILTPLATE_SKILTNUMMER_SMALEREVEG_V,
-                                        SKILTPLATE_SKILTNUMMER_UGJEVNVEG,
+                                        SKILTPLATE_SKILTNUMMER_UJEVNVEG,
                                         SKILTPLATE_SKILTNUMMER_VEGARBEID,
                                         SKILTPLATE_SKILTNUMMER_STEINSPRUT,
                                         SKILTPLATE_SKILTNUMMER_RASFARE_H,
