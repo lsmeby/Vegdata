@@ -42,11 +42,11 @@
         <element name="CD_Hoydebegrensning" positionX="-270" positionY="155" width="128" height="43"/>
         <element name="CD_Jernbanekryssing" positionX="-126" positionY="155" width="128" height="43"/>
         <element name="CD_LinjeObjekt" positionX="189" positionY="3" width="128" height="58"/>
+        <element name="CD_Motorveg" positionX="477" positionY="153" width="128" height="43"/>
         <element name="CD_PunktObjekt" positionX="-270" positionY="-18" width="128" height="43"/>
         <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
-        <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
-        <element name="CD_Motorveg" positionX="477" positionY="153" width="128" height="43"/>
+        <element name="VeglenkeDBStatus" positionX="-378" positionY="-180" width="128" height="88"/>
     </elements>
 </model>
