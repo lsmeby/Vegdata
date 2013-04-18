@@ -307,6 +307,8 @@
     // Lagrer data til Core Data
     if(!(resultat == nil || resultat.count == 0 || [resultat[0] isKindOfClass:[Vegreferanse class]]))
     {
+        resultat = [NVDB_DataProvider gjorOmTilSkiltobjekterMedResultat:resultat];
+        
         NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
                                                            inManagedObjectContext:managedObjectContext];
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -341,8 +343,6 @@
                     NSLog(@"\n### Objekt ble slettet fra Core Data.");
             }
         }
-        
-        resultat = [NVDB_DataProvider gjorOmTilSkiltobjekterMedResultat:resultat];
         
         NSMutableSet * cdObjekter = [[NSMutableSet alloc] init];
         
@@ -403,6 +403,96 @@
                     else if([v_obj isKindOfClass:[Jernbanekryssing class]])
                         cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:JERNBANEKRYSSING_CD
                                                                  inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Farligsving class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGSVING_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Brattbakke class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BRATTBAKKE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Smalereveg class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SMALEREVEG_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Ujevnveg class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:UJEVNVEG_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Vegarbeid class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VEGARBEID_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Steinsprut class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:STEINSPRUT_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Rasfare class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASFARE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Glattkjorebane class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:GLATTKJOREBANE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Farligvegskulder class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGSKULDER_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Bevegeligbru class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BEVEGELIGBRU_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[KaiStrandFerjeleie class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KAISTRANDFERJELEIE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Tunnel class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TUNNEL_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Farligvegkryss class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGKRYSS_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Rundkjoring class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RUNDKJORING_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Trafikklyssignal class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TRAFIKKLYSSIGNAL_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Avstandtilgangfelt class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AVSTANDTILGANGFELT_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Barn class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BARN_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Syklende class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SYKLENDE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Ku class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KU_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Sau class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAU_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Motendetrafikk class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTENDETRAFIKK_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Ko class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KO_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Fly class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FLY_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Sidevind class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SIDEVIND_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Skilopere class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SKILOPERE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Ridende class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RIDENDE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Annenfare class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:ANNENFARE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[AutomatiskTrafikkontroll class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AUTOMATISKTRAFIKKONTROLL_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Videokontroll class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VIDEOKONTROLL_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[SaerligUlykkesfare class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAERLIGULYKKESFARE_CD
+                                                                 inManagedObjectContext:managedObjectContext];
                     else
                         continue;
                     
@@ -412,6 +502,15 @@
                     
                     if([cdVegobj isKindOfClass:[CD_LinjeObjekt class]])
                         ((CD_LinjeObjekt *)cdVegobj).strekningsLengde = ((LinjeObjekt *)v_obj).strekningsLengde;
+                    
+                    if([cdVegobj isKindOfClass:[CD_SkiltObjekt class]])
+                    {
+                        ((CD_SkiltObjekt *)cdVegobj).ansiktsside = ((SkiltObjekt *)v_obj).ansiktsside;
+                        ((CD_SkiltObjekt *)cdVegobj).avstandEllerUtstrekning = ((SkiltObjekt *)v_obj).avstandEllerUtstrekning;
+                        
+                        if([cdVegobj isKindOfClass:[CD_VariabelSkiltplate class]])
+                            ((CD_VariabelSkiltplate *)cdVegobj).type = ((VariabelSkiltplate *)v_obj).type;
+                    }
                     
                     [cdObjekter addObject:cdVegobj];
                 }
@@ -451,6 +550,35 @@
     NSMutableArray * nyttResultat = [[NSMutableArray alloc] initWithArray:resultat];
     
     NSMutableArray * farligesvinger = [[NSMutableArray alloc] init];
+    NSMutableArray * brattebakker = [[NSMutableArray alloc] init];
+    NSMutableArray * smalereveger = [[NSMutableArray alloc] init];
+    NSMutableArray * ujevneveger = [[NSMutableArray alloc] init];
+    NSMutableArray * vegarbeids = [[NSMutableArray alloc] init];
+    NSMutableArray * steinspruts = [[NSMutableArray alloc] init];
+    NSMutableArray * rasfarer = [[NSMutableArray alloc] init];
+    NSMutableArray * glattekjorebaner = [[NSMutableArray alloc] init];
+    NSMutableArray * farligevegskuldere = [[NSMutableArray alloc] init];
+    NSMutableArray * bevegeligebruer = [[NSMutableArray alloc] init];
+    NSMutableArray * kaistrandferjeleies = [[NSMutableArray alloc] init];
+    NSMutableArray * tunneler = [[NSMutableArray alloc] init];
+    NSMutableArray * farligevegkryss = [[NSMutableArray alloc] init];
+    NSMutableArray * rundkjoringer = [[NSMutableArray alloc] init];
+    NSMutableArray * trafikklyssignaler = [[NSMutableArray alloc] init];
+    NSMutableArray * avstandertilgangfelt = [[NSMutableArray alloc] init];
+    NSMutableArray * barns = [[NSMutableArray alloc] init];
+    NSMutableArray * syklendes = [[NSMutableArray alloc] init];
+    NSMutableArray * kuer = [[NSMutableArray alloc] init];
+    NSMutableArray * sauer = [[NSMutableArray alloc] init];
+    NSMutableArray * motendetrafikks = [[NSMutableArray alloc] init];
+    NSMutableArray * koer = [[NSMutableArray alloc] init];
+    NSMutableArray * flys = [[NSMutableArray alloc] init];
+    NSMutableArray * sidevinder = [[NSMutableArray alloc] init];
+    NSMutableArray * skiloperes = [[NSMutableArray alloc] init];
+    NSMutableArray * ridendes = [[NSMutableArray alloc] init];
+    NSMutableArray * andrefarer = [[NSMutableArray alloc] init];
+    NSMutableArray * automatisketrafikkontroller = [[NSMutableArray alloc] init];
+    NSMutableArray * videokontroller = [[NSMutableArray alloc] init];
+    NSMutableArray * saerligeulykkesfarer = [[NSMutableArray alloc] init];
     
     for(NSObject * o in nyttResultat)
     {
@@ -460,33 +588,287 @@
             {
                 NSString * type = [skiltplate hentSkilttypeFraEgenskaper];
                 
+                void (^settOppSkiltObjekt)(SkiltObjekt *) = ^(SkiltObjekt * skiltobj)
+                {
+                    skiltobj.lokasjon = skiltplate.lokasjon;
+                    skiltobj.ansiktsside = [skiltplate hentAnsiktssideFraEgenskaper];
+                    skiltobj.veglenker = skiltplate.veglenker;
+                    
+                    if([skiltobj isKindOfClass:[VariabelSkiltplate class]])
+                        ((VariabelSkiltplate *)skiltobj).type = type;
+                    
+                    for(Skiltplate * tekstskilt in ((Skiltplater *)o).objekter)
+                        if(([[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_AVSTAND] ||
+                            [[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_UTSTREKNING])
+                           && [skiltplate.lokasjon isEqualToString:tekstskilt.lokasjon])
+                        {
+                            skiltobj.avstandEllerUtstrekning = [tekstskilt hentTekstFraEgenskaper];
+                            break;
+                        }
+                };
+
                 if([type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGESVINGER_H] ||
                    [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGESVINGER_V] ||
                    [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGSVING_H] ||
                    [type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGSVING_V])
                 {
                     Farligsving * farligsving = [Farligsving alloc];
-                    farligsving.ansiktsside = [skiltplate hentAnsiktssideFraEgenskaper];
-                    farligsving.type = type;
-                    farligsving.veglenker = skiltplate.veglenker;
-                    
-                    for(Skiltplate * tekstskilt in ((Skiltplater *)o).objekter)
-                        if(([[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_AVSTAND] ||
-                           [[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_UTSTREKNING])
-                           && [skiltplate.lokasjon isEqualToString:tekstskilt.lokasjon])
-                        {
-                            farligsving.avstandEllerUtstrekning = [tekstskilt hentTekstFraEgenskaper];
-                            break;
-                        }
-                    
+                    settOppSkiltObjekt(farligsving);
                     [farligesvinger addObject:farligsving];
                 }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_BRATTBAKKE_FALL] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_BRATTBAKKE_STIGNING])
+                {
+                    Brattbakke * brattbakke = [Brattbakke alloc];
+                    settOppSkiltObjekt(brattbakke);
+                    [brattebakker addObject:brattbakke];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SMALEREVEG_BEGGE] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SMALEREVEG_H] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SMALEREVEG_V])
+                {
+                    Smalereveg * smalereveg = [Smalereveg alloc];
+                    settOppSkiltObjekt(smalereveg);
+                    [smalereveger addObject:smalereveg];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_UJEVNVEG])
+                {
+                    Ujevnveg * ujevnveg = [Ujevnveg alloc];
+                    settOppSkiltObjekt(ujevnveg);
+                    [ujevneveger addObject:ujevnveg];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_VEGARBEID])
+                {
+                    Vegarbeid * vegarbeid = [Vegarbeid alloc];
+                    settOppSkiltObjekt(vegarbeid);
+                    [vegarbeids addObject:vegarbeid];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_STEINSPRUT])
+                {
+                    Steinsprut * steinsprut = [Steinsprut alloc];
+                    settOppSkiltObjekt(steinsprut);
+                    [steinspruts addObject:steinsprut];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_RASFARE_H] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_RASFARE_V])
+                {
+                    Rasfare * rasfare = [Rasfare alloc];
+                    settOppSkiltObjekt(rasfare);
+                    [rasfarer addObject:rasfare];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_GLATTKJOREBANE])
+                {
+                    Glattkjorebane * glattkjorebane = [Glattkjorebane alloc];
+                    settOppSkiltObjekt(glattkjorebane);
+                    [glattekjorebaner addObject:glattkjorebane];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGVEGSKULDER])
+                {
+                    Farligvegskulder * farligvegskulder = [Farligvegskulder alloc];
+                    settOppSkiltObjekt(farligvegskulder);
+                    [farligevegskuldere addObject:farligvegskulder];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_BEVEGELIGBRU])
+                {
+                    Bevegeligbru * bevegeligbru = [Bevegeligbru alloc];
+                    settOppSkiltObjekt(bevegeligbru);
+                    [bevegeligebruer addObject:bevegeligbru];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_KAISTRANDFERJELEIE])
+                {
+                    KaiStrandFerjeleie * kaistrandferjeleie = [KaiStrandFerjeleie alloc];
+                    settOppSkiltObjekt(kaistrandferjeleie);
+                    [kaistrandferjeleies addObject:kaistrandferjeleie];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_TUNNEL])
+                {
+                    Tunnel * tunnel = [Tunnel alloc];
+                    settOppSkiltObjekt(tunnel);
+                    [tunneler addObject:tunnel];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_FARLIGVEGKRYSS])
+                {
+                    Farligvegkryss * farligvegkryss = [Farligvegkryss alloc];
+                    settOppSkiltObjekt(farligvegkryss);
+                    [farligevegkryss addObject:farligvegkryss];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_RUNDKJORING])
+                {
+                    Rundkjoring * rundkjoring = [Rundkjoring alloc];
+                    settOppSkiltObjekt(rundkjoring);
+                    [rundkjoringer addObject:rundkjoring];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_TRAFIKKLYSSIGNAL])
+                {
+                    Trafikklyssignal * trafikklyssignal = [Trafikklyssignal alloc];
+                    settOppSkiltObjekt(trafikklyssignal);
+                    [trafikklyssignaler addObject:trafikklyssignal];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_AVSTANDTILGANGFELT])
+                {
+                    Avstandtilgangfelt * avstandtilgangfelt = [Avstandtilgangfelt alloc];
+                    settOppSkiltObjekt(avstandtilgangfelt);
+                    [avstandertilgangfelt addObject:avstandtilgangfelt];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_BARN])
+                {
+                    Barn * barn = [Barn alloc];
+                    settOppSkiltObjekt(barn);
+                    [barns addObject:barn];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SYKLENDE])
+                {
+                    Syklende * syklende = [Syklende alloc];
+                    settOppSkiltObjekt(syklende);
+                    [syklendes addObject:syklende];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_KU])
+                {
+                    Ku * ku = [Ku alloc];
+                    settOppSkiltObjekt(ku);
+                    [kuer addObject:ku];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAU])
+                {
+                    Sau * sau = [Sau alloc];
+                    settOppSkiltObjekt(sau);
+                    [sauer addObject:sau];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_MOTENDETRAFIKK])
+                {
+                    Motendetrafikk * motendetrafikk = [Motendetrafikk alloc];
+                    settOppSkiltObjekt(motendetrafikk);
+                    [motendetrafikks addObject:motendetrafikk];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_KO])
+                {
+                    Ko * ko = [Ko alloc];
+                    settOppSkiltObjekt(ko);
+                    [koer addObject:ko];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_FLY])
+                {
+                    Fly * fly = [Fly alloc];
+                    settOppSkiltObjekt(fly);
+                    [flys addObject:fly];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SIDEVIND])
+                {
+                    Sidevind * sidevind = [Sidevind alloc];
+                    settOppSkiltObjekt(sidevind);
+                    [sidevinder addObject:sidevind];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SKILOPERE])
+                {
+                    Skilopere * skilopere = [Skilopere alloc];
+                    settOppSkiltObjekt(skilopere);
+                    [skiloperes addObject:skilopere];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_RIDENDE])
+                {
+                    Ridende * ridende = [Ridende alloc];
+                    settOppSkiltObjekt(ridende);
+                    [ridendes addObject:ridende];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_ANNENFARE])
+                {
+                    Annenfare * annenfare = [Annenfare alloc];
+                    settOppSkiltObjekt(annenfare);
+                    [andrefarer addObject:annenfare];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_AUTOMATISKTRAFIKKONTROLL])
+                {
+                    AutomatiskTrafikkontroll * automatisktrafikkontroll = [AutomatiskTrafikkontroll alloc];
+                    settOppSkiltObjekt(automatisktrafikkontroll);
+                    [automatisketrafikkontroller addObject:automatisktrafikkontroll];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_VIDEOKONTROLL])
+                {
+                    Videokontroll * videokontroll = [Videokontroll alloc];
+                    settOppSkiltObjekt(videokontroll);
+                    [videokontroller addObject:videokontroll];
+                }
+                
+                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_1] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_2] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_3] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_4] ||
+                        [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_5])
+                {
+                    SaerligUlykkesfare * saerligulykkesfare = [SaerligUlykkesfare alloc];
+                    settOppSkiltObjekt(saerligulykkesfare);
+                    [saerligeulykkesfarer addObject:saerligulykkesfare];
+                }
             }
+            
             [nyttResultat removeObject:o];
+            break;
         }
     }
     
-    return nil;
+    Farligesvinger * s_farligesvinger = [[Farligesvinger alloc] initMedObjekter:[farligesvinger copy]];
+    Brattebakker * s_brattebakker = [[Brattebakker alloc] initMedObjekter:[brattebakker copy]];
+    Smalereveger * s_smalereveger = [[Smalereveger alloc] initMedObjekter:[smalereveger copy]];
+    Ujevneveger * s_ujevneveger = [[Ujevneveger alloc] initMedObjekter:[ujevneveger copy]];
+    Vegarbeids * s_vegarbeids = [[Vegarbeids alloc] initMedObjekter:[vegarbeids copy]];
+    Steinspruts * s_steinspruts = [[Steinspruts alloc] initMedObjekter:[steinspruts copy]];
+    Rasfarer * s_rasfarer = [[Rasfarer alloc] initMedObjekter:[rasfarer copy]];
+    Glattekjorebaner * s_glattekjorebaner = [[Glattekjorebaner alloc] initMedObjekter:[glattekjorebaner copy]];
+    Farligevegskuldere * s_farligevegskuldere = [[Farligevegskuldere alloc] initMedObjekter:[farligevegskuldere copy]];
+    Bevegeligebruer * s_bevegeligebruer = [[Bevegeligebruer alloc] initMedObjekter:[bevegeligebruer copy]];
+    KaiStrandFerjeleies * s_kaistrandferjeleies = [[KaiStrandFerjeleies alloc] initMedObjekter:[kaistrandferjeleies copy]];
+    Tunneler * s_tunneler = [[Tunneler alloc] initMedObjekter:[tunneler copy]];
+    Farligevegkryss * s_farligevegkryss = [[Farligevegkryss alloc] initMedObjekter:[farligevegkryss copy]];
+    Rundkjoringer * s_rundkjoringer = [[Rundkjoringer alloc] initMedObjekter:[rundkjoringer copy]];
+    Trafikklyssignaler * s_trafikklyssignaler = [[Trafikklyssignaler alloc] initMedObjekter:[trafikklyssignaler copy]];
+    Avstandertilgangfelt * s_avstandertilgangfelt = [[Avstandertilgangfelt alloc] initMedObjekter:[avstandertilgangfelt copy]];
+    Barns * s_barns = [[Barns alloc] initMedObjekter:[barns copy]];
+    Syklendes * s_syklendes = [[Syklendes alloc] initMedObjekter:[syklendes copy]];
+    Kuer * s_kuer = [[Kuer alloc] initMedObjekter:[kuer copy]];
+    Sauer * s_sauer = [[Sauer alloc] initMedObjekter:[sauer copy]];
+    Motendetrafikks * s_motendetrafikks = [[Motendetrafikks alloc] initMedObjekter:[motendetrafikks copy]];
+    Koer * s_koer = [[Koer alloc] initMedObjekter:[koer copy]];
+    Flys * s_flys = [[Flys alloc] initMedObjekter:[flys copy]];
+    Sidevinder * s_sidevinder = [[Sidevinder alloc] initMedObjekter:[sidevinder copy]];
+    Skiloperes * s_skiloperes = [[Skiloperes alloc] initMedObjekter:[skiloperes copy]];
+    Ridendes * s_ridendes = [[Ridendes alloc] initMedObjekter:[ridendes copy]];
+    Andrefarer * s_andrefarer = [[Andrefarer alloc] initMedObjekter:[andrefarer copy]];
+    Automatisketrafikkontroller * s_automatisketrafikkontroller = [[Automatisketrafikkontroller alloc] initMedObjekter:[automatisketrafikkontroller copy]];
+    Videokontroller * s_videokontroller = [[Videokontroller alloc] initMedObjekter:[videokontroller copy]];
+    Saerligeulykkesfarer * s_saerligeulykkesfarer = [[Saerligeulykkesfarer alloc] initMedObjekter:[saerligeulykkesfarer copy]];
+    
+    [nyttResultat addObjectsFromArray:@[s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer]];
+    
+    NSLog(@"\n### Skiltplater omgjort til skiltobjekter.");
+    return [nyttResultat copy];
 }
 
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad

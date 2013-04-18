@@ -49,3 +49,93 @@
 
 @interface Skiltplater : SokResultater
 @end
+
+@interface Farligesvinger : SokResultater
+@end
+
+@interface Brattebakker : SokResultater
+@end
+
+@interface Smalereveger : SokResultater
+@end
+
+@interface Ujevneveger : SokResultater
+@end
+
+@interface Vegarbeids : SokResultater
+@end
+
+@interface Steinspruts : SokResultater
+@end
+
+@interface Rasfarer : SokResultater
+@end
+
+@interface Glattekjorebaner : SokResultater
+@end
+
+@interface Farligevegskuldere : SokResultater
+@end
+
+@interface Bevegeligebruer : SokResultater
+@end
+
+@interface KaiStrandFerjeleies : SokResultater
+@end
+
+@interface Tunneler : SokResultater
+@end
+
+@interface Farligevegkryss : SokResultater
+@end
+
+@interface Rundkjoringer : SokResultater
+@end
+
+@interface Trafikklyssignaler : SokResultater
+@end
+
+@interface Avstandertilgangfelt : SokResultater
+@end
+
+@interface Barns : SokResultater
+@end
+
+@interface Syklendes : SokResultater
+@end
+
+@interface Kuer : SokResultater
+@end
+
+@interface Sauer : SokResultater
+@end
+
+@interface Motendetrafikks : SokResultater
+@end
+
+@interface Koer : SokResultater
+@end
+
+@interface Flys : SokResultater
+@end
+
+@interface Sidevinder : SokResultater
+@end
+
+@interface Skiloperes : SokResultater
+@end
+
+@interface Ridendes : SokResultater
+@end
+
+@interface Andrefarer : SokResultater
+@end
+
+@interface Automatisketrafikkontroller : SokResultater
+@end
+
+@interface Videokontroller : SokResultater
+@end
+
+@interface Saerligeulykkesfarer : SokResultater
+@end

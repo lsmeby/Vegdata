@@ -55,3 +55,93 @@
 
 @implementation Skiltplater
 @end
+
+@implementation Farligesvinger
+@end
+
+@implementation Brattebakker
+@end
+
+@implementation Smalereveger
+@end
+
+@implementation Ujevneveger
+@end
+
+@implementation Vegarbeids
+@end
+
+@implementation Steinspruts
+@end
+
+@implementation Rasfarer
+@end
+
+@implementation Glattekjorebaner
+@end
+
+@implementation Farligevegskuldere
+@end
+
+@implementation Bevegeligebruer
+@end
+
+@implementation KaiStrandFerjeleies
+@end
+
+@implementation Tunneler
+@end
+
+@implementation Farligevegkryss
+@end
+
+@implementation Rundkjoringer
+@end
+
+@implementation Trafikklyssignaler
+@end
+
+@implementation Avstandertilgangfelt
+@end
+
+@implementation Barns
+@end
+
+@implementation Syklendes
+@end
+
+@implementation Kuer
+@end
+
+@implementation Sauer
+@end
+
+@implementation Motendetrafikks
+@end
+
+@implementation Koer
+@end
+
+@implementation Flys
+@end
+
+@implementation Sidevinder
+@end
+
+@implementation Skiloperes
+@end
+
+@implementation Ridendes
+@end
+
+@implementation Andrefarer
+@end
+
+@implementation Automatisketrafikkontroller
+@end
+
+@implementation Videokontroller
+@end
+
+@implementation Saerligeulykkesfarer
+@end
