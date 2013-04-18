@@ -116,6 +116,6 @@
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
         <element name="CD_Videokontroll" positionX="1017" positionY="459" width="128" height="43"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
-        <element name="VeglenkeDBStatus" positionX="-351" positionY="-196" width="128" height="88"/>
+        <element name="VeglenkeDBStatus" positionX="-387" positionY="-180" width="128" height="88"/>
     </elements>
 </model>
