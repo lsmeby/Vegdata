@@ -40,5 +40,14 @@
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return nil;
+}
+
++ (NSString *)key
+{
+    return nil;
+}
 
 @end

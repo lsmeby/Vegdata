@@ -31,92 +31,92 @@
 @property (nonatomic, strong) NSString * type;
 @end
 
-@interface Farligsving : VariabelSkiltplate
+@interface Farligsving : VariabelSkiltplate <VegobjektProtokoll>
 @end
 
-@interface Brattbakke : VariabelSkiltplate
+@interface Brattbakke : VariabelSkiltplate <VegobjektProtokoll>
 @end
 
-@interface Smalereveg : VariabelSkiltplate
+@interface Smalereveg : VariabelSkiltplate <VegobjektProtokoll>
 @end
 
-@interface Ujevnveg : SkiltObjekt
+@interface Ujevnveg : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Vegarbeid : SkiltObjekt
+@interface Vegarbeid : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Steinsprut : SkiltObjekt
+@interface Steinsprut : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Rasfare : VariabelSkiltplate
+@interface Rasfare : VariabelSkiltplate <VegobjektProtokoll>
 @end
 
-@interface Glattkjorebane : SkiltObjekt
+@interface Glattkjorebane : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Farligvegskulder : SkiltObjekt
+@interface Farligvegskulder : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Bevegeligbru : SkiltObjekt
+@interface Bevegeligbru : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface KaiStrandFerjeleie : SkiltObjekt
+@interface KaiStrandFerjeleie : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Tunnel : SkiltObjekt
+@interface Tunnel : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Farligvegkryss : SkiltObjekt
+@interface Farligvegkryss : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Rundkjoring : SkiltObjekt
+@interface Rundkjoring : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Trafikklyssignal : SkiltObjekt
+@interface Trafikklyssignal : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Avstandtilgangfelt : SkiltObjekt
+@interface Avstandtilgangfelt : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Barn : SkiltObjekt
+@interface Barn : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Syklende : SkiltObjekt
+@interface Syklende : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Ku : SkiltObjekt
+@interface Ku : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Sau : SkiltObjekt
+@interface Sau : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Motendetrafikk : SkiltObjekt
+@interface Motendetrafikk : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Ko : SkiltObjekt
+@interface Ko : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Fly : SkiltObjekt
+@interface Fly : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Sidevind : SkiltObjekt
+@interface Sidevind : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Skilopere : SkiltObjekt
+@interface Skilopere : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Ridende : SkiltObjekt
+@interface Ridende : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Annenfare : SkiltObjekt
+@interface Annenfare : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface AutomatiskTrafikkontroll : SkiltObjekt
+@interface AutomatiskTrafikkontroll : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface Videokontroll : SkiltObjekt
+@interface Videokontroll : SkiltObjekt <VegobjektProtokoll>
 @end
 
-@interface SaerligUlykkesfare : VariabelSkiltplate
+@interface SaerligUlykkesfare : VariabelSkiltplate <VegobjektProtokoll>
 @end

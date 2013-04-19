@@ -56,5 +56,14 @@
             nil];
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:VILTTREKK_ID];
+}
+
++ (NSString *)key
+{
+    return VILTTREKK_KEY;
+}
 
 @end

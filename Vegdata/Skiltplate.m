@@ -129,4 +129,14 @@
                             nil];
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:SKILTPLATE_ID];
+}
+
++ (NSString *)key
+{
+    return nil;
+}
+
 @end

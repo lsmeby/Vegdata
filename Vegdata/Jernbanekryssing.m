@@ -56,4 +56,14 @@
             nil];
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:JERNBANEKRYSSING_ID];
+}
+
++ (NSString *)key
+{
+    return JERNBANEKRYSSING_KEY;
+}
+
 @end

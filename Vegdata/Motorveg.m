@@ -50,4 +50,14 @@
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:MOTORVEG_ID];
+}
+
++ (NSString *)key
+{
+    return MOTORVEG_KEY;
+}
+
 @end

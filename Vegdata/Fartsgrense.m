@@ -50,4 +50,14 @@
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:FARTSGRENSE_ID];
+}
+
++ (NSString *)key
+{
+    return FARTSGRENSE_KEY;
+}
+
 @end

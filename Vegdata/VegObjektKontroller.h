@@ -39,6 +39,7 @@
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, strong) Vegreferanse * vegRef;
 @property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
+@property (nonatomic, strong) NSArray * objektreferanse;
 
 - (id)initMedDelegate:(id)delegat OgManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad;

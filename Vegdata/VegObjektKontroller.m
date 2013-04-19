@@ -36,9 +36,11 @@
 #import "Fartsdemper.h"
 #import "Skiltplate.h"
 #import "MapQuestRoute.h"
+#import "SkiltObjekt.h"
 
 @interface VegObjektKontroller()
 
++ (NSArray *)settOppObjektreferanseArray;
 - (void)sokMedVegreferanse;
 - (NSArray *)hentObjekttyper;
 - (RKDynamicMapping *)hentObjektMapping;
@@ -46,6 +48,7 @@
 - (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand;
 - (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
 - (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
+- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
 - (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
 + (NSDecimalNumber *)diffMellomA:(NSDecimalNumber *)desimalA OgB:(NSDecimalNumber *)desimalB;
 
@@ -59,7 +62,13 @@
 {
     self.delegate = delegat;
     dataProv = [[NVDB_DataProvider alloc] initMedManagedObjectContext:context OgAvsender:self];
+    self.objektreferanse = [VegObjektKontroller settOppObjektreferanseArray];
     return self;
+}
+
++ (NSArray *)settOppObjektreferanseArray
+{
+    return [[NSArray alloc] initWithObjects:[Fartsgrense class], [Forkjorsveg class], [Vilttrekk class], [Motorveg class], [Hoydebegrensning class], [Jernbanekryssing class], [Fartsdemper class], [Skiltplate class], [Farligsving class], [Brattbakke class], [Smalereveg class], [Ujevnveg class], [Vegarbeid class], [Steinsprut class], [Rasfare class], [Glattkjorebane class], [Farligvegskulder class], [Bevegeligbru class], [KaiStrandFerjeleie class], [Tunnel class], [Farligvegkryss class], [Rundkjoring class], [Trafikklyssignal class], [Avstandtilgangfelt class], [Barn class], [Syklende class], [Ku class], [Sau class], [Motendetrafikk class], [Ko class], [Fly class], [Sidevind class], [Skilopere class], [Ridende class], [Annenfare class], [AutomatiskTrafikkontroll class], [Videokontroll class], [SaerligUlykkesfare class], nil];
 }
 
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
@@ -88,29 +97,11 @@
     NSMutableArray * objekttyper = [[NSMutableArray alloc] init];
     NSNumber * antall = [[NSNumber alloc] initWithInt:0];
     
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FARTSGRENSE_ID]
-                                                      Antall:antall OgFiltere:[Fartsgrense filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FORKJORSVEG_ID]
-                                                      Antall:antall OgFiltere:[Forkjorsveg filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:VILTTREKK_ID]
-                                                      Antall:antall OgFiltere:[Vilttrekk filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:MOTORVEG_ID]
-                                                      Antall:antall OgFiltere:[Motorveg filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:HOYDEBEGRENSNING_ID]
-                                                      Antall:antall OgFiltere:[Hoydebegrensning filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:JERNBANEKRYSSING_ID]
-                                                      Antall:antall OgFiltere:[Jernbanekryssing filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
-                                                      Antall:antall OgFiltere:[Fartsdemper filtere]]];
-    
-    [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[NSNumber alloc] initWithInt:SKILTPLATE_ID]
-                                                      Antall:antall OgFiltere:[Skiltplate filtere]]];
+    for(Vegobjekt <VegobjektProtokoll> * o in self.objektreferanse)
+        if([[o class] idNr])
+            [objekttyper addObject:[[Objekttype alloc] initMedTypeId:[[o class] idNr]
+                                                              Antall:antall
+                                                           OgFiltere:[[o class] filtere]]];
 
     return objekttyper;
 }
@@ -119,37 +110,11 @@
 {
     RKDynamicMapping * mapping = [[RKDynamicMapping alloc] init];
     
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:FARTSGRENSE_ID]
-                                                     objectMapping:[Fartsgrense mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:FORKJORSVEG_ID]
-                                                     objectMapping:[Forkjorsveg mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:VILTTREKK_ID]
-                                                     objectMapping:[Vilttrekk mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:MOTORVEG_ID]
-                                                     objectMapping:[Motorveg mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:HOYDEBEGRENSNING_ID]
-                                                     objectMapping:[Hoydebegrensning mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:JERNBANEKRYSSING_ID]
-                                                     objectMapping:[Jernbanekryssing mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:FARTSDEMPER_ID]
-                                                     objectMapping:[Fartsdemper mapping]]];
-    
-    [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
-                                                     expectedValue:[[NSNumber alloc] initWithInt:SKILTPLATE_ID]
-                                                     objectMapping:[Skiltplate mapping]]];
+    for(Vegobjekt <VegobjektProtokoll> * o in self.objektreferanse)
+        if([[o class] idNr])
+            [mapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:VEGOBJEKT_MATCHER_KEY
+                                                             expectedValue:[[o class] idNr]
+                                                             objectMapping:[[o class] mapping]]];
     
     return mapping;
 }
@@ -158,18 +123,18 @@
 
 - (void) leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand
 {
-    if(returDictionary == nil || resultater == nil || resultater.objekter == nil || resultater.objekter.count == 0)
+    if(!returDictionary || !resultater || !resultater.objekter || resultater.objekter.count == 0)
         return;
     
     NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
-    if(posisjon == nil)
+    if(!posisjon)
         return;
     
-    NSDecimalNumber * naermestePosisjon;
+    NSDecimalNumber * naermestePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
     
     for (Vegobjekt * obj in resultater.objekter)
     {
-        if(obj.veglenker == nil || obj.veglenker.count == 0)
+        if(!obj.veglenker || obj.veglenker.count == 0)
             continue;
         
         for(Veglenke * vLenke in obj.veglenker)
@@ -182,65 +147,79 @@
                     [self leggTilLinjeDataIDictionary:returDictionary MedVegObjekt:obj];
                     return;
                 }
-                else if([obj isKindOfClass:[PunktObjekt class]])
-                // Hvis mottatte objekter er PunktObjekter
-                {
-                    if(!naermestePosisjon)
-                        naermestePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
                 
-                    // A - self.forrigePosisjon == nil
-                    // B - self.forrigePosisjon.doubleValue < 0
-                    // C - naermestePosisjon.doubleValue < 0
-                    // D - [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue
-                    //     <= [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue
-                    // E - posisjon.doubleValue >= self.forrigePosisjon.doubleValue
-                    // F - vLenke.fra.doubleValue > posisjon.doubleValue
-                    // G - vLenke.fra.doubleValue < posisjon.doubleValue
-                    //
-                    // Hvis vi ikke vet hvilken vei vi kjører på en veglenke, og objektet enten
-                    // er det første eller det nærmeste objektet til enhetens posisjon:
-                    //
-                    // (A || B) && (C || D)
-                    //
-                    // Hvis vi kjører i stigende retning på en veglenke, og objektet enten er
-                    // det første eller det nærmeste objektet til enhetens posisjon, samtidig
-                    // som det har en høyere posisjon enn enheten (altså ligger foran enheten):
-                    //
-                    // E && F && (C || D)
-                    //
-                    // Hvis vi kjører i synkende retning på en veglenke, og objektet enten er
-                    // det første eller det nærmeste objektet til enhetens posisjon, samtidig
-                    // som det har en lavere posisjon enn enheten (altså ligger foran enheten):
-                    //
-                    // G && (C && D)
-                    //
-                    // Setter vi sammen disse får vi:
-                    //
-                    // ((A || B) && (C || D)) || (E && F && (C || D)) || (G && (C || D))
-                    //
-                    // Med boolsk algebra finner vi at dette er ekvivalent med:
-                    //
-                    // (A || B || E || G) && (A || B || F || G) && (C || D)
-                    //
-                    // Dette gir if-testen under:
+                // Simulator-snill test. Byttes ut med den under ved fysisk test.
+                else if((self.forrigePosisjon == nil ||
+                         self.forrigePosisjon.doubleValue < 0 ||
+                         posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
+                         vLenke.fra.doubleValue < posisjon.doubleValue)
+                        &&
+                        (self.forrigePosisjon == nil ||
+                         self.forrigePosisjon.doubleValue < 0 ||
+                         vLenke.fra.doubleValue > posisjon.doubleValue ||
+                         vLenke.fra.doubleValue < posisjon.doubleValue)
+                        &&
+                        (naermestePosisjon.doubleValue < 0 ||
+                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
+                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
+                
+//                else if(self.forrigePosisjon &&
+//                        self.forrigePosisjon.doubleValue >= 0 &&
+//                        (naermestePosisjon.doubleValue < 0 ||
+//                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
+//                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue) &&
+//                        ((posisjon.doubleValue > self.forrigePosisjon.doubleValue &&
+//                          vLenke.fra.doubleValue > posisjon.doubleValue &&
+//                          ([obj isKindOfClass:[PunktObjekt class]] ||
+//                           ([obj isKindOfClass:[SkiltObjekt class]] &&
+//                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]))) ||
+//                         (vLenke.fra.doubleValue < posisjon.doubleValue &&
+//                          ([obj isKindOfClass:[PunktObjekt class]] ||
+//                           ([obj isKindOfClass:[SkiltObjekt class]] &&
+//                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT])))))
+                //
+                // A - [obj isKindOfClass:[PunktObjekt class]]
+                // B - [obj isKindOfClass:[SkiltObjekt class]]
+                // C - self.forrigePosisjon
+                // D - self.forrigePosisjon.doubleValue >= 0
+                // E - naermestePosisjon.doubleValue < 0
+                // F - [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue
+                //     <= [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue
+                // G - posisjon.doubleValue > self.forrigePosisjon.doubleValue
+                // H - vLenke.fra.doubleValue > posisjon.doubleValue
+                // I - vLenke.fra.doubleValue < posisjon.doubleValue
+                // J - [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]
+                // K - [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT]
+                //
+                // Hvis vi kjører i stigende retning på en veglenke, og objektet enten er
+                // det første eller det nærmeste objektet til enhetens posisjon, samtidig
+                // som det har en høyere posisjon enn enheten (altså ligger foran enheten).
+                // Hvis objektet er et skiltobjekt må ansiktssiden være med metreringsretning:
+                //
+                // C && D && G && H && (E || F) && (A || (B && J))
+                //
+                // Hvis vi kjører i synkende retning på en veglenke, og objektet enten er
+                // det første eller det nærmeste objektet til enhetens posisjon, samtidig
+                // som det har en lavere posisjon enn enheten (altså ligger foran enheten)
+                // Hvis objektet er et skiltobjekt må ansiktssiden være mot metreringsretning:
+                //
+                // C && D && I && (E || F) && (A || (B && K))
+                //
+                // Setter vi sammen disse får vi:
+                //
+                // (C && D && G && H && (E || F) && (A || (B && J))) || (C && D && I && (E || F) && (A || (B && K)))
+                //
+                // Med boolsk algebra finner vi at dette er ekvivalent med:
+                //
+                // C && D && (E || F) && ((G && H && (A || (B && J))) || (I && (A || (B && K))))
+                //
+                {
+                    naermestePosisjon = posisjon;
                     
-                    if((self.forrigePosisjon == nil ||
-                        self.forrigePosisjon.doubleValue < 0 ||
-                        posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
-                        vLenke.fra.doubleValue < posisjon.doubleValue)
-                        &&
-                       (self.forrigePosisjon == nil ||
-                        self.forrigePosisjon.doubleValue < 0 ||
-                        vLenke.fra.doubleValue > posisjon.doubleValue ||
-                        vLenke.fra.doubleValue < posisjon.doubleValue)
-                        &&
-                       (naermestePosisjon.doubleValue < 0 ||
-                        [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
-                        [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
-                    {
-                        naermestePosisjon = posisjon;
+                    if([obj isKindOfClass:[PunktObjekt class]])
                         [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:obj OgAvstandsArray:avstand];
-                    }
+                    else if([obj isKindOfClass:[SkiltObjekt class]])
+                        [self leggTilSkiltDataIDictionary:returDictionary MedVegObjekt:obj OgAvstandsArray:avstand];
                 }
             }
         }
@@ -327,6 +306,27 @@
             leggTilAvstandsdata(FARTSDEMPER_KEY);
         }
     }
+}
+
+- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand
+{
+    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
+    NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
+    NSDecimalNumber * ax = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
+    NSDecimalNumber * ay = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
+    NSDecimalNumber * bx = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
+    NSDecimalNumber * by = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
+    
+    void (^leggTilAvstandsdata)(NSString *) = ^(NSString * key)
+    {
+        avstand[0] = ax;
+        avstand[1] = ay;
+        avstand[2] = bx;
+        avstand[3] = by;
+        avstand[4] = key;
+    };
+    
+    leggTilAvstandsdata(nil);
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon
@@ -417,14 +417,10 @@
 - (NSMutableDictionary *) opprettReturDictionaryMedDefaultVerdier
 {
     NSMutableDictionary * returDictionary = [[NSMutableDictionary alloc] init];
-
-    [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSGRENSE_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:FORKJORSVEG_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:VILTTREKK_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:MOTORVEG_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:HOYDEBEGRENSNING_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:JERNBANEKRYSSING_KEY];
-    [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSDEMPER_KEY];
+    
+    for(Vegobjekt <VegobjektProtokoll> * o in self.objektreferanse)
+        if([[o class] key])
+            [returDictionary setObject:INGEN_OBJEKTER forKey:[[o class] key]];
     
     return returDictionary;
 }

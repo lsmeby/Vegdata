@@ -56,4 +56,14 @@
             nil];
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:FARTSDEMPER_ID];
+}
+
++ (NSString *)key
+{
+    return FARTSDEMPER_KEY;
+}
+
 @end

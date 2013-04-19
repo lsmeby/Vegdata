@@ -60,6 +60,16 @@ static NSString * const KEYPATH = nil;
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return nil;
+}
+
++ (NSString *)key
+{
+    return nil;
+}
+
 
 + (NSString *)getURI
 {

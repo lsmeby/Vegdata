@@ -37,4 +37,14 @@
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:FORKJORSVEG_ID];
+}
+
++ (NSString *)key
+{
+    return FORKJORSVEG_KEY;
+}
+
 @end

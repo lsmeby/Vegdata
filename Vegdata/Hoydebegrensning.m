@@ -50,4 +50,14 @@
     return nil;
 }
 
++ (NSNumber *)idNr
+{
+    return [[NSNumber alloc] initWithInt:HOYDEBEGRENSNING_ID];
+}
+
++ (NSString *)key
+{
+    return HOYDEBEGRENSNING_KEY;
+}
+
 @end

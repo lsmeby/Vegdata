@@ -29,6 +29,8 @@
 @required
 + (RKObjectMapping *)mapping;
 + (NSArray *)filtere;
++ (NSNumber *)idNr;
++ (NSString *)key;
 @end
 
 @interface Vegobjekt : NSObject
