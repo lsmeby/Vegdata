@@ -47,4 +47,9 @@
     return FORKJORSVEG_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:FORKJORSVEG_BRUKERPREF];
+}
+
 @end

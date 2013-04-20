@@ -31,6 +31,7 @@
 + (NSArray *)filtere;
 + (NSNumber *)idNr;
 + (NSString *)key;
++ (BOOL)objektSkalVises;
 @end
 
 @interface Vegobjekt : NSObject

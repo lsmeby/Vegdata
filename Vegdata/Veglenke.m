@@ -62,4 +62,9 @@
     return nil;
 }
 
++ (BOOL)objektSkalVises
+{
+    return YES;
+}
+
 @end

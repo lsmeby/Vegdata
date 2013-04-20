@@ -52,6 +52,7 @@
 // -- VEGOBJEKTER --
 
 #define INGEN_OBJEKTER @"-1"
+#define SKILLETEGN_SKILTOBJEKTER @"#"
 
 #define VEGREFERANSE_BREDDEGRAD @"breddegrad"
 #define VEGREFERANSE_LENGDEGRAD @"lengdegrad"
@@ -64,7 +65,6 @@
 #define FORKJORSVEG_ID 596
 #define FORKJORSVEG_KEY @"forkjorsveg"
 #define FORKJORSVEG_CD @"CD_Forkjorsveg"
-#define FORKJORSVEG_YES @"yes"
 #define FORKJORSVEG_BRUKERPREF @"skilt_forkjorsveg"
 
 #define VILTTREKK_ID 291

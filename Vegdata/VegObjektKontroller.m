@@ -46,9 +46,9 @@
 - (RKDynamicMapping *)hentObjektMapping;
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon;
 - (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand;
-- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt;
-- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
-- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
+- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(LinjeObjekt <VegobjektProtokoll> *)objekt;
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(PunktObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
+- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(SkiltObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
 - (NSMutableDictionary *)opprettReturDictionaryMedDefaultVerdier;
 + (NSDecimalNumber *)diffMellomA:(NSDecimalNumber *)desimalA OgB:(NSDecimalNumber *)desimalB;
 
@@ -144,7 +144,7 @@
                 if([obj isKindOfClass:[LinjeObjekt class]] && posisjon.doubleValue >= vLenke.fra.doubleValue && posisjon.doubleValue <= vLenke.til.doubleValue)
                 // Hvis mottatte objekter er LinjeObjekter og enhetens posisjon er på objektets linje
                 {
-                    [self leggTilLinjeDataIDictionary:returDictionary MedVegObjekt:obj];
+                    [self leggTilLinjeDataIDictionary:returDictionary MedVegObjekt:(LinjeObjekt <VegobjektProtokoll> *)obj];
                     return;
                 }
                 
@@ -217,116 +217,92 @@
                     naermestePosisjon = posisjon;
                     
                     if([obj isKindOfClass:[PunktObjekt class]])
-                        [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:obj OgAvstandsArray:avstand];
+                        [self leggTilPunktDataIDictionary:returDictionary MedVegObjekt:(PunktObjekt <VegobjektProtokoll> *)obj OgAvstandsArray:avstand];
                     else if([obj isKindOfClass:[SkiltObjekt class]])
-                        [self leggTilSkiltDataIDictionary:returDictionary MedVegObjekt:obj OgAvstandsArray:avstand];
+                        [self leggTilSkiltDataIDictionary:returDictionary MedVegObjekt:(SkiltObjekt <VegobjektProtokoll> *)obj OgAvstandsArray:avstand];
                 }
             }
         }
     }
 }
 
-- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt
+- (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(LinjeObjekt <VegobjektProtokoll> *)objekt
 {
+    NSString * key = [[objekt class] key];
+    
+    if(![[objekt class] objektSkalVises])
+    {
+        [returDictionary setObject:INGEN_OBJEKTER forKey:key];
+        return;
+    }
+    
     if ([objekt isKindOfClass:[Fartsgrense class]])
-        [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:FARTSGRENSE_KEY];
-    
-    else if ([objekt isKindOfClass:[Forkjorsveg class]])
-    {
-        if([[NSUserDefaults standardUserDefaults] boolForKey:FORKJORSVEG_BRUKERPREF])
-            [returDictionary setObject:FORKJORSVEG_YES forKey:FORKJORSVEG_KEY];
-    }
-    
-    else if ([objekt isKindOfClass:[Vilttrekk class]])
-    {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:VILTTREKK_BRUKERPREF])
-            [returDictionary setObject:INGEN_OBJEKTER forKey:VILTTREKK_KEY];
-        else
-            [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:VILTTREKK_KEY];
-    }
-    
+        [returDictionary setObject:[(Fartsgrense *)objekt hentFartFraEgenskaper] forKey:key];
+    else if([objekt isKindOfClass:[Vilttrekk class]])
+        [returDictionary setObject:[(Vilttrekk *)objekt hentDyreartFraEgenskaper] forKey:key];
     else if ([objekt isKindOfClass:[Motorveg class]])
-    {
-        if (NO) // Brukerpreferanser
-            [returDictionary setObject:INGEN_OBJEKTER forKey:MOTORVEG_KEY];
-        else
-            [returDictionary setObject:[(Motorveg *)objekt hentTypeFraEgenskaper] forKey:MOTORVEG_KEY];
-    }
+        [returDictionary setObject:[(Motorveg *)objekt hentTypeFraEgenskaper] forKey:key];
+    else
+        [returDictionary setObject:key forKey:key];
 }
 
-- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand
+- (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(PunktObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand
 {
-    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
-    NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
-    NSDecimalNumber * ax = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
-    NSDecimalNumber * ay = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
-    NSDecimalNumber * bx = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
-    NSDecimalNumber * by = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
+    NSString * key = [[objekt class] key];
     
-    void (^leggTilAvstandsdata)(NSString *) = ^(NSString * key)
+    if(![[objekt class] objektSkalVises])
     {
-        avstand[0] = ax;
-        avstand[1] = ay;
-        avstand[2] = bx;
-        avstand[3] = by;
-        avstand[4] = key;
-    };
+        [returDictionary setObject:INGEN_OBJEKTER forKey:key];
+        return;
+    }
     
     if([objekt isKindOfClass:[Hoydebegrensning class]])
-    {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:HOYDEBEGRENSNING_BRUKERPREF])
-            [returDictionary setObject:INGEN_OBJEKTER forKey:HOYDEBEGRENSNING_KEY];
-        else
-        {
-            [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:HOYDEBEGRENSNING_KEY];
-            leggTilAvstandsdata(HOYDEBEGRENSNING_KEY);
-        }
-    }
+        [returDictionary setObject:[(Hoydebegrensning *)objekt hentHoydebegrensningFraEgenskaper] forKey:key];
+    else
+        [returDictionary setObject:key forKey:key];
     
-    else if([objekt isKindOfClass:[Jernbanekryssing class]])
-    {
-        if(![[NSUserDefaults standardUserDefaults] boolForKey:JERNBANEKRYSSING_BRUKERPREF])
-            [returDictionary setObject:INGEN_OBJEKTER forKey:JERNBANEKRYSSING_KEY];
-        else
-        {
-            NSString * kryssing = [(Jernbanekryssing *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:kryssing forKey:JERNBANEKRYSSING_KEY];
-            leggTilAvstandsdata(JERNBANEKRYSSING_KEY);
-        }
-    }
-    
-    else if([objekt isKindOfClass:[Fartsdemper class]])
-    {
-        if(![[NSUserDefaults standardUserDefaults] boolForKey:FARTSDEMPER_BRUKERPREF])
-            [returDictionary setObject:INGEN_OBJEKTER forKey:FARTSDEMPER_KEY];
-        else
-        {
-            NSString * demper = [(Fartsdemper *)objekt hentTypeFraEgenskaper];
-            [returDictionary setObject:demper forKey:FARTSDEMPER_KEY];
-            leggTilAvstandsdata(FARTSDEMPER_KEY);
-        }
-    }
-}
-
-- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(Vegobjekt *)objekt OgAvstandsArray:(NSMutableArray *)avstand
-{
     NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
     NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
-    NSDecimalNumber * ax = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
-    NSDecimalNumber * ay = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
-    NSDecimalNumber * bx = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
-    NSDecimalNumber * by = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
     
-    void (^leggTilAvstandsdata)(NSString *) = ^(NSString * key)
+    avstand[0] = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
+    avstand[1] = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
+    avstand[2] = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
+    avstand[3] = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
+    avstand[4] = key;
+}
+
+- (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(SkiltObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand
+{
+    NSString * key = [[objekt class] key];
+    
+    if(![[objekt class] objektSkalVises])
     {
-        avstand[0] = ax;
-        avstand[1] = ay;
-        avstand[2] = bx;
-        avstand[3] = by;
-        avstand[4] = key;
-    };
+        [returDictionary setObject:INGEN_OBJEKTER forKey:key];
+        return;
+    }
     
-    leggTilAvstandsdata(nil);
+    if([objekt isKindOfClass:[VariabelSkiltplate class]])
+    {
+        if(objekt.avstandEllerUtstrekning)
+            [returDictionary setObject:[@[((VariabelSkiltplate *)objekt).type, objekt.avstandEllerUtstrekning]
+                                        componentsJoinedByString:SKILLETEGN_SKILTOBJEKTER]
+                                forKey:key];
+        else
+            [returDictionary setObject:((VariabelSkiltplate *)objekt).type forKey:key];
+    }
+    else if(objekt.avstandEllerUtstrekning)
+        [returDictionary setObject:objekt.avstandEllerUtstrekning forKey:key];
+    else
+        [returDictionary setObject:key forKey:key];
+
+    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
+    NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
+    
+    avstand[0] = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
+    avstand[1] = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
+    avstand[2] = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
+    avstand[3] = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
+    avstand[4] = key;
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon

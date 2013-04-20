@@ -70,6 +70,10 @@ static NSString * const KEYPATH = nil;
     return nil;
 }
 
++ (BOOL)objektSkalVises
+{
+    return YES;
+}
 
 + (NSString *)getURI
 {

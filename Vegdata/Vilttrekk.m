@@ -66,4 +66,9 @@
     return VILTTREKK_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VILTTREKK_BRUKERPREF];
+}
+
 @end

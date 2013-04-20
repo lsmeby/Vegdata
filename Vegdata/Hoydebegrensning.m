@@ -60,4 +60,9 @@
     return HOYDEBEGRENSNING_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:HOYDEBEGRENSNING_BRUKERPREF];
+}
+
 @end

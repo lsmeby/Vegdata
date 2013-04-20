@@ -66,4 +66,9 @@
     return FARTSDEMPER_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:FARTSDEMPER_BRUKERPREF];
+}
+
 @end

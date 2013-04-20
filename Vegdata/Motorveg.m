@@ -60,4 +60,9 @@
     return MOTORVEG_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return YES;
+}
+
 @end

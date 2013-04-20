@@ -841,7 +841,8 @@
                     for(Skiltplate * tekstskilt in ((Skiltplater *)o).objekter)
                         if(([[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_AVSTAND] ||
                             [[tekstskilt hentSkilttypeFraEgenskaper] isEqualToString:SKILTPLATE_SKILTNUMMER_UTSTREKNING])
-                           && [skiltplate.lokasjon isEqualToString:tekstskilt.lokasjon])
+                           && [skiltobj.lokasjon isEqualToString:tekstskilt.lokasjon]
+                           && [skiltobj.ansiktsside isEqualToString:[tekstskilt hentAnsiktssideFraEgenskaper]])
                         {
                             skiltobj.avstandEllerUtstrekning = [tekstskilt hentTekstFraEgenskaper];
                             break;

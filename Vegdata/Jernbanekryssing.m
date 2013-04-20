@@ -66,4 +66,9 @@
     return JERNBANEKRYSSING_KEY;
 }
 
++ (BOOL)objektSkalVises
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:JERNBANEKRYSSING_BRUKERPREF];
+}
+
 @end

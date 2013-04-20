@@ -35,6 +35,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGSVING_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Brattbakke
@@ -42,6 +43,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BRATTBAKKE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Smalereveg
@@ -49,6 +51,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SMALEREVEG_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Ujevnveg
@@ -56,6 +59,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return UJEVNVEG_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Vegarbeid
@@ -63,6 +67,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return VEGARBEID_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Steinsprut
@@ -70,6 +75,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return STEINSPRUT_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Rasfare
@@ -77,6 +83,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RASFARE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Glattkjorebane
@@ -84,6 +91,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return GLATTKJOREBANE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Farligvegskulder
@@ -91,6 +99,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGVEGSKULDER_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Bevegeligbru
@@ -98,6 +107,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BEVEGELIGBRU_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation KaiStrandFerjeleie
@@ -105,6 +115,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KAISTRANDFERJELEIE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Tunnel
@@ -112,6 +123,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return TUNNEL_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Farligvegkryss
@@ -119,6 +131,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGVEGKRYSS_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Rundkjoring
@@ -126,6 +139,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RUNDKJORING_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Trafikklyssignal
@@ -133,6 +147,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return TRAFIKKLYSSIGNAL_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Avstandtilgangfelt
@@ -140,6 +155,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return AVSTANDTILGANGFELT_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Barn
@@ -147,6 +163,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BARN_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Syklende
@@ -154,6 +171,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SYKLENDE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Ku
@@ -161,6 +179,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KU_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Sau
@@ -168,6 +187,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SAU_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Motendetrafikk
@@ -175,6 +195,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return MOTENDETRAFIKK_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Ko
@@ -182,6 +203,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KO_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Fly
@@ -189,6 +211,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FLY_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Sidevind
@@ -196,6 +219,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SIDEVIND_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Skilopere
@@ -203,6 +227,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SKILOPERE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Ridende
@@ -210,6 +235,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RIDENDE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Annenfare
@@ -217,6 +243,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return ANNENFARE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation AutomatiskTrafikkontroll
@@ -224,6 +251,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return AUTOMATISKTRAFIKKONTROLL_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation Videokontroll
@@ -231,6 +259,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return VIDEOKONTROLL_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end
 
 @implementation SaerligUlykkesfare
@@ -238,4 +267,5 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SAERLIGULYKKESFARE_KEY;}
++ (BOOL)objektSkalVises {return YES;}
 @end

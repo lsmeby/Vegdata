@@ -64,6 +64,14 @@
 @property (nonatomic, strong) NSString * key6;
 @property (nonatomic, strong) NSString * key7;
 
+@property (nonatomic, strong) NSString * skiltetAvstand1;
+@property (nonatomic, strong) NSString * skiltetAvstand2;
+@property (nonatomic, strong) NSString * skiltetAvstand3;
+@property (nonatomic, strong) NSString * skiltetAvstand4;
+@property (nonatomic, strong) NSString * skiltetAvstand5;
+@property (nonatomic, strong) NSString * skiltetAvstand6;
+@property (nonatomic, strong) NSString * skiltetAvstand7;
+
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
 @property (nonatomic, strong) IBOutlet UILabel * hudLabel;
 
