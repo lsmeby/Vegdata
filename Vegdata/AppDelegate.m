@@ -22,6 +22,12 @@
 
 #import "AppDelegate.h"
 
+@interface AppDelegate()
+
+- (BOOL)isForstegangsOppstart;
+
+@end
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -31,8 +37,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    NSString * testVerdi = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
-    if(testVerdi == nil)
+    if([self isForstegangsOppstart])
     {
         NSLog(@"Førstegangsoppstart for appen - setter verdier i settings");
         NSURL * settingsURL = [[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"]] URLForResource:@"Root" withExtension:@"plist"];
@@ -51,6 +56,14 @@
     }
     
     return YES;
+}
+
+- (BOOL)isForstegangsOppstart
+{
+    NSString * testVerdi = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
+    if(testVerdi == nil)
+        return YES;
+    return NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -76,6 +89,60 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     //[[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
+    
+    NSLog(@"coreDataSize: %@", [self coreDataSize]);
+    NSLog(@"coreDataSizeLimit: %@", [self coreDataSizeLimit]);
+    unsigned long long coreDataSize = [[self coreDataSize] longLongValue];
+    unsigned long long coreDataSizeLimit = [[self coreDataSizeLimit] longLongValue];
+    
+    
+    if(coreDataSizeLimit > 0 && coreDataSize > coreDataSizeLimit)
+    {
+        NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
+                                                           inManagedObjectContext:self.managedObjectContext];
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        NSSortDescriptor * sortStreng = [[NSSortDescriptor alloc] initWithKey:@"sistOppdatert" ascending:YES];
+        NSArray * sortStrenger = [[NSArray alloc] initWithObjects:sortStreng, nil];
+        
+        [request setEntity:veglenkeEntity];
+        [request setSortDescriptors:sortStrenger];
+        [request setFetchLimit:1];
+        
+        NSError * feil;
+        NSArray * eksisterende = [self.managedObjectContext executeFetchRequest:request error:&feil];
+        
+        if(feil)
+        {
+            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Lagrer ikke data til databasen.", feil.description);
+        }
+        else
+        {
+            while(coreDataSize > coreDataSizeLimit && (eksisterende && [eksisterende count] > 0) && !feil)
+            {
+                for(VeglenkeDBStatus * x in eksisterende)
+                {
+                    NSLog(@"Objekt funnet. Sist oppdatert: %@ - VeglenkeID: %@", x.sistOppdatert, x.veglenkeId);
+                    [self.managedObjectContext deleteObject:x];
+                
+                    feil = nil;
+                    [self.managedObjectContext save:&feil];
+                
+                    if(feil)
+                        NSLog(@"\n### Feil ved sletting av objekt fra databasen:%@", feil.description);
+                    else
+                        NSLog(@"\n### Objekt ble slettet fra Core Data.");
+                }
+                coreDataSize = [[self coreDataSize] longLongValue];
+                feil = nil;
+                eksisterende = [self.managedObjectContext executeFetchRequest:request error:&feil];
+                NSLog(@"coreDataSize: %@", [self coreDataSize]);
+            }
+        }
+    }
+    
+    NSLog(@"coreDataSize: %@", [self coreDataSize]);
+    NSLog(@"coreDataSizeLimit: %@", [self coreDataSizeLimit]);
+    return;
 }
 
 #pragma mark - Core Data stack
@@ -149,6 +216,27 @@
     }
     
     return _persistentStoreCoordinator;
+}
+
+- (NSNumber *)coreDataSize
+{
+    NSArray * persistentStores = [self.persistentStoreCoordinator persistentStores];
+    unsigned long long antallBytes = 0;
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    for(NSPersistentStore * store in persistentStores)
+    {
+        if(![store.URL isFileURL]) continue;
+        NSString * path = [[store URL] path];
+        antallBytes += [[fileManager attributesOfItemAtPath:path error:nil] fileSize];
+    }
+    return [[NSNumber alloc] initWithLongLong:antallBytes];
+}
+
+- (NSNumber *)coreDataSizeLimit
+{
+    int CDSizeLimit = [[NSUserDefaults standardUserDefaults] integerForKey:COREDATASIZE_BRUKERPREF];
+    CDSizeLimit = CDSizeLimit * 1024 * 1024;
+    return [[NSNumber alloc] initWithInteger:CDSizeLimit];
 }
 
 #pragma mark - Application's Documents directory

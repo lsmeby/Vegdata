@@ -139,6 +139,7 @@
 
 #define HUDKNAPP_BRUKERPREF @"skjerm_hudknapp"
 #define LYDVARSLING_BRUKERPREF @"lydvarsling"
+#define COREDATASIZE_BRUKERPREF @"coredatasize"
 
 
 #endif
