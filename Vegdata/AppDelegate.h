@@ -21,6 +21,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VeglenkeDBStatus.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -31,6 +32,8 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)saveContext;
+- (NSNumber *)coreDataSize;
+- (NSNumber *)coreDataSizeLimit;
 - (NSURL *)applicationDocumentsDirectory;
 
 @end

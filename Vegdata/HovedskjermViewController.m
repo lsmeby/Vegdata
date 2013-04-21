@@ -41,9 +41,9 @@
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(settOppLayoutArray)
-                                                 name:@"appDidBecomeActive" object:nil];*/
+                                                 name:@"appDidBecomeActive" object:nil];
 	
     self.vegObjKont = [[VegObjektKontroller alloc] initMedDelegate:self
                                             OgManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]];
@@ -183,6 +183,7 @@
 
 - (BOOL)skalViseHUDKnapp
 {
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return [[NSUserDefaults standardUserDefaults] boolForKey:HUDKNAPP_BRUKERPREF];
 }
 

@@ -34,6 +34,18 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Telefonminne (MB)</string>
+			<key>Key</key>
+			<string>coredatasize</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+			<key>DefaultValue</key>
+			<string>100</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Vis skilt</string>
