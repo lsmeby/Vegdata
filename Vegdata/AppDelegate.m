@@ -88,16 +88,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidBecomeActive" object:nil];
     
-    NSLog(@"coreDataSize: %@", [self coreDataSize]);
-    NSLog(@"coreDataSizeLimit: %@", [self coreDataSizeLimit]);
     unsigned long long coreDataSize = [[self coreDataSize] longLongValue];
     unsigned long long coreDataSizeLimit = [[self coreDataSizeLimit] longLongValue];
     
-    
     if(coreDataSizeLimit > 0 && coreDataSize > coreDataSizeLimit)
     {
+        coreDataSizeLimit = coreDataSizeLimit * 0.9;
+        
         NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
                                                            inManagedObjectContext:self.managedObjectContext];
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -113,7 +112,7 @@
         
         if(feil)
         {
-            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Lagrer ikke data til databasen.", feil.description);
+            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Sletter ingen rader fra databasen.", feil.description);
         }
         else
         {
@@ -121,7 +120,7 @@
             {
                 for(VeglenkeDBStatus * x in eksisterende)
                 {
-                    NSLog(@"Objekt funnet. Sist oppdatert: %@ - VeglenkeID: %@", x.sistOppdatert, x.veglenkeId);
+                    NSLog(@"\n### Objekt funnet. Sist oppdatert: %@. VeglenkeID: %@.", x.sistOppdatert, x.veglenkeId);
                     [self.managedObjectContext deleteObject:x];
                 
                     feil = nil;
@@ -135,14 +134,9 @@
                 coreDataSize = [[self coreDataSize] longLongValue];
                 feil = nil;
                 eksisterende = [self.managedObjectContext executeFetchRequest:request error:&feil];
-                NSLog(@"coreDataSize: %@", [self coreDataSize]);
             }
         }
     }
-    
-    NSLog(@"coreDataSize: %@", [self coreDataSize]);
-    NSLog(@"coreDataSizeLimit: %@", [self coreDataSizeLimit]);
-    return;
 }
 
 #pragma mark - Core Data stack
