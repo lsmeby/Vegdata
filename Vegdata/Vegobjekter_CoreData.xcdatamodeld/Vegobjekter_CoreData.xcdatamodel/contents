@@ -31,6 +31,7 @@
     <entity name="CD_Motorveg" representedClassName="CD_Motorveg" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="CD_PunktObjekt" representedClassName="CD_PunktObjekt" isAbstract="YES" parentEntity="CD_Vegobjekt" syncable="YES"/>
     <entity name="CD_Rasfare" representedClassName="CD_Rasfare" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_Rasteplass" representedClassName="CD_Rasteplass" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Ridende" representedClassName="CD_Ridende" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Rundkjoring" representedClassName="CD_Rundkjoring" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_SaerligUlykkesfare" representedClassName="CD_SaerligUlykkesfare" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
@@ -42,8 +43,10 @@
         <attribute name="avstandEllerUtstrekning" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="CD_Smalereveg" representedClassName="CD_Smalereveg" parentEntity="CD_VariabelSkiltplate" syncable="YES"/>
+    <entity name="CD_SOSlomme" representedClassName="CD_SOSlomme" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Steinsprut" representedClassName="CD_Steinsprut" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Syklende" representedClassName="CD_Syklende" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_Toalett" representedClassName="CD_Toalett" parentEntity="CD_PunktObjekt" syncable="YES"/>
     <entity name="CD_Trafikklyssignal" representedClassName="CD_Trafikklyssignal" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Tunnel" representedClassName="CD_Tunnel" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Ujevnveg" representedClassName="CD_Ujevnveg" parentEntity="CD_SkiltObjekt" syncable="YES"/>
@@ -60,16 +63,16 @@
     </entity>
     <entity name="CD_Vegobjekt" representedClassName="CD_Vegobjekt" isAbstract="YES" syncable="YES">
         <attribute name="lokasjon" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="egenskaper" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Egenskap" inverseName="vegobjekt" inverseEntity="CD_Egenskap" syncable="YES"/>
+        <relationship name="egenskaper" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CD_Egenskap" inverseName="vegobjekt" inverseEntity="CD_Egenskap" syncable="YES"/>
         <relationship name="veglenke" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VeglenkeDBStatus" inverseName="vegobjekter" inverseEntity="VeglenkeDBStatus" syncable="YES"/>
-        <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
+        <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
     </entity>
     <entity name="CD_Videokontroll" representedClassName="CD_Videokontroll" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Vilttrekk" representedClassName="CD_Vilttrekk" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="VeglenkeDBStatus" representedClassName="VeglenkeDBStatus" syncable="YES">
         <attribute name="sistOppdatert" attributeType="Date" syncable="YES"/>
         <attribute name="veglenkeId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="vegobjekter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CD_Vegobjekt" inverseName="veglenke" inverseEntity="CD_Vegobjekt" syncable="YES"/>
+        <relationship name="vegobjekter" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CD_Vegobjekt" inverseName="veglenke" inverseEntity="CD_Vegobjekt" syncable="YES"/>
     </entity>
     <elements>
         <element name="CD_Annenfare" positionX="880" positionY="459" width="128" height="43"/>
@@ -117,5 +120,8 @@
         <element name="CD_Videokontroll" positionX="1017" positionY="459" width="128" height="43"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
         <element name="VeglenkeDBStatus" positionX="-387" positionY="-180" width="128" height="88"/>
+        <element name="CD_Rasteplass" positionX="-414" positionY="209" width="128" height="43"/>
+        <element name="CD_Toalett" positionX="-270" positionY="209" width="128" height="43"/>
+        <element name="CD_SOSlomme" positionX="-126" positionY="209" width="128" height="43"/>
     </elements>
 </model>

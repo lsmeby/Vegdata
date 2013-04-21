@@ -47,6 +47,15 @@
 @interface Fartsdempere : SokResultater
 @end
 
+@interface Rasteplasser : SokResultater
+@end
+
+@interface Toaletter : SokResultater
+@end
+
+@interface SOSlommer : SokResultater
+@end
+
 @interface Skiltplater : SokResultater
 @end
 

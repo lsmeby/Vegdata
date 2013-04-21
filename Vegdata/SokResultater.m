@@ -53,6 +53,15 @@
 @implementation Fartsdempere
 @end
 
+@implementation Rasteplasser
+@end
+
+@implementation Toaletter
+@end
+
+@implementation SOSlommer
+@end
+
 @implementation Skiltplater
 @end
 

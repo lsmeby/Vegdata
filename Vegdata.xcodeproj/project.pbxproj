@@ -26,6 +26,100 @@
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
 		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
+		9B4E7AEF172420CF006307DD /* fareskilt_annenfare.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A97172420CF006307DD /* fareskilt_annenfare.gif */; };
+		9B4E7AF0172420CF006307DD /* fareskilt_annenfare@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A98172420CF006307DD /* fareskilt_annenfare@2x.gif */; };
+		9B4E7AF1172420CF006307DD /* fareskilt_avstandtilgangfelt.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A99172420CF006307DD /* fareskilt_avstandtilgangfelt.gif */; };
+		9B4E7AF2172420CF006307DD /* fareskilt_avstandtilgangfelt@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9A172420CF006307DD /* fareskilt_avstandtilgangfelt@2x.gif */; };
+		9B4E7AF3172420CF006307DD /* fareskilt_barn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9B172420CF006307DD /* fareskilt_barn.gif */; };
+		9B4E7AF4172420CF006307DD /* fareskilt_barn@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9C172420CF006307DD /* fareskilt_barn@2x.gif */; };
+		9B4E7AF5172420CF006307DD /* fareskilt_bevegeligbru.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9D172420CF006307DD /* fareskilt_bevegeligbru.gif */; };
+		9B4E7AF6172420CF006307DD /* fareskilt_bevegeligbru@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9E172420CF006307DD /* fareskilt_bevegeligbru@2x.gif */; };
+		9B4E7AF7172420CF006307DD /* fareskilt_brattbakke_f.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A9F172420CF006307DD /* fareskilt_brattbakke_f.gif */; };
+		9B4E7AF8172420CF006307DD /* fareskilt_brattbakke_f@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA0172420CF006307DD /* fareskilt_brattbakke_f@2x.gif */; };
+		9B4E7AF9172420CF006307DD /* fareskilt_brattbakke_s.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA1172420CF006307DD /* fareskilt_brattbakke_s.gif */; };
+		9B4E7AFA172420CF006307DD /* fareskilt_brattbakke_s@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA2172420CF006307DD /* fareskilt_brattbakke_s@2x.gif */; };
+		9B4E7AFB172420CF006307DD /* fareskilt_farligesvinger_h.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA3172420CF006307DD /* fareskilt_farligesvinger_h.gif */; };
+		9B4E7AFC172420CF006307DD /* fareskilt_farligesvinger_h@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA4172420CF006307DD /* fareskilt_farligesvinger_h@2x.gif */; };
+		9B4E7AFD172420CF006307DD /* fareskilt_farligesvinger_v.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA5172420CF006307DD /* fareskilt_farligesvinger_v.gif */; };
+		9B4E7AFE172420CF006307DD /* fareskilt_farligesvinger_v@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA6172420CF006307DD /* fareskilt_farligesvinger_v@2x.gif */; };
+		9B4E7AFF172420CF006307DD /* fareskilt_farligsving_h.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA7172420CF006307DD /* fareskilt_farligsving_h.gif */; };
+		9B4E7B00172420CF006307DD /* fareskilt_farligsving_h@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA8172420CF006307DD /* fareskilt_farligsving_h@2x.gif */; };
+		9B4E7B01172420CF006307DD /* fareskilt_farligsving_v.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AA9172420CF006307DD /* fareskilt_farligsving_v.gif */; };
+		9B4E7B02172420CF006307DD /* fareskilt_farligsving_v@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAA172420CF006307DD /* fareskilt_farligsving_v@2x.gif */; };
+		9B4E7B03172420CF006307DD /* fareskilt_farligvegkryss.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAB172420CF006307DD /* fareskilt_farligvegkryss.gif */; };
+		9B4E7B04172420CF006307DD /* fareskilt_farligvegkryss@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAC172420CF006307DD /* fareskilt_farligvegkryss@2x.gif */; };
+		9B4E7B05172420CF006307DD /* fareskilt_farligvegskulder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAD172420CF006307DD /* fareskilt_farligvegskulder.gif */; };
+		9B4E7B06172420CF006307DD /* fareskilt_farligvegskulder@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAE172420CF006307DD /* fareskilt_farligvegskulder@2x.gif */; };
+		9B4E7B07172420CF006307DD /* fareskilt_fly.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AAF172420CF006307DD /* fareskilt_fly.gif */; };
+		9B4E7B08172420CF006307DD /* fareskilt_fly@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB0172420CF006307DD /* fareskilt_fly@2x.gif */; };
+		9B4E7B09172420CF006307DD /* fareskilt_glattkjorebane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB1172420CF006307DD /* fareskilt_glattkjorebane.gif */; };
+		9B4E7B0A172420CF006307DD /* fareskilt_glattkjorebane@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB2172420CF006307DD /* fareskilt_glattkjorebane@2x.gif */; };
+		9B4E7B0B172420CF006307DD /* fareskilt_kaistrandferjeleie.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB3172420CF006307DD /* fareskilt_kaistrandferjeleie.gif */; };
+		9B4E7B0C172420CF006307DD /* fareskilt_kaistrandferjeleie@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB4172420CF006307DD /* fareskilt_kaistrandferjeleie@2x.gif */; };
+		9B4E7B0D172420CF006307DD /* fareskilt_ko.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB5172420CF006307DD /* fareskilt_ko.gif */; };
+		9B4E7B0E172420CF006307DD /* fareskilt_ko@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB6172420CF006307DD /* fareskilt_ko@2x.gif */; };
+		9B4E7B0F172420CF006307DD /* fareskilt_ku.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB7172420CF006307DD /* fareskilt_ku.gif */; };
+		9B4E7B10172420CF006307DD /* fareskilt_ku@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB8172420CF006307DD /* fareskilt_ku@2x.gif */; };
+		9B4E7B11172420CF006307DD /* fareskilt_motendetrafikk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AB9172420CF006307DD /* fareskilt_motendetrafikk.gif */; };
+		9B4E7B12172420CF006307DD /* fareskilt_motendetrafikk@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABA172420CF006307DD /* fareskilt_motendetrafikk@2x.gif */; };
+		9B4E7B13172420CF006307DD /* fareskilt_rasfare_h.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABB172420CF006307DD /* fareskilt_rasfare_h.gif */; };
+		9B4E7B14172420CF006307DD /* fareskilt_rasfare_h@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABC172420CF006307DD /* fareskilt_rasfare_h@2x.gif */; };
+		9B4E7B15172420CF006307DD /* fareskilt_rasfare_v.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABD172420CF006307DD /* fareskilt_rasfare_v.gif */; };
+		9B4E7B16172420CF006307DD /* fareskilt_rasfare_v@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABE172420CF006307DD /* fareskilt_rasfare_v@2x.gif */; };
+		9B4E7B17172420CF006307DD /* fareskilt_ridende.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ABF172420CF006307DD /* fareskilt_ridende.gif */; };
+		9B4E7B18172420CF006307DD /* fareskilt_ridende@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC0172420CF006307DD /* fareskilt_ridende@2x.gif */; };
+		9B4E7B19172420CF006307DD /* fareskilt_rundkjoring.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC1172420CF006307DD /* fareskilt_rundkjoring.gif */; };
+		9B4E7B1A172420CF006307DD /* fareskilt_rundkjoring@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC2172420CF006307DD /* fareskilt_rundkjoring@2x.gif */; };
+		9B4E7B1B172420CF006307DD /* fareskilt_sau.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC3172420CF006307DD /* fareskilt_sau.gif */; };
+		9B4E7B1C172420CF006307DD /* fareskilt_sau@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC4172420CF006307DD /* fareskilt_sau@2x.gif */; };
+		9B4E7B1D172420CF006307DD /* fareskilt_sidevind.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC5172420CF006307DD /* fareskilt_sidevind.gif */; };
+		9B4E7B1E172420CF006307DD /* fareskilt_sidevind@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC6172420CF006307DD /* fareskilt_sidevind@2x.gif */; };
+		9B4E7B1F172420CF006307DD /* fareskilt_skilopere.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC7172420CF006307DD /* fareskilt_skilopere.gif */; };
+		9B4E7B20172420CF006307DD /* fareskilt_skilopere@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC8172420CF006307DD /* fareskilt_skilopere@2x.gif */; };
+		9B4E7B21172420CF006307DD /* fareskilt_smalereveg_b.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AC9172420CF006307DD /* fareskilt_smalereveg_b.gif */; };
+		9B4E7B22172420CF006307DD /* fareskilt_smalereveg_b@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACA172420CF006307DD /* fareskilt_smalereveg_b@2x.gif */; };
+		9B4E7B23172420CF006307DD /* fareskilt_smalereveg_h.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACB172420CF006307DD /* fareskilt_smalereveg_h.gif */; };
+		9B4E7B24172420CF006307DD /* fareskilt_smalereveg_h@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACC172420CF006307DD /* fareskilt_smalereveg_h@2x.gif */; };
+		9B4E7B25172420CF006307DD /* fareskilt_smalereveg_v.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACD172420CF006307DD /* fareskilt_smalereveg_v.gif */; };
+		9B4E7B26172420CF006307DD /* fareskilt_smalereveg_v@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACE172420CF006307DD /* fareskilt_smalereveg_v@2x.gif */; };
+		9B4E7B27172420CF006307DD /* fareskilt_steinsprut.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ACF172420CF006307DD /* fareskilt_steinsprut.gif */; };
+		9B4E7B28172420CF006307DD /* fareskilt_steinsprut@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD0172420CF006307DD /* fareskilt_steinsprut@2x.gif */; };
+		9B4E7B29172420CF006307DD /* fareskilt_syklende.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD1172420CF006307DD /* fareskilt_syklende.gif */; };
+		9B4E7B2A172420CF006307DD /* fareskilt_syklende@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD2172420CF006307DD /* fareskilt_syklende@2x.gif */; };
+		9B4E7B2B172420CF006307DD /* fareskilt_trafikklyssignal.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD3172420CF006307DD /* fareskilt_trafikklyssignal.gif */; };
+		9B4E7B2C172420CF006307DD /* fareskilt_trafikklyssignal@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD4172420CF006307DD /* fareskilt_trafikklyssignal@2x.gif */; };
+		9B4E7B2D172420CF006307DD /* fareskilt_tunnel.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD5172420CF006307DD /* fareskilt_tunnel.gif */; };
+		9B4E7B2E172420CF006307DD /* fareskilt_tunnel@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD6172420CF006307DD /* fareskilt_tunnel@2x.gif */; };
+		9B4E7B2F172420CF006307DD /* fareskilt_ujevnveg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD7172420CF006307DD /* fareskilt_ujevnveg.gif */; };
+		9B4E7B30172420CF006307DD /* fareskilt_ujevnveg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD8172420CF006307DD /* fareskilt_ujevnveg@2x.gif */; };
+		9B4E7B31172420CF006307DD /* fareskilt_vegarbeid.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AD9172420CF006307DD /* fareskilt_vegarbeid.gif */; };
+		9B4E7B32172420CF006307DD /* fareskilt_vegarbeid@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADA172420CF006307DD /* fareskilt_vegarbeid@2x.gif */; };
+		9B4E7B33172420CF006307DD /* opplysningsskilt_automatisk.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADB172420CF006307DD /* opplysningsskilt_automatisk.gif */; };
+		9B4E7B34172420CF006307DD /* opplysningsskilt_automatisk@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADC172420CF006307DD /* opplysningsskilt_automatisk@2x.gif */; };
+		9B4E7B35172420CF006307DD /* opplysningsskilt_videokontroll.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADD172420CF006307DD /* opplysningsskilt_videokontroll.gif */; };
+		9B4E7B36172420CF006307DD /* opplysningsskilt_videokontroll@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADE172420CF006307DD /* opplysningsskilt_videokontroll@2x.gif */; };
+		9B4E7B37172420CF006307DD /* saerligulykkesfare_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7ADF172420CF006307DD /* saerligulykkesfare_1.gif */; };
+		9B4E7B38172420CF006307DD /* saerligulykkesfare_1@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE0172420CF006307DD /* saerligulykkesfare_1@2x.gif */; };
+		9B4E7B39172420CF006307DD /* saerligulykkesfare_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE1172420CF006307DD /* saerligulykkesfare_2.gif */; };
+		9B4E7B3A172420CF006307DD /* saerligulykkesfare_2@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE2172420CF006307DD /* saerligulykkesfare_2@2x.gif */; };
+		9B4E7B3B172420CF006307DD /* saerligulykkesfare_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE3172420CF006307DD /* saerligulykkesfare_3.gif */; };
+		9B4E7B3C172420CF006307DD /* saerligulykkesfare_3@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE4172420CF006307DD /* saerligulykkesfare_3@2x.gif */; };
+		9B4E7B3D172420CF006307DD /* saerligulykkesfare_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE5172420CF006307DD /* saerligulykkesfare_4.gif */; };
+		9B4E7B3E172420CF006307DD /* saerligulykkesfare_4@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE6172420CF006307DD /* saerligulykkesfare_4@2x.gif */; };
+		9B4E7B3F172420CF006307DD /* saerligulykkesfare_5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE7172420CF006307DD /* saerligulykkesfare_5.gif */; };
+		9B4E7B40172420CF006307DD /* saerligulykkesfare_5@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE8172420CF006307DD /* saerligulykkesfare_5@2x.gif */; };
+		9B4E7B41172420CF006307DD /* serviceskilt_rasteplass.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AE9172420CF006307DD /* serviceskilt_rasteplass.gif */; };
+		9B4E7B42172420CF006307DD /* serviceskilt_rasteplass@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AEA172420CF006307DD /* serviceskilt_rasteplass@2x.gif */; };
+		9B4E7B43172420CF006307DD /* serviceskilt_soslomme.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AEB172420CF006307DD /* serviceskilt_soslomme.gif */; };
+		9B4E7B44172420CF006307DD /* serviceskilt_soslomme@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AEC172420CF006307DD /* serviceskilt_soslomme@2x.gif */; };
+		9B4E7B45172420CF006307DD /* serviceskilt_toalett.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AED172420CF006307DD /* serviceskilt_toalett.gif */; };
+		9B4E7B46172420CF006307DD /* serviceskilt_toalett@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7AEE172420CF006307DD /* serviceskilt_toalett@2x.gif */; };
+		9B4E7B5217242EBE006307DD /* Rasteplass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B5117242EBE006307DD /* Rasteplass.m */; };
+		9B4E7B5517242EDB006307DD /* Toalett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B5417242EDB006307DD /* Toalett.m */; };
+		9B4E7B5817242EF0006307DD /* SOSlomme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B5717242EF0006307DD /* SOSlomme.m */; };
+		9B4E7B5B172433A8006307DD /* CD_Rasteplass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B5A172433A8006307DD /* CD_Rasteplass.m */; };
+		9B4E7B5E172433B6006307DD /* CD_Toalett.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B5D172433B6006307DD /* CD_Toalett.m */; };
+		9B4E7B61172433C1006307DD /* CD_SOSlomme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E7B60172433C1006307DD /* CD_SOSlomme.m */; };
 		9B52D9FC16E609700019FB65 /* VegObjektKontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */; };
 		9B5423BB171D52D10072A695 /* CD_Ujevnveg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5423BA171D52D10072A695 /* CD_Ujevnveg.m */; };
 		9B59948A170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */; };
@@ -192,6 +286,106 @@
 		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsdemper.h; sourceTree = "<group>"; };
 		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
+		9B4E7A97172420CF006307DD /* fareskilt_annenfare.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_annenfare.gif; sourceTree = "<group>"; };
+		9B4E7A98172420CF006307DD /* fareskilt_annenfare@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_annenfare@2x.gif"; sourceTree = "<group>"; };
+		9B4E7A99172420CF006307DD /* fareskilt_avstandtilgangfelt.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_avstandtilgangfelt.gif; sourceTree = "<group>"; };
+		9B4E7A9A172420CF006307DD /* fareskilt_avstandtilgangfelt@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_avstandtilgangfelt@2x.gif"; sourceTree = "<group>"; };
+		9B4E7A9B172420CF006307DD /* fareskilt_barn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_barn.gif; sourceTree = "<group>"; };
+		9B4E7A9C172420CF006307DD /* fareskilt_barn@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_barn@2x.gif"; sourceTree = "<group>"; };
+		9B4E7A9D172420CF006307DD /* fareskilt_bevegeligbru.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_bevegeligbru.gif; sourceTree = "<group>"; };
+		9B4E7A9E172420CF006307DD /* fareskilt_bevegeligbru@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_bevegeligbru@2x.gif"; sourceTree = "<group>"; };
+		9B4E7A9F172420CF006307DD /* fareskilt_brattbakke_f.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_brattbakke_f.gif; sourceTree = "<group>"; };
+		9B4E7AA0172420CF006307DD /* fareskilt_brattbakke_f@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_brattbakke_f@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AA1172420CF006307DD /* fareskilt_brattbakke_s.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_brattbakke_s.gif; sourceTree = "<group>"; };
+		9B4E7AA2172420CF006307DD /* fareskilt_brattbakke_s@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_brattbakke_s@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AA3172420CF006307DD /* fareskilt_farligesvinger_h.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligesvinger_h.gif; sourceTree = "<group>"; };
+		9B4E7AA4172420CF006307DD /* fareskilt_farligesvinger_h@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligesvinger_h@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AA5172420CF006307DD /* fareskilt_farligesvinger_v.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligesvinger_v.gif; sourceTree = "<group>"; };
+		9B4E7AA6172420CF006307DD /* fareskilt_farligesvinger_v@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligesvinger_v@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AA7172420CF006307DD /* fareskilt_farligsving_h.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligsving_h.gif; sourceTree = "<group>"; };
+		9B4E7AA8172420CF006307DD /* fareskilt_farligsving_h@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligsving_h@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AA9172420CF006307DD /* fareskilt_farligsving_v.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligsving_v.gif; sourceTree = "<group>"; };
+		9B4E7AAA172420CF006307DD /* fareskilt_farligsving_v@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligsving_v@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AAB172420CF006307DD /* fareskilt_farligvegkryss.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligvegkryss.gif; sourceTree = "<group>"; };
+		9B4E7AAC172420CF006307DD /* fareskilt_farligvegkryss@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligvegkryss@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AAD172420CF006307DD /* fareskilt_farligvegskulder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_farligvegskulder.gif; sourceTree = "<group>"; };
+		9B4E7AAE172420CF006307DD /* fareskilt_farligvegskulder@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_farligvegskulder@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AAF172420CF006307DD /* fareskilt_fly.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_fly.gif; sourceTree = "<group>"; };
+		9B4E7AB0172420CF006307DD /* fareskilt_fly@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_fly@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AB1172420CF006307DD /* fareskilt_glattkjorebane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_glattkjorebane.gif; sourceTree = "<group>"; };
+		9B4E7AB2172420CF006307DD /* fareskilt_glattkjorebane@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_glattkjorebane@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AB3172420CF006307DD /* fareskilt_kaistrandferjeleie.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_kaistrandferjeleie.gif; sourceTree = "<group>"; };
+		9B4E7AB4172420CF006307DD /* fareskilt_kaistrandferjeleie@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_kaistrandferjeleie@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AB5172420CF006307DD /* fareskilt_ko.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_ko.gif; sourceTree = "<group>"; };
+		9B4E7AB6172420CF006307DD /* fareskilt_ko@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_ko@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AB7172420CF006307DD /* fareskilt_ku.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_ku.gif; sourceTree = "<group>"; };
+		9B4E7AB8172420CF006307DD /* fareskilt_ku@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_ku@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AB9172420CF006307DD /* fareskilt_motendetrafikk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_motendetrafikk.gif; sourceTree = "<group>"; };
+		9B4E7ABA172420CF006307DD /* fareskilt_motendetrafikk@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_motendetrafikk@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ABB172420CF006307DD /* fareskilt_rasfare_h.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_rasfare_h.gif; sourceTree = "<group>"; };
+		9B4E7ABC172420CF006307DD /* fareskilt_rasfare_h@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_rasfare_h@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ABD172420CF006307DD /* fareskilt_rasfare_v.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_rasfare_v.gif; sourceTree = "<group>"; };
+		9B4E7ABE172420CF006307DD /* fareskilt_rasfare_v@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_rasfare_v@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ABF172420CF006307DD /* fareskilt_ridende.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_ridende.gif; sourceTree = "<group>"; };
+		9B4E7AC0172420CF006307DD /* fareskilt_ridende@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_ridende@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AC1172420CF006307DD /* fareskilt_rundkjoring.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_rundkjoring.gif; sourceTree = "<group>"; };
+		9B4E7AC2172420CF006307DD /* fareskilt_rundkjoring@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_rundkjoring@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AC3172420CF006307DD /* fareskilt_sau.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_sau.gif; sourceTree = "<group>"; };
+		9B4E7AC4172420CF006307DD /* fareskilt_sau@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_sau@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AC5172420CF006307DD /* fareskilt_sidevind.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_sidevind.gif; sourceTree = "<group>"; };
+		9B4E7AC6172420CF006307DD /* fareskilt_sidevind@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_sidevind@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AC7172420CF006307DD /* fareskilt_skilopere.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_skilopere.gif; sourceTree = "<group>"; };
+		9B4E7AC8172420CF006307DD /* fareskilt_skilopere@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_skilopere@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AC9172420CF006307DD /* fareskilt_smalereveg_b.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_smalereveg_b.gif; sourceTree = "<group>"; };
+		9B4E7ACA172420CF006307DD /* fareskilt_smalereveg_b@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_smalereveg_b@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ACB172420CF006307DD /* fareskilt_smalereveg_h.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_smalereveg_h.gif; sourceTree = "<group>"; };
+		9B4E7ACC172420CF006307DD /* fareskilt_smalereveg_h@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_smalereveg_h@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ACD172420CF006307DD /* fareskilt_smalereveg_v.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_smalereveg_v.gif; sourceTree = "<group>"; };
+		9B4E7ACE172420CF006307DD /* fareskilt_smalereveg_v@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_smalereveg_v@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ACF172420CF006307DD /* fareskilt_steinsprut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_steinsprut.gif; sourceTree = "<group>"; };
+		9B4E7AD0172420CF006307DD /* fareskilt_steinsprut@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_steinsprut@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AD1172420CF006307DD /* fareskilt_syklende.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_syklende.gif; sourceTree = "<group>"; };
+		9B4E7AD2172420CF006307DD /* fareskilt_syklende@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_syklende@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AD3172420CF006307DD /* fareskilt_trafikklyssignal.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_trafikklyssignal.gif; sourceTree = "<group>"; };
+		9B4E7AD4172420CF006307DD /* fareskilt_trafikklyssignal@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_trafikklyssignal@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AD5172420CF006307DD /* fareskilt_tunnel.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_tunnel.gif; sourceTree = "<group>"; };
+		9B4E7AD6172420CF006307DD /* fareskilt_tunnel@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_tunnel@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AD7172420CF006307DD /* fareskilt_ujevnveg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_ujevnveg.gif; sourceTree = "<group>"; };
+		9B4E7AD8172420CF006307DD /* fareskilt_ujevnveg@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_ujevnveg@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AD9172420CF006307DD /* fareskilt_vegarbeid.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_vegarbeid.gif; sourceTree = "<group>"; };
+		9B4E7ADA172420CF006307DD /* fareskilt_vegarbeid@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_vegarbeid@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ADB172420CF006307DD /* opplysningsskilt_automatisk.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opplysningsskilt_automatisk.gif; sourceTree = "<group>"; };
+		9B4E7ADC172420CF006307DD /* opplysningsskilt_automatisk@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opplysningsskilt_automatisk@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ADD172420CF006307DD /* opplysningsskilt_videokontroll.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = opplysningsskilt_videokontroll.gif; sourceTree = "<group>"; };
+		9B4E7ADE172420CF006307DD /* opplysningsskilt_videokontroll@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "opplysningsskilt_videokontroll@2x.gif"; sourceTree = "<group>"; };
+		9B4E7ADF172420CF006307DD /* saerligulykkesfare_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = saerligulykkesfare_1.gif; sourceTree = "<group>"; };
+		9B4E7AE0172420CF006307DD /* saerligulykkesfare_1@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "saerligulykkesfare_1@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AE1172420CF006307DD /* saerligulykkesfare_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = saerligulykkesfare_2.gif; sourceTree = "<group>"; };
+		9B4E7AE2172420CF006307DD /* saerligulykkesfare_2@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "saerligulykkesfare_2@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AE3172420CF006307DD /* saerligulykkesfare_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = saerligulykkesfare_3.gif; sourceTree = "<group>"; };
+		9B4E7AE4172420CF006307DD /* saerligulykkesfare_3@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "saerligulykkesfare_3@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AE5172420CF006307DD /* saerligulykkesfare_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = saerligulykkesfare_4.gif; sourceTree = "<group>"; };
+		9B4E7AE6172420CF006307DD /* saerligulykkesfare_4@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "saerligulykkesfare_4@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AE7172420CF006307DD /* saerligulykkesfare_5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = saerligulykkesfare_5.gif; sourceTree = "<group>"; };
+		9B4E7AE8172420CF006307DD /* saerligulykkesfare_5@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "saerligulykkesfare_5@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AE9172420CF006307DD /* serviceskilt_rasteplass.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = serviceskilt_rasteplass.gif; sourceTree = "<group>"; };
+		9B4E7AEA172420CF006307DD /* serviceskilt_rasteplass@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "serviceskilt_rasteplass@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AEB172420CF006307DD /* serviceskilt_soslomme.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = serviceskilt_soslomme.gif; sourceTree = "<group>"; };
+		9B4E7AEC172420CF006307DD /* serviceskilt_soslomme@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "serviceskilt_soslomme@2x.gif"; sourceTree = "<group>"; };
+		9B4E7AED172420CF006307DD /* serviceskilt_toalett.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = serviceskilt_toalett.gif; sourceTree = "<group>"; };
+		9B4E7AEE172420CF006307DD /* serviceskilt_toalett@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "serviceskilt_toalett@2x.gif"; sourceTree = "<group>"; };
+		9B4E7B5017242EBE006307DD /* Rasteplass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rasteplass.h; sourceTree = "<group>"; };
+		9B4E7B5117242EBE006307DD /* Rasteplass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rasteplass.m; sourceTree = "<group>"; };
+		9B4E7B5317242EDB006307DD /* Toalett.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toalett.h; sourceTree = "<group>"; };
+		9B4E7B5417242EDB006307DD /* Toalett.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toalett.m; sourceTree = "<group>"; };
+		9B4E7B5617242EF0006307DD /* SOSlomme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSlomme.h; sourceTree = "<group>"; };
+		9B4E7B5717242EF0006307DD /* SOSlomme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSlomme.m; sourceTree = "<group>"; };
+		9B4E7B59172433A8006307DD /* CD_Rasteplass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Rasteplass.h; sourceTree = "<group>"; };
+		9B4E7B5A172433A8006307DD /* CD_Rasteplass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Rasteplass.m; sourceTree = "<group>"; };
+		9B4E7B5C172433B6006307DD /* CD_Toalett.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Toalett.h; sourceTree = "<group>"; };
+		9B4E7B5D172433B6006307DD /* CD_Toalett.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Toalett.m; sourceTree = "<group>"; };
+		9B4E7B5F172433C1006307DD /* CD_SOSlomme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_SOSlomme.h; sourceTree = "<group>"; };
+		9B4E7B60172433C1006307DD /* CD_SOSlomme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_SOSlomme.m; sourceTree = "<group>"; };
 		9B52D9FA16E609700019FB65 /* VegObjektKontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VegObjektKontroller.h; sourceTree = "<group>"; };
 		9B52D9FB16E609700019FB65 /* VegObjektKontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VegObjektKontroller.m; sourceTree = "<group>"; };
 		9B5423B9171D52D10072A695 /* CD_Ujevnveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Ujevnveg.h; sourceTree = "<group>"; };
@@ -439,6 +633,12 @@
 				9B06DF0A1716CC5B00512F36 /* Motorveg.m */,
 				9BCC4B8517184D870003E3F1 /* Skiltplate.h */,
 				9BCC4B8617184D870003E3F1 /* Skiltplate.m */,
+				9B4E7B5017242EBE006307DD /* Rasteplass.h */,
+				9B4E7B5117242EBE006307DD /* Rasteplass.m */,
+				9B4E7B5317242EDB006307DD /* Toalett.h */,
+				9B4E7B5417242EDB006307DD /* Toalett.m */,
+				9B4E7B5617242EF0006307DD /* SOSlomme.h */,
+				9B4E7B5717242EF0006307DD /* SOSlomme.m */,
 			);
 			name = NVDBObjekter;
 			sourceTree = "<group>";
@@ -465,6 +665,12 @@
 			isa = PBXGroup;
 			children = (
 				9B599488170740B600FF2BDB /* Vegobjekter_CoreData.xcdatamodeld */,
+				9B4E7B5F172433C1006307DD /* CD_SOSlomme.h */,
+				9B4E7B60172433C1006307DD /* CD_SOSlomme.m */,
+				9B4E7B5C172433B6006307DD /* CD_Toalett.h */,
+				9B4E7B5D172433B6006307DD /* CD_Toalett.m */,
+				9B4E7B59172433A8006307DD /* CD_Rasteplass.h */,
+				9B4E7B5A172433A8006307DD /* CD_Rasteplass.m */,
 				9B5423B9171D52D10072A695 /* CD_Ujevnveg.h */,
 				9B5423BA171D52D10072A695 /* CD_Ujevnveg.m */,
 				9B7611901719802100B6EB7C /* CD_Smalereveg.h */,
@@ -559,6 +765,166 @@
 			name = "CoreData-objekter";
 			sourceTree = "<group>";
 		};
+		9B4E7B4A172420DB006307DD /* bilder */ = {
+			isa = PBXGroup;
+			children = (
+				9B4E7B4F1724222B006307DD /* logoer */,
+				9B4E7B4E17242199006307DD /* andre skilt 2x */,
+				9B4E7B4D17242190006307DD /* andre skilt */,
+				9B4E7B4C172420FE006307DD /* fareskilt 2x */,
+				9B4E7B4B172420EF006307DD /* fareskilt */,
+			);
+			name = bilder;
+			sourceTree = "<group>";
+		};
+		9B4E7B4B172420EF006307DD /* fareskilt */ = {
+			isa = PBXGroup;
+			children = (
+				9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */,
+				9BBF71D617009E2800BEB0C8 /* fareskilt_hjort.gif */,
+				9BBF71D817009E2800BEB0C8 /* fareskilt_rein.gif */,
+				9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */,
+				9B252B371700C8F400773942 /* fareskilt_jernbane.gif */,
+				9B4E7ACD172420CF006307DD /* fareskilt_smalereveg_v.gif */,
+				9B4E7ACF172420CF006307DD /* fareskilt_steinsprut.gif */,
+				9B4E7AD1172420CF006307DD /* fareskilt_syklende.gif */,
+				9B4E7AD3172420CF006307DD /* fareskilt_trafikklyssignal.gif */,
+				9B4E7AD5172420CF006307DD /* fareskilt_tunnel.gif */,
+				9B4E7AD7172420CF006307DD /* fareskilt_ujevnveg.gif */,
+				9B4E7AD9172420CF006307DD /* fareskilt_vegarbeid.gif */,
+				9B4E7AB3172420CF006307DD /* fareskilt_kaistrandferjeleie.gif */,
+				9B4E7AB5172420CF006307DD /* fareskilt_ko.gif */,
+				9B4E7AB7172420CF006307DD /* fareskilt_ku.gif */,
+				9B4E7AB9172420CF006307DD /* fareskilt_motendetrafikk.gif */,
+				9B4E7ABB172420CF006307DD /* fareskilt_rasfare_h.gif */,
+				9B4E7ABD172420CF006307DD /* fareskilt_rasfare_v.gif */,
+				9B4E7ABF172420CF006307DD /* fareskilt_ridende.gif */,
+				9B4E7AC1172420CF006307DD /* fareskilt_rundkjoring.gif */,
+				9B4E7AC3172420CF006307DD /* fareskilt_sau.gif */,
+				9B4E7AC5172420CF006307DD /* fareskilt_sidevind.gif */,
+				9B4E7AC7172420CF006307DD /* fareskilt_skilopere.gif */,
+				9B4E7AC9172420CF006307DD /* fareskilt_smalereveg_b.gif */,
+				9B4E7ACB172420CF006307DD /* fareskilt_smalereveg_h.gif */,
+				9B4E7A99172420CF006307DD /* fareskilt_avstandtilgangfelt.gif */,
+				9B4E7A9B172420CF006307DD /* fareskilt_barn.gif */,
+				9B4E7A9D172420CF006307DD /* fareskilt_bevegeligbru.gif */,
+				9B4E7A9F172420CF006307DD /* fareskilt_brattbakke_f.gif */,
+				9B4E7AA1172420CF006307DD /* fareskilt_brattbakke_s.gif */,
+				9B4E7AA3172420CF006307DD /* fareskilt_farligesvinger_h.gif */,
+				9B4E7AA5172420CF006307DD /* fareskilt_farligesvinger_v.gif */,
+				9B4E7AA7172420CF006307DD /* fareskilt_farligsving_h.gif */,
+				9B4E7AA9172420CF006307DD /* fareskilt_farligsving_v.gif */,
+				9B4E7AAB172420CF006307DD /* fareskilt_farligvegkryss.gif */,
+				9B4E7AAD172420CF006307DD /* fareskilt_farligvegskulder.gif */,
+				9B4E7AAF172420CF006307DD /* fareskilt_fly.gif */,
+				9B4E7AB1172420CF006307DD /* fareskilt_glattkjorebane.gif */,
+				9B4E7A97172420CF006307DD /* fareskilt_annenfare.gif */,
+			);
+			name = fareskilt;
+			sourceTree = "<group>";
+		};
+		9B4E7B4C172420FE006307DD /* fareskilt 2x */ = {
+			isa = PBXGroup;
+			children = (
+				9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */,
+				9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */,
+				9BBF71D717009E2800BEB0C8 /* fareskilt_hjort@2x.gif */,
+				9BBF71D917009E2800BEB0C8 /* fareskilt_rein@2x.gif */,
+				9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */,
+				9B4E7ACE172420CF006307DD /* fareskilt_smalereveg_v@2x.gif */,
+				9B4E7AD0172420CF006307DD /* fareskilt_steinsprut@2x.gif */,
+				9B4E7AD2172420CF006307DD /* fareskilt_syklende@2x.gif */,
+				9B4E7AD4172420CF006307DD /* fareskilt_trafikklyssignal@2x.gif */,
+				9B4E7AD6172420CF006307DD /* fareskilt_tunnel@2x.gif */,
+				9B4E7AD8172420CF006307DD /* fareskilt_ujevnveg@2x.gif */,
+				9B4E7ADA172420CF006307DD /* fareskilt_vegarbeid@2x.gif */,
+				9B4E7AB4172420CF006307DD /* fareskilt_kaistrandferjeleie@2x.gif */,
+				9B4E7AB6172420CF006307DD /* fareskilt_ko@2x.gif */,
+				9B4E7AB8172420CF006307DD /* fareskilt_ku@2x.gif */,
+				9B4E7ABA172420CF006307DD /* fareskilt_motendetrafikk@2x.gif */,
+				9B4E7ABC172420CF006307DD /* fareskilt_rasfare_h@2x.gif */,
+				9B4E7ABE172420CF006307DD /* fareskilt_rasfare_v@2x.gif */,
+				9B4E7AC0172420CF006307DD /* fareskilt_ridende@2x.gif */,
+				9B4E7AC2172420CF006307DD /* fareskilt_rundkjoring@2x.gif */,
+				9B4E7AC4172420CF006307DD /* fareskilt_sau@2x.gif */,
+				9B4E7AC6172420CF006307DD /* fareskilt_sidevind@2x.gif */,
+				9B4E7AC8172420CF006307DD /* fareskilt_skilopere@2x.gif */,
+				9B4E7ACA172420CF006307DD /* fareskilt_smalereveg_b@2x.gif */,
+				9B4E7ACC172420CF006307DD /* fareskilt_smalereveg_h@2x.gif */,
+				9B4E7A9A172420CF006307DD /* fareskilt_avstandtilgangfelt@2x.gif */,
+				9B4E7A9C172420CF006307DD /* fareskilt_barn@2x.gif */,
+				9B4E7A9E172420CF006307DD /* fareskilt_bevegeligbru@2x.gif */,
+				9B4E7AA0172420CF006307DD /* fareskilt_brattbakke_f@2x.gif */,
+				9B4E7AA2172420CF006307DD /* fareskilt_brattbakke_s@2x.gif */,
+				9B4E7AA4172420CF006307DD /* fareskilt_farligesvinger_h@2x.gif */,
+				9B4E7AA6172420CF006307DD /* fareskilt_farligesvinger_v@2x.gif */,
+				9B4E7AA8172420CF006307DD /* fareskilt_farligsving_h@2x.gif */,
+				9B4E7AAA172420CF006307DD /* fareskilt_farligsving_v@2x.gif */,
+				9B4E7AAC172420CF006307DD /* fareskilt_farligvegkryss@2x.gif */,
+				9B4E7AAE172420CF006307DD /* fareskilt_farligvegskulder@2x.gif */,
+				9B4E7AB0172420CF006307DD /* fareskilt_fly@2x.gif */,
+				9B4E7AB2172420CF006307DD /* fareskilt_glattkjorebane@2x.gif */,
+				9B4E7A98172420CF006307DD /* fareskilt_annenfare@2x.gif */,
+			);
+			name = "fareskilt 2x";
+			sourceTree = "<group>";
+		};
+		9B4E7B4D17242190006307DD /* andre skilt */ = {
+			isa = PBXGroup;
+			children = (
+				9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */,
+				9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */,
+				9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */,
+				9B06DF111716D36200512F36 /* motorveg.gif */,
+				9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */,
+				9B4E7ADB172420CF006307DD /* opplysningsskilt_automatisk.gif */,
+				9B4E7ADD172420CF006307DD /* opplysningsskilt_videokontroll.gif */,
+				9B4E7ADF172420CF006307DD /* saerligulykkesfare_1.gif */,
+				9B4E7AE1172420CF006307DD /* saerligulykkesfare_2.gif */,
+				9B4E7AE3172420CF006307DD /* saerligulykkesfare_3.gif */,
+				9B4E7AE5172420CF006307DD /* saerligulykkesfare_4.gif */,
+				9B4E7AE7172420CF006307DD /* saerligulykkesfare_5.gif */,
+				9B4E7AE9172420CF006307DD /* serviceskilt_rasteplass.gif */,
+				9B4E7AEB172420CF006307DD /* serviceskilt_soslomme.gif */,
+				9B4E7AED172420CF006307DD /* serviceskilt_toalett.gif */,
+				9BBF71E01700A15B00BEB0C8 /* hoydegrense.gif */,
+			);
+			name = "andre skilt";
+			sourceTree = "<group>";
+		};
+		9B4E7B4E17242199006307DD /* andre skilt 2x */ = {
+			isa = PBXGroup;
+			children = (
+				9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */,
+				9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */,
+				9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */,
+				9B06DF121716D36200512F36 /* motorveg@2x.gif */,
+				9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */,
+				9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */,
+				9B4E7ADC172420CF006307DD /* opplysningsskilt_automatisk@2x.gif */,
+				9B4E7ADE172420CF006307DD /* opplysningsskilt_videokontroll@2x.gif */,
+				9B4E7AE0172420CF006307DD /* saerligulykkesfare_1@2x.gif */,
+				9B4E7AE2172420CF006307DD /* saerligulykkesfare_2@2x.gif */,
+				9B4E7AE4172420CF006307DD /* saerligulykkesfare_3@2x.gif */,
+				9B4E7AE6172420CF006307DD /* saerligulykkesfare_4@2x.gif */,
+				9B4E7AE8172420CF006307DD /* saerligulykkesfare_5@2x.gif */,
+				9B4E7AEA172420CF006307DD /* serviceskilt_rasteplass@2x.gif */,
+				9B4E7AEC172420CF006307DD /* serviceskilt_soslomme@2x.gif */,
+				9B4E7AEE172420CF006307DD /* serviceskilt_toalett@2x.gif */,
+			);
+			name = "andre skilt 2x";
+			sourceTree = "<group>";
+		};
+		9B4E7B4F1724222B006307DD /* logoer */ = {
+			isa = PBXGroup;
+			children = (
+				9B7EB81316CD212600484A74 /* Default.png */,
+				9B7EB81516CD212600484A74 /* Default@2x.png */,
+				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
+			);
+			name = logoer;
+			sourceTree = "<group>";
+		};
 		9B7EB7F516CD212600484A74 = {
 			isa = PBXGroup;
 			children = (
@@ -611,36 +977,12 @@
 		9B7EB80816CD212600484A74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B4E7B4A172420DB006307DD /* bilder */,
 				9BA0B6BA1711A67B008E3E5F /* Purr.aiff */,
-				9B252B371700C8F400773942 /* fareskilt_jernbane.gif */,
-				9B252B381700C8F400773942 /* fareskilt_jernbane@2x.gif */,
-				9BBF71E41700AD4100BEB0C8 /* fareskilt_fartsdemper.gif */,
-				9BBF71E51700AD4100BEB0C8 /* fareskilt_fartsdemper@2x.gif */,
-				9BBF71E01700A15B00BEB0C8 /* hoydegrense.gif */,
-				9BBF71E11700A15B00BEB0C8 /* hoydegrense@2x.gif */,
-				9BBF71D417009E2800BEB0C8 /* fareskilt_elg.gif */,
-				9BBF71D517009E2800BEB0C8 /* fareskilt_elg@2x.gif */,
-				9BBF71D617009E2800BEB0C8 /* fareskilt_hjort.gif */,
-				9BBF71D717009E2800BEB0C8 /* fareskilt_hjort@2x.gif */,
-				9BBF71D817009E2800BEB0C8 /* fareskilt_rein.gif */,
-				9BBF71D917009E2800BEB0C8 /* fareskilt_rein@2x.gif */,
-				9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */,
-				9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */,
 				9B7EB80916CD212600484A74 /* Vegdata-Info.plist */,
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
 				9B7EB80F16CD212600484A74 /* Vegdata-Prefix.pch */,
-				9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */,
-				9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */,
-				9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */,
-				9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */,
-				9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */,
-				9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */,
-				9B06DF111716D36200512F36 /* motorveg.gif */,
-				9B06DF121716D36200512F36 /* motorveg@2x.gif */,
-				9B7EB81316CD212600484A74 /* Default.png */,
-				9B7EB81516CD212600484A74 /* Default@2x.png */,
-				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -774,6 +1116,94 @@
 				9B06DF141716D36200512F36 /* motortrafikkveg@2x.gif in Resources */,
 				9B06DF151716D36200512F36 /* motorveg.gif in Resources */,
 				9B06DF161716D36200512F36 /* motorveg@2x.gif in Resources */,
+				9B4E7AEF172420CF006307DD /* fareskilt_annenfare.gif in Resources */,
+				9B4E7AF0172420CF006307DD /* fareskilt_annenfare@2x.gif in Resources */,
+				9B4E7AF1172420CF006307DD /* fareskilt_avstandtilgangfelt.gif in Resources */,
+				9B4E7AF2172420CF006307DD /* fareskilt_avstandtilgangfelt@2x.gif in Resources */,
+				9B4E7AF3172420CF006307DD /* fareskilt_barn.gif in Resources */,
+				9B4E7AF4172420CF006307DD /* fareskilt_barn@2x.gif in Resources */,
+				9B4E7AF5172420CF006307DD /* fareskilt_bevegeligbru.gif in Resources */,
+				9B4E7AF6172420CF006307DD /* fareskilt_bevegeligbru@2x.gif in Resources */,
+				9B4E7AF7172420CF006307DD /* fareskilt_brattbakke_f.gif in Resources */,
+				9B4E7AF8172420CF006307DD /* fareskilt_brattbakke_f@2x.gif in Resources */,
+				9B4E7AF9172420CF006307DD /* fareskilt_brattbakke_s.gif in Resources */,
+				9B4E7AFA172420CF006307DD /* fareskilt_brattbakke_s@2x.gif in Resources */,
+				9B4E7AFB172420CF006307DD /* fareskilt_farligesvinger_h.gif in Resources */,
+				9B4E7AFC172420CF006307DD /* fareskilt_farligesvinger_h@2x.gif in Resources */,
+				9B4E7AFD172420CF006307DD /* fareskilt_farligesvinger_v.gif in Resources */,
+				9B4E7AFE172420CF006307DD /* fareskilt_farligesvinger_v@2x.gif in Resources */,
+				9B4E7AFF172420CF006307DD /* fareskilt_farligsving_h.gif in Resources */,
+				9B4E7B00172420CF006307DD /* fareskilt_farligsving_h@2x.gif in Resources */,
+				9B4E7B01172420CF006307DD /* fareskilt_farligsving_v.gif in Resources */,
+				9B4E7B02172420CF006307DD /* fareskilt_farligsving_v@2x.gif in Resources */,
+				9B4E7B03172420CF006307DD /* fareskilt_farligvegkryss.gif in Resources */,
+				9B4E7B04172420CF006307DD /* fareskilt_farligvegkryss@2x.gif in Resources */,
+				9B4E7B05172420CF006307DD /* fareskilt_farligvegskulder.gif in Resources */,
+				9B4E7B06172420CF006307DD /* fareskilt_farligvegskulder@2x.gif in Resources */,
+				9B4E7B07172420CF006307DD /* fareskilt_fly.gif in Resources */,
+				9B4E7B08172420CF006307DD /* fareskilt_fly@2x.gif in Resources */,
+				9B4E7B09172420CF006307DD /* fareskilt_glattkjorebane.gif in Resources */,
+				9B4E7B0A172420CF006307DD /* fareskilt_glattkjorebane@2x.gif in Resources */,
+				9B4E7B0B172420CF006307DD /* fareskilt_kaistrandferjeleie.gif in Resources */,
+				9B4E7B0C172420CF006307DD /* fareskilt_kaistrandferjeleie@2x.gif in Resources */,
+				9B4E7B0D172420CF006307DD /* fareskilt_ko.gif in Resources */,
+				9B4E7B0E172420CF006307DD /* fareskilt_ko@2x.gif in Resources */,
+				9B4E7B0F172420CF006307DD /* fareskilt_ku.gif in Resources */,
+				9B4E7B10172420CF006307DD /* fareskilt_ku@2x.gif in Resources */,
+				9B4E7B11172420CF006307DD /* fareskilt_motendetrafikk.gif in Resources */,
+				9B4E7B12172420CF006307DD /* fareskilt_motendetrafikk@2x.gif in Resources */,
+				9B4E7B13172420CF006307DD /* fareskilt_rasfare_h.gif in Resources */,
+				9B4E7B14172420CF006307DD /* fareskilt_rasfare_h@2x.gif in Resources */,
+				9B4E7B15172420CF006307DD /* fareskilt_rasfare_v.gif in Resources */,
+				9B4E7B16172420CF006307DD /* fareskilt_rasfare_v@2x.gif in Resources */,
+				9B4E7B17172420CF006307DD /* fareskilt_ridende.gif in Resources */,
+				9B4E7B18172420CF006307DD /* fareskilt_ridende@2x.gif in Resources */,
+				9B4E7B19172420CF006307DD /* fareskilt_rundkjoring.gif in Resources */,
+				9B4E7B1A172420CF006307DD /* fareskilt_rundkjoring@2x.gif in Resources */,
+				9B4E7B1B172420CF006307DD /* fareskilt_sau.gif in Resources */,
+				9B4E7B1C172420CF006307DD /* fareskilt_sau@2x.gif in Resources */,
+				9B4E7B1D172420CF006307DD /* fareskilt_sidevind.gif in Resources */,
+				9B4E7B1E172420CF006307DD /* fareskilt_sidevind@2x.gif in Resources */,
+				9B4E7B1F172420CF006307DD /* fareskilt_skilopere.gif in Resources */,
+				9B4E7B20172420CF006307DD /* fareskilt_skilopere@2x.gif in Resources */,
+				9B4E7B21172420CF006307DD /* fareskilt_smalereveg_b.gif in Resources */,
+				9B4E7B22172420CF006307DD /* fareskilt_smalereveg_b@2x.gif in Resources */,
+				9B4E7B23172420CF006307DD /* fareskilt_smalereveg_h.gif in Resources */,
+				9B4E7B24172420CF006307DD /* fareskilt_smalereveg_h@2x.gif in Resources */,
+				9B4E7B25172420CF006307DD /* fareskilt_smalereveg_v.gif in Resources */,
+				9B4E7B26172420CF006307DD /* fareskilt_smalereveg_v@2x.gif in Resources */,
+				9B4E7B27172420CF006307DD /* fareskilt_steinsprut.gif in Resources */,
+				9B4E7B28172420CF006307DD /* fareskilt_steinsprut@2x.gif in Resources */,
+				9B4E7B29172420CF006307DD /* fareskilt_syklende.gif in Resources */,
+				9B4E7B2A172420CF006307DD /* fareskilt_syklende@2x.gif in Resources */,
+				9B4E7B2B172420CF006307DD /* fareskilt_trafikklyssignal.gif in Resources */,
+				9B4E7B2C172420CF006307DD /* fareskilt_trafikklyssignal@2x.gif in Resources */,
+				9B4E7B2D172420CF006307DD /* fareskilt_tunnel.gif in Resources */,
+				9B4E7B2E172420CF006307DD /* fareskilt_tunnel@2x.gif in Resources */,
+				9B4E7B2F172420CF006307DD /* fareskilt_ujevnveg.gif in Resources */,
+				9B4E7B30172420CF006307DD /* fareskilt_ujevnveg@2x.gif in Resources */,
+				9B4E7B31172420CF006307DD /* fareskilt_vegarbeid.gif in Resources */,
+				9B4E7B32172420CF006307DD /* fareskilt_vegarbeid@2x.gif in Resources */,
+				9B4E7B33172420CF006307DD /* opplysningsskilt_automatisk.gif in Resources */,
+				9B4E7B34172420CF006307DD /* opplysningsskilt_automatisk@2x.gif in Resources */,
+				9B4E7B35172420CF006307DD /* opplysningsskilt_videokontroll.gif in Resources */,
+				9B4E7B36172420CF006307DD /* opplysningsskilt_videokontroll@2x.gif in Resources */,
+				9B4E7B37172420CF006307DD /* saerligulykkesfare_1.gif in Resources */,
+				9B4E7B38172420CF006307DD /* saerligulykkesfare_1@2x.gif in Resources */,
+				9B4E7B39172420CF006307DD /* saerligulykkesfare_2.gif in Resources */,
+				9B4E7B3A172420CF006307DD /* saerligulykkesfare_2@2x.gif in Resources */,
+				9B4E7B3B172420CF006307DD /* saerligulykkesfare_3.gif in Resources */,
+				9B4E7B3C172420CF006307DD /* saerligulykkesfare_3@2x.gif in Resources */,
+				9B4E7B3D172420CF006307DD /* saerligulykkesfare_4.gif in Resources */,
+				9B4E7B3E172420CF006307DD /* saerligulykkesfare_4@2x.gif in Resources */,
+				9B4E7B3F172420CF006307DD /* saerligulykkesfare_5.gif in Resources */,
+				9B4E7B40172420CF006307DD /* saerligulykkesfare_5@2x.gif in Resources */,
+				9B4E7B41172420CF006307DD /* serviceskilt_rasteplass.gif in Resources */,
+				9B4E7B42172420CF006307DD /* serviceskilt_rasteplass@2x.gif in Resources */,
+				9B4E7B43172420CF006307DD /* serviceskilt_soslomme.gif in Resources */,
+				9B4E7B44172420CF006307DD /* serviceskilt_soslomme@2x.gif in Resources */,
+				9B4E7B45172420CF006307DD /* serviceskilt_toalett.gif in Resources */,
+				9B4E7B46172420CF006307DD /* serviceskilt_toalett@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +1285,12 @@
 				9B76118F17197D8D00B6EB7C /* CD_AutomatiskTrafikkontroll.m in Sources */,
 				9B7611921719805F00B6EB7C /* CD_Smalereveg.m in Sources */,
 				9B5423BB171D52D10072A695 /* CD_Ujevnveg.m in Sources */,
+				9B4E7B5217242EBE006307DD /* Rasteplass.m in Sources */,
+				9B4E7B5517242EDB006307DD /* Toalett.m in Sources */,
+				9B4E7B5817242EF0006307DD /* SOSlomme.m in Sources */,
+				9B4E7B5B172433A8006307DD /* CD_Rasteplass.m in Sources */,
+				9B4E7B5E172433B6006307DD /* CD_Toalett.m in Sources */,
+				9B4E7B61172433C1006307DD /* CD_SOSlomme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

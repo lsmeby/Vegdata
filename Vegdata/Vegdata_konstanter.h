@@ -108,6 +108,23 @@
 #define FARTSDEMPER_FILTER_RUMLEFELT @"Rumlefelt"
 #define FARTSDEMPER_BRUKERPREF @"fare_fartsdemper"
 
+#define RASTEPLASS_ID 39
+#define RASTEPLASS_KEY @"rasteplass"
+#define RASTEPLASS_CD @"CD_Rasteplass"
+#define RASTEPLASS_BRUKERPREF @""
+
+#define TOALETT_ID 243
+#define TOALETT_KEY @"toalett"
+#define TOALETT_CD @"CD_Toalett"
+#define TOALETT_BRUKERPREF @""
+
+#define SOSLOMME_ID 47
+#define SOSLOMME_KEY @"soslomme"
+#define SOSLOMME_CD @"CD_SOSlomme"
+#define SOSLOMME_FILTER_TYPE @"Bruksområde"
+#define SOSLOMME_FILTER_HAVARI @"Havarilomme"
+#define SOSLOMME_BRUKERPREF @""
+
 #define SKILTPLATE_ID 96
 #define SKILTPLATE_ANSIKTSSIDE_KEY @"Ansiktsside"
 #define SKILTPLATE_ANSIKTSSIDE_MED @"Med metreringsretning"

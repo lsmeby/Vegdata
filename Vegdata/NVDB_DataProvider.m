@@ -40,6 +40,9 @@
 #import "MapQuestRoute.h"
 #import "Skiltplate.h"
 #import "SkiltObjekt.h"
+#import "Rasteplass.h"
+#import "Toalett.h"
+#import "SOSlomme.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -88,6 +91,9 @@
 #import "CD_VariabelSkiltplate.h"
 #import "CD_Vegarbeid.h"
 #import "CD_Videokontroll.h"
+#import "CD_Rasteplass.h"
+#import "CD_Toalett.h"
+#import "CD_SOSlomme.h"
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
@@ -199,6 +205,9 @@
     NSMutableArray * fartsdempere = [[NSMutableArray alloc] init];
     NSMutableArray * hoydebegrensninger = [[NSMutableArray alloc] init];
     NSMutableArray * jernbanekryssinger = [[NSMutableArray alloc] init];
+    NSMutableArray * rasteplasser = [[NSMutableArray alloc] init];
+    NSMutableArray * toaletter = [[NSMutableArray alloc] init];
+    NSMutableArray * soslommer = [[NSMutableArray alloc] init];
     NSMutableArray * farligesvinger = [[NSMutableArray alloc] init];
     NSMutableArray * brattebakker = [[NSMutableArray alloc] init];
     NSMutableArray * smalereveger = [[NSMutableArray alloc] init];
@@ -313,6 +322,24 @@
             Jernbanekryssing * jernbanekryssing = [Jernbanekryssing alloc];
             settOppVegObjekt(jernbanekryssing);
             [jernbanekryssinger addObject:jernbanekryssing];
+        }
+        else if([obj isKindOfClass:[CD_Rasteplass class]])
+        {
+            Rasteplass * rasteplass = [Rasteplass alloc];
+            settOppVegObjekt(rasteplass);
+            [rasteplasser addObject:rasteplass];
+        }
+        else if([obj isKindOfClass:[CD_Toalett class]])
+        {
+            Toalett * toalett = [Toalett alloc];
+            settOppVegObjekt(toalett);
+            [toaletter addObject:toalett];
+        }
+        else if([obj isKindOfClass:[CD_SOSlomme class]])
+        {
+            SOSlomme * soslomme = [SOSlomme alloc];
+            settOppVegObjekt(soslomme);
+            [soslommer addObject:soslomme];
         }
         else if([obj isKindOfClass:[CD_Farligsving class]])
         {
@@ -503,6 +530,9 @@
     Fartsdempere * s_fartsdempere = [[Fartsdempere alloc] initMedObjekter:[fartsdempere copy]];
     Hoydebegrensninger * s_hoydebegrensninger = [[Hoydebegrensninger alloc] initMedObjekter:[hoydebegrensninger copy]];
     Jernbanekryssinger * s_jernbanekryssinger = [[Jernbanekryssinger alloc] initMedObjekter:[jernbanekryssinger copy]];
+    Rasteplasser * s_rasteplasser = [[Rasteplasser alloc] initMedObjekter:[rasteplasser copy]];
+    Toaletter * s_toaletter = [[Toaletter alloc] initMedObjekter:[toaletter copy]];
+    SOSlommer * s_soslommer = [[SOSlommer alloc] initMedObjekter:[soslommer copy]];
     Farligesvinger * s_farligesvinger = [[Farligesvinger alloc] initMedObjekter:[farligesvinger copy]];
     Brattebakker * s_brattebakker = [[Brattebakker alloc] initMedObjekter:[brattebakker copy]];
     Smalereveger * s_smalereveger = [[Smalereveger alloc] initMedObjekter:[smalereveger copy]];
@@ -535,7 +565,7 @@
     Saerligeulykkesfarer * s_saerligeulykkesfarer = [[Saerligeulykkesfarer alloc] initMedObjekter:[saerligeulykkesfarer copy]];
     
     NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveger, s_vilttrekk, s_motorveger,
-                          s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
+                          s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
     
     NSLog(@"\n### Data lastet fra Core Data.");
     [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:vlenke.veglenkeId];
@@ -643,6 +673,15 @@
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Jernbanekryssing class]])
                         cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:JERNBANEKRYSSING_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Rasteplass class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASTEPLASS_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[Toalett class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TOALETT_CD
+                                                                 inManagedObjectContext:managedObjectContext];
+                    else if([v_obj isKindOfClass:[SOSlomme class]])
+                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SOSLOMME_CD
                                                                  inManagedObjectContext:managedObjectContext];
                     else if([v_obj isKindOfClass:[Farligsving class]])
                         cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGSVING_CD
