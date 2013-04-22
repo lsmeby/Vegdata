@@ -67,7 +67,7 @@
 
 - (BOOL)isForstegangsOppstart
 {
-    NSString * testVerdi = [[NSUserDefaults standardUserDefaults] stringForKey:@"varslingsavstand"];
+    NSString * testVerdi = [[NSUserDefaults standardUserDefaults] stringForKey:COREDATASIZE_BRUKERPREF];
     if(testVerdi == nil)
         return YES;
     return NO;
