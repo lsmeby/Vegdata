@@ -25,6 +25,16 @@
 
 @implementation HovedskjermViewControllerPortrett
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    if([self erFireTommerRetina])
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p_4in.jpg"]];
+    else
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p.jpg"]];
+}
+
 - (void)awakeFromNib
 {
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -75,6 +85,18 @@
 -(NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)hudKnappTrykket:(UISwitch *)knapp
+{
+    [super hudKnappTrykket:knapp];
+    
+    if(knapp.isOn)
+        self.view.backgroundColor = [UIColor blackColor];
+    else if([self erFireTommerRetina])
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p_4in.jpg"]];
+    else
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p.jpg"]];
 }
 
 @end

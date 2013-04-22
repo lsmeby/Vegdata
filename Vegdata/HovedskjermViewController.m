@@ -26,8 +26,6 @@
 #import "MapQuestRoute.h"
 
 @interface HovedskjermViewController()
-- (IBAction)hudKnappTrykket:(UISwitch *)knapp;
-- (BOOL)erFireTommerRetina;
 - (BOOL)skalViseHUDKnapp;
 + (NSString *)finnTypeMedStreng:(NSString *)streng;
 + (NSString *)finnAvstandstekstMedStreng:(NSString *)streng ErVariabeltSkilt:(BOOL)erVariabelt;
@@ -142,6 +140,8 @@
         self.detalj6.transform = CGAffineTransformScale(self.detalj6.transform, 1.0, -1.0);
         self.detalj7.transform = CGAffineTransformScale(self.detalj7.transform, 1.0, -1.0);
         
+        self.feilLabel.transform = CGAffineTransformScale(self.feilLabel.transform, 1.0, -1.0);
+        
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
     else
@@ -170,6 +170,8 @@
         self.detalj6.transform = CGAffineTransformMakeScale(1.0, 1.0);
         self.detalj7.transform = CGAffineTransformMakeScale(1.0, 1.0);
         
+        self.feilLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
 }
@@ -197,6 +199,14 @@
 - (void) posisjonFeil:(NSError *)feil
 {
     NSLog(@"\n### Feil: %@", [feil description]);
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Feil"
+                                                     message:@"Klarte ikke finne enhetens posisjon. Har Kjørehjelperen tillatelse til å bruke posisjonstjenester?"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+    
+    [alert show];
 }
 
 #pragma mark - VegObjektDelegate
@@ -214,42 +224,34 @@
     // -- FARTSGRENSE --
     
     dataObjekt = [data objectForKey:FARTSGRENSE_KEY];
-    if(dataObjekt && element < antallPlasser)
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
         rad = self.layoutArray[element];
         
-        if([dataObjekt isEqualToString:INGEN_OBJEKTER])
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense.gif"];
+        ((UILabel *)rad[1]).text = dataObjekt;
+        [(UILabel *)rad[1] setTextColor:[UIColor blackColor]];
+            
+        if(element == 0)
         {
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense_feil.gif"];
-            [(UILabel *)rad[1] setTextColor:[UIColor grayColor]];
+            if([dataObjekt length] == 3)
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:70]];
+            else
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:100]];
+        }
+        else if(element < 3)
+        {
+            if([dataObjekt length] == 3)
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:45]];
+            else
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:65]];
         }
         else
         {
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense.gif"];
-            ((UILabel *)rad[1]).text = dataObjekt;
-            [(UILabel *)rad[1] setTextColor:[UIColor blackColor]];
-            
-            if(element == 0)
-            {
-                if([dataObjekt length] == 3)
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:70]];
-                else
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:100]];
-            }
-            else if(element < 3)
-            {
-                if([dataObjekt length] == 3)
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:45]];
-                else
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:65]];
-            }
+            if([dataObjekt length] == 3)
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:24]];
             else
-            {
-                if([dataObjekt length] == 3)
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:24]];
-                else
-                    [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:32]];
-            }
+                [(UILabel *)rad[1] setFont:[UIFont boldSystemFontOfSize:32]];
         }
         
         ((UILabel *)rad[2]).text = nil;
@@ -1184,6 +1186,11 @@
         rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
         element++;
     }
+    
+    if(element == 0)
+        self.feilLabel.hidden = false;
+    else
+        self.feilLabel.hidden = true;
     
     
     while(element < antallPlasser)

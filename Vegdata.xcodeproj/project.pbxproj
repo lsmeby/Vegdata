@@ -26,6 +26,11 @@
 		9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DB16EAA38A009C0E69 /* forkjorsvei.gif */; };
 		9B3C64E016EAA38A009C0E69 /* forkjorsvei@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */; };
 		9B4E21A016FB5AD200CFD038 /* Fartsdemper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */; };
+		9B4E783817254B6F007CC8E2 /* ikon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E783717254B6F007CC8E2 /* ikon.png */; };
+		9B4E783A17254B7C007CC8E2 /* ikon_ret.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E783917254B7C007CC8E2 /* ikon_ret.png */; };
+		9B4E783C1725538F007CC8E2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E783B1725538F007CC8E2 /* Default.png */; };
+		9B4E783E172553C2007CC8E2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E783D172553C2007CC8E2 /* Default@2x.png */; };
+		9B4E7840172553D2007CC8E2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E783F172553D2007CC8E2 /* Default-568h@2x.png */; };
 		9B4E7AEF172420CF006307DD /* fareskilt_annenfare.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A97172420CF006307DD /* fareskilt_annenfare.gif */; };
 		9B4E7AF0172420CF006307DD /* fareskilt_annenfare@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A98172420CF006307DD /* fareskilt_annenfare@2x.gif */; };
 		9B4E7AF1172420CF006307DD /* fareskilt_avstandtilgangfelt.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E7A99172420CF006307DD /* fareskilt_avstandtilgangfelt.gif */; };
@@ -163,9 +168,6 @@
 		9B7EB80C16CD212600484A74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB80A16CD212600484A74 /* InfoPlist.strings */; };
 		9B7EB80E16CD212600484A74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EB80D16CD212600484A74 /* main.m */; };
 		9B7EB81216CD212600484A74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EB81116CD212600484A74 /* AppDelegate.m */; };
-		9B7EB81416CD212600484A74 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81316CD212600484A74 /* Default.png */; };
-		9B7EB81616CD212600484A74 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81516CD212600484A74 /* Default@2x.png */; };
-		9B7EB81816CD212600484A74 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81716CD212600484A74 /* Default-568h@2x.png */; };
 		9B7EB81B16CD212600484A74 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EB81916CD212600484A74 /* MainStoryboard.storyboard */; };
 		9B7EB81E16CD212600484A74 /* HovedskjermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */; };
 		9B7EB83816CD329B00484A74 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7EB83616CD329B00484A74 /* CFNetwork.framework */; };
@@ -178,8 +180,6 @@
 		9B80F2DE16FA04C5008861BA /* Jernbanekryssing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B80F2DD16FA04C5008861BA /* Jernbanekryssing.m */; };
 		9B820D7F16CE6CEF00AD3307 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */; };
 		9B820D8516CE6E1D00AD3307 /* Posisjon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B820D8416CE6E1D00AD3307 /* Posisjon.m */; };
-		9B83CBA516D8EB3E0022AB3D /* fartsgrense_feil.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */; };
-		9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */; };
 		9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */; };
 		9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */; };
 		9B90E6FA16F75E5C0067850E /* Vegobjekt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B90E6F916F75E5B0067850E /* Vegobjekt.m */; };
@@ -214,6 +214,12 @@
 		9BD1A0A11710654B0099ACAD /* VeglenkeDBStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1A0A01710654B0099ACAD /* VeglenkeDBStatus.m */; };
 		9BDAC38A16D7A10500CF1ACD /* Egenskap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDAC38916D7A10500CF1ACD /* Egenskap.m */; };
 		9BE4624516CD38EE003E1FAE /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE4623C16CD36F0003E1FAE /* libRestKit.a */; };
+		9BF1CE2017255D9A00AC31F7 /* bg_l_4in@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1A17255D9A00AC31F7 /* bg_l_4in@2x.jpg */; };
+		9BF1CE2117255D9A00AC31F7 /* bg_l.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1B17255D9A00AC31F7 /* bg_l.jpg */; };
+		9BF1CE2217255D9A00AC31F7 /* bg_l@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1C17255D9A00AC31F7 /* bg_l@2x.jpg */; };
+		9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */; };
+		9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */; };
+		9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +292,11 @@
 		9B3C64DC16EAA38A009C0E69 /* forkjorsvei@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "forkjorsvei@2x.gif"; sourceTree = "<group>"; };
 		9B4E219E16FB5AD200CFD038 /* Fartsdemper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fartsdemper.h; sourceTree = "<group>"; };
 		9B4E219F16FB5AD200CFD038 /* Fartsdemper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fartsdemper.m; sourceTree = "<group>"; };
+		9B4E783717254B6F007CC8E2 /* ikon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ikon.png; path = ../ikon.png; sourceTree = "<group>"; };
+		9B4E783917254B7C007CC8E2 /* ikon_ret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ikon_ret.png; path = ../ikon_ret.png; sourceTree = "<group>"; };
+		9B4E783B1725538F007CC8E2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		9B4E783D172553C2007CC8E2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		9B4E783F172553D2007CC8E2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		9B4E7A97172420CF006307DD /* fareskilt_annenfare.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_annenfare.gif; sourceTree = "<group>"; };
 		9B4E7A98172420CF006307DD /* fareskilt_annenfare@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fareskilt_annenfare@2x.gif"; sourceTree = "<group>"; };
 		9B4E7A99172420CF006307DD /* fareskilt_avstandtilgangfelt.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fareskilt_avstandtilgangfelt.gif; sourceTree = "<group>"; };
@@ -458,7 +469,7 @@
 		9B7611901719802100B6EB7C /* CD_Smalereveg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CD_Smalereveg.h; sourceTree = "<group>"; };
 		9B7611911719803000B6EB7C /* CD_Smalereveg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CD_Smalereveg.m; sourceTree = "<group>"; };
 		9B79037016F37E4C00F36B82 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		9B7EB7FE16CD212600484A74 /* Vegdata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vegdata.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B7EB7FE16CD212600484A74 /* Kjørehjelperen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kjørehjelperen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EB80116CD212600484A74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9B7EB80316CD212600484A74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B7EB80516CD212600484A74 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -468,9 +479,6 @@
 		9B7EB80F16CD212600484A74 /* Vegdata-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vegdata-Prefix.pch"; sourceTree = "<group>"; };
 		9B7EB81016CD212600484A74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B7EB81116CD212600484A74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9B7EB81316CD212600484A74 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9B7EB81516CD212600484A74 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		9B7EB81716CD212600484A74 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9B7EB81A16CD212600484A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9B7EB81C16CD212600484A74 /* HovedskjermViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HovedskjermViewController.h; sourceTree = "<group>"; };
 		9B7EB81D16CD212600484A74 /* HovedskjermViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HovedskjermViewController.m; sourceTree = "<group>"; };
@@ -486,8 +494,6 @@
 		9B820D7E16CE6CEF00AD3307 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9B820D8316CE6E1D00AD3307 /* Posisjon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Posisjon.h; sourceTree = "<group>"; };
 		9B820D8416CE6E1D00AD3307 /* Posisjon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Posisjon.m; sourceTree = "<group>"; };
-		9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense_feil.gif; sourceTree = "<group>"; };
-		9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense_feil@2x.gif"; sourceTree = "<group>"; };
 		9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fartsgrense.gif; sourceTree = "<group>"; };
 		9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "fartsgrense@2x.gif"; sourceTree = "<group>"; };
 		9B90E6F816F75E5B0067850E /* Vegobjekt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vegobjekt.h; sourceTree = "<group>"; };
@@ -541,6 +547,12 @@
 		9BDAC38816D7A10500CF1ACD /* Egenskap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egenskap.h; sourceTree = "<group>"; };
 		9BDAC38916D7A10500CF1ACD /* Egenskap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egenskap.m; sourceTree = "<group>"; };
 		9BE4623416CD36F0003E1FAE /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		9BF1CE1A17255D9A00AC31F7 /* bg_l_4in@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_l_4in@2x.jpg"; sourceTree = "<group>"; };
+		9BF1CE1B17255D9A00AC31F7 /* bg_l.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_l.jpg; sourceTree = "<group>"; };
+		9BF1CE1C17255D9A00AC31F7 /* bg_l@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_l@2x.jpg"; sourceTree = "<group>"; };
+		9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p_4in@2x.jpg"; sourceTree = "<group>"; };
+		9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_p.jpg; sourceTree = "<group>"; };
+		9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -872,7 +884,6 @@
 		9B4E7B4D17242190006307DD /* andre skilt */ = {
 			isa = PBXGroup;
 			children = (
-				9B83CBA116D8EB3E0022AB3D /* fartsgrense_feil.gif */,
 				9B83CBA316D8EB3E0022AB3D /* fartsgrense.gif */,
 				9B06DF0F1716D36200512F36 /* motortrafikkveg.gif */,
 				9B06DF111716D36200512F36 /* motorveg.gif */,
@@ -895,7 +906,6 @@
 		9B4E7B4E17242199006307DD /* andre skilt 2x */ = {
 			isa = PBXGroup;
 			children = (
-				9B83CBA216D8EB3E0022AB3D /* fartsgrense_feil@2x.gif */,
 				9B83CBA416D8EB3E0022AB3D /* fartsgrense@2x.gif */,
 				9B06DF101716D36200512F36 /* motortrafikkveg@2x.gif */,
 				9B06DF121716D36200512F36 /* motorveg@2x.gif */,
@@ -918,9 +928,17 @@
 		9B4E7B4F1724222B006307DD /* logoer */ = {
 			isa = PBXGroup;
 			children = (
-				9B7EB81316CD212600484A74 /* Default.png */,
-				9B7EB81516CD212600484A74 /* Default@2x.png */,
-				9B7EB81716CD212600484A74 /* Default-568h@2x.png */,
+				9BF1CE1A17255D9A00AC31F7 /* bg_l_4in@2x.jpg */,
+				9BF1CE1B17255D9A00AC31F7 /* bg_l.jpg */,
+				9BF1CE1C17255D9A00AC31F7 /* bg_l@2x.jpg */,
+				9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */,
+				9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */,
+				9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */,
+				9B4E783F172553D2007CC8E2 /* Default-568h@2x.png */,
+				9B4E783D172553C2007CC8E2 /* Default@2x.png */,
+				9B4E783B1725538F007CC8E2 /* Default.png */,
+				9B4E783917254B7C007CC8E2 /* ikon_ret.png */,
+				9B4E783717254B6F007CC8E2 /* ikon.png */,
 			);
 			name = logoer;
 			sourceTree = "<group>";
@@ -938,7 +956,7 @@
 		9B7EB7FF16CD212600484A74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B7EB7FE16CD212600484A74 /* Vegdata.app */,
+				9B7EB7FE16CD212600484A74 /* Kjørehjelperen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1016,7 +1034,7 @@
 			);
 			name = Vegdata;
 			productName = Vegdata;
-			productReference = 9B7EB7FE16CD212600484A74 /* Vegdata.app */;
+			productReference = 9B7EB7FE16CD212600484A74 /* Kjørehjelperen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1088,12 +1106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B7EB80C16CD212600484A74 /* InfoPlist.strings in Resources */,
-				9B7EB81416CD212600484A74 /* Default.png in Resources */,
-				9B7EB81616CD212600484A74 /* Default@2x.png in Resources */,
-				9B7EB81816CD212600484A74 /* Default-568h@2x.png in Resources */,
 				9B7EB81B16CD212600484A74 /* MainStoryboard.storyboard in Resources */,
-				9B83CBA516D8EB3E0022AB3D /* fartsgrense_feil.gif in Resources */,
-				9B83CBA616D8EB3E0022AB3D /* fartsgrense_feil@2x.gif in Resources */,
 				9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */,
 				9B83CBA816D8EB3E0022AB3D /* fartsgrense@2x.gif in Resources */,
 				9B3C64DF16EAA38A009C0E69 /* forkjorsvei.gif in Resources */,
@@ -1204,6 +1217,17 @@
 				9B4E7B44172420CF006307DD /* serviceskilt_soslomme@2x.gif in Resources */,
 				9B4E7B45172420CF006307DD /* serviceskilt_toalett.gif in Resources */,
 				9B4E7B46172420CF006307DD /* serviceskilt_toalett@2x.gif in Resources */,
+				9B4E783817254B6F007CC8E2 /* ikon.png in Resources */,
+				9B4E783A17254B7C007CC8E2 /* ikon_ret.png in Resources */,
+				9B4E783C1725538F007CC8E2 /* Default.png in Resources */,
+				9B4E783E172553C2007CC8E2 /* Default@2x.png in Resources */,
+				9B4E7840172553D2007CC8E2 /* Default-568h@2x.png in Resources */,
+				9BF1CE2017255D9A00AC31F7 /* bg_l_4in@2x.jpg in Resources */,
+				9BF1CE2117255D9A00AC31F7 /* bg_l.jpg in Resources */,
+				9BF1CE2217255D9A00AC31F7 /* bg_l@2x.jpg in Resources */,
+				9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */,
+				9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */,
+				9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1388,7 +1412,7 @@
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Vegdata/Vegdata-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kjørehjelperen";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1401,7 +1425,7 @@
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Vegdata/Vegdata-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Kjørehjelperen";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

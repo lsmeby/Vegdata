@@ -75,8 +75,12 @@
 @property (nonatomic, strong) IBOutlet UISwitch * hudSwitch;
 @property (nonatomic, strong) IBOutlet UILabel * hudLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel * feilLabel;
+
 @property (nonatomic) SystemSoundID lydID;
 
 - (void)settOppLayoutArray;
+- (IBAction)hudKnappTrykket:(UISwitch *)knapp;
+- (BOOL)erFireTommerRetina;
 
 @end

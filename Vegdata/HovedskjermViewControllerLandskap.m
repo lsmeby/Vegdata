@@ -27,6 +27,24 @@
 - (void)viewDidLoad
 {
     [self settOppLayoutArray];
+    
+    if([self erFireTommerRetina])
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_l_4in.jpg"]];
+    else
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_l.jpg"]];
+
+}
+
+- (void)hudKnappTrykket:(UISwitch *)knapp
+{
+    [super hudKnappTrykket:knapp];
+    
+    if(knapp.isOn)
+        self.view.backgroundColor = [UIColor blackColor];
+    else if([self erFireTommerRetina])
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_l_4in.jpg"]];
+    else
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_l.jpg"]];
 }
 
 -(NSUInteger)supportedInterfaceOrientations

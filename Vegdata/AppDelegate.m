@@ -53,6 +53,13 @@
                 [defaults setObject:[setting objectForKey:@"DefaultValue"] forKey:key];
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                         message:@"Inneholder data under norsk lisens for offentlige data (NLOD) tilgjengeliggjort av Statens vegvesen.\n\nDirections Courtesy of MapQuest (http://www.mapquest.com/)\n\nMå brukes på eget ansvar. Statens vegvesen, MapQuest eller Kjørehjelperen gir ingen garantier for eventuelle feil eller mangler i informasjonen som vises."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
     }
     
     return YES;
@@ -177,7 +184,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Vegdata.sqlite"];
+    NSURL *storeURL = [[self applicationLibraryCachesDirectory] URLByAppendingPathComponent:@"Vegdata.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -233,12 +240,11 @@
     return [[NSNumber alloc] initWithInteger:CDSizeLimit];
 }
 
-#pragma mark - Application's Documents directory
+#pragma mark - Application's Library/Caches directory
 
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
+- (NSURL *)applicationLibraryCachesDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

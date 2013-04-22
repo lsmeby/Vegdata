@@ -34,6 +34,6 @@
 - (void)saveContext;
 - (NSNumber *)coreDataSize;
 - (NSNumber *)coreDataSizeLimit;
-- (NSURL *)applicationDocumentsDirectory;
+- (NSURL *)applicationLibraryCachesDirectory;
 
 @end
