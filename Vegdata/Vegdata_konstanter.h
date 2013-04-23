@@ -185,8 +185,8 @@
 #define SMALEREVEG_KEY @"smalerevei"
 #define SMALEREVEG_CD @"CD_Smalereveg"
 
-#define UJEVNVEG_KEY @"ugjevnvei"
-#define UJEVNVEG_CD @"CD_Ugjevnveg"
+#define UJEVNVEG_KEY @"ujevnvei"
+#define UJEVNVEG_CD @"CD_Ujevnveg"
 
 #define VEGARBEID_KEY @"vegarbeid"
 #define VEGARBEID_CD @"CD_Vegarbeid"
