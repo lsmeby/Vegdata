@@ -105,6 +105,12 @@
     }
     else
     {
+        if([self.hudSwitch isHidden])
+        {
+            self.bilde5.image = nil;
+            self.label5.text = self.detalj5.text = nil;
+            self.key5 = self.skiltetAvstand5 = @"";
+        }
         self.hudSwitch.hidden = false;
         self.hudLabel.hidden = false;
     }
