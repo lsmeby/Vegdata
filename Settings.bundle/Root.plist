@@ -66,7 +66,7 @@
 			<key>Title</key>
 			<string>Vilttrekk</string>
 			<key>Key</key>
-			<string>fare_vilttrekk</string>
+			<string>skilt_vilttrekk</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -76,7 +76,7 @@
 			<key>Title</key>
 			<string>Høydebegrensning</string>
 			<key>Key</key>
-			<string>fare_hoydebegrensning</string>
+			<string>skilt_hoydebegrensning</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -86,7 +86,7 @@
 			<key>Title</key>
 			<string>Jernbanekrysning</string>
 			<key>Key</key>
-			<string>fare_jernbanekryssing</string>
+			<string>skilt_jernbanekryssing</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -96,10 +96,398 @@
 			<key>Title</key>
 			<string>Fartsdemper</string>
 			<key>Key</key>
-			<string>fare_fartsdemper</string>
+			<string>skilt_fartsdemper</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Motorveg</string>
+			<key>Key</key>
+			<string>skilt_motorveg</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Rasteplass</string>
+			<key>Key</key>
+			<string>skilt_rasteplass</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Toalett</string>
+			<key>Key</key>
+			<string>skilt_toalett</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>SOS-lomme</string>
+			<key>Key</key>
+			<string>skilt_soslomme</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Fartsgrense</string>
+			<key>Key</key>
+			<string>skilt_fartsgrense</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+
+
+
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Farlig sving</string>
+			<key>Key</key>
+			<string>skilt_farligsving</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Bratt bakke</string>
+			<key>Key</key>
+			<string>skilt_brattbakke</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Smalere veg</string>
+			<key>Key</key>
+			<string>skilt_smalereveg</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Ujevn veg</string>
+			<key>Key</key>
+			<string>skilt_ujevnveg</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vegarbeid</string>
+			<key>Key</key>
+			<string>skilt_vegarbeid</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Steinsprutfare</string>
+			<key>Key</key>
+			<string>skilt_steinsprut</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Rasfare</string>
+			<key>Key</key>
+			<string>skilt_rasfare</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Glatt kjørebane</string>
+			<key>Key</key>
+			<string>skilt_glattkjorebane</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Farlig vegskulder</string>
+			<key>Key</key>
+			<string>skilt_farligvegskulder</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Bevegelig bru</string>
+			<key>Key</key>
+			<string>skilt_bevegeligbru</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Kaistrandferjeleie</string>
+			<key>Key</key>
+			<string>skilt_kaistrandferjeleie</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Tunnel</string>
+			<key>Key</key>
+			<string>skilt_tunnel</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Farlig vegkryss</string>
+			<key>Key</key>
+			<string>skilt_farligvegkryss</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Rundkjøring</string>
+			<key>Key</key>
+			<string>skilt_rundkjoring</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Trafikklyssignal</string>
+			<key>Key</key>
+			<string>skilt_trafikklyssignal</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Gangfelt</string>
+			<key>Key</key>
+			<string>skilt_avstandtilgangfelt</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Barn</string>
+			<key>Key</key>
+			<string>skilt_barn</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Syklende</string>
+			<key>Key</key>
+			<string>skilt_syklende</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Ku</string>
+			<key>Key</key>
+			<string>skilt_ku</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Sau</string>
+			<key>Key</key>
+			<string>skilt_sau</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Møtende trafikk</string>
+			<key>Key</key>
+			<string>skilt_motendetrafikk</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Køfare</string>
+			<key>Key</key>
+			<string>skilt_ko</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Fly ???</string>
+			<key>Key</key>
+			<string>skilt_fly</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Sidevind</string>
+			<key>Key</key>
+			<string>skilt_sidevind</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Skiløpere</string>
+			<key>Key</key>
+			<string>skilt_skilopere</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Ridende</string>
+			<key>Key</key>
+			<string>skilt_ridende</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Annen fare</string>
+			<key>Key</key>
+			<string>skilt_annenfare</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Automatisk trafikkontroll</string>
+			<key>Key</key>
+			<string>skilt_automatisktrafikkontroll</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Videokontroll</string>
+			<key>Key</key>
+			<string>skilt_videokontroll</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Særlig ulykkesfare</string>
+			<key>Key</key>
+			<string>skilt_saerligulykkesfare</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>
