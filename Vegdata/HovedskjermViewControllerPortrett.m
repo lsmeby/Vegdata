@@ -80,6 +80,8 @@
         self.pos.delegate = self;
         self.vegObjKont.delegate = self;
     }
+    
+    [self settOppLayoutArray];
 }
 
 -(NSUInteger)supportedInterfaceOrientations
