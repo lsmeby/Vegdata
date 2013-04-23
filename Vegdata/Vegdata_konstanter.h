@@ -185,12 +185,12 @@
 #define BRATTBAKKE_CD @"CD_Brattbakke"
 #define BRATTBAKKE_BRUKERPREF @"skilt_brattbakke"
 
-#define SMALEREVEG_KEY @"smalerevei"
+#define SMALEREVEG_KEY @"smalereveg"
 #define SMALEREVEG_CD @"CD_Smalereveg"
 #define SMALEREVEG_BRUKERPREF @"skilt_smalereveg"
 
-#define UJEVNVEG_KEY @"ugjevnvei"
-#define UJEVNVEG_CD @"CD_Ugjevnveg"
+#define UJEVNVEG_KEY @"ujevnveg"
+#define UJEVNVEG_CD @"CD_Ujevnveg"
 #define UJEVNVEG_BRUKERPREF @"skilt_ujevnveg"
 
 #define VEGARBEID_KEY @"vegarbeid"
