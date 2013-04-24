@@ -182,10 +182,10 @@
 #define BRATTBAKKE_KEY @"brattbakke"
 #define BRATTBAKKE_CD @"CD_Brattbakke"
 
-#define SMALEREVEG_KEY @"smalerevei"
+#define SMALEREVEG_KEY @"smalereveg"
 #define SMALEREVEG_CD @"CD_Smalereveg"
 
-#define UJEVNVEG_KEY @"ujevnvei"
+#define UJEVNVEG_KEY @"ujevnveg"
 #define UJEVNVEG_CD @"CD_Ujevnveg"
 
 #define VEGARBEID_KEY @"vegarbeid"

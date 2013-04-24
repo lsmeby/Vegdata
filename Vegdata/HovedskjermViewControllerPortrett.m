@@ -89,14 +89,28 @@
 
 - (void)hudKnappTrykket:(UISwitch *)knapp
 {
-    [super hudKnappTrykket:knapp];
-    
     if(knapp.isOn)
-        self.view.backgroundColor = [UIColor blackColor];
-    else if([self erFireTommerRetina])
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p_4in.jpg"]];
-    else
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_p.jpg"]];
+    {
+        if(!self.landskapViewController)
+        {
+            self.landskapViewController = [[UIStoryboard storyboardWithName:VEGDATA_STORYBOARD bundle:nil] instantiateViewControllerWithIdentifier:VEGDATA_HOVEDSKJERM_LANDSKAP];
+            
+            self.landskapViewController.pos = self.pos;
+            self.landskapViewController.vegObjKont = self.vegObjKont;
+        }
+        
+        [self presentViewController:self.landskapViewController animated:NO completion:nil];
+        
+        if(self.nyesteData)
+            [self.landskapViewController vegObjekterErOppdatert:self.nyesteData];
+        
+        self.pos.delegate = self.landskapViewController;
+        self.vegObjKont.delegate = self.landskapViewController;
+        
+        [self.hudSwitch setOn:NO];
+        [self.landskapViewController.hudSwitch setOn:YES];
+        [self.landskapViewController hudKnappTrykket:self.landskapViewController.hudSwitch];
+    }
 }
 
 @end
