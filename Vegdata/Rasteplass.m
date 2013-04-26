@@ -47,7 +47,7 @@
 
 +(BOOL)objektSkalVises
 {
-    return YES;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:RASTEPLASS_BRUKERPREF];
 }
 
 @end

@@ -62,6 +62,7 @@
 #define FARTSGRENSE_KEY @"fartsgrense"
 #define FARTSGRENSE_CD @"CD_Fartsgrense"
 #define FARTSGRENSE_FART_KEY @"Fartsgrense"
+#define FARTSGRENSE_BRUKERPREF @"skilt_fartsgrense"
 
 #define FORKJORSVEG_ID 596
 #define FORKJORSVEG_KEY @"forkjorsveg"
@@ -78,7 +79,7 @@
 #define VILTTREKK_FILTER_OVER @"Over, ledet"
 #define VILTTREKK_FILTER_UNDER @"Under, ledet"
 #define VILTTREKK_FILTER_KEY @"Type vegkryssing"
-#define VILTTREKK_BRUKERPREF @"fare_vilttrekk"
+#define VILTTREKK_BRUKERPREF @"skilt_vilttrekk"
 
 #define MOTORVEG_ID 595
 #define MOTORVEG_KEY @"motorveg"
@@ -86,13 +87,13 @@
 #define MOTORVEG_TYPE_KEY @"Motorvegtype"
 #define MOTORVEG_TYPE_MOTORVEG @"Motorveg"
 #define MOTORVEG_TYPE_MOTORTRAFIKKVEG @"Motortrafikkveg"
-#define MOTORVEG_BRUKERPREF @""
+#define MOTORVEG_BRUKERPREF @"skilt_motorveg"
 
 #define HOYDEBEGRENSNING_ID 591
 #define HOYDEBEGRENSNING_KEY @"hoydebegrensning"
 #define HOYDEBEGRENSNING_CD @"CD_Hoydebegrensning"
 #define HOYDEBEGRENSNING_TYPE_KEY @"Skilta høyde"
-#define HOYDEBEGRENSNING_BRUKERPREF @"fare_hoydebegrensning"
+#define HOYDEBEGRENSNING_BRUKERPREF @"skilt_hoydebegrensning"
 
 #define JERNBANEKRYSSING_ID 100
 #define JERNBANEKRYSSING_KEY @"jernbanekryssing"
@@ -100,31 +101,31 @@
 #define JERNBANEKRYSSING_TYPE_KEY @"Type"
 #define JERNBANEKRYSSING_FILTER_OVER @"Veg over"
 #define JERNBANEKRYSSING_FILTER_UNDER @"Veg under"
-#define JERNBANEKRYSSING_BRUKERPREF @"fare_jernbanekryssing"
+#define JERNBANEKRYSSING_BRUKERPREF @"skilt_jernbanekryssing"
 
 #define FARTSDEMPER_ID 103
 #define FARTSDEMPER_KEY @"fartsdemper"
 #define FARTSDEMPER_CD @"CD_Fartsdemper"
 #define FARTSDEMPER_TYPE_KEY @"Type"
 #define FARTSDEMPER_FILTER_RUMLEFELT @"Rumlefelt"
-#define FARTSDEMPER_BRUKERPREF @"fare_fartsdemper"
+#define FARTSDEMPER_BRUKERPREF @"skilt_fartsdemper"
 
 #define RASTEPLASS_ID 39
 #define RASTEPLASS_KEY @"rasteplass"
 #define RASTEPLASS_CD @"CD_Rasteplass"
-#define RASTEPLASS_BRUKERPREF @""
+#define RASTEPLASS_BRUKERPREF @"skilt_rasteplass"
 
 #define TOALETT_ID 243
 #define TOALETT_KEY @"toalett"
 #define TOALETT_CD @"CD_Toalett"
-#define TOALETT_BRUKERPREF @""
+#define TOALETT_BRUKERPREF @"skilt_toalett"
 
 #define SOSLOMME_ID 47
 #define SOSLOMME_KEY @"soslomme"
 #define SOSLOMME_CD @"CD_SOSlomme"
 #define SOSLOMME_FILTER_TYPE @"Bruksområde"
 #define SOSLOMME_FILTER_HAVARI @"Havarilomme"
-#define SOSLOMME_BRUKERPREF @""
+#define SOSLOMME_BRUKERPREF @"skilt_soslomme"
 
 #define SKILTPLATE_ID 96
 #define SKILTPLATE_ANSIKTSSIDE_KEY @"Ansiktsside"
@@ -178,93 +179,123 @@
 
 #define FARLIGSVING_KEY @"farligsving"
 #define FARLIGSVING_CD @"CD_Farligsving"
+#define FARLIGSVING_BRUKERPREF @"skilt_farligsving"
 
 #define BRATTBAKKE_KEY @"brattbakke"
 #define BRATTBAKKE_CD @"CD_Brattbakke"
+#define BRATTBAKKE_BRUKERPREF @"skilt_brattbakke"
 
 #define SMALEREVEG_KEY @"smalereveg"
 #define SMALEREVEG_CD @"CD_Smalereveg"
+#define SMALEREVEG_BRUKERPREF @"skilt_smalereveg"
 
 #define UJEVNVEG_KEY @"ujevnveg"
 #define UJEVNVEG_CD @"CD_Ujevnveg"
+#define UJEVNVEG_BRUKERPREF @"skilt_ujevnveg"
 
 #define VEGARBEID_KEY @"vegarbeid"
 #define VEGARBEID_CD @"CD_Vegarbeid"
+#define VEGARBEID_BRUKERPREF @"skilt_vegarbeid"
 
 #define STEINSPRUT_KEY @"steinsprut"
 #define STEINSPRUT_CD @"CD_Steinsprut"
+#define STEINSPRUT_BRUKERPREF @"skilt_steinsprut"
 
 #define RASFARE_KEY @"rasfare"
 #define RASFARE_CD @"CD_Rasfare"
+#define RASFARE_BRUKERPREF @"skilt_rasfare"
 
 #define GLATTKJOREBANE_KEY @"glattkjorebane"
 #define GLATTKJOREBANE_CD @"CD_Glattkjorebane"
+#define GLATTKJOREBANE_BRUKERPREF @"skilt_glattkjorebane"
 
 #define FARLIGVEGSKULDER_KEY @"farligvegskulder"
 #define FARLIGVEGSKULDER_CD @"CD_Farligvegskulder"
+#define FARLIGVEGSKULDER_BRUKERPREF @"skilt_farligvegskulder"
 
 #define BEVEGELIGBRU_KEY @"bevegeligbru"
 #define BEVEGELIGBRU_CD @"CD_Bevegeligbru"
+#define BEVEGELIGBRU_BRUKERPREF @"skilt_bevegeligbru"
 
 #define KAISTRANDFERJELEIE_KEY @"kaistrandferjeleie"
 #define KAISTRANDFERJELEIE_CD @"CD_KaiStrandFerjeleie"
+#define KAISTRANDFERJELEIE_BRUKERPREF @"skilt_kaistrandferjeleie"
 
 #define TUNNEL_KEY @"tunnel"
 #define TUNNEL_CD @"CD_Tunnel"
+#define TUNNEL_BRUKERPREF @"skilt_tunnel"
 
 #define FARLIGVEGKRYSS_KEY @"farligvegkryss"
 #define FARLIGVEGKRYSS_CD @"CD_Farligvegkryss"
+#define FARLIGVEGKRYSS_BRUKERPREF @"skilt_farligvegkryss"
 
 #define RUNDKJORING_KEY @"rundkjoring"
 #define RUNDKJORING_CD @"CD_Rundkjoring"
+#define RUNDKJORING_BRUKERPREF @"skilt_rundkjoring"
 
 #define TRAFIKKLYSSIGNAL_KEY @"trafikklyssignal"
 #define TRAFIKKLYSSIGNAL_CD @"CD_Trafikklyssignal"
+#define TRAFIKKLYSSIGNAL_BRUKERPREF @"skilt_trafikklyssignal"
 
 #define AVSTANDTILGANGFELT_KEY @"avstandtilgangfelt"
 #define AVSTANDTILGANGFELT_CD @"CD_Avstandtilgangfelt"
+#define AVSTANDTILGANGFELT_BRUKERPREF @"skilt_avstandtilgangfelt"
 
 #define BARN_KEY @"barn"
 #define BARN_CD @"CD_Barn"
+#define BARN_BRUKERPREF @"skilt_barn"
 
 #define SYKLENDE_KEY @"syklende"
 #define SYKLENDE_CD @"CD_Syklende"
+#define SYKLENDE_BRUKERPREF @"skilt_syklende"
 
 #define KU_KEY @"ku"
 #define KU_CD @"CD_Ku"
+#define KU_BRUKERPREF @"skilt_ku"
 
 #define SAU_KEY @"sau"
 #define SAU_CD @"CD_Sau"
+#define SAU_BRUKERPREF @"skilt_sau"
 
 #define MOTENDETRAFIKK_KEY @"motendetrafikk"
 #define MOTENDETRAFIKK_CD @"CD_Motendetrafikk"
+#define MOTENDETRAFIKK_BRUKERPREF @"skilt_motendetrafikk"
 
 #define KO_KEY @"ko"
 #define KO_CD @"CD_Ko"
+#define KO_BRUKERPREF @"skilt_ko"
 
 #define FLY_KEY @"fly"
 #define FLY_CD @"CD_Fly"
+#define FLY_BRUKERPREF @"skilt_fly"
 
 #define SIDEVIND_KEY @"sidevind"
 #define SIDEVIND_CD @"CD_Sidevind"
+#define SIDEVIND_BRUKERPREF @"skilt_sidevind"
 
 #define SKILOPERE_KEY @"skilopere"
 #define SKILOPERE_CD @"CD_Skilopere"
+#define SKILOPERE_BRUKERPREF @"skilt_skilopere"
 
 #define RIDENDE_KEY @"ridende"
 #define RIDENDE_CD @"CD_Ridende"
+#define RIDENDE_BRUKERPREF @"skilt_ridende"
 
 #define ANNENFARE_KEY @"annenfare"
 #define ANNENFARE_CD @"CD_Annenfare"
+#define ANNENFARE_BRUKERPREF @"skilt_annenfare"
 
 #define AUTOMATISKTRAFIKKONTROLL_KEY @"automatisktrafikkontroll"
 #define AUTOMATISKTRAFIKKONTROLL_CD @"CD_AutomatiskTrafikkontroll"
+#define AUTOMATISKTRAFIKKONTROLL_BRUKERPREF @"skilt_automatisktrafikkontroll"
 
 #define VIDEOKONTROLL_KEY @"videokontroll"
 #define VIDEOKONTROLL_CD @"CD_Videokontroll"
+#define VIDEOKONTROLL_BRUKERPREF @"skilt_videokontroll"
 
 #define SAERLIGULYKKESFARE_KEY @"saerligulykkesfare"
 #define SAERLIGULYKKESFARE_CD @"CD_SaerligUlykkesfare"
+#define SAERLIGULYKKESFARE_BRUKERPREF @"skilt_saerligulykkesfare"
 
 
 // -- FILTER --

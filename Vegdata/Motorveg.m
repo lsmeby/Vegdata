@@ -62,7 +62,7 @@
 
 + (BOOL)objektSkalVises
 {
-    return YES;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:MOTORVEG_BRUKERPREF];
 }
 
 @end
