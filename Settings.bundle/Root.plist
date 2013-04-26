@@ -48,7 +48,27 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Vis skilt</string>
+			<string>Skilt (generelt)</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Fartsgrense</string>
+			<key>Key</key>
+			<string>skilt_fartsgrense</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Motorveg</string>
+			<key>Key</key>
+			<string>skilt_motorveg</string>
+			<key>DefaultValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -100,17 +120,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Motorveg</string>
-			<key>Key</key>
-			<string>skilt_motorveg</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -143,21 +152,10 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
+			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Fartsgrense</string>
-			<key>Key</key>
-			<string>skilt_fartsgrense</string>
-			<key>DefaultValue</key>
-			<true/>
+			<string>Skilt (fareskilt)</string>
 		</dict>
-
-
-
-
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -168,7 +166,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -179,7 +176,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -190,7 +186,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -201,7 +196,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -212,7 +206,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -223,7 +216,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -234,7 +226,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -245,7 +236,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -256,7 +246,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -267,7 +256,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -278,7 +266,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -289,7 +276,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -300,7 +286,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -311,7 +296,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -322,7 +306,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -333,7 +316,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -344,7 +326,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -355,7 +336,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -366,7 +346,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -377,7 +356,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -388,7 +366,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -399,18 +376,16 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Fly ???</string>
+			<string>Fly</string>
 			<key>Key</key>
 			<string>skilt_fly</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -421,7 +396,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -432,7 +406,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -443,7 +416,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -454,7 +426,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -465,7 +436,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -476,7 +446,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -487,7 +456,6 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
-
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>
