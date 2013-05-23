@@ -35,11 +35,6 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self settOppLayoutArray];
-}
-
 - (void)hudKnappTrykket:(UISwitch *)knapp
 {
     [super hudKnappTrykket:knapp];

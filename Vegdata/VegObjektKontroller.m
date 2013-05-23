@@ -339,7 +339,7 @@
     }
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
-        if(self.vegRef != nil && self.vegRef.veglenkeId.intValue == ((Vegreferanse *)resultat[0]).veglenkeId.intValue)
+        if(self.vegRef && self.vegRef.veglenkeId.intValue == ((Vegreferanse *)resultat[0]).veglenkeId.intValue)
             self.forrigePosisjon = [self kalkulerVeglenkePosisjon];
         else
             self.forrigePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];

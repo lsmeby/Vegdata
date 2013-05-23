@@ -25,9 +25,9 @@
 
 @class Sok;
 
-@interface NVDB_DataProvider : NSObject <NSFetchedResultsControllerDelegate, NVDBResponseDelegate>
+@interface NVDB_DataProvider : NSObject </*NSFetchedResultsControllerDelegate,*/ NVDBResponseDelegate>
 
-@property (nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
+//@property (nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 
 - (id)initMedManagedObjectContext:(NSManagedObjectContext *)context OgAvsender:(NSObject *)aAvsender;

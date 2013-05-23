@@ -111,11 +111,11 @@
     id delegate;
 }
 
-@synthesize fetchedResultsController, managedObjectContext;
+@synthesize /*fetchedResultsController,*/ managedObjectContext;
 
 - (id)initMedManagedObjectContext:(NSManagedObjectContext *)context OgAvsender:(NSObject *)aAvsender
 {
-    fetchedResultsController = [[NSFetchedResultsController alloc] init];
+    //fetchedResultsController = [[NSFetchedResultsController alloc] init];
     managedObjectContext = context;
     restkit = [NVDB_RESTkit alloc];
     restkit.delegate = self;
