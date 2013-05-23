@@ -304,34 +304,8 @@
     }
     
     
-    // -- VILTTREKK --
-    
-    dataObjekt = [data objectForKey:VILTTREKK_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:VILTTREKK_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        
-        if([dataObjekt isEqualToString:VILTTREKK_TYPE_HJORT])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_hjort.gif"];
-        else if([dataObjekt isEqualToString:VILTTREKK_TYPE_REIN])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rein.gif"];
-        else
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_elg.gif"];
-        
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = VILTTREKK_KEY;
-        rad[4] = @"";
-        element++;
-    }
-    
-    
     // -- HØYDEBEGRENSNING --
-
+    
     dataObjekt = [data objectForKey:HOYDEBEGRENSNING_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
@@ -358,40 +332,26 @@
     }
     
     
-    // -- JERNBANEKRYSSING --
+    // -- AUTOMATISK TRAFIKKONTROLL --
     
-    dataObjekt = [data objectForKey:JERNBANEKRYSSING_KEY];
+    dataObjekt = [data objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:JERNBANEKRYSSING_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_automatisk.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = JERNBANEKRYSSING_KEY;
-        rad[4] = @"";
-        element++;
-    }
-    
-    
-    // -- FARTSDEMPER --
-    
-    dataObjekt = [data objectForKey:FARTSDEMPER_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:FARTSDEMPER_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
+        rad[3] = AUTOMATISKTRAFIKKONTROLL_KEY;
         
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = FARTSDEMPER_KEY;
-        rad[4] = @"";
+        if([dataObjekt isEqualToString:AUTOMATISKTRAFIKKONTROLL_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
         element++;
     }
     
@@ -453,6 +413,142 @@
     }
     
     
+    // -- VIDEOKONTROLL / -OVERVÅKNING --
+    
+    dataObjekt = [data objectForKey:VIDEOKONTROLL_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:VIDEOKONTROLL_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_videokontroll.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = VIDEOKONTROLL_KEY;
+        
+        if([dataObjekt isEqualToString:VIDEOKONTROLL_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- VILTTREKK --
+    
+    dataObjekt = [data objectForKey:VILTTREKK_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:VILTTREKK_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        
+        if([dataObjekt isEqualToString:VILTTREKK_TYPE_HJORT])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_hjort.gif"];
+        else if([dataObjekt isEqualToString:VILTTREKK_TYPE_REIN])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rein.gif"];
+        else
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_elg.gif"];
+        
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = VILTTREKK_KEY;
+        rad[4] = @"";
+        element++;
+    }
+    
+    
+    // -- JERNBANEKRYSSING --
+    
+    dataObjekt = [data objectForKey:JERNBANEKRYSSING_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:JERNBANEKRYSSING_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_jernbane.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = JERNBANEKRYSSING_KEY;
+        rad[4] = @"";
+        element++;
+    }
+    
+    
+    // -- FARTSDEMPER --
+    
+    dataObjekt = [data objectForKey:FARTSDEMPER_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:FARTSDEMPER_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_fartsdemper.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = FARTSDEMPER_KEY;
+        rad[4] = @"";
+        element++;
+    }
+    
+    
+    // -- RUNDKJØRING --
+    
+    dataObjekt = [data objectForKey:RUNDKJORING_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:RUNDKJORING_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rundkjoring.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = RUNDKJORING_KEY;
+        
+        if([dataObjekt isEqualToString:RUNDKJORING_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- AVSTAND TIL GANGFELT --
+    
+    dataObjekt = [data objectForKey:AVSTANDTILGANGFELT_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:AVSTANDTILGANGFELT_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_avstandtilgangfelt.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = AVSTANDTILGANGFELT_KEY;
+        
+        if([dataObjekt isEqualToString:AVSTANDTILGANGFELT_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
     // -- FARLIG(E) SVING(ER) --
     
     dataObjekt = [data objectForKey:FARLIGSVING_KEY];
@@ -483,12 +579,59 @@
     }
     
     
-    // -- BRATT BAKKE --
+    // -- BARN --
     
-    dataObjekt = [data objectForKey:BRATTBAKKE_KEY];
+    dataObjekt = [data objectForKey:BARN_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:BRATTBAKKE_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:BARN_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_barn.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = BARN_KEY;
+        
+        if([dataObjekt isEqualToString:BARN_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    // -- FARLIG VEGKRYSS --
+    
+    dataObjekt = [data objectForKey:FARLIGVEGKRYSS_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:FARLIGVEGKRYSS_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_farligvegkryss.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = FARLIGVEGKRYSS_KEY;
+        
+        if([dataObjekt isEqualToString:FARLIGVEGKRYSS_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- SÆRLIG ULYKKESFARE --
+    
+    dataObjekt = [data objectForKey:SAERLIGULYKKESFARE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:SAERLIGULYKKESFARE_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
@@ -496,18 +639,24 @@
         
         NSString * type = [HovedskjermViewController finnTypeMedStreng:dataObjekt];
         
-        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_BRATTBAKKE_STIGNING])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_brattbakke_s.gif"];
+        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_1])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_1.gif"];
+        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_2])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_2.gif"];
+        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_3])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_3.gif"];
+        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_4])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_4.gif"];
         else
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_brattbakke_f.gif"];
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_5.gif"];
         
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = BRATTBAKKE_KEY;
+        rad[3] = SAERLIGULYKKESFARE_KEY;
         rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
         element++;
     }
-    
+
     
     // -- SMALERE VEG --
     
@@ -537,6 +686,32 @@
     }
     
     
+    // -- BRATT BAKKE --
+    
+    dataObjekt = [data objectForKey:BRATTBAKKE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:BRATTBAKKE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        
+        NSString * type = [HovedskjermViewController finnTypeMedStreng:dataObjekt];
+        
+        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_BRATTBAKKE_STIGNING])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_brattbakke_s.gif"];
+        else
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_brattbakke_f.gif"];
+        
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = BRATTBAKKE_KEY;
+        rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
+        element++;
+    }
+
+    
     // -- UJEVN VEG --
     
     dataObjekt = [data objectForKey:UJEVNVEG_KEY];
@@ -553,6 +728,104 @@
         rad[3] = UJEVNVEG_KEY;
         
         if([dataObjekt isEqualToString:UJEVNVEG_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- RASFARE --
+    
+    dataObjekt = [data objectForKey:RASFARE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:RASFARE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        
+        NSString * type = [HovedskjermViewController finnTypeMedStreng:dataObjekt];
+        
+        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_RASFARE_H])
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rasfare_h.gif"];
+        else
+            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rasfare_v.gif"];
+        
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = RASFARE_KEY;
+        rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
+        element++;
+    }
+    
+    
+    // -- FARLIG VEGSKULDER --
+    
+    dataObjekt = [data objectForKey:FARLIGVEGSKULDER_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:FARLIGVEGSKULDER_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_farligvegskulder.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = FARLIGVEGSKULDER_KEY;
+        
+        if([dataObjekt isEqualToString:FARLIGVEGSKULDER_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+
+    
+    // -- MØTENDE TRAFIKK --
+    
+    dataObjekt = [data objectForKey:MOTENDETRAFIKK_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:MOTENDETRAFIKK_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_motendetrafikk.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = MOTENDETRAFIKK_KEY;
+        
+        if([dataObjekt isEqualToString:MOTENDETRAFIKK_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- GLATT KJØREBANE --
+    
+    dataObjekt = [data objectForKey:GLATTKJOREBANE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:GLATTKJOREBANE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_glattkjorebane.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = GLATTKJOREBANE_KEY;
+        
+        if([dataObjekt isEqualToString:GLATTKJOREBANE_KEY])
             rad[4] = @"";
         else
             rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
@@ -609,72 +882,94 @@
     }
     
     
-    // -- RASFARE --
+    // -- ANNEN FARE --
     
-    dataObjekt = [data objectForKey:RASFARE_KEY];
+    dataObjekt = [data objectForKey:ANNENFARE_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:RASFARE_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:ANNENFARE_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
-        
-        NSString * type = [HovedskjermViewController finnTypeMedStreng:dataObjekt];
-        
-        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_RASFARE_H])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rasfare_h.gif"];
-        else
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rasfare_v.gif"];
-        
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_annenfare.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = RASFARE_KEY;
-        rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
-        element++;
-    }
-    
-    
-    // -- GLATT KJØREBANE --
-    
-    dataObjekt = [data objectForKey:GLATTKJOREBANE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:GLATTKJOREBANE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
+        rad[3] = ANNENFARE_KEY;
         
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_glattkjorebane.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = GLATTKJOREBANE_KEY;
-        
-        if([dataObjekt isEqualToString:GLATTKJOREBANE_KEY])
+        if([dataObjekt isEqualToString:ANNENFARE_KEY])
             rad[4] = @"";
         else
             rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
         
         element++;
     }
+
     
+    // -- KØ --
     
-    // -- FARLIG VEGSKULDER --
-    
-    dataObjekt = [data objectForKey:FARLIGVEGSKULDER_KEY];
+    dataObjekt = [data objectForKey:KO_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:FARLIGVEGSKULDER_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:KO_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_farligvegskulder.gif"];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_ko.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = FARLIGVEGSKULDER_KEY;
+        rad[3] = KO_KEY;
         
-        if([dataObjekt isEqualToString:FARLIGVEGSKULDER_KEY])
+        if([dataObjekt isEqualToString:KO_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+
+    
+    // -- KAI, STRAND ELLER FERJELEIE --
+    
+    dataObjekt = [data objectForKey:KAISTRANDFERJELEIE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:KAISTRANDFERJELEIE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_kaistrandferjeleie.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = KAISTRANDFERJELEIE_KEY;
+        
+        if([dataObjekt isEqualToString:KAISTRANDFERJELEIE_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+
+    
+    // -- TUNNEL --
+    
+    dataObjekt = [data objectForKey:TUNNEL_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:TUNNEL_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_tunnel.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = TUNNEL_KEY;
+        
+        if([dataObjekt isEqualToString:TUNNEL_KEY])
             rad[4] = @"";
         else
             rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
@@ -707,102 +1002,6 @@
     }
     
     
-    // -- KAI, STRAND ELLER FERJELEIE --
-    
-    dataObjekt = [data objectForKey:KAISTRANDFERJELEIE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:KAISTRANDFERJELEIE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_kaistrandferjeleie.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = KAISTRANDFERJELEIE_KEY;
-        
-        if([dataObjekt isEqualToString:KAISTRANDFERJELEIE_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- TUNNEL --
-    
-    dataObjekt = [data objectForKey:TUNNEL_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:TUNNEL_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_tunnel.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = TUNNEL_KEY;
-        
-        if([dataObjekt isEqualToString:TUNNEL_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- FARLIG VEGKRYSS --
-    
-    dataObjekt = [data objectForKey:FARLIGVEGKRYSS_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:FARLIGVEGKRYSS_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_farligvegkryss.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = FARLIGVEGKRYSS_KEY;
-        
-        if([dataObjekt isEqualToString:FARLIGVEGKRYSS_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- RUNDKJØRING --
-    
-    dataObjekt = [data objectForKey:RUNDKJORING_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:RUNDKJORING_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_rundkjoring.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = RUNDKJORING_KEY;
-        
-        if([dataObjekt isEqualToString:RUNDKJORING_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
     // -- TRAFIKKLYSSIGNAL --
     
     dataObjekt = [data objectForKey:TRAFIKKLYSSIGNAL_KEY];
@@ -827,53 +1026,29 @@
     }
     
     
-    // -- AVSTAND TIL GANGFELT --
+    // -- SIDEVIND --
     
-    dataObjekt = [data objectForKey:AVSTANDTILGANGFELT_KEY];
+    dataObjekt = [data objectForKey:SIDEVIND_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:AVSTANDTILGANGFELT_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:SIDEVIND_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
         rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_avstandtilgangfelt.gif"];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_sidevind.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = AVSTANDTILGANGFELT_KEY;
+        rad[3] = SIDEVIND_KEY;
         
-        if([dataObjekt isEqualToString:AVSTANDTILGANGFELT_KEY])
+        if([dataObjekt isEqualToString:SIDEVIND_KEY])
             rad[4] = @"";
         else
             rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
         
         element++;
     }
-    
-    
-    // -- BARN --
-    
-    dataObjekt = [data objectForKey:BARN_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:BARN_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_barn.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = BARN_KEY;
-        
-        if([dataObjekt isEqualToString:BARN_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
+
     
     // -- SYKLENDE --
     
@@ -891,6 +1066,54 @@
         rad[3] = SYKLENDE_KEY;
         
         if([dataObjekt isEqualToString:SYKLENDE_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- RIDENDE --
+    
+    dataObjekt = [data objectForKey:RIDENDE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:RIDENDE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_ridende.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = RIDENDE_KEY;
+        
+        if([dataObjekt isEqualToString:RIDENDE_KEY])
+            rad[4] = @"";
+        else
+            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
+        
+        element++;
+    }
+    
+    
+    // -- SKILØPERE --
+    
+    dataObjekt = [data objectForKey:SKILOPERE_KEY];
+    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
+    {
+        forrigeObjekt = [self.nyesteData objectForKey:SKILOPERE_KEY];
+        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
+            spillLyd = YES;
+        
+        rad = self.layoutArray[element];
+        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_skilopere.gif"];
+        ((UILabel *)rad[1]).text = nil;
+        ((UILabel *)rad[2]).text = nil;
+        rad[3] = SKILOPERE_KEY;
+        
+        if([dataObjekt isEqualToString:SKILOPERE_KEY])
             rad[4] = @"";
         else
             rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
@@ -947,54 +1170,6 @@
     }
     
     
-    // -- MØTENDE TRAFIKK --
-    
-    dataObjekt = [data objectForKey:MOTENDETRAFIKK_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:MOTENDETRAFIKK_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_motendetrafikk.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = MOTENDETRAFIKK_KEY;
-        
-        if([dataObjekt isEqualToString:MOTENDETRAFIKK_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- KØ --
-    
-    dataObjekt = [data objectForKey:KO_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:KO_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_ko.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = KO_KEY;
-        
-        if([dataObjekt isEqualToString:KO_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
     // -- FLY --
     
     dataObjekt = [data objectForKey:FLY_KEY];
@@ -1018,180 +1193,6 @@
         element++;
     }
     
-    
-    // -- SIDEVIND --
-    
-    dataObjekt = [data objectForKey:SIDEVIND_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:SIDEVIND_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_sidevind.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = SIDEVIND_KEY;
-        
-        if([dataObjekt isEqualToString:SIDEVIND_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- SKILØPERE --
-    
-    dataObjekt = [data objectForKey:SKILOPERE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:SKILOPERE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_skilopere.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = SKILOPERE_KEY;
-        
-        if([dataObjekt isEqualToString:SKILOPERE_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- RIDENDE --
-    
-    dataObjekt = [data objectForKey:RIDENDE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:RIDENDE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_ridende.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = RIDENDE_KEY;
-        
-        if([dataObjekt isEqualToString:RIDENDE_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- ANNEN FARE --
-    
-    dataObjekt = [data objectForKey:ANNENFARE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:ANNENFARE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fareskilt_annenfare.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = ANNENFARE_KEY;
-        
-        if([dataObjekt isEqualToString:ANNENFARE_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- AUTOMATISK TRAFIKKONTROLL --
-    
-    dataObjekt = [data objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_automatisk.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = AUTOMATISKTRAFIKKONTROLL_KEY;
-        
-        if([dataObjekt isEqualToString:AUTOMATISKTRAFIKKONTROLL_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    
-    // -- VIDEOKONTROLL / -OVERVÅKNING --
-    
-    dataObjekt = [data objectForKey:VIDEOKONTROLL_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:VIDEOKONTROLL_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_videokontroll.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = VIDEOKONTROLL_KEY;
-        
-        if([dataObjekt isEqualToString:VIDEOKONTROLL_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
-        element++;
-    }
-    
-    // -- SÆRLIG ULYKKESFARE --
-    
-    dataObjekt = [data objectForKey:SAERLIGULYKKESFARE_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:SAERLIGULYKKESFARE_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        
-        NSString * type = [HovedskjermViewController finnTypeMedStreng:dataObjekt];
-        
-        if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_1])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_1.gif"];
-        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_2])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_2.gif"];
-        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_3])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_3.gif"];
-        else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_4])
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_4.gif"];
-        else
-            ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"saerligulykkesfare_5.gif"];
-
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = SAERLIGULYKKESFARE_KEY;
-        rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:YES];
-        element++;
-    }
     
     if(element == 0)
         self.feilLabel.hidden = false;

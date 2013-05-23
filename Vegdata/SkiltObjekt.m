@@ -35,7 +35,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGSVING_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:FARLIGSVING_BRUKERPREF];}
 @end
 
 @implementation Brattbakke
@@ -43,7 +43,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BRATTBAKKE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:BRATTBAKKE_BRUKERPREF];}
 @end
 
 @implementation Smalereveg
@@ -51,7 +51,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SMALEREVEG_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SMALEREVEG_BRUKERPREF];}
 @end
 
 @implementation Ujevnveg
@@ -59,7 +59,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return UJEVNVEG_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:UJEVNVEG_BRUKERPREF];}
 @end
 
 @implementation Vegarbeid
@@ -67,7 +67,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return VEGARBEID_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:VEGARBEID_BRUKERPREF];}
 @end
 
 @implementation Steinsprut
@@ -75,7 +75,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return STEINSPRUT_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:STEINSPRUT_BRUKERPREF];}
 @end
 
 @implementation Rasfare
@@ -83,7 +83,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RASFARE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:RASFARE_BRUKERPREF];}
 @end
 
 @implementation Glattkjorebane
@@ -91,7 +91,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return GLATTKJOREBANE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:GLATTKJOREBANE_BRUKERPREF];}
 @end
 
 @implementation Farligvegskulder
@@ -99,7 +99,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGVEGSKULDER_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:FARLIGVEGSKULDER_BRUKERPREF];}
 @end
 
 @implementation Bevegeligbru
@@ -107,7 +107,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BEVEGELIGBRU_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:BEVEGELIGBRU_BRUKERPREF];}
 @end
 
 @implementation KaiStrandFerjeleie
@@ -115,7 +115,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KAISTRANDFERJELEIE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:KAISTRANDFERJELEIE_BRUKERPREF];}
 @end
 
 @implementation Tunnel
@@ -123,7 +123,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return TUNNEL_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:TUNNEL_BRUKERPREF];}
 @end
 
 @implementation Farligvegkryss
@@ -131,7 +131,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FARLIGVEGKRYSS_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:FARLIGVEGKRYSS_BRUKERPREF];}
 @end
 
 @implementation Rundkjoring
@@ -139,7 +139,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RUNDKJORING_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:RUNDKJORING_BRUKERPREF];}
 @end
 
 @implementation Trafikklyssignal
@@ -147,7 +147,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return TRAFIKKLYSSIGNAL_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:TRAFIKKLYSSIGNAL_BRUKERPREF];}
 @end
 
 @implementation Avstandtilgangfelt
@@ -155,7 +155,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return AVSTANDTILGANGFELT_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:AVSTANDTILGANGFELT_BRUKERPREF];}
 @end
 
 @implementation Barn
@@ -163,7 +163,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return BARN_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:BARN_BRUKERPREF];}
 @end
 
 @implementation Syklende
@@ -171,7 +171,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SYKLENDE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SYKLENDE_BRUKERPREF];}
 @end
 
 @implementation Ku
@@ -179,7 +179,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KU_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:KU_BRUKERPREF];}
 @end
 
 @implementation Sau
@@ -187,7 +187,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SAU_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SAU_BRUKERPREF];}
 @end
 
 @implementation Motendetrafikk
@@ -195,7 +195,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return MOTENDETRAFIKK_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:MOTENDETRAFIKK_BRUKERPREF];}
 @end
 
 @implementation Ko
@@ -203,7 +203,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return KO_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:KO_BRUKERPREF];}
 @end
 
 @implementation Fly
@@ -211,7 +211,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return FLY_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:FLY_BRUKERPREF];}
 @end
 
 @implementation Sidevind
@@ -219,7 +219,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SIDEVIND_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SIDEVIND_BRUKERPREF];}
 @end
 
 @implementation Skilopere
@@ -227,7 +227,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SKILOPERE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SKILOPERE_BRUKERPREF];}
 @end
 
 @implementation Ridende
@@ -235,7 +235,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return RIDENDE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:RIDENDE_BRUKERPREF];}
 @end
 
 @implementation Annenfare
@@ -243,7 +243,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return ANNENFARE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:ANNENFARE_BRUKERPREF];}
 @end
 
 @implementation AutomatiskTrafikkontroll
@@ -251,7 +251,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return AUTOMATISKTRAFIKKONTROLL_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:AUTOMATISKTRAFIKKONTROLL_BRUKERPREF];}
 @end
 
 @implementation Videokontroll
@@ -259,7 +259,7 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return VIDEOKONTROLL_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:VIDEOKONTROLL_BRUKERPREF];}
 @end
 
 @implementation SaerligUlykkesfare
@@ -267,5 +267,5 @@
 + (NSArray *)filtere {return nil;}
 + (NSNumber *)idNr {return nil;}
 + (NSString *)key {return SAERLIGULYKKESFARE_KEY;}
-+ (BOOL)objektSkalVises {return YES;}
++ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:SAERLIGULYKKESFARE_BRUKERPREF];}
 @end
