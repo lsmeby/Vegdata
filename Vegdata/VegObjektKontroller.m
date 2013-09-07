@@ -329,11 +329,11 @@
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref
 {
     if(resultat == nil || resultat.count == 0)
     {
-        NSLog(@"\n### Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
+        NSLog(@"Mottok tomt resultat (NVDB finner ingen objekter som matcher søket)");
         NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
         [self.delegate vegObjekterErOppdatert:returDictionary];
     }
@@ -349,7 +349,7 @@
     }
     else
     {
-        NSLog(@"\n### Mottatt søkeresultater: %d objekttype(r)", resultat.count);
+        NSLog(@"Mottatt søkeresultater: %d objekttype(r)", resultat.count);
         NSMutableDictionary * returDictionary = [self opprettReturDictionaryMedDefaultVerdier];
         
         NSMutableArray * avstandsdata = [[NSMutableArray alloc] initWithCapacity:5];

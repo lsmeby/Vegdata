@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString * visningsNavn;
 @property (nonatomic, strong) NSNumber * veglenkeId;
 @property (nonatomic, strong) NSDecimalNumber * veglenkePosisjon;
+@property (nonatomic, strong) NSString * vegReferanseUrl;
 @property (nonatomic, strong) NSString * geometriWgs84;
 
 + (NSString *)getURI;
@@ -37,4 +38,8 @@
 
 - (NSDictionary *)hentKoordinater;
 
+@end
+
+@interface VegreferanseDetaljer : LinjeObjekt <VegobjektProtokoll>
+@property (nonatomic, strong) NSString * geometriWgs84;
 @end

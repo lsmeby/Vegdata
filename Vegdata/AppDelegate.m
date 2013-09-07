@@ -21,6 +21,7 @@
 //
 
 #import "AppDelegate.h"
+#import <RestKit/RestKit.h>
 
 @interface AppDelegate()
 
@@ -36,6 +37,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    RKLogConfigureByName("*", RKLogLevelError);
+    
     // Override point for customization after application launch.
     if([self isForstegangsOppstart])
     {
@@ -119,7 +122,7 @@
         
         if(feil)
         {
-            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Sletter ingen rader fra databasen.", feil.description);
+            NSLog(@"\nFeil ved spørring mot Core Data: %@.\nSletter ingen rader fra databasen.", feil.description);
         }
         else
         {
@@ -127,16 +130,16 @@
             {
                 for(VeglenkeDBStatus * x in eksisterende)
                 {
-                    NSLog(@"\n### Objekt funnet. Sist oppdatert: %@. VeglenkeID: %@.", x.sistOppdatert, x.veglenkeId);
+                    NSLog(@"Objekt funnet. Sist oppdatert: %@. VeglenkeID: %@.", x.sistOppdatert, x.veglenkeId);
                     [self.managedObjectContext deleteObject:x];
                 
                     feil = nil;
                     [self.managedObjectContext save:&feil];
                 
                     if(feil)
-                        NSLog(@"\n### Feil ved sletting av objekt fra databasen:%@", feil.description);
+                        NSLog(@"Feil ved sletting av objekt fra databasen:%@", feil.description);
                     else
-                        NSLog(@"\n### Objekt ble slettet fra Core Data.");
+                        NSLog(@"Objekt ble slettet fra Core Data.");
                 }
                 coreDataSize = [[self coreDataSize] longLongValue];
                 feil = nil;

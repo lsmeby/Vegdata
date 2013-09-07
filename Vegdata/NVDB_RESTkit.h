@@ -21,10 +21,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Vegreferanse.h"
 
 @protocol NVDBResponseDelegate
 @required
-- (void) svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId;
+- (void) svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref;
 - (void) svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key;
 @end
 
@@ -32,7 +33,7 @@
 
 @property (nonatomic, assign) id delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath OgVeglenkeId:(NSNumber *)lenkeId;
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref;
 - (void) hentAvstandMellomKoordinaterMedParametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgKey:(NSString *)key;
 
 @end

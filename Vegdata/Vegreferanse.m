@@ -28,7 +28,7 @@ static NSString * const KEYPATH = nil;
 
 @implementation Vegreferanse
 
-@synthesize punktPaVeg, meterVerdi, visningsNavn, veglenkeId, veglenkePosisjon, geometriWgs84, veglenker;
+@synthesize punktPaVeg, meterVerdi, visningsNavn, veglenkeId, veglenkePosisjon, vegReferanseUrl, geometriWgs84, veglenker;
 
 - (NSDictionary *)hentKoordinater
 {
@@ -46,11 +46,7 @@ static NSString * const KEYPATH = nil;
                                                               @"visningsNavn" : @"visningsNavn",
                                                               @"veglenkeId" : @"veglenkeId",
                                                               @"veglenkePosisjon" : @"veglenkePosisjon",
-                                                              @"vegReferanse.lokasjon.geometriWgs84" : @"geometriWgs84"}];
-    [vegreferanseMapping addPropertyMapping:[RKRelationshipMapping
-                                             relationshipMappingFromKeyPath:@"vegReferanse.lokasjon.veglenker"
-                                                                  toKeyPath:@"veglenker"
-                                                                withMapping:[Veglenke mapping]]];
+                                                              @"vegReferanse" : @"vegReferanseUrl"}];
     
     return vegreferanseMapping;
 }
@@ -103,3 +99,43 @@ static NSString * const KEYPATH = nil;
 }
 
 @end
+
+
+
+@implementation VegreferanseDetaljer
+
+@synthesize geometriWgs84, veglenker;
+
++ (RKObjectMapping *)mapping
+{
+    RKObjectMapping * vegreferansedetaljerMapping = [RKObjectMapping mappingForClass:[self class]];
+    [vegreferansedetaljerMapping addAttributeMappingsFromDictionary:@{@"lokasjon.geometriWgs84" : @"geometriWgs84"}];
+    [vegreferansedetaljerMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"lokasjon.veglenker"
+                                                                                                toKeyPath:@"veglenker"
+                                                                                              withMapping:[Veglenke mapping]]];
+    
+    return vegreferansedetaljerMapping;
+}
+
++ (NSArray *)filtere
+{
+    return nil;
+}
+
++ (NSNumber *)idNr
+{
+    return nil;
+}
+
++ (NSString *)key
+{
+    return nil;
+}
+
++ (BOOL)objektSkalVises
+{
+    return YES;
+}
+
+@end
+

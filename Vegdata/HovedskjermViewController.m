@@ -204,7 +204,7 @@
 
 - (void) posisjonFeil:(NSError *)feil
 {
-    NSLog(@"\n### Feil: %@", [feil description]);
+    NSLog(@"Feil: %@", [feil description]);
     
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Feil"
                                                      message:@"Klarte ikke finne enhetens posisjon. Har Kjørehjelperen tillatelse til å bruke posisjonstjenester?"
@@ -1234,7 +1234,7 @@
                 
                 if(feil)
                 {
-                    NSLog(@"\n### Ukjent feil ved oppretting av RegEx.");
+                    NSLog(@"Ukjent feil ved oppretting av RegEx.");
                     break;
                 }
                 
@@ -1244,7 +1244,7 @@
                 
                 if(feil)
                 {
-                    NSLog(@"\n### Ukjent feil ved oppretting av RegEx.");
+                    NSLog(@"Ukjent feil ved oppretting av RegEx.");
                     break;
                 }
                 
@@ -1254,7 +1254,7 @@
                 
                 if(feil)
                 {
-                    NSLog(@"\n### Ukjent feil ved oppretting av RegEx.");
+                    NSLog(@"Ukjent feil ved oppretting av RegEx.");
                     break;
                 }
                 
@@ -1262,7 +1262,7 @@
                 
                 if(!avstandstall || [avstandstall count] == 0)
                 {
-                    NSLog(@"\n### Ukjent feil ved tolking av tekstskilt.");
+                    NSLog(@"Ukjent feil ved tolking av tekstskilt.");
                     break;
                 }
                 
@@ -1270,7 +1270,7 @@
                 
                 if([avstandsstreng length] == 0)
                 {
-                    NSLog(@"\n### Ukjent feil ved tolking av tekstskilt.");
+                    NSLog(@"Ukjent feil ved tolking av tekstskilt.");
                     break;
                 }
                 
@@ -1281,7 +1281,7 @@
                 
                 if([avstandsstreng length] == 0)
                 {
-                    NSLog(@"\n### Ukjent feil ved tolking av tekstskilt.");
+                    NSLog(@"Ukjent feil ved tolking av tekstskilt.");
                     break;
                 }
                 
@@ -1289,7 +1289,7 @@
                 
                 if(!avstandstillegg)
                 {
-                    NSLog(@"\n### Ukjent feil ved tolking av tekstskilt.");
+                    NSLog(@"Ukjent feil ved tolking av tekstskilt.");
                     break;
                 }
                 

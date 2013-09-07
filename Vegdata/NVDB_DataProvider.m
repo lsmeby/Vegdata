@@ -131,7 +131,8 @@
                                                                         OgLengdegrad:lengdegrad]
                     Mapping:[Vegreferanse mapping]
                     KeyPath:[Vegreferanse getKeyPath]
-               OgVeglenkeId:nil];
+                 VeglenkeId:nil
+             OgVegreferanse:nil];
 }
 
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
@@ -152,8 +153,8 @@
     if(feil || !resultat || [resultat count] == 0)
     {
         if(feil)
-            NSLog(@"\n### Feil ved spørring mot Core Data: %@", feil.description);
-        NSLog(@"\n### Fant ikke veglenken i databasen, spør mot NVDB.");
+            NSLog(@"Feil ved spørring mot Core Data: %@", feil.description);
+        NSLog(@"Fant ikke veglenken i databasen, spør mot NVDB.");
     }
     else
     {
@@ -163,7 +164,7 @@
             [self hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:vlenkeDB];
             return;
         }
-        NSLog(@"\n### Lagrede data er eldre enn %d dager, spør mot NVDB.", DAGER_MELLOM_NY_OPPDATERING);
+        NSLog(@"Lagrede data er eldre enn %d dager, spør mot NVDB.", DAGER_MELLOM_NY_OPPDATERING);
     }
     
     [self hentVegObjekterFraNVDBMedSokeObjekt:sok OgMapping:mapping];
@@ -185,7 +186,8 @@
                  Parametere:[NVDB_DataProvider parametereForSok:sok]
                     Mapping:mapping
                     KeyPath:[Sok getKeyPath]
-               OgVeglenkeId:((Veglenke *)sok.veglenker[0]).lenkeId];
+                 VeglenkeId:((Veglenke *)sok.veglenker[0]).lenkeId
+             OgVegreferanse:nil];
 }
 
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke
@@ -194,7 +196,7 @@
     
     if(!objekter)
     {
-        NSLog(@"\n### Feil: Veglenkeobjektet fra Core Data inneholder ingen objekter.");
+        NSLog(@"Feil: Veglenkeobjektet fra Core Data inneholder ingen objekter.");
         return;
     }
     
@@ -567,252 +569,275 @@
     NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveger, s_vilttrekk, s_motorveger,
                           s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
     
-    NSLog(@"\n### Data lastet fra Core Data.");
-    [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:vlenke.veglenkeId];
+    NSLog(@"Data lastet fra Core Data.");
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId OgVegreferanse:nil];
 }
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat OgVeglenkeId:(NSNumber *)lenkeId
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref
 {
-    // Lagrer data til Core Data
-    if(!(resultat == nil || resultat.count == 0 || [resultat[0] isKindOfClass:[Vegreferanse class]]))
+    if(resultat != nil && resultat.count > 0)
     {
-        resultat = [NVDB_DataProvider gjorOmTilSkiltobjekterMedResultat:resultat];
-        
-        NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
-                                                           inManagedObjectContext:managedObjectContext];
-        NSFetchRequest * request = [[NSFetchRequest alloc] init];
-        [request setEntity:veglenkeEntity];
-        
-        NSString * predicateStreng = [NSString stringWithFormat: @"(%@ == %@)", VEGLENKEDBSTATUS_LENKEID, lenkeId];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:predicateStreng];
-        [request setPredicate:predicate];
-        
-        NSError * feil;
-        NSArray * eksisterende = [managedObjectContext executeFetchRequest:request error:&feil];
-        
-        if(feil)
+        // Er Vegreferanse-objekt
+        if([resultat[0] isKindOfClass:[Vegreferanse class]])
         {
-            NSLog(@"\n### Feil ved spørring mot Core Data: %@.\n### Lagrer ikke data til databasen.", feil.description);
-            [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
+            [restkit hentDataMedURI:((Vegreferanse *)resultat[0]).vegReferanseUrl
+                         Parametere:nil
+                            Mapping:[VegreferanseDetaljer mapping]
+                            KeyPath:nil
+                         VeglenkeId:nil
+                     OgVegreferanse:resultat[0]];
+            return;
         }
-        
-        // Sletter eksisterende oppføring i databasen
-        if(eksisterende && [eksisterende count] > 0)
+        // Er VegreferanseDetaljer-objekt
+        else if ([resultat[0] isKindOfClass:[VegreferanseDetaljer class]])
         {
-            for(VeglenkeDBStatus * x in eksisterende)
-            {
-                [managedObjectContext deleteObject:x];
-                
-                feil = nil;
-                [managedObjectContext save:&feil];
+            vegref.geometriWgs84 = ((VegreferanseDetaljer *)resultat[0]).geometriWgs84;
+            vegref.veglenker = ((VegreferanseDetaljer *)resultat[0]).veglenker;
+            NSArray * nyttResultat = @[vegref];
+            [delegate svarFraNVDBMedResultat:nyttResultat VeglenkeId:lenkeId OgVegreferanse:vegref];
+            return;
+        }
+        // Er vegobjekter - lagrer data til Core Data
+        else
+        {
+            resultat = [NVDB_DataProvider gjorOmTilSkiltobjekterMedResultat:resultat];
             
-                if(feil)
-                    NSLog(@"\n### Feil ved sletting av objekt fra databasen:%@", feil.description);
-                else
-                    NSLog(@"\n### Objekt ble slettet fra Core Data.");
-            }
-        }
-        
-        NSMutableSet * cdObjekter = [[NSMutableSet alloc] init];
-        
-        for (NSObject * r_obj in resultat)
-        {
-            if ([r_obj isKindOfClass:[SokResultater class]])
+            NSEntityDescription * veglenkeEntity = [NSEntityDescription entityForName:VEGLENKEDBSTATUS_CD
+                                                               inManagedObjectContext:managedObjectContext];
+            NSFetchRequest * request = [[NSFetchRequest alloc] init];
+            [request setEntity:veglenkeEntity];
+            
+            NSString * predicateStreng = [NSString stringWithFormat: @"(%@ == %@)", VEGLENKEDBSTATUS_LENKEID, lenkeId];
+            NSPredicate * predicate = [NSPredicate predicateWithFormat:predicateStreng];
+            [request setPredicate:predicate];
+            
+            NSError * feil;
+            NSArray * eksisterende = [managedObjectContext executeFetchRequest:request error:&feil];
+            
+            if(feil)
             {
-                SokResultater * s_obj = (SokResultater *)r_obj;
-                
-                if(s_obj.objekter == nil || s_obj.objekter.count == 0)
-                    continue;
-
-                for (Vegobjekt * v_obj in s_obj.objekter)
+                NSLog(@"Feil ved spørring mot Core Data: %@.\nLagrer ikke data til databasen.", feil.description);
+                [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId OgVegreferanse:nil];
+            }
+            
+            // Sletter eksisterende oppføring i databasen
+            if(eksisterende && [eksisterende count] > 0)
+            {
+                for(VeglenkeDBStatus * x in eksisterende)
                 {
-                    NSMutableSet * egenskaper = [[NSMutableSet alloc] init];
-                    NSMutableSet * veglenker = [[NSMutableSet alloc] init];
+                    [managedObjectContext deleteObject:x];
                     
-                    for(Egenskap * v_eg in v_obj.egenskaper)
-                    {
-                        CD_Egenskap * e = [NSEntityDescription insertNewObjectForEntityForName:EGENSKAP_CD
-                                                                        inManagedObjectContext:managedObjectContext];
-                        e.navn = v_eg.navn;
-                        e.verdi = v_eg.verdi;
-                        [egenskaper addObject:e];
-                    }
-                    
-                    for(Veglenke * v_vlenke in v_obj.veglenker)
-                    {
-                        CD_Veglenke * v = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKE_CD
-                                                                        inManagedObjectContext:managedObjectContext];
-                        v.lenkeId = v_vlenke.lenkeId;
-                        v.fra = v_vlenke.fra;
-                        v.til = v_vlenke.til;
-                        v.retning = v_vlenke.retning;
-                        [veglenker addObject:v];
-                    }
-                    
-                    CD_Vegobjekt * cdVegobj;
-                    
-                    if([v_obj isKindOfClass:[Fartsgrense class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSGRENSE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Forkjorsveg class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FORKJORSVEG_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Vilttrekk class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VILTTREKK_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Motorveg class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTORVEG_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Fartsdemper class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSDEMPER_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Hoydebegrensning class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:HOYDEBEGRENSNING_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Jernbanekryssing class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:JERNBANEKRYSSING_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Rasteplass class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASTEPLASS_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Toalett class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TOALETT_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[SOSlomme class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SOSLOMME_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Farligsving class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGSVING_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Brattbakke class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BRATTBAKKE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Smalereveg class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SMALEREVEG_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Ujevnveg class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:UJEVNVEG_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Vegarbeid class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VEGARBEID_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Steinsprut class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:STEINSPRUT_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Rasfare class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASFARE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Glattkjorebane class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:GLATTKJOREBANE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Farligvegskulder class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGSKULDER_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Bevegeligbru class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BEVEGELIGBRU_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[KaiStrandFerjeleie class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KAISTRANDFERJELEIE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Tunnel class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TUNNEL_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Farligvegkryss class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGKRYSS_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Rundkjoring class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RUNDKJORING_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Trafikklyssignal class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TRAFIKKLYSSIGNAL_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Avstandtilgangfelt class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AVSTANDTILGANGFELT_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Barn class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BARN_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Syklende class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SYKLENDE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Ku class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KU_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Sau class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAU_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Motendetrafikk class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTENDETRAFIKK_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Ko class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KO_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Fly class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FLY_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Sidevind class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SIDEVIND_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Skilopere class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SKILOPERE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Ridende class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RIDENDE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Annenfare class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:ANNENFARE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[AutomatiskTrafikkontroll class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AUTOMATISKTRAFIKKONTROLL_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[Videokontroll class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VIDEOKONTROLL_CD
-                                                                 inManagedObjectContext:managedObjectContext];
-                    else if([v_obj isKindOfClass:[SaerligUlykkesfare class]])
-                        cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAERLIGULYKKESFARE_CD
-                                                                 inManagedObjectContext:managedObjectContext];
+                    feil = nil;
+                    [managedObjectContext save:&feil];
+                
+                    if(feil)
+                        NSLog(@"Feil ved sletting av objekt fra databasen:%@", feil.description);
                     else
-                        continue;
-                    
-                    [cdVegobj addEgenskaper:egenskaper];
-                    [cdVegobj addVeglenker:veglenker];
-                    cdVegobj.lokasjon = v_obj.lokasjon;
-                    
-                    if([cdVegobj isKindOfClass:[CD_LinjeObjekt class]])
-                        ((CD_LinjeObjekt *)cdVegobj).strekningsLengde = ((LinjeObjekt *)v_obj).strekningsLengde;
-                    
-                    if([cdVegobj isKindOfClass:[CD_SkiltObjekt class]])
-                    {
-                        ((CD_SkiltObjekt *)cdVegobj).ansiktsside = ((SkiltObjekt *)v_obj).ansiktsside;
-                        ((CD_SkiltObjekt *)cdVegobj).avstandEllerUtstrekning = ((SkiltObjekt *)v_obj).avstandEllerUtstrekning;
-                        
-                        if([cdVegobj isKindOfClass:[CD_VariabelSkiltplate class]])
-                            ((CD_VariabelSkiltplate *)cdVegobj).type = ((VariabelSkiltplate *)v_obj).type;
-                    }
-                    
-                    [cdObjekter addObject:cdVegobj];
+                        NSLog(@"Objekt ble slettet fra Core Data.");
                 }
             }
+            
+            NSMutableSet * cdObjekter = [[NSMutableSet alloc] init];
+            
+            for (NSObject * r_obj in resultat)
+            {
+                if ([r_obj isKindOfClass:[SokResultater class]])
+                {
+                    SokResultater * s_obj = (SokResultater *)r_obj;
+                    
+                    if(s_obj.objekter == nil || s_obj.objekter.count == 0)
+                        continue;
+
+                    for (Vegobjekt * v_obj in s_obj.objekter)
+                    {
+                        NSMutableSet * egenskaper = [[NSMutableSet alloc] init];
+                        NSMutableSet * veglenker = [[NSMutableSet alloc] init];
+                        
+                        for(Egenskap * v_eg in v_obj.egenskaper)
+                        {
+                            CD_Egenskap * e = [NSEntityDescription insertNewObjectForEntityForName:EGENSKAP_CD
+                                                                            inManagedObjectContext:managedObjectContext];
+                            e.navn = v_eg.navn;
+                            e.verdi = v_eg.verdi;
+                            [egenskaper addObject:e];
+                        }
+                        
+                        for(Veglenke * v_vlenke in v_obj.veglenker)
+                        {
+                            CD_Veglenke * v = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKE_CD
+                                                                            inManagedObjectContext:managedObjectContext];
+                            v.lenkeId = v_vlenke.lenkeId;
+                            v.fra = v_vlenke.fra;
+                            v.til = v_vlenke.til;
+                            v.retning = v_vlenke.retning;
+                            [veglenker addObject:v];
+                        }
+                        
+                        CD_Vegobjekt * cdVegobj;
+                        
+                        if([v_obj isKindOfClass:[Fartsgrense class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSGRENSE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Forkjorsveg class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FORKJORSVEG_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Vilttrekk class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VILTTREKK_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Motorveg class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTORVEG_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Fartsdemper class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARTSDEMPER_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Hoydebegrensning class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:HOYDEBEGRENSNING_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Jernbanekryssing class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:JERNBANEKRYSSING_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Rasteplass class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASTEPLASS_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Toalett class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TOALETT_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[SOSlomme class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SOSLOMME_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Farligsving class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGSVING_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Brattbakke class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BRATTBAKKE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Smalereveg class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SMALEREVEG_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Ujevnveg class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:UJEVNVEG_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Vegarbeid class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VEGARBEID_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Steinsprut class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:STEINSPRUT_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Rasfare class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RASFARE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Glattkjorebane class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:GLATTKJOREBANE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Farligvegskulder class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGSKULDER_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Bevegeligbru class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BEVEGELIGBRU_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[KaiStrandFerjeleie class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KAISTRANDFERJELEIE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Tunnel class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TUNNEL_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Farligvegkryss class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FARLIGVEGKRYSS_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Rundkjoring class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RUNDKJORING_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Trafikklyssignal class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:TRAFIKKLYSSIGNAL_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Avstandtilgangfelt class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AVSTANDTILGANGFELT_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Barn class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:BARN_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Syklende class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SYKLENDE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Ku class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KU_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Sau class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAU_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Motendetrafikk class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:MOTENDETRAFIKK_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Ko class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:KO_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Fly class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:FLY_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Sidevind class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SIDEVIND_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Skilopere class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SKILOPERE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Ridende class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:RIDENDE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Annenfare class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:ANNENFARE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[AutomatiskTrafikkontroll class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AUTOMATISKTRAFIKKONTROLL_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[Videokontroll class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VIDEOKONTROLL_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else if([v_obj isKindOfClass:[SaerligUlykkesfare class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAERLIGULYKKESFARE_CD
+                                                                     inManagedObjectContext:managedObjectContext];
+                        else
+                            continue;
+                        
+                        [cdVegobj addEgenskaper:egenskaper];
+                        [cdVegobj addVeglenker:veglenker];
+                        cdVegobj.lokasjon = v_obj.lokasjon;
+                        
+                        if([cdVegobj isKindOfClass:[CD_LinjeObjekt class]])
+                            ((CD_LinjeObjekt *)cdVegobj).strekningsLengde = ((LinjeObjekt *)v_obj).strekningsLengde;
+                        
+                        if([cdVegobj isKindOfClass:[CD_SkiltObjekt class]])
+                        {
+                            ((CD_SkiltObjekt *)cdVegobj).ansiktsside = ((SkiltObjekt *)v_obj).ansiktsside;
+                            ((CD_SkiltObjekt *)cdVegobj).avstandEllerUtstrekning = ((SkiltObjekt *)v_obj).avstandEllerUtstrekning;
+                            
+                            if([cdVegobj isKindOfClass:[CD_VariabelSkiltplate class]])
+                                ((CD_VariabelSkiltplate *)cdVegobj).type = ((VariabelSkiltplate *)v_obj).type;
+                        }
+                        
+                        [cdObjekter addObject:cdVegobj];
+                    }
+                }
+            }
+            
+            VeglenkeDBStatus * cdStatus = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKEDBSTATUS_CD
+                                                                        inManagedObjectContext:managedObjectContext];
+            cdStatus.sistOppdatert = [[NSDate alloc] init];
+            cdStatus.veglenkeId = lenkeId;
+            [cdStatus addVegobjekter:cdObjekter];
+
+            feil = nil;
+            [managedObjectContext save:&feil];
+
+            if(feil)
+                NSLog(@"Feil ved lagring til Core Data: %@", feil.description);
+            else
+                NSLog(@"Data lagret i databasen.");
         }
-        
-        VeglenkeDBStatus * cdStatus = [NSEntityDescription insertNewObjectForEntityForName:VEGLENKEDBSTATUS_CD
-                                                                    inManagedObjectContext:managedObjectContext];
-        cdStatus.sistOppdatert = [[NSDate alloc] init];
-        cdStatus.veglenkeId = lenkeId;
-        [cdStatus addVegobjekter:cdObjekter];
-
-        feil = nil;
-        [managedObjectContext save:&feil];
-
-        if(feil)
-            NSLog(@"\n### Feil ved lagring til Core Data: %@", feil.description);
-        else
-            NSLog(@"\n### Data lagret i databasen.");
     }
 
-    [delegate svarFraNVDBMedResultat:resultat OgVeglenkeId:lenkeId];
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId OgVegreferanse:nil];
 }
 
 - (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
@@ -1148,7 +1173,7 @@
     
     [nyttResultat addObjectsFromArray:@[s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer]];
     
-    NSLog(@"\n### Skiltplater omgjort til skiltobjekter.");
+    NSLog(@"Skiltplater omgjort til skiltobjekter.");
     return [nyttResultat copy];
 }
 

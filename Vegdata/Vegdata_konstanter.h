@@ -26,8 +26,8 @@
 
 // -- URL'ER --
 
-#define NVDB_GRUNN_URL @"http://nvdb1.demo.bekk.no:7001/nvdb/api"
-//#define NVDB_GRUNN_URL @"https://www.vegvesen.no/nvdb/api"
+//#define NVDB_GRUNN_URL @"http://nvdb1.demo.bekk.no:7001/nvdb/api"
+#define NVDB_GRUNN_URL @"https://www.vegvesen.no/nvdb/api"
 #define MAPQUEST_GRUNN_URL @"http://open.mapquestapi.com"
 #define MAPQUEST_MATRIX_URL @"/directions/v1/routematrix"
 #define MAPQUEST_KEY @"Fmjtd|luub2qu72h,8l=o5-96105y"
