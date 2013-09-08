@@ -24,26 +24,54 @@
 
 @interface PosisjonsKontroller()
 - (void) oppdaterPresisjonMedFart:(NSDecimalNumber *)meterISekundet;
+- (void) mockLokasjoner;
 @end
 
 @implementation PosisjonsKontroller
 
-@synthesize lokMan, delegate, sisteOppdatering;
+@synthesize lokMan, delegate, sisteOppdatering, koordinater, isMock;
 
-- (id) init
+- (id) initWithMock:(bool)withMock
 {
-    self = [super init];
+    isMock = withMock;
     
-    if(self != nil)
+    if(!isMock)
     {
-        self.lokMan = [[CLLocationManager alloc] init];
-        self.lokMan.delegate = self;
-        self.lokMan.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-        self.lokMan.distanceFilter = kCLDistanceFilterNone;
-        self.sisteOppdatering = [[CLLocation alloc] init];
+        self = [super init];
+    
+        if(self != nil)
+        {
+            self.lokMan = [[CLLocationManager alloc] init];
+            self.lokMan.delegate = self;
+            self.lokMan.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+            self.lokMan.distanceFilter = kCLDistanceFilterNone;
+            self.sisteOppdatering = [[CLLocation alloc] init];
+        }
+    }
+    else
+    {
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"vegkoordinater" ofType:@"txt"];
+        NSString * content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        koordinater = [content componentsSeparatedByString:@", "];
     }
     
     return self;
+}
+
+- (void)startUpdatingLocation
+{
+    if(isMock)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, (unsigned long)nil), ^(void) {
+            [self mockLokasjoner];
+        });
+        NSLog(@"Kjører i testmodus - posisjoner leses fra fil.");
+    }
+    else
+    {
+        [self.lokMan startUpdatingLocation];
+        NSLog(@"Posisjonstjenesten startet.");
+    }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -90,6 +118,26 @@
         // Oppdater kun hvis det er minst 10 km/t forskjell på forrige registrerte filter
         if(self.lokMan.distanceFilter - nyttFilter > (10 / POS_MSEK_TIL_KMT * POS_OPPDATERING_SEK) || self.lokMan.distanceFilter - nyttFilter < -(10 / POS_MSEK_TIL_KMT * POS_OPPDATERING_SEK))
             [self.lokMan setDistanceFilter:nyttFilter];
+    }
+}
+
+- (void)mockLokasjoner
+{
+    while(true)
+    {
+        for(int i = 0; i < [koordinater count]; i++)
+        {
+            if(i % 10 != 0)
+                continue;
+            NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
+            NSString * koordString = koordinater[i];
+            NSArray * koordArray = [koordString componentsSeparatedByString:@" "];
+            Posisjon * posisjon = [Posisjon alloc];
+            posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[1]) doubleValue]];
+            posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[0]) doubleValue]];
+            [self.delegate posisjonOppdatering:posisjon];
+            sleep(5);
+        }
     }
 }
 

@@ -152,34 +152,34 @@
                 }
                 
                 // Simulator-snill test. Byttes ut med den under ved fysisk test.
-                else if((self.forrigePosisjon == nil ||
-                         self.forrigePosisjon.doubleValue < 0 ||
-                         posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
-                         vLenke.fra.doubleValue < posisjon.doubleValue)
-                        &&
-                        (self.forrigePosisjon == nil ||
-                         self.forrigePosisjon.doubleValue < 0 ||
-                         vLenke.fra.doubleValue > posisjon.doubleValue ||
-                         vLenke.fra.doubleValue < posisjon.doubleValue)
-                        &&
-                        (naermestePosisjon.doubleValue < 0 ||
-                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
-                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
-                
-//                else if(self.forrigePosisjon &&
-//                        self.forrigePosisjon.doubleValue >= 0 &&
+//                else if((self.forrigePosisjon == nil ||
+//                         self.forrigePosisjon.doubleValue < 0 ||
+//                         posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
+//                         vLenke.fra.doubleValue < posisjon.doubleValue)
+//                        &&
+//                        (self.forrigePosisjon == nil ||
+//                         self.forrigePosisjon.doubleValue < 0 ||
+//                         vLenke.fra.doubleValue > posisjon.doubleValue ||
+//                         vLenke.fra.doubleValue < posisjon.doubleValue)
+//                        &&
 //                        (naermestePosisjon.doubleValue < 0 ||
 //                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
-//                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue) &&
-//                        ((posisjon.doubleValue > self.forrigePosisjon.doubleValue &&
-//                          vLenke.fra.doubleValue > posisjon.doubleValue &&
-//                          ([obj isKindOfClass:[PunktObjekt class]] ||
-//                           ([obj isKindOfClass:[SkiltObjekt class]] &&
-//                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]))) ||
-//                         (vLenke.fra.doubleValue < posisjon.doubleValue &&
-//                          ([obj isKindOfClass:[PunktObjekt class]] ||
-//                           ([obj isKindOfClass:[SkiltObjekt class]] &&
-//                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT])))))
+//                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
+                
+                else if(self.forrigePosisjon &&
+                        self.forrigePosisjon.doubleValue >= 0 &&
+                        (naermestePosisjon.doubleValue < 0 ||
+                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
+                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue) &&
+                        ((posisjon.doubleValue > self.forrigePosisjon.doubleValue &&
+                          vLenke.fra.doubleValue > posisjon.doubleValue &&
+                          ([obj isKindOfClass:[PunktObjekt class]] ||
+                           ([obj isKindOfClass:[SkiltObjekt class]] &&
+                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]))) ||
+                         (vLenke.fra.doubleValue < posisjon.doubleValue &&
+                          ([obj isKindOfClass:[PunktObjekt class]] ||
+                           ([obj isKindOfClass:[SkiltObjekt class]] &&
+                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT])))))
                 //
                 // A - [obj isKindOfClass:[PunktObjekt class]]
                 // B - [obj isKindOfClass:[SkiltObjekt class]]

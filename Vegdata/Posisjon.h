@@ -38,6 +38,11 @@
 @property (nonatomic, strong) CLLocationManager * lokMan;
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, strong) CLLocation * sisteOppdatering;
+@property (nonatomic, strong) NSArray * koordinater;
+@property (nonatomic) bool isMock;
+
+- (id)initWithMock:(bool)withMock;
+- (void)startUpdatingLocation;
 
 @end
 

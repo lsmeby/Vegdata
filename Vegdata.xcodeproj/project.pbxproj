@@ -220,6 +220,7 @@
 		9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */; };
 		9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */; };
 		9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */; };
+		B207EBDF17DCAD78002C93AB /* vegkoordinater.txt in Resources */ = {isa = PBXBuildFile; fileRef = B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -553,6 +554,7 @@
 		9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p_4in@2x.jpg"; sourceTree = "<group>"; };
 		9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_p.jpg; sourceTree = "<group>"; };
 		9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p@2x.jpg"; sourceTree = "<group>"; };
+		B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vegkoordinater.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1001,6 +1003,7 @@
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
 				9B7EB80F16CD212600484A74 /* Vegdata-Prefix.pch */,
+				B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1228,6 +1231,7 @@
 				9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */,
 				9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */,
 				9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */,
+				B207EBDF17DCAD78002C93AB /* vegkoordinater.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

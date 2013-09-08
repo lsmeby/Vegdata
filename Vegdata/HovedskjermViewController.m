@@ -53,9 +53,9 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:sti], &ssid);
     self.lydID = ssid;
     
-    self.pos = [[PosisjonsKontroller alloc] init];
+    self.pos = [[PosisjonsKontroller alloc] initWithMock:YES];
     self.pos.delegate = self;
-    [self.pos.lokMan startUpdatingLocation];
+    [self.pos startUpdatingLocation];
 }
 
 -(BOOL)shouldAutorotate
