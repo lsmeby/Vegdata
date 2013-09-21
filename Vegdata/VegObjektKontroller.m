@@ -47,7 +47,7 @@
 - (void)sokMedVegreferanse;
 - (NSArray *)hentObjekttyper;
 - (RKDynamicMapping *)hentObjektMapping;
-- (NSDecimalNumber *)kalkulerVeglenkePosisjon;
+- (NSDecimalNumber *)kalkulerVeglenkePosisjon:(Vegreferanse *)vegRef;
 - (void)leggTilDataIDictionary:(NSMutableDictionary *)returDictionary FraSokeresultater:(SokResultater *)resultater MedAvstandsArray:(NSMutableArray *)avstand;
 - (void)leggTilLinjeDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(LinjeObjekt <VegobjektProtokoll> *)objekt;
 - (void)leggTilPunktDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(PunktObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand;
@@ -129,7 +129,7 @@
     if(!returDictionary || !resultater || !resultater.objekter || resultater.objekter.count == 0)
         return;
     
-    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon];
+    NSDecimalNumber * posisjon = [self kalkulerVeglenkePosisjon:nil];
     if(!posisjon)
         return;
     
@@ -308,13 +308,16 @@
     avstand[4] = key;
 }
 
-- (NSDecimalNumber *)kalkulerVeglenkePosisjon
+- (NSDecimalNumber *)kalkulerVeglenkePosisjon: (Vegreferanse *) vegRef
 {
-    if(self.vegRef == nil || self.vegRef.veglenker == nil || self.vegRef.veglenker.count == 0)
+    if(vegRef == nil)
+        vegRef = self.vegRef;
+    
+    if(vegRef == nil || vegRef.veglenker == nil || vegRef.veglenker.count == 0)
         return nil;
     
-    double intervall = ((Veglenke *)self.vegRef.veglenker[0]).til.doubleValue - ((Veglenke *)self.vegRef.veglenker[0]).fra.doubleValue;
-    double returPos = ((Veglenke *)self.vegRef.veglenker[0]).fra.doubleValue + (intervall * self.vegRef.veglenkePosisjon.doubleValue);
+    double intervall = ((Veglenke *)vegRef.veglenker[0]).til.doubleValue - ((Veglenke *)vegRef.veglenker[0]).fra.doubleValue;
+    double returPos = ((Veglenke *)vegRef.veglenker[0]).fra.doubleValue + (intervall * vegRef.veglenkePosisjon.doubleValue);
     
     return [[NSDecimalNumber alloc] initWithDouble:returPos];
 }
@@ -339,13 +342,28 @@
     }
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
-        if(self.vegRef && self.vegRef.veglenkeId.intValue == ((Vegreferanse *)resultat[0]).veglenkeId.intValue)
-            self.forrigePosisjon = [self kalkulerVeglenkePosisjon];
+        Vegreferanse * nyVegref = ((Vegreferanse *)resultat[0]);
+        if(self.vegRef && self.vegRef.veglenkeId.intValue == nyVegref.veglenkeId.intValue)
+        {
+            self.forrigePosisjon = [self kalkulerVeglenkePosisjon:nil];
+            
+            // finne ut hvilken retning på veglenken vi kjører
+            
+            // hvis retningen er endret, eller vi ikke har gjettet på neste veglenke - utfør gjetting
+            
+            self.vegRef = (Vegreferanse *)resultat[0];
+            [self sokMedVegreferanse];
+        }
         else
+        {
             self.forrigePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
-        
-        self.vegRef = (Vegreferanse *)resultat[0];
-        [self sokMedVegreferanse];
+            
+            self.vegRef = (Vegreferanse *)resultat[0];
+            [self sokMedVegreferanse];
+            
+            // hvis den nye veglenken er den vi gjettet på, eller hvis den nye veglenken er den samme 2 cycles på rad - kjør søk med vegreferanse
+            // hvis ikke - noter og ignorer veglenke
+        }
     }
     else
     {

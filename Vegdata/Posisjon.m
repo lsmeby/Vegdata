@@ -127,7 +127,7 @@
     {
         for(int i = 0; i < [koordinater count]; i++)
         {
-            if(i % 9 != 0)
+            if(i % 10 != 0)
                 continue;
             NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
             NSString * koordString = koordinater[i];
@@ -135,8 +135,9 @@
             Posisjon * posisjon = [Posisjon alloc];
             posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[1]) doubleValue]];
             posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[0]) doubleValue]];
+            NSLog(@"Koordinater: %@ %@", posisjon.breddegrad, posisjon.lengdegrad);
             [self.delegate posisjonOppdatering:posisjon];
-            sleep(5);
+            sleep(3);
         }
     }
 }
