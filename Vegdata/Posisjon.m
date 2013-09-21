@@ -127,7 +127,7 @@
     {
         for(int i = 0; i < [koordinater count]; i++)
         {
-            if(i % 10 != 0)
+            if(i % 9 != 0)
                 continue;
             NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
             NSString * koordString = koordinater[i];
