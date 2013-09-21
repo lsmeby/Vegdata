@@ -220,7 +220,8 @@
 		9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */; };
 		9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */; };
 		9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */; };
-		B207EBDF17DCAD78002C93AB /* vegkoordinater.txt in Resources */ = {isa = PBXBuildFile; fileRef = B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */; };
+		B2D2110417EDC419001FF57E /* holmen_slemmestad.txt in Resources */ = {isa = PBXBuildFile; fileRef = B2D2110217EDC419001FF57E /* holmen_slemmestad.txt */; };
+		B2D2110517EDC419001FF57E /* slemmestad_midtbygda.txt in Resources */ = {isa = PBXBuildFile; fileRef = B2D2110317EDC419001FF57E /* slemmestad_midtbygda.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -554,7 +555,8 @@
 		9BF1CE1D17255D9A00AC31F7 /* bg_p_4in@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p_4in@2x.jpg"; sourceTree = "<group>"; };
 		9BF1CE1E17255D9A00AC31F7 /* bg_p.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_p.jpg; sourceTree = "<group>"; };
 		9BF1CE1F17255D9A00AC31F7 /* bg_p@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_p@2x.jpg"; sourceTree = "<group>"; };
-		B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vegkoordinater.txt; sourceTree = "<group>"; };
+		B2D2110217EDC419001FF57E /* holmen_slemmestad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = holmen_slemmestad.txt; sourceTree = "<group>"; };
+		B2D2110317EDC419001FF57E /* slemmestad_midtbygda.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slemmestad_midtbygda.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -997,13 +999,13 @@
 		9B7EB80816CD212600484A74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2D2110117EDC406001FF57E /* mockdata */,
 				9B4E7B4A172420DB006307DD /* bilder */,
 				9BA0B6BA1711A67B008E3E5F /* Purr.aiff */,
 				9B7EB80916CD212600484A74 /* Vegdata-Info.plist */,
 				9B7EB80A16CD212600484A74 /* InfoPlist.strings */,
 				9B7EB80D16CD212600484A74 /* main.m */,
 				9B7EB80F16CD212600484A74 /* Vegdata-Prefix.pch */,
-				B207EBDE17DCAD78002C93AB /* vegkoordinater.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1017,6 +1019,15 @@
 				9BE4624216CD36F0003E1FAE /* RestKitFrameworkTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B2D2110117EDC406001FF57E /* mockdata */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2110217EDC419001FF57E /* holmen_slemmestad.txt */,
+				B2D2110317EDC419001FF57E /* slemmestad_midtbygda.txt */,
+			);
+			name = mockdata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1108,6 +1119,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D2110417EDC419001FF57E /* holmen_slemmestad.txt in Resources */,
 				9B7EB80C16CD212600484A74 /* InfoPlist.strings in Resources */,
 				9B7EB81B16CD212600484A74 /* MainStoryboard.storyboard in Resources */,
 				9B83CBA716D8EB3E0022AB3D /* fartsgrense.gif in Resources */,
@@ -1221,6 +1233,7 @@
 				9B4E7B45172420CF006307DD /* serviceskilt_toalett.gif in Resources */,
 				9B4E7B46172420CF006307DD /* serviceskilt_toalett@2x.gif in Resources */,
 				9B4E783817254B6F007CC8E2 /* ikon.png in Resources */,
+				B2D2110517EDC419001FF57E /* slemmestad_midtbygda.txt in Resources */,
 				9B4E783A17254B7C007CC8E2 /* ikon_ret.png in Resources */,
 				9B4E783C1725538F007CC8E2 /* Default.png in Resources */,
 				9B4E783E172553C2007CC8E2 /* Default@2x.png in Resources */,
@@ -1231,7 +1244,6 @@
 				9BF1CE2317255D9A00AC31F7 /* bg_p_4in@2x.jpg in Resources */,
 				9BF1CE2417255D9A00AC31F7 /* bg_p.jpg in Resources */,
 				9BF1CE2517255D9A00AC31F7 /* bg_p@2x.jpg in Resources */,
-				B207EBDF17DCAD78002C93AB /* vegkoordinater.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

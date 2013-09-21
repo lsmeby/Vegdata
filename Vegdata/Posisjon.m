@@ -50,7 +50,7 @@
     }
     else
     {
-        NSString * path = [[NSBundle mainBundle] pathForResource:@"vegkoordinater" ofType:@"txt"];
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"holmen_slemmestad" ofType:@"txt"];
         NSString * content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         koordinater = [content componentsSeparatedByString:@", "];
     }
