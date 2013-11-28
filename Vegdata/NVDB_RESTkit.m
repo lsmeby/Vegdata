@@ -26,7 +26,7 @@
 
 @synthesize delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning
 {
     AFHTTPClient * klient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:NVDB_GRUNN_URL]];
     [klient setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
@@ -43,12 +43,12 @@
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
      {
          if([self.delegate conformsToProtocol:@protocol(NVDBResponseDelegate)])
-             [self.delegate svarFraNVDBMedResultat:[mappingResult array] VeglenkeId:lenkeId OgVegreferanse:vegref];
+             [self.delegate svarFraNVDBMedResultat:[mappingResult array] VeglenkeId:lenkeId Vegreferanse:vegref OgErGjetning:erGjetning];
      }
                             failure:^(RKObjectRequestOperation *operation, NSError *error)
      {
          NSLog(@"Feil i NVDB_RESTkit:\nOperation: %@\nError: %@", operation, error);
-         [self.delegate svarFraNVDBMedResultat:nil VeglenkeId:lenkeId OgVegreferanse:vegref];
+         [self.delegate svarFraNVDBMedResultat:nil VeglenkeId:lenkeId Vegreferanse:vegref OgErGjetning:erGjetning];
      }];
 }
 

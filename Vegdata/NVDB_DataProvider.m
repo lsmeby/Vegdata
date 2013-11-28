@@ -124,7 +124,7 @@
     return self;
 }
 
-- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgErGjetning:(BOOL)erGjetning
 {
     [restkit hentDataMedURI:[Vegreferanse getURI]
                  Parametere:[NVDB_DataProvider parametereForKoordinaterMedBreddegrad:breddegrad
@@ -132,7 +132,8 @@
                     Mapping:[Vegreferanse mapping]
                     KeyPath:[Vegreferanse getKeyPath]
                  VeglenkeId:nil
-             OgVegreferanse:nil];
+               Vegreferanse:nil
+               OgErGjetning:erGjetning];
 }
 
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
@@ -187,7 +188,8 @@
                     Mapping:mapping
                     KeyPath:[Sok getKeyPath]
                  VeglenkeId:((Veglenke *)sok.veglenker[0]).lenkeId
-             OgVegreferanse:nil];
+               Vegreferanse:nil
+               OgErGjetning:NO];
 }
 
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke
@@ -570,12 +572,12 @@
                           s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
     
     NSLog(@"Data lastet fra Core Data.");
-    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId OgVegreferanse:nil];
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId Vegreferanse:nil OgErGjetning:NO];
 }
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning
 {
     if(resultat != nil && resultat.count > 0)
     {
@@ -587,7 +589,8 @@
                             Mapping:[VegreferanseDetaljer mapping]
                             KeyPath:nil
                          VeglenkeId:nil
-                     OgVegreferanse:resultat[0]];
+                       Vegreferanse:resultat[0]
+                       OgErGjetning:erGjetning];
             return;
         }
         // Er VegreferanseDetaljer-objekt
@@ -596,7 +599,7 @@
             vegref.geometriWgs84 = ((VegreferanseDetaljer *)resultat[0]).geometriWgs84;
             vegref.veglenker = ((VegreferanseDetaljer *)resultat[0]).veglenker;
             NSArray * nyttResultat = @[vegref];
-            [delegate svarFraNVDBMedResultat:nyttResultat VeglenkeId:lenkeId OgVegreferanse:vegref];
+            [delegate svarFraNVDBMedResultat:nyttResultat VeglenkeId:lenkeId Vegreferanse:vegref OgErGjetning:erGjetning];
             return;
         }
         // Er vegobjekter - lagrer data til Core Data
@@ -619,7 +622,7 @@
             if(feil)
             {
                 NSLog(@"Feil ved spørring mot Core Data: %@.\nLagrer ikke data til databasen.", feil.description);
-                [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId OgVegreferanse:nil];
+                [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgErGjetning:erGjetning];
             }
             
             // Sletter eksisterende oppføring i databasen
@@ -837,7 +840,7 @@
         }
     }
 
-    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId OgVegreferanse:nil];
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgErGjetning:erGjetning];
 }
 
 - (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key

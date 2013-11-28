@@ -36,9 +36,14 @@
     NVDB_DataProvider * dataProv;
 }
 
+typedef enum { UKJENT, STIGENDE, SYNKENDE } Retning;
+
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, strong) Vegreferanse * vegRef;
 @property (nonatomic, strong) NSDecimalNumber * forrigePosisjon;
+@property (nonatomic) Retning forrigeRetning;
+@property (nonatomic, strong) NSNumber * gjettetVeglenkeID;
+@property (nonatomic, strong) NSNumber * forrigeNyeVeglenkeID;
 @property (nonatomic, strong) NSArray * objektreferanse;
 
 - (id)initMedDelegate:(id)delegat OgManagedObjectContext:(NSManagedObjectContext *)context;

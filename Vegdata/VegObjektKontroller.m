@@ -66,6 +66,9 @@
     self.delegate = delegat;
     dataProv = [[NVDB_DataProvider alloc] initMedManagedObjectContext:context OgAvsender:self];
     self.objektreferanse = [VegObjektKontroller settOppObjektreferanseArray];
+    self.forrigeRetning = UKJENT;
+    self.gjettetVeglenkeID = [[NSNumber alloc] initWithInt:-1];
+    self.forrigeNyeVeglenkeID = [[NSNumber alloc] initWithInt:-1];
     return self;
 }
 
@@ -76,7 +79,7 @@
 
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    [dataProv hentVegreferanseMedBreddegrad:breddegrad OgLengdegrad:lengdegrad];
+    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgErGjetning:NO];
 }
 
 #pragma mark - Metoder som forbereder og utfører søk mot dataprovideren
@@ -264,14 +267,14 @@
     else
         [returDictionary setObject:key forKey:key];
     
-    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
+    /*NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
     NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
     
     avstand[0] = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
     avstand[1] = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
     avstand[2] = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
     avstand[3] = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
-    avstand[4] = key;
+    avstand[4] = key;*/
 }
 
 - (void)leggTilSkiltDataIDictionary:(NSMutableDictionary *)returDictionary MedVegObjekt:(SkiltObjekt <VegobjektProtokoll> *)objekt OgAvstandsArray:(NSMutableArray *)avstand
@@ -298,14 +301,14 @@
     else
         [returDictionary setObject:key forKey:key];
 
-    NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
+    /*NSDictionary * fra = [Vegreferanse hentKoordinaterFraNVDBString:self.vegRef.geometriWgs84];
     NSDictionary * til = [Vegreferanse hentKoordinaterFraNVDBString:objekt.lokasjon];
     
     avstand[0] = [fra objectForKey:VEGREFERANSE_BREDDEGRAD];
     avstand[1] = [fra objectForKey:VEGREFERANSE_LENGDEGRAD];
     avstand[2] = [til objectForKey:VEGREFERANSE_BREDDEGRAD];
     avstand[3] = [til objectForKey:VEGREFERANSE_LENGDEGRAD];
-    avstand[4] = key;
+    avstand[4] = key;*/
 }
 
 - (NSDecimalNumber *)kalkulerVeglenkePosisjon: (Vegreferanse *) vegRef
@@ -332,7 +335,7 @@
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId OgVegreferanse:(Vegreferanse *)vegref
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning
 {
     if(resultat == nil || resultat.count == 0)
     {
@@ -343,24 +346,57 @@
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
         Vegreferanse * nyVegref = ((Vegreferanse *)resultat[0]);
+        if(erGjetning) {
+            self.gjettetVeglenkeID = nyVegref.veglenkeId;
+            return;
+        }
         if(self.vegRef && self.vegRef.veglenkeId.intValue == nyVegref.veglenkeId.intValue)
         {
-            self.forrigePosisjon = [self kalkulerVeglenkePosisjon:nil];
+            self.forrigePosisjon = [self kalkulerVeglenkePosisjon:self.vegRef];
             
+            // følgende skal være gjort, men må testes
             // finne ut hvilken retning på veglenken vi kjører
-            
             // hvis retningen er endret, eller vi ikke har gjettet på neste veglenke - utfør gjetting
             
             self.vegRef = (Vegreferanse *)resultat[0];
+            
+            NSDecimalNumber * nyPosisjon = [self kalkulerVeglenkePosisjon:self.vegRef];
+            
+            Retning nyRetning = UKJENT;
+            
+            double posisjonsDiff = nyPosisjon.doubleValue - self.forrigePosisjon.doubleValue;
+            
+            if(posisjonsDiff > 0)
+                nyRetning = STIGENDE;
+            else if(posisjonsDiff < 0)
+                nyRetning = SYNKENDE;
+            else
+                nyRetning = UKJENT;
+            
+            if(nyRetning != UKJENT && self.forrigeRetning != nyRetning)
+            {
+                self.forrigeRetning = nyRetning;
+                [self gjettVeglenke];
+            }
+            
             [self sokMedVegreferanse];
         }
         else
         {
-            self.forrigePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
+            if(nyVegref.veglenkeId.intValue == self.gjettetVeglenkeID.intValue || nyVegref.veglenkeId.intValue == self.forrigeNyeVeglenkeID.intValue) {
+                self.gjettetVeglenkeID = [[NSNumber alloc] initWithInt:-1];
+                self.forrigeNyeVeglenkeID = [[NSNumber alloc] initWithInt:-1];
+                self.forrigePosisjon = [[NSDecimalNumber alloc] initWithInt:-1];
+                self.forrigeRetning = UKJENT;
             
-            self.vegRef = (Vegreferanse *)resultat[0];
-            [self sokMedVegreferanse];
+                self.vegRef = nyVegref;
+                [self sokMedVegreferanse];
+            }
+            else
+                self.forrigeNyeVeglenkeID = nyVegref.veglenkeId;
             
+            
+            // følgende skal være gjort, men må testes
             // hvis den nye veglenken er den vi gjettet på, eller hvis den nye veglenken er den samme 2 cycles på rad - kjør søk med vegreferanse
             // hvis ikke - noter og ignorer veglenke
         }
@@ -379,19 +415,60 @@
                 
                 [self leggTilDataIDictionary:returDictionary FraSokeresultater:(SokResultater *)obj MedAvstandsArray:avstandsdata];
                 
-                if([avstandsdata count] > 0)
+                /*if([avstandsdata count] > 0)
                     [dataProv hentAvstandmedKoordinaterAX:avstandsdata[0]
                                                        AY:avstandsdata[1]
                                                        BX:avstandsdata[2]
                                                        BY:avstandsdata[3]
-                                                    ogKey:avstandsdata[4]];
+                                                    ogKey:avstandsdata[4]];*/
             }
         
         [self.delegate vegObjekterErOppdatert:returDictionary];
     }
 }
 
-- (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
+- (void) gjettVeglenke {
+    /*
+     * Feiler fordi vi ser på vegreferansens koordinater.
+     * Vi må bruke retning for så å hente vegreferansen ved veglenkens posisjon 0 eller 1.
+     * Deretter kan vi bruke denne vegreferansen slik vi nå gjør med den vi har.
+     */
+    
+    NSArray * rawKoordinater = [self.vegRef.geometriWgs84 componentsSeparatedByString:@", "];
+    if(!rawKoordinater || [rawKoordinater count] < 2)
+        return;
+    
+    NSString * fra;
+    NSString * til;
+    
+    if(self.forrigeRetning == STIGENDE)
+    {
+        fra = rawKoordinater[[rawKoordinater count] - 2];
+        NSArray * rawTil = [[rawKoordinater lastObject] componentsSeparatedByString:@")"];
+        til = rawTil[0];
+    }
+    else if(self.forrigeRetning == SYNKENDE)
+    {
+        fra = rawKoordinater[1];
+        NSArray * rawTil = [[rawKoordinater lastObject] componentsSeparatedByString:@"("];
+        til = [rawTil lastObject];
+    }
+    
+    NSArray * fraKoordArray = [fra componentsSeparatedByString:@" "];
+    NSArray * tilKoordArray = [til componentsSeparatedByString:@" "];
+    
+    NSDecimalNumber * fraX = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)fraKoordArray[1]) doubleValue]];
+    NSDecimalNumber * fraY = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)fraKoordArray[0]) doubleValue]];
+    NSDecimalNumber * tilX = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)tilKoordArray[1]) doubleValue]];
+    NSDecimalNumber * tilY = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)tilKoordArray[0]) doubleValue]];
+    
+    NSDecimalNumber * gjettetX = [[NSDecimalNumber alloc] initWithDouble:(tilX.doubleValue - fraX.doubleValue) + tilX.doubleValue];
+    NSDecimalNumber * gjettetY = [[NSDecimalNumber alloc] initWithDouble:(tilY.doubleValue - fraY.doubleValue) + tilY.doubleValue];
+    
+    [dataProv hentVegreferanseMedBreddegrad:gjettetX Lengdegrad:gjettetY OgErGjetning:YES];
+}
+
+- (void) svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
 {
     if(resultat && [resultat count] > 0)
     {
