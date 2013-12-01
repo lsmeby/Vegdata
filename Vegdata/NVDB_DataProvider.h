@@ -31,7 +31,8 @@
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 
 - (id)initMedManagedObjectContext:(NSManagedObjectContext *)context OgAvsender:(NSObject *)aAvsender;
-- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgErGjetning:(BOOL)erGjetning;
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgSpoerringsType:(Spoerring)type;
+- (void)hentVegreferanseMedVeglenkeID:(NSNumber *)veglenkeid OgPosisjon:(NSDecimalNumber *)posisjon;
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
 - (void)hentAvstandmedKoordinaterAX:(NSDecimalNumber *)ax AY:(NSDecimalNumber *)ay BX:(NSDecimalNumber *)bx BY:(NSDecimalNumber *)by ogKey:(NSString *)key;
 

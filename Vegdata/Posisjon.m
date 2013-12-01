@@ -50,7 +50,7 @@
     }
     else
     {
-        NSString * path = [[NSBundle mainBundle] pathForResource:@"holmen_slemmestad" ofType:@"txt"];
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"slemmestad_midtbygda" ofType:@"txt"];
         NSString * content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         koordinater = [content componentsSeparatedByString:@", "];
     }
@@ -123,21 +123,42 @@
 
 - (void)mockLokasjoner
 {
+    BOOL revers = YES;
     while(true)
     {
-        for(int i = 0; i < [koordinater count]; i++)
+        if(revers)
         {
-            if(i % 10 != 0)
-                continue;
-            NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
-            NSString * koordString = koordinater[i];
-            NSArray * koordArray = [koordString componentsSeparatedByString:@" "];
-            Posisjon * posisjon = [Posisjon alloc];
-            posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[1]) doubleValue]];
-            posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[0]) doubleValue]];
-            NSLog(@"Koordinater: %@ %@", posisjon.breddegrad, posisjon.lengdegrad);
-            [self.delegate posisjonOppdatering:posisjon];
-            sleep(3);
+            for(int i = [koordinater count] - 1; i >= 0; i--)
+            {
+                if(i % 10 != 0)
+                    continue;
+                NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
+                NSString * koordString = koordinater[i];
+                NSArray * koordArray = [koordString componentsSeparatedByString:@" "];
+                Posisjon * posisjon = [Posisjon alloc];
+                posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[1]) doubleValue]];
+                posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[0]) doubleValue]];
+                NSLog(@"Koordinater: %@ %@", posisjon.breddegrad, posisjon.lengdegrad);
+                [self.delegate posisjonOppdatering:posisjon];
+                sleep(3);
+            }
+        }
+        else
+        {
+            for(int i = 0; i < [koordinater count]; i++)
+            {
+                if(i % 10 != 0)
+                    continue;
+                NSLog(@"Mockstrekning: %d / %u m.", i * 10, [koordinater count] * 10);
+                NSString * koordString = koordinater[i];
+                NSArray * koordArray = [koordString componentsSeparatedByString:@" "];
+                Posisjon * posisjon = [Posisjon alloc];
+                posisjon.breddegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[1]) doubleValue]];
+                posisjon.lengdegrad = [[NSDecimalNumber alloc] initWithDouble:[((NSString *)koordArray[0]) doubleValue]];
+                NSLog(@"Koordinater: %@ %@", posisjon.breddegrad, posisjon.lengdegrad);
+                [self.delegate posisjonOppdatering:posisjon];
+                sleep(3);
+            }
         }
     }
 }

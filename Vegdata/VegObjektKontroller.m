@@ -79,7 +79,7 @@
 
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
-    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgErGjetning:NO];
+    [dataProv hentVegreferanseMedBreddegrad:breddegrad Lengdegrad:lengdegrad OgSpoerringsType:NORMAL];
 }
 
 #pragma mark - Metoder som forbereder og utfører søk mot dataprovideren
@@ -154,35 +154,52 @@
                     return;
                 }
                 
-                // Simulator-snill test. Byttes ut med den under ved fysisk test.
-//                else if((self.forrigePosisjon == nil ||
-//                         self.forrigePosisjon.doubleValue < 0 ||
-//                         posisjon.doubleValue >= self.forrigePosisjon.doubleValue ||
-//                         vLenke.fra.doubleValue < posisjon.doubleValue)
-//                        &&
-//                        (self.forrigePosisjon == nil ||
-//                         self.forrigePosisjon.doubleValue < 0 ||
-//                         vLenke.fra.doubleValue > posisjon.doubleValue ||
-//                         vLenke.fra.doubleValue < posisjon.doubleValue)
-//                        &&
-//                        (naermestePosisjon.doubleValue < 0 ||
-//                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
-//                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue))
-                
-                else if(self.forrigePosisjon &&
-                        self.forrigePosisjon.doubleValue >= 0 &&
-                        (naermestePosisjon.doubleValue < 0 ||
-                         [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
-                         [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue) &&
-                        ((posisjon.doubleValue > self.forrigePosisjon.doubleValue &&
-                          vLenke.fra.doubleValue > posisjon.doubleValue &&
-                          ([obj isKindOfClass:[PunktObjekt class]] ||
-                           ([obj isKindOfClass:[SkiltObjekt class]] &&
-                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]))) ||
-                         (vLenke.fra.doubleValue < posisjon.doubleValue &&
-                          ([obj isKindOfClass:[PunktObjekt class]] ||
-                           ([obj isKindOfClass:[SkiltObjekt class]] &&
-                            [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT])))))
+                else if(
+                        self.forrigePosisjon
+                        &&
+                        self.forrigePosisjon.doubleValue >= 0
+                        &&
+                        (
+                            naermestePosisjon.doubleValue < 0
+                            ||
+                            [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue <=
+                                [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue
+                         )
+                        &&
+                        (
+                            (
+                                posisjon.doubleValue > self.forrigePosisjon.doubleValue
+                                &&
+                                vLenke.fra.doubleValue > posisjon.doubleValue
+                                &&
+                                (
+                                    [obj isKindOfClass:[PunktObjekt class]]
+                                    ||
+                                    (
+                                        [obj isKindOfClass:[SkiltObjekt class]]
+                                        &&
+                                        [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]
+                                     )
+                                 )
+                             )
+                            ||
+                            (
+                                posisjon.doubleValue < self.forrigePosisjon.doubleValue
+                                &&
+                                vLenke.fra.doubleValue < posisjon.doubleValue
+                                &&
+                                (
+                                    [obj isKindOfClass:[PunktObjekt class]]
+                                    ||
+                                    (
+                                        [obj isKindOfClass:[SkiltObjekt class]]
+                                        &&
+                                        [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MOT]
+                                     )
+                                 )
+                             )
+                         )
+                    )
                 //
                 // A - [obj isKindOfClass:[PunktObjekt class]]
                 // B - [obj isKindOfClass:[SkiltObjekt class]]
@@ -192,6 +209,7 @@
                 // F - [VegObjektKontroller diffMellomA:posisjon OgB:vLenke.fra].doubleValue
                 //     <= [VegObjektKontroller diffMellomA:naermestePosisjon OgB:vLenke.fra].doubleValue
                 // G - posisjon.doubleValue > self.forrigePosisjon.doubleValue
+                // L - posisjon.doubleValue < self.forrigePosisjon.doubleValue
                 // H - vLenke.fra.doubleValue > posisjon.doubleValue
                 // I - vLenke.fra.doubleValue < posisjon.doubleValue
                 // J - [((SkiltObjekt *)obj).ansiktsside isEqualToString:SKILTPLATE_ANSIKTSSIDE_MED]
@@ -209,15 +227,15 @@
                 // som det har en lavere posisjon enn enheten (altså ligger foran enheten)
                 // Hvis objektet er et skiltobjekt må ansiktssiden være mot metreringsretning:
                 //
-                // C && D && I && (E || F) && (A || (B && K))
+                // C && D && L && I && (E || F) && (A || (B && K))
                 //
                 // Setter vi sammen disse får vi:
                 //
-                // (C && D && G && H && (E || F) && (A || (B && J))) || (C && D && I && (E || F) && (A || (B && K)))
+                // (C && D && G && H && (E || F) && (A || (B && J))) || (C && D && L && I && (E || F) && (A || (B && K)))
                 //
                 // Med boolsk algebra finner vi at dette er ekvivalent med:
                 //
-                // C && D && (E || F) && ((G && H && (A || (B && J))) || (I && (A || (B && K))))
+                // C && D && (E || F) && ((G && H && (A || (B && J))) || (L && I && (A || (B && K))))
                 //
                 {
                     naermestePosisjon = posisjon;
@@ -335,7 +353,7 @@
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgSpoerringsType:(Spoerring)type
 {
     if(resultat == nil || resultat.count == 0)
     {
@@ -346,13 +364,23 @@
     else if([resultat[0] isKindOfClass:[Vegreferanse class]])
     {
         Vegreferanse * nyVegref = ((Vegreferanse *)resultat[0]);
-        if(erGjetning) {
+        if(!self.vegRef)
+            self.vegRef = nyVegref;
+        
+        if(type == GJETNING)
+        {
             self.gjettetVeglenkeID = nyVegref.veglenkeId;
+            return;
+        }
+        if(type == VEGLENKEENDE)
+        {
+            [self gjettVeglenkeMedEndevegref:nyVegref];
             return;
         }
         if(self.vegRef && self.vegRef.veglenkeId.intValue == nyVegref.veglenkeId.intValue)
         {
             self.forrigePosisjon = [self kalkulerVeglenkePosisjon:self.vegRef];
+            self.forrigeNyeVeglenkeID = [[NSNumber alloc] initWithInt:-1];
             
             // følgende skal være gjort, men må testes
             // finne ut hvilken retning på veglenken vi kjører
@@ -376,7 +404,7 @@
             if(nyRetning != UKJENT && self.forrigeRetning != nyRetning)
             {
                 self.forrigeRetning = nyRetning;
-                [self gjettVeglenke];
+                [self finnEndevegrefOgGjettVeglenke];
             }
             
             [self sokMedVegreferanse];
@@ -427,14 +455,30 @@
     }
 }
 
-- (void) gjettVeglenke {
+- (void) finnEndevegrefOgGjettVeglenke
+{
+    int posisjonsInt;
+    if(self.forrigeRetning == STIGENDE)
+        posisjonsInt = 1;
+    else if(self.forrigeRetning == SYNKENDE)
+        posisjonsInt = 0;
+    else
+        posisjonsInt = -1;
+    
+    NSDecimalNumber * posisjon = [[NSDecimalNumber alloc] initWithInt:posisjonsInt];
+    
+    [dataProv hentVegreferanseMedVeglenkeID:self.vegRef.veglenkeId OgPosisjon:posisjon];
+}
+
+- (void) gjettVeglenkeMedEndevegref:(Vegreferanse *)vegRef
+{
     /*
      * Feiler fordi vi ser på vegreferansens koordinater.
      * Vi må bruke retning for så å hente vegreferansen ved veglenkens posisjon 0 eller 1.
      * Deretter kan vi bruke denne vegreferansen slik vi nå gjør med den vi har.
      */
     
-    NSArray * rawKoordinater = [self.vegRef.geometriWgs84 componentsSeparatedByString:@", "];
+    NSArray * rawKoordinater = [vegRef.geometriWgs84 componentsSeparatedByString:@", "];
     if(!rawKoordinater || [rawKoordinater count] < 2)
         return;
     
@@ -465,7 +509,7 @@
     NSDecimalNumber * gjettetX = [[NSDecimalNumber alloc] initWithDouble:(tilX.doubleValue - fraX.doubleValue) + tilX.doubleValue];
     NSDecimalNumber * gjettetY = [[NSDecimalNumber alloc] initWithDouble:(tilY.doubleValue - fraY.doubleValue) + tilY.doubleValue];
     
-    [dataProv hentVegreferanseMedBreddegrad:gjettetX Lengdegrad:gjettetY OgErGjetning:YES];
+    [dataProv hentVegreferanseMedBreddegrad:gjettetX Lengdegrad:gjettetY OgSpoerringsType:GJETNING];
 }
 
 - (void) svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key

@@ -25,7 +25,7 @@
 
 @protocol NVDBResponseDelegate
 @required
-- (void) svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning;
+- (void) svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgSpoerringsType:(Spoerring)type;
 - (void) svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key;
 @end
 
@@ -33,7 +33,7 @@
 
 @property (nonatomic, assign) id delegate;
 
-- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning;
+- (void) hentDataMedURI:(NSString *)uri Parametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping KeyPath:(NSString *)keyPath VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgSpoerringsType:(Spoerring)type;
 - (void) hentAvstandMellomKoordinaterMedParametere:(NSDictionary *)parametere Mapping:(RKMapping *)mapping OgKey:(NSString *)key;
 
 @end

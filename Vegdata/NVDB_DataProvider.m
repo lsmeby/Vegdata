@@ -124,7 +124,7 @@
     return self;
 }
 
-- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgErGjetning:(BOOL)erGjetning
+- (void)hentVegreferanseMedBreddegrad:(NSDecimalNumber *)breddegrad Lengdegrad:(NSDecimalNumber *)lengdegrad OgSpoerringsType:(Spoerring)type
 {
     [restkit hentDataMedURI:[Vegreferanse getURI]
                  Parametere:[NVDB_DataProvider parametereForKoordinaterMedBreddegrad:breddegrad
@@ -133,7 +133,18 @@
                     KeyPath:[Vegreferanse getKeyPath]
                  VeglenkeId:nil
                Vegreferanse:nil
-               OgErGjetning:erGjetning];
+               OgSpoerringsType:type];
+}
+
+- (void)hentVegreferanseMedVeglenkeID:(NSNumber *)lenkeid OgPosisjon:(NSDecimalNumber *)posisjon
+{
+    [restkit hentDataMedURI:[Vegreferanse getURI]
+                 Parametere:[NVDB_DataProvider parametereForVeglenkeID:lenkeid OgPosisjon:posisjon]
+                    Mapping:[Vegreferanse mapping]
+                    KeyPath:[Vegreferanse getKeyPath]
+                 VeglenkeId:nil
+               Vegreferanse:nil
+               OgSpoerringsType:VEGLENKEENDE];
 }
 
 - (void)hentVegObjekterMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping
@@ -189,7 +200,7 @@
                     KeyPath:[Sok getKeyPath]
                  VeglenkeId:((Veglenke *)sok.veglenker[0]).lenkeId
                Vegreferanse:nil
-               OgErGjetning:NO];
+               OgSpoerringsType:NORMAL];
 }
 
 - (void)hentVegObjekterFraCoreDataMedVeglenkeCDObjekt:(VeglenkeDBStatus *)vlenke
@@ -572,12 +583,12 @@
                           s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
     
     NSLog(@"Data lastet fra Core Data.");
-    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId Vegreferanse:nil OgErGjetning:NO];
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId Vegreferanse:nil OgSpoerringsType:NORMAL];
 }
 
 #pragma mark - NVDBResponseDelegate
 
-- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgErGjetning:(BOOL)erGjetning
+- (void)svarFraNVDBMedResultat:(NSArray *)resultat VeglenkeId:(NSNumber *)lenkeId Vegreferanse:(Vegreferanse *)vegref OgSpoerringsType:(Spoerring)type
 {
     if(resultat != nil && resultat.count > 0)
     {
@@ -590,7 +601,7 @@
                             KeyPath:nil
                          VeglenkeId:nil
                        Vegreferanse:resultat[0]
-                       OgErGjetning:erGjetning];
+                       OgSpoerringsType:type];
             return;
         }
         // Er VegreferanseDetaljer-objekt
@@ -599,7 +610,7 @@
             vegref.geometriWgs84 = ((VegreferanseDetaljer *)resultat[0]).geometriWgs84;
             vegref.veglenker = ((VegreferanseDetaljer *)resultat[0]).veglenker;
             NSArray * nyttResultat = @[vegref];
-            [delegate svarFraNVDBMedResultat:nyttResultat VeglenkeId:lenkeId Vegreferanse:vegref OgErGjetning:erGjetning];
+            [delegate svarFraNVDBMedResultat:nyttResultat VeglenkeId:lenkeId Vegreferanse:vegref OgSpoerringsType:type];
             return;
         }
         // Er vegobjekter - lagrer data til Core Data
@@ -622,7 +633,7 @@
             if(feil)
             {
                 NSLog(@"Feil ved spørring mot Core Data: %@.\nLagrer ikke data til databasen.", feil.description);
-                [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgErGjetning:erGjetning];
+                [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgSpoerringsType:type];
             }
             
             // Sletter eksisterende oppføring i databasen
@@ -840,7 +851,7 @@
         }
     }
 
-    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgErGjetning:erGjetning];
+    [delegate svarFraNVDBMedResultat:resultat VeglenkeId:lenkeId Vegreferanse:nil OgSpoerringsType:type];
 }
 
 - (void)svarFraMapQuestMedResultat:(NSArray *)resultat OgKey:(NSString *)key
@@ -1183,6 +1194,11 @@
 + (NSDictionary *)parametereForKoordinaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
 {
     return @{@"y" : breddegrad.stringValue, @"x" : lengdegrad.stringValue, @"srid" : NVDB_GEOMETRI};
+}
+
++ (NSDictionary *)parametereForVeglenkeID:(NSNumber *)lenkeid OgPosisjon:(NSDecimalNumber *)posisjon
+{
+    return @{@"veglenkeid" : lenkeid, @"veglenkeposisjon" : posisjon};
 }
 
 + (NSDictionary *)parametereForBoundingBoxMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad
