@@ -60,6 +60,7 @@
             
             self.landskapViewController.pos = self.pos;
             self.landskapViewController.vegObjKont = self.vegObjKont;
+            self.landskapViewController.lydID = self.lydID;
         }
 
         [self presentViewController:self.landskapViewController animated:NO completion:nil];
