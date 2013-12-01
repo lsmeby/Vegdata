@@ -233,8 +233,17 @@
     // -- FARTSGRENSE --
     
     dataObjekt = [data objectForKey:FARTSGRENSE_KEY];
+    if((!dataObjekt || [dataObjekt isEqualToString:INGEN_OBJEKTER]) && self.forrigeFartsgrense && ![self.forrigeFartsgrense isEqualToString:INGEN_OBJEKTER] && self.antallUtenFartsgrense < 5)
+    {
+        dataObjekt = self.forrigeFartsgrense;
+        self.antallUtenFartsgrense++;
+    }
+    else
+        self.antallUtenFartsgrense = 0;
+    
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
+        self.forrigeFartsgrense = dataObjekt;
         rad = self.layoutArray[element];
         
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense.gif"];
@@ -1196,7 +1205,7 @@
         element++;
     }
     
-    if(element == 0 && (!self.oppstart || self.antallUtenData >= 5))
+    if(element == 0 && !self.oppstart && self.antallUtenData >= 5)
         self.feilLabel.hidden = false;
     else
         self.feilLabel.hidden = true;
@@ -1215,10 +1224,7 @@
         }
     }
     else
-    {
         self.antallUtenData++;
-        NSLog(@"NÅ SKJEDDE DETTE IGJEN. Antall uten data: %d", self.antallUtenData);
-    }
     
     BOOL lydvarslingErAktivert = [[NSUserDefaults standardUserDefaults] boolForKey:LYDVARSLING_BRUKERPREF];
     if(lydvarslingErAktivert && spillLyd)

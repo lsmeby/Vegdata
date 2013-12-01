@@ -76,6 +76,8 @@
 @property (nonatomic, strong) IBOutlet UILabel * hudLabel;
 
 @property (nonatomic, strong) IBOutlet UILabel * feilLabel;
+@property (nonatomic, strong) NSString * forrigeFartsgrense;
+@property (nonatomic) int antallUtenFartsgrense;
 @property (nonatomic) BOOL oppstart;
 @property (nonatomic) int antallUtenData;
 
