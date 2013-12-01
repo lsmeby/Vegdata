@@ -96,7 +96,7 @@
 			<key>Title</key>
 			<string>Automatisk trafikkontroll</string>
 			<key>Key</key>
-			<string>skilt_automatisktrafikkontroll</string>
+			<string>skilt_atkstrekning</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -127,16 +127,6 @@
 			<string>SOS-lomme</string>
 			<key>Key</key>
 			<string>skilt_soslomme</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Videokontroll</string>
-			<key>Key</key>
-			<string>skilt_videokontroll</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CD_Annenfare" representedClassName="CD_Annenfare" parentEntity="CD_SkiltObjekt" syncable="YES"/>
-    <entity name="CD_AutomatiskTrafikkontroll" representedClassName="CD_AutomatiskTrafikkontroll" parentEntity="CD_SkiltObjekt" syncable="YES"/>
+    <entity name="CD_ATKstrekning" representedClassName="CD_ATKstrekning" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="CD_Avstandtilgangfelt" representedClassName="CD_Avstandtilgangfelt" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Barn" representedClassName="CD_Barn" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Bevegeligbru" representedClassName="CD_Bevegeligbru" parentEntity="CD_SkiltObjekt" syncable="YES"/>
@@ -67,7 +67,6 @@
         <relationship name="veglenke" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VeglenkeDBStatus" inverseName="vegobjekter" inverseEntity="VeglenkeDBStatus" syncable="YES"/>
         <relationship name="veglenker" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CD_Veglenke" inverseName="vegobjekt" inverseEntity="CD_Veglenke" syncable="YES"/>
     </entity>
-    <entity name="CD_Videokontroll" representedClassName="CD_Videokontroll" parentEntity="CD_SkiltObjekt" syncable="YES"/>
     <entity name="CD_Vilttrekk" representedClassName="CD_Vilttrekk" parentEntity="CD_LinjeObjekt" syncable="YES"/>
     <entity name="VeglenkeDBStatus" representedClassName="VeglenkeDBStatus" syncable="YES">
         <attribute name="sistOppdatert" attributeType="Date" syncable="YES"/>
@@ -76,7 +75,6 @@
     </entity>
     <elements>
         <element name="CD_Annenfare" positionX="61" positionY="666" width="128" height="43"/>
-        <element name="CD_AutomatiskTrafikkontroll" positionX="-209" positionY="720" width="173" height="43"/>
         <element name="CD_Avstandtilgangfelt" positionX="198" positionY="504" width="128" height="43"/>
         <element name="CD_Barn" positionX="-209" positionY="558" width="128" height="43"/>
         <element name="CD_Bevegeligbru" positionX="-74" positionY="450" width="128" height="43"/>
@@ -120,8 +118,8 @@
         <element name="CD_Vegarbeid" positionX="61" positionY="398" width="128" height="43"/>
         <element name="CD_Veglenke" positionX="214" positionY="-183" width="128" height="118"/>
         <element name="CD_Vegobjekt" positionX="-9" positionY="-180" width="128" height="103"/>
-        <element name="CD_Videokontroll" positionX="198" positionY="666" width="128" height="43"/>
         <element name="CD_Vilttrekk" positionX="43" positionY="153" width="128" height="43"/>
         <element name="VeglenkeDBStatus" positionX="-387" positionY="-180" width="128" height="88"/>
+        <element name="CD_ATKstrekning" positionX="450" positionY="90" width="128" height="43"/>
     </elements>
 </model>

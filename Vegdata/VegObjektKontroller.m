@@ -40,6 +40,7 @@
 #import "Rasteplass.h"
 #import "Toalett.h"
 #import "SOSlomme.h"
+#import "ATKstrekning.h"
 
 @interface VegObjektKontroller()
 
@@ -74,7 +75,7 @@
 
 + (NSArray *)settOppObjektreferanseArray
 {
-    return [[NSArray alloc] initWithObjects:[Fartsgrense class], [Forkjorsveg class], [Vilttrekk class], [Motorveg class], [Hoydebegrensning class], [Jernbanekryssing class], [Fartsdemper class], [Rasteplass class], [Toalett class], [SOSlomme class], [Skiltplate class], [Farligsving class], [Brattbakke class], [Smalereveg class], [Ujevnveg class], [Vegarbeid class], [Steinsprut class], [Rasfare class], [Glattkjorebane class], [Farligvegskulder class], [Bevegeligbru class], [KaiStrandFerjeleie class], [Tunnel class], [Farligvegkryss class], [Rundkjoring class], [Trafikklyssignal class], [Avstandtilgangfelt class], [Barn class], [Syklende class], [Ku class], [Sau class], [Motendetrafikk class], [Ko class], [Fly class], [Sidevind class], [Skilopere class], [Ridende class], [Annenfare class], [AutomatiskTrafikkontroll class], [Videokontroll class], [SaerligUlykkesfare class], nil];
+    return [[NSArray alloc] initWithObjects:[Fartsgrense class], [Forkjorsveg class], [Vilttrekk class], [Motorveg class], [Hoydebegrensning class], [Jernbanekryssing class], [Fartsdemper class], [Rasteplass class], [Toalett class], [SOSlomme class], [Skiltplate class], [Farligsving class], [Brattbakke class], [Smalereveg class], [Ujevnveg class], [Vegarbeid class], [Steinsprut class], [Rasfare class], [Glattkjorebane class], [Farligvegskulder class], [Bevegeligbru class], [KaiStrandFerjeleie class], [Tunnel class], [Farligvegkryss class], [Rundkjoring class], [Trafikklyssignal class], [Avstandtilgangfelt class], [Barn class], [Syklende class], [Ku class], [Sau class], [Motendetrafikk class], [Ko class], [Fly class], [Sidevind class], [Skilopere class], [Ridende class], [Annenfare class], [ATKstrekning class], [SaerligUlykkesfare class], nil];
 }
 
 - (void)oppdaterMedBreddegrad:(NSDecimalNumber *)breddegrad OgLengdegrad:(NSDecimalNumber *)lengdegrad

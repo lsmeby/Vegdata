@@ -140,11 +140,8 @@
 @interface Andrefarer : SokResultater
 @end
 
-@interface Automatisketrafikkontroller : SokResultater
-@end
-
-@interface Videokontroller : SokResultater
-@end
-
 @interface Saerligeulykkesfarer : SokResultater
+@end
+
+@interface ATKstrekninger : SokResultater
 @end

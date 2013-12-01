@@ -286,17 +286,15 @@ typedef enum { NORMAL, GJETNING, VEGLENKEENDE } Spoerring;
 #define ANNENFARE_CD @"CD_Annenfare"
 #define ANNENFARE_BRUKERPREF @"skilt_annenfare"
 
-#define AUTOMATISKTRAFIKKONTROLL_KEY @"automatisktrafikkontroll"
-#define AUTOMATISKTRAFIKKONTROLL_CD @"CD_AutomatiskTrafikkontroll"
-#define AUTOMATISKTRAFIKKONTROLL_BRUKERPREF @"skilt_automatisktrafikkontroll"
-
-#define VIDEOKONTROLL_KEY @"videokontroll"
-#define VIDEOKONTROLL_CD @"CD_Videokontroll"
-#define VIDEOKONTROLL_BRUKERPREF @"skilt_videokontroll"
-
 #define SAERLIGULYKKESFARE_KEY @"saerligulykkesfare"
 #define SAERLIGULYKKESFARE_CD @"CD_SaerligUlykkesfare"
 #define SAERLIGULYKKESFARE_BRUKERPREF @"skilt_saerligulykkesfare"
+
+#define ATKSTREKNING_ID 775
+#define ATKSTREKNING_KEY @"atkstrekning"
+#define ATKSTREKNING_CD @"CD_ATKstrekning"
+#define ATKSTREKNING_BRUKERPREF @"skilt_atkstrekning"
+
 
 
 // -- FILTER --

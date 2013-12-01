@@ -332,12 +332,12 @@
     }
     
     
-    // -- AUTOMATISK TRAFIKKONTROLL --
+    // -- ATKstrekning --
     
-    dataObjekt = [data objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
+    dataObjekt = [data objectForKey:ATKSTREKNING_KEY];
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
-        forrigeObjekt = [self.nyesteData objectForKey:AUTOMATISKTRAFIKKONTROLL_KEY];
+        forrigeObjekt = [self.nyesteData objectForKey:ATKSTREKNING_KEY];
         if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
             spillLyd = YES;
         
@@ -345,13 +345,8 @@
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_automatisk.gif"];
         ((UILabel *)rad[1]).text = nil;
         ((UILabel *)rad[2]).text = nil;
-        rad[3] = AUTOMATISKTRAFIKKONTROLL_KEY;
-        
-        if([dataObjekt isEqualToString:AUTOMATISKTRAFIKKONTROLL_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
+        rad[3] = ATKSTREKNING_KEY;
+        rad[4] = @"";
         element++;
     }
     
@@ -409,30 +404,6 @@
         ((UILabel *)rad[2]).text = nil;
         rad[3] = SOSLOMME_KEY;
         rad[4] = @"";
-        element++;
-    }
-    
-    
-    // -- VIDEOKONTROLL / -OVERVÅKNING --
-    
-    dataObjekt = [data objectForKey:VIDEOKONTROLL_KEY];
-    if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
-    {
-        forrigeObjekt = [self.nyesteData objectForKey:VIDEOKONTROLL_KEY];
-        if(!forrigeObjekt || [forrigeObjekt isEqualToString:INGEN_OBJEKTER])
-            spillLyd = YES;
-        
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"opplysningsskilt_videokontroll.gif"];
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = VIDEOKONTROLL_KEY;
-        
-        if([dataObjekt isEqualToString:VIDEOKONTROLL_KEY])
-            rad[4] = @"";
-        else
-            rad[4] = [HovedskjermViewController finnAvstandstekstMedStreng:dataObjekt ErVariabeltSkilt:NO];
-        
         element++;
     }
     
