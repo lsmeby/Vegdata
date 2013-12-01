@@ -382,10 +382,6 @@
             self.forrigePosisjon = [self kalkulerVeglenkePosisjon:self.vegRef];
             self.forrigeNyeVeglenkeID = [[NSNumber alloc] initWithInt:-1];
             
-            // følgende skal være gjort, men må testes
-            // finne ut hvilken retning på veglenken vi kjører
-            // hvis retningen er endret, eller vi ikke har gjettet på neste veglenke - utfør gjetting
-            
             self.vegRef = (Vegreferanse *)resultat[0];
             
             NSDecimalNumber * nyPosisjon = [self kalkulerVeglenkePosisjon:self.vegRef];
@@ -422,11 +418,6 @@
             }
             else
                 self.forrigeNyeVeglenkeID = nyVegref.veglenkeId;
-            
-            
-            // følgende skal være gjort, men må testes
-            // hvis den nye veglenken er den vi gjettet på, eller hvis den nye veglenken er den samme 2 cycles på rad - kjør søk med vegreferanse
-            // hvis ikke - noter og ignorer veglenke
         }
     }
     else
@@ -472,12 +463,6 @@
 
 - (void) gjettVeglenkeMedEndevegref:(Vegreferanse *)vegRef
 {
-    /*
-     * Feiler fordi vi ser på vegreferansens koordinater.
-     * Vi må bruke retning for så å hente vegreferansen ved veglenkens posisjon 0 eller 1.
-     * Deretter kan vi bruke denne vegreferansen slik vi nå gjør med den vi har.
-     */
-    
     NSArray * rawKoordinater = [vegRef.geometriWgs84 componentsSeparatedByString:@", "];
     if(!rawKoordinater || [rawKoordinater count] < 2)
         return;
