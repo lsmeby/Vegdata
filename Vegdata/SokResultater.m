@@ -146,11 +146,8 @@
 @implementation Andrefarer
 @end
 
-@implementation Automatisketrafikkontroller
-@end
-
-@implementation Videokontroller
-@end
-
 @implementation Saerligeulykkesfarer
+@end
+
+@implementation ATKstrekninger
 @end

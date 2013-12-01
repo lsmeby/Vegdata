@@ -43,6 +43,7 @@
 #import "Rasteplass.h"
 #import "Toalett.h"
 #import "SOSlomme.h"
+#import "ATKstrekning.h"
 
 // Core Data
 #import "VeglenkeDBStatus.h"
@@ -59,7 +60,6 @@
 #import "CD_Vilttrekk.h"
 #import "CD_Motorveg.h"
 #import "CD_Annenfare.h"
-#import "CD_AutomatiskTrafikkontroll.h"
 #import "CD_Avstandtilgangfelt.h"
 #import "CD_Barn.h"
 #import "CD_Bevegeligbru.h"
@@ -90,10 +90,10 @@
 #import "CD_Ujevnveg.h"
 #import "CD_VariabelSkiltplate.h"
 #import "CD_Vegarbeid.h"
-#import "CD_Videokontroll.h"
 #import "CD_Rasteplass.h"
 #import "CD_Toalett.h"
 #import "CD_SOSlomme.h"
+#import "CD_ATKstrekning.h"
 
 @interface NVDB_DataProvider()
 - (void)hentVegObjekterFraNVDBMedSokeObjekt:(Sok *)sok OgMapping:(RKMapping *)mapping;
@@ -250,8 +250,7 @@
     NSMutableArray * skiloperes = [[NSMutableArray alloc] init];
     NSMutableArray * ridendes = [[NSMutableArray alloc] init];
     NSMutableArray * andrefarer = [[NSMutableArray alloc] init];
-    NSMutableArray * automatisketrafikkontroller = [[NSMutableArray alloc] init];
-    NSMutableArray * videokontroller = [[NSMutableArray alloc] init];
+    NSMutableArray * atkstrekninger = [[NSMutableArray alloc] init];
     NSMutableArray * saerligeulykkesfarer = [[NSMutableArray alloc] init];
     
     for(CD_Vegobjekt * obj in objekter)
@@ -518,17 +517,11 @@
             settOppVegObjekt(annenfare);
             [andrefarer addObject:annenfare];
         }
-        else if([obj isKindOfClass:[CD_AutomatiskTrafikkontroll class]])
+        else if([obj isKindOfClass:[CD_ATKstrekning class]])
         {
-            AutomatiskTrafikkontroll * automatisktrafikkontroll = [AutomatiskTrafikkontroll alloc];
-            settOppVegObjekt(automatisktrafikkontroll);
-            [automatisketrafikkontroller addObject:automatisktrafikkontroll];
-        }
-        else if([obj isKindOfClass:[CD_Videokontroll class]])
-        {
-            Videokontroll * videokontroll = [Videokontroll alloc];
-            settOppVegObjekt(videokontroll);
-            [videokontroller addObject:videokontroll];
+            ATKstrekning * atkstrekning = [ATKstrekning alloc];
+            settOppVegObjekt(atkstrekning);
+            [atkstrekninger addObject:atkstrekning];
         }
         else if([obj isKindOfClass:[CD_SaerligUlykkesfare class]])
         {
@@ -575,12 +568,11 @@
     Skiloperes * s_skiloperes = [[Skiloperes alloc] initMedObjekter:[skiloperes copy]];
     Ridendes * s_ridendes = [[Ridendes alloc] initMedObjekter:[ridendes copy]];
     Andrefarer * s_andrefarer = [[Andrefarer alloc] initMedObjekter:[andrefarer copy]];
-    Automatisketrafikkontroller * s_automatisketrafikkontroller = [[Automatisketrafikkontroller alloc] initMedObjekter:[automatisketrafikkontroller copy]];
-    Videokontroller * s_videokontroller = [[Videokontroller alloc] initMedObjekter:[videokontroller copy]];
+    ATKstrekninger * s_atkstrekninger = [[ATKstrekninger alloc] initMedObjekter:[atkstrekninger copy]];
     Saerligeulykkesfarer * s_saerligeulykkesfarer = [[Saerligeulykkesfarer alloc] initMedObjekter:[saerligeulykkesfarer copy]];
     
     NSArray * resultat = [[NSArray alloc] initWithObjects:s_fartsgrenser, s_forkjorsveger, s_vilttrekk, s_motorveger,
-                          s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer, nil];
+                          s_fartsdempere, s_hoydebegrensninger, s_jernbanekryssinger, s_rasteplasser, s_toaletter, s_soslommer, s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_atkstrekninger, s_saerligeulykkesfarer, nil];
     
     NSLog(@"Data lastet fra Core Data.");
     [delegate svarFraNVDBMedResultat:resultat VeglenkeId:vlenke.veglenkeId Vegreferanse:nil OgSpoerringsType:NORMAL];
@@ -802,11 +794,8 @@
                         else if([v_obj isKindOfClass:[Annenfare class]])
                             cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:ANNENFARE_CD
                                                                      inManagedObjectContext:managedObjectContext];
-                        else if([v_obj isKindOfClass:[AutomatiskTrafikkontroll class]])
-                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:AUTOMATISKTRAFIKKONTROLL_CD
-                                                                     inManagedObjectContext:managedObjectContext];
-                        else if([v_obj isKindOfClass:[Videokontroll class]])
-                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:VIDEOKONTROLL_CD
+                        else if([v_obj isKindOfClass:[ATKstrekning class]])
+                            cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:ATKSTREKNING_CD
                                                                      inManagedObjectContext:managedObjectContext];
                         else if([v_obj isKindOfClass:[SaerligUlykkesfare class]])
                             cdVegobj = [NSEntityDescription insertNewObjectForEntityForName:SAERLIGULYKKESFARE_CD
@@ -895,8 +884,6 @@
     NSMutableArray * skiloperes = [[NSMutableArray alloc] init];
     NSMutableArray * ridendes = [[NSMutableArray alloc] init];
     NSMutableArray * andrefarer = [[NSMutableArray alloc] init];
-    NSMutableArray * automatisketrafikkontroller = [[NSMutableArray alloc] init];
-    NSMutableArray * videokontroller = [[NSMutableArray alloc] init];
     NSMutableArray * saerligeulykkesfarer = [[NSMutableArray alloc] init];
     
     for(NSObject * o in nyttResultat)
@@ -1123,20 +1110,6 @@
                     [andrefarer addObject:annenfare];
                 }
                 
-                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_AUTOMATISKTRAFIKKONTROLL])
-                {
-                    AutomatiskTrafikkontroll * automatisktrafikkontroll = [AutomatiskTrafikkontroll alloc];
-                    settOppSkiltObjekt(automatisktrafikkontroll);
-                    [automatisketrafikkontroller addObject:automatisktrafikkontroll];
-                }
-                
-                else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_VIDEOKONTROLL])
-                {
-                    Videokontroll * videokontroll = [Videokontroll alloc];
-                    settOppSkiltObjekt(videokontroll);
-                    [videokontroller addObject:videokontroll];
-                }
-                
                 else if([type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_1] ||
                         [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_2] ||
                         [type isEqualToString:SKILTPLATE_SKILTNUMMER_SAERLIGULYKKESFARE_3] ||
@@ -1181,11 +1154,9 @@
     Skiloperes * s_skiloperes = [[Skiloperes alloc] initMedObjekter:[skiloperes copy]];
     Ridendes * s_ridendes = [[Ridendes alloc] initMedObjekter:[ridendes copy]];
     Andrefarer * s_andrefarer = [[Andrefarer alloc] initMedObjekter:[andrefarer copy]];
-    Automatisketrafikkontroller * s_automatisketrafikkontroller = [[Automatisketrafikkontroller alloc] initMedObjekter:[automatisketrafikkontroller copy]];
-    Videokontroller * s_videokontroller = [[Videokontroller alloc] initMedObjekter:[videokontroller copy]];
     Saerligeulykkesfarer * s_saerligeulykkesfarer = [[Saerligeulykkesfarer alloc] initMedObjekter:[saerligeulykkesfarer copy]];
     
-    [nyttResultat addObjectsFromArray:@[s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_automatisketrafikkontroller, s_videokontroller, s_saerligeulykkesfarer]];
+    [nyttResultat addObjectsFromArray:@[s_farligesvinger, s_brattebakker, s_smalereveger, s_ujevneveger, s_vegarbeids, s_steinspruts, s_rasfarer, s_glattekjorebaner, s_farligevegskuldere, s_bevegeligebruer, s_kaistrandferjeleies, s_tunneler, s_farligevegkryss, s_rundkjoringer, s_trafikklyssignaler, s_avstandertilgangfelt, s_barns, s_syklendes, s_kuer, s_sauer, s_motendetrafikks, s_koer, s_flys, s_sidevinder, s_skiloperes, s_ridendes, s_andrefarer, s_saerligeulykkesfarer]];
     
     NSLog(@"Skiltplater omgjort til skiltobjekter.");
     return [nyttResultat copy];

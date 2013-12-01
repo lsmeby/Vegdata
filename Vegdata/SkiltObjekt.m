@@ -246,22 +246,6 @@
 + (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:ANNENFARE_BRUKERPREF];}
 @end
 
-@implementation AutomatiskTrafikkontroll
-+ (RKObjectMapping *)mapping {return nil;}
-+ (NSArray *)filtere {return nil;}
-+ (NSNumber *)idNr {return nil;}
-+ (NSString *)key {return AUTOMATISKTRAFIKKONTROLL_KEY;}
-+ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:AUTOMATISKTRAFIKKONTROLL_BRUKERPREF];}
-@end
-
-@implementation Videokontroll
-+ (RKObjectMapping *)mapping {return nil;}
-+ (NSArray *)filtere {return nil;}
-+ (NSNumber *)idNr {return nil;}
-+ (NSString *)key {return VIDEOKONTROLL_KEY;}
-+ (BOOL)objektSkalVises {return [[NSUserDefaults standardUserDefaults] boolForKey:VIDEOKONTROLL_BRUKERPREF];}
-@end
-
 @implementation SaerligUlykkesfare
 + (RKObjectMapping *)mapping {return nil;}
 + (NSArray *)filtere {return nil;}
