@@ -123,7 +123,7 @@
 
 - (void)mockLokasjoner
 {
-    BOOL revers = YES;
+    BOOL revers = NO;
     while(true)
     {
         if(revers)

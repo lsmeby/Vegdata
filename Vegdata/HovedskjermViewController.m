@@ -53,6 +53,9 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:sti], &ssid);
     self.lydID = ssid;
     
+    self.oppstart = YES;
+    self.antallUtenData = 0;
+    
     self.pos = [[PosisjonsKontroller alloc] initWithMock:YES];
     self.pos.delegate = self;
     [self.pos startUpdatingLocation];
@@ -230,8 +233,17 @@
     // -- FARTSGRENSE --
     
     dataObjekt = [data objectForKey:FARTSGRENSE_KEY];
+    if((!dataObjekt || [dataObjekt isEqualToString:INGEN_OBJEKTER]) && self.forrigeFartsgrense && ![self.forrigeFartsgrense isEqualToString:INGEN_OBJEKTER] && self.antallUtenFartsgrense < 5)
+    {
+        dataObjekt = self.forrigeFartsgrense;
+        self.antallUtenFartsgrense++;
+    }
+    else
+        self.antallUtenFartsgrense = 0;
+    
     if(dataObjekt && ![dataObjekt isEqualToString:INGEN_OBJEKTER] && element < antallPlasser)
     {
+        self.forrigeFartsgrense = dataObjekt;
         rad = self.layoutArray[element];
         
         ((UIImageView *)rad[0]).image = [UIImage imageNamed:@"fartsgrense.gif"];
@@ -1193,29 +1205,36 @@
         element++;
     }
     
-    
-    if(element == 0)
+    if(element == 0 && !self.oppstart && self.antallUtenData >= 5)
         self.feilLabel.hidden = false;
     else
         self.feilLabel.hidden = true;
     
-    
-    while(element < antallPlasser)
+    if(element > 0 || self.antallUtenData >= 5)
     {
-        rad = self.layoutArray[element];
-        ((UIImageView *)rad[0]).image = nil;
-        ((UILabel *)rad[1]).text = nil;
-        ((UILabel *)rad[2]).text = nil;
-        rad[3] = @"";
-        rad[4] = @"";
-        element++;
+        while(element < antallPlasser)
+        {
+            rad = self.layoutArray[element];
+            ((UIImageView *)rad[0]).image = nil;
+            ((UILabel *)rad[1]).text = nil;
+            ((UILabel *)rad[2]).text = nil;
+            rad[3] = @"";
+            rad[4] = @"";
+            element++;
+        }
     }
+    else
+        self.antallUtenData++;
     
     BOOL lydvarslingErAktivert = [[NSUserDefaults standardUserDefaults] boolForKey:LYDVARSLING_BRUKERPREF];
     if(lydvarslingErAktivert && spillLyd)
         AudioServicesPlaySystemSound(self.lydID);
     
     self.nyesteData = data;
+    if(self.oppstart)
+        self.oppstart = NO;
+    if(element > 0)
+        self.antallUtenData = 0;
 }
 
 - (void)avstandTilPunktobjekt:(NSDecimalNumber *)avstand MedKey:(NSString *)key
