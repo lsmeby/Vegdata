@@ -123,7 +123,7 @@
 
 - (void)mockLokasjoner
 {
-    BOOL revers = YES;
+    BOOL revers = NO;
     while(true)
     {
         if(revers)
@@ -145,7 +145,7 @@
         }
         else
         {
-            for(int i = 0; i < [koordinater count]; i++)
+            for(int i = 600; i < [koordinater count]; i++)
             {
                 if(i % 10 != 0)
                     continue;

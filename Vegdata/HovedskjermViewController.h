@@ -76,6 +76,8 @@
 @property (nonatomic, strong) IBOutlet UILabel * hudLabel;
 
 @property (nonatomic, strong) IBOutlet UILabel * feilLabel;
+@property (nonatomic) BOOL oppstart;
+@property (nonatomic) int antallUtenData;
 
 @property (nonatomic) SystemSoundID lydID;
 
